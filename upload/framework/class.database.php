@@ -16,45 +16,23 @@
  *
  */
 
-// include class.secure.php to protect this file and the whole CMS!
-if (defined('LEPTON_PATH'))
-{
-    include(LEPTON_PATH . '/framework/class.secure.php');
-}
-else
-{
-    $oneback = "../";
-    $root    = $oneback;
-    $level   = 1;
-    while (($level < 10) && (!file_exists($root . '/framework/class.secure.php')))
-    {
-        $root .= $oneback;
-        $level += 1;
-    }
-    if (file_exists($root . '/framework/class.secure.php'))
-    {
-        include($root . '/framework/class.secure.php');
-    }
-    else
-    {
-        trigger_error(sprintf("[ <b>%s</b> ] Can't include class.secure.php!", $_SERVER['SCRIPT_NAME']), E_USER_ERROR);
-    }
-}
-// end include class.secure.php
-
-require_once(LEPTON_PATH . '/framework/summary.functions.php');
-
 class database
 {
+	
 	/**
 	 *	Private var for the current version of this class.
 	 */
-	private	$version = "2.1.0.2";
+	private	$version = "2.3.0.0";
 	
 	/**
 	 *	Protected var that holds the guid of this class.
 	 */
 	protected $guid = "AE4BC01E-5CA2-4A87-BE8A-758837E6E552";
+
+	/**
+     * @var Singleton The reference to *Singleton* instance of this class
+     */
+    private static $instance;
 	
 	/**
 	 *	Private var for the error-messages.
@@ -75,6 +53,22 @@ class database
      *	Privte var to handle the session check.
      */
     private	$override_session_check = false;
+    
+    /**
+	 *	Return the »internal«
+	 *
+	 *	@param	array	Optional params
+	 */
+	public static function getInstance( &$settings=array() )
+    {
+        if (null === static::$instance) {
+            static::$instance = new static();
+            
+            static::$instance->connect($settings);
+        }
+        
+        return static::$instance;
+    }
     
     /**
      * Constructor of the class database
@@ -159,6 +153,22 @@ class database
      */
     final function connect(&$settings = array())
     {
+        
+        if(!defined("DB_USER")) {
+        	if( true == file_exists( dirname(__FILE__)."/setup.ini" )) {
+        		$config = parse_ini_file( dirname(__FILE__)."/setup.ini", true );
+        		if(!isset($settings['host'])) $settings['host'] = $config['database']['host'];
+        		if(!isset($settings['user'])) $settings['user'] = $config['database']['user'];
+        		if(!isset($settings['pass'])) $settings['pass'] = $config['database']['pass'];
+        		if(!isset($settings['name'])) $settings['name'] = $config['database']['name'];
+        		if(!isset($settings['port'])) $settings['port'] = $config['database']['port'];
+				if(!isset($settings['charset'])) $settings['charset'] = $config['database']['charset'];
+        	
+        		if(!defined("TABLE_PREFIX")) define("TABLE_PREFIX", $config['database']['prefix']);
+        	
+        		unset($config);
+        	}
+        }
         
         $setup = array(
             'host' => (array_key_exists('host', $settings) ? $settings['host'] : DB_HOST),

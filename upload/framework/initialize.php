@@ -44,14 +44,20 @@ else
 
 if ( file_exists( dirname( __FILE__ ) . '/class.database.php' ) )
 {
+
+	require_once( __DIR__."/functions/function.lepton_autoloader.php" );
+	spl_autoload_register( "lepton_autoloader", true);
+	
+	require_once( LEPTON_PATH . "/framework/summary.functions.php");
+	require_once( LEPTON_PATH . "/framework/functions/function.get_leptoken.php" );
 	require_once( dirname( __FILE__ ) . '/sys.constants.php' );
 	require_once( dirname( __FILE__ ) . '/class.database.php' );
 	
 	// Create database class
-	global $database;
+	// global $database;
 	if ( !is_object( $database ) )
 	{
-		$database = new database();
+		$database = database::getInstance(); // new database();
 	}
 	
 	// Get website settings (title, keywords, description, header, and footer)
@@ -207,6 +213,6 @@ if ( file_exists( dirname( __FILE__ ) . '/class.database.php' ) )
 
 // include new function from L* 2.3.0.
 if(!function_exists("get_leptoken")) {
-	require_once( LEPTON_PATH."/framework/functions/function.get_leptoken.php" );
+	
 }	
 ?>

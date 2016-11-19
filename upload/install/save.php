@@ -442,13 +442,13 @@ $config_content = "" .
 "if(defined('LEPTON_PATH')) { die('By security reasons it is not permitted to load \'config.php\' twice!! ".
 "Forbidden call from \''.\$_SERVER['SCRIPT_NAME'].'\'!'); }\n\n".
 "// config file created by ".CORE." ".VERSION."\n".
-"define('DB_TYPE', 'mysql');\n".
-"define('DB_HOST', '$database_host');\n".
-"define('DB_PORT', '$database_port');\n".
-"define('DB_USERNAME', '$database_username');\n".
-"define('DB_PASSWORD', '$database_password');\n".
-"define('DB_NAME', '$database_name');\n".
-"define('TABLE_PREFIX', '$table_prefix');\n".
+//"define('DB_TYPE', 'mysql');\n".
+//"define('DB_HOST', '$database_host');\n".
+//"define('DB_PORT', '$database_port');\n".
+//"define('DB_USERNAME', '$database_username');\n".
+//"define('DB_PASSWORD', '$database_password');\n".
+//"define('DB_NAME', '$database_name');\n".
+//"define('TABLE_PREFIX', '$table_prefix');\n".
 "\n".
 "define('LEPTON_PATH', dirname(__FILE__));\n".
 "define('LEPTON_URL', '$lepton_url');\n".
@@ -468,7 +468,7 @@ $config_filename = '../config.php';
 
 // Check if the file exists and is writable first.
 
-if(($handle = @fopen($config_filename, 'w')) === false) {
+if(($handle = fopen($config_filename, 'w')) === false) {
 	set_error("Cannot open the configuration file ($config_filename)");
 } else {
 	if (fwrite($handle, $config_content, strlen($config_content) ) === false) {
@@ -479,10 +479,37 @@ if(($handle = @fopen($config_filename, 'w')) === false) {
 	fclose($handle);
 }
 
+$ini_filepath = "../framework/setup.ini";
+$s = "
+\n
+; db-setup for LEPTON-CMS\n
+\n
+[database]\n
+type = 'mysql'\n
+host = '".$database_host."'\n
+port = '".$database_port."'\n
+user = '".$database_username."'\n
+pass = '".$database_password."'\n
+name = '".$database_name."'\n
+prefix = '".$table_prefix."'\n
+charset = 'utf8'\n
+\n
+\n
+";
+
+$fp = fopen($ini_filepath);
+if($fp) {
+	fwrite( $fp , $s );
+	fclose( $fp);
+} else {
+	set_error("Cannot open the setup file for the db!");
+}
+
 // Check if the user has entered a correct path
 if(!file_exists(LEPTON_PATH.'/framework/class.admin.php')) {
 	set_error('It seems that the absolute path you entered is incorrect');
 }
+
 
 // Re-connect to the database, this time using built-in database class
 require_once(LEPTON_PATH.'/framework/class.database.php');
