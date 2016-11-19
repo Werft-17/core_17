@@ -1,0 +1,19 @@
+# for lepton_2
+#	core_17
+#
+*.DS_Store
+# .gitignore
+upload/config.php
+
+upload/account/
+upload/admins/
+upload/framework/
+upload/include/
+upload/install/
+upload/languages/
+upload/media/
+upload/modules/
+upload/page/
+upload/search/
+upload/temp/
+#upload/templates/
