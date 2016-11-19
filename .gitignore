@@ -4,10 +4,11 @@
 *.DS_Store
 # .gitignore
 upload/config.php
+upload/config_.php
 
 upload/account/
 upload/admins/
-upload/framework/
+#upload/framework/
 upload/include/
 upload/install/
 upload/languages/
