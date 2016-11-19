@@ -17,7 +17,7 @@
  
  /* Schrift und Hintergrund Browserseite */
 html body { 
-	background:none repeat scroll 0 0 #c5c3c3;
+	background: url(../img/containerbg.gif) repeat scroll 0 0 #c5c3c3;
 	font-family:Arial,Lucida Grande,Lucida Sans Unicode,verdana,geneva,sans-serif;
 	font-size:14px;
 }
@@ -35,12 +35,16 @@ html body {
  #site {
 	background:none repeat scroll 0 0 #fff;
 	color:#333333;
-	margin:20px auto;
+	margin:0px auto;
 	width:900px;
+	
+	-webkit-box-shadow: 10px 10px 50px grey;
+	-moz-box-shadow: 10px 10px 50px grey;
+	box-shadow: 10px 10px 50px grey;
 }
 
- /* Schrift und Hintergrund Kopf */
- #head {
+/* Schrift und Hintergrund Kopf */
+#head {
  	height:180px;
 }
 
