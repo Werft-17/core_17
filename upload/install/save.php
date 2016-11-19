@@ -965,9 +965,9 @@ $database->simple_query("ALTER DATABASE `".DB_NAME."` DEFAULT CHARACTER SET utf8
 	 *	Keep in Mind, that the values are only used as default, if an entry isn't found.
 	 */
 	$vars = array(
-		'DEFAULT_THEME'	=> "algos",
-		'THEME_URL'		=> LEPTON_URL."/templates/algos",
-		'THEME_PATH'	=> LEPTON_PATH."/templates/algos",
+		'DEFAULT_THEME'	=> "lepsem",
+		'THEME_URL'		=> LEPTON_URL."/templates/lepsem",
+		'THEME_PATH'	=> LEPTON_PATH."/templates/lepsem",
 		'LANGUAGE'		=> $_POST['default_language'],
 		'SERVER_EMAIL'	=> "admin@yourdomain.tld",
 		'PAGES_DIRECTORY' => '/page',
@@ -987,22 +987,27 @@ $database->simple_query("ALTER DATABASE `".DB_NAME."` DEFAULT CHARACTER SET utf8
 	 *	The important part ...
 	 *	Is there an valid user?
 	 */
-	$result = $database->query("SELECT * from `".$table_prefix."users` where `username`='".$_POST['admin_username']."'");
+	$temp_user = array();
+	$database->execute_query(
+		"SELECT * from `".$table_prefix."users` where `username`='".$_POST['admin_username']."'",
+		true,
+		$temp_user,
+		false
+	);
 	if ( $database->is_error() ) {
 		set_error ($database->get_error() );
 	}
-	if ($result->numRows() == 0) {
+	if (count($temp_user) == 0) {
 		/**
 		 *	No matches found ... user properly unknown
 	 	 */
 	 	set_error ("Unkown user. Please use a valid username.");
 	} else {
 
-		$data = $result->fetchRow();
 	 	/**
 	 	 *	Does the password match?
 	 	 */
-		$check = password_verify($_POST['admin_password'], $data['password']);		
+		$check = password_verify($_POST['admin_password'], $temp_user['password']);		
 	 	if ($check != 1) {
 	 		set_error ("Password didn't match");
 	 	}
