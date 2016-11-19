@@ -17,3 +17,5 @@ upload/page/
 upload/search/
 upload/temp/
 #upload/templates/
+
+upload/modules/droplets/install/
