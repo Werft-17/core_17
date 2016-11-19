@@ -49,7 +49,7 @@ if ( !defined( 'LEPTON_PATH' ) ) exit;
 
 		<!-- OPTIONAL: display frontend login -->
 		<div id="login">
-			[[LoginBox]]
+		[[LoginBox]]
 		</div>
 
 		<div id="frontedit">
@@ -65,9 +65,9 @@ if ( !defined( 'LEPTON_PATH' ) ) exit;
 	</div>
 		<br style="clear: both;" />
 	<div id="foot">
-		<?php 
-	    show_menu2(2, SM2_ROOT, SM2_ALL, SM2_TRIM|SM2_PRETTY|SM2_XHTML_STRICT);
-	  ?>
+	<?php 
+		show_menu2(2, SM2_ROOT, SM2_ALL, SM2_TRIM|SM2_PRETTY|SM2_XHTML_STRICT);
+	?>
 	</div>
 
 <!-- Block Bottom -->
@@ -80,6 +80,8 @@ if ( !defined( 'LEPTON_PATH' ) ) exit;
 		</div>
 	</div>
 </div>
-<?php get_page_footers(); ?>
+<?php
+	get_page_footers();
+?>
 </body>
 </html>
