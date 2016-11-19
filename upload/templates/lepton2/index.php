@@ -68,7 +68,7 @@ if ( !defined( 'LEPTON_PATH' ) ) exit;
 	<?php 
 		show_menu2(2, SM2_ROOT, SM2_ALL, SM2_TRIM|SM2_PRETTY|SM2_XHTML_STRICT);
 	?>
-	</div>
+</div>
 
 <!-- Block Bottom -->
 	<div id="basic">
