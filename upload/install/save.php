@@ -512,7 +512,7 @@ if(!file_exists(LEPTON_PATH.'/framework/class.admin.php')) {
 
 
 // Re-connect to the database, this time using built-in database class
-require_once(LEPTON_PATH.'/framework/class.database.php');
+require_once(LEPTON_PATH.'/framework/classes/lepton_database.php');
 $database=new database();
 
 // Check if we should install tables
