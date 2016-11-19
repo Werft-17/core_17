@@ -17,7 +17,7 @@
  
  /* Schrift und Hintergrund Browserseite */
 html body { 
-	background:none repeat scroll 0 0 #666;
+	background:none repeat scroll 0 0 #c5c3c3;
 	font-family:Arial,Lucida Grande,Lucida Sans Unicode,verdana,geneva,sans-serif;
 	font-size:14px;
 }
@@ -45,9 +45,9 @@ html body {
 }
 
 #headtitle {
-    background-color: #7BB129;
-    color: #EEEEEE;
-    font-size: 22px;
+    background-color: #e4cb88;
+    color: #FFFFFF;
+    font-size: 18px;
     height: 27px;
     padding-top: 3px;
     text-align: center;

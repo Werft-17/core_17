@@ -1,47 +1,22 @@
 <?php
 
 /**
- *  @template       Lepton-Start
- *  @version        see info.php of this template
- *  @author         cms-lab
- * @copyright       2010-2017 CMS-LAB
- *  @license        http://creativecommons.org/licenses/by/3.0/
- *  @license terms  see info.php of this template
- *  @platform       see info.php of this template
+ *	@template       Lepton-Start
+ *	@version        see info.php of this template
+ *	@author         cms-lab
+ *	@copyright		2010-2017 CMS-LAB
+ *	@license        http://creativecommons.org/licenses/by/3.0/
+ *	@license terms  see info.php of this template
+ *	@platform       see info.php of this template
  */
 
-// include class.secure.php to protect this file and the whole CMS!
-if ( defined( 'LEPTON_PATH' ) )
-{
-    include( LEPTON_PATH . '/framework/class.secure.php' );
-} 
-else
-{
-    $oneback = "../";
-    $root    = $oneback;
-    $level   = 1;
-    while ( ( $level < 10 ) && ( !file_exists( $root . '/framework/class.secure.php' ) ) )
-    {
-        $root .= $oneback;
-        $level += 1;
-    } 
-    if ( file_exists( $root . '/framework/class.secure.php' ) )
-    {
-        include( $root . '/framework/class.secure.php' );
-    } 
-    else
-    {
-        trigger_error( sprintf( "[ <b>%s</b> ] Can't include class.secure.php!", $_SERVER[ 'SCRIPT_NAME' ] ), E_USER_ERROR );
-    }
-}
-// end include class.secure.php
-
+// simple exit as it doesn't make sense to go on
+if ( !defined( 'LEPTON_PATH' ) ) exit;
 
 
 // TEMPLATE CODE STARTS BELOW
-?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+?><!DOCTYPE html>
+<html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=<?php echo DEFAULT_CHARSET; ?>" />
 	<title><?php page_title(); ?></title>  
@@ -54,7 +29,7 @@ else
 <body>
 <div id="site">
 	<div id="head">
-	<a href="<?php echo LEPTON_URL;?>/"><img class="head_img" src="<?php echo TEMPLATE_DIR;?>/img/1.jpg" width="900" height="180" alt="image" /></a>
+	<a href="<?php echo LEPTON_URL;?>/"><img class="head_img" src="<?php echo TEMPLATE_DIR;?>/img/1.jpg" width="900" height="180" alt="Head" /></a>
 	</div>
 	<div id="headtitle"><?php page_header(); ?></div>
 
