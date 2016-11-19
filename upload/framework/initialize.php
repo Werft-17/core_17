@@ -49,16 +49,16 @@ if ( file_exists( dirname( __FILE__ ) . '/class.database.php' ) )
 	spl_autoload_register( "lepton_autoloader", true);
 
 	LEPTON_tools::load(
-		dirname( __FILE__ ) . "/summary.functions.php",
-		dirname( __FILE__ ) . "/sys.constants.php",
-		dirname( __FILE__ ) . "/class.database.php"
+		LEPTON_PATH . "/framework/summary.functions.php",
+		LEPTON_PATH . "/frameworksys.constants.php",
+		LEPTON_PATH . "/framework/var.timezones.php"
 	);
 	
 	LEPTON_tools::register( "get_leptoken" );
 
 	// Create database class
 	// global $database;
-	$database = database::getInstance(); // new database();
+	$database = LEPTON_database::getInstance();
 	
 	// Get website settings (title, keywords, description, header, and footer)
 	$sql = 'SELECT `name`,`value` FROM `' . TABLE_PREFIX . 'settings` ORDER BY `name`';
@@ -181,14 +181,7 @@ if ( file_exists( dirname( __FILE__ ) . '/class.database.php' ) )
 			require_once( LEPTON_PATH . '/languages/' . LANGUAGE . '.php' );
 		}
 	}
-	
-	require_once( LEPTON_PATH . '/framework/var.timezones.php' );
-	if ( version_compare( PHP_VERSION, '5.3.0', '<' ) )
-	{
-		// Disable magic_quotes_runtime
-		set_magic_quotes_runtime( 0 );
-	}
-	
+
 	/**
 	 *	Setting the correct default timezone
 	 *	to avoid "date" conflicts and warnings
@@ -211,8 +204,4 @@ if ( file_exists( dirname( __FILE__ ) . '/class.database.php' ) )
 	
 }
 
-// include new function from L* 2.3.0.
-if(!function_exists("get_leptoken")) {
-	
-}	
 ?>

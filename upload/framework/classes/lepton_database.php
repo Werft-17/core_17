@@ -16,7 +16,7 @@
  *
  */
 
-class database
+class LEPTON_database
 {
 	
 	/**
