@@ -47,18 +47,18 @@ if ( file_exists( dirname( __FILE__ ) . '/class.database.php' ) )
 
 	require_once( __DIR__."/functions/function.lepton_autoloader.php" );
 	spl_autoload_register( "lepton_autoloader", true);
+
+	LEPTON_tools::load(
+		dirname( __FILE__ ) . "/summary.functions.php",
+		dirname( __FILE__ ) . "/sys.constants.php",
+		dirname( __FILE__ ) . "/class.database.php"
+	);
 	
-	require_once( LEPTON_PATH . "/framework/summary.functions.php");
-	require_once( LEPTON_PATH . "/framework/functions/function.get_leptoken.php" );
-	require_once( dirname( __FILE__ ) . '/sys.constants.php' );
-	require_once( dirname( __FILE__ ) . '/class.database.php' );
-	
+	LEPTON_tools::register( "get_leptoken" );
+
 	// Create database class
 	// global $database;
-	if ( !is_object( $database ) )
-	{
-		$database = database::getInstance(); // new database();
-	}
+	$database = database::getInstance(); // new database();
 	
 	// Get website settings (title, keywords, description, header, and footer)
 	$sql = 'SELECT `name`,`value` FROM `' . TABLE_PREFIX . 'settings` ORDER BY `name`';
