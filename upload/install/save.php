@@ -426,8 +426,8 @@ define('DB_NAME', $database_name);
 define('TABLE_PREFIX', $table_prefix);
 define('LEPTON_PATH', str_replace( array("\install", "/install"), "", dirname(__FILE__)));
 define('LEPTON_URL', $lepton_url);
-define('ADMIN_PATH', LEPTON_PATH.'/admins');
-define('ADMIN_URL', $lepton_url.'/admins');
+define('ADMIN_PATH', LEPTON_PATH.'/backend');
+define('ADMIN_URL', $lepton_url.'/backend');
 define('LEPTON_GUID', $lepton_guid);
 define('WB_URL', LEPTON_URL);
 define('WB_PATH', LEPTON_PATH);
@@ -587,7 +587,7 @@ $database->query("ALTER DATABASE `".DB_NAME."` DEFAULT CHARACTER SET utf8 COLLAT
 	." ('max_attempts', '3'),"
 	." ('home_folders', 'true'),"
 	." ('default_template', 'lepton2'),"
-	." ('default_theme', 'algos'),"
+	." ('default_theme', 'lepsem'),"
 	." ('default_charset', 'utf-8'),"
 	." ('link_charset', 'utf-8'),"	
 	." ('multiple_menus', 'true'),"
