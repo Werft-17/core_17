@@ -479,7 +479,7 @@ if(($handle = fopen($config_filename, 'w')) === false) {
 	fclose($handle);
 }
 
-$ini_filepath = "../framework/setup.ini";
+$ini_filepath = "../framework/classes/setup.ini";
 $s = "
 \n
 ; db-setup for LEPTON-CMS\n

@@ -42,7 +42,7 @@ else
 }
 // end include class.secure.php
 
-if ( file_exists( dirname( __FILE__ ) . '/class.database.php' ) )
+if ( file_exists( dirname( __FILE__ ) . '/classes/lepton_database.php' ) )
 {
 
 	require_once( __DIR__."/functions/function.lepton_autoloader.php" );
@@ -50,7 +50,7 @@ if ( file_exists( dirname( __FILE__ ) . '/class.database.php' ) )
 
 	LEPTON_tools::load(
 		LEPTON_PATH . "/framework/summary.functions.php",
-		LEPTON_PATH . "/frameworksys.constants.php",
+		LEPTON_PATH . "/framework/sys.constants.php",
 		LEPTON_PATH . "/framework/var.timezones.php"
 	);
 	
