@@ -1,0 +1,10 @@
+{% autoescape false %}
+<div class="ui orange segment"> <!-- start outer purple segment -->
+	<div class="r_filemanager">
+		<div class="fm_iframe">
+			<img class="ratio" src='{{ image }}'/>
+		   <iframe frameborder='0' height='465px' width='470px' scrolling='no' src='{{ source }}' frameborder="0"></iframe>
+		</div>
+	</div>
+</div> <!-- end outer purple segment -->
+{% endautoescape %}	

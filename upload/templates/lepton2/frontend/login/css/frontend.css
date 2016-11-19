@@ -1,0 +1,101 @@
+/**
+ *  @template       LEPTON-Start
+ *  @version        see info.php of this template
+ *  @author         cms-lab
+ * @copyright       2010-2017 CMS-LAB
+ *  @license        http://creativecommons.org/licenses/by/3.0/
+ *  @license terms  see info.php of this template
+ *  @platform       see info.php of this template
+ */
+ 
+#frontend_login_template {
+	margin-top: 20px;
+}
+
+#frontend_signup_template {
+	margin-top: 20px;
+}
+
+
+#system_message {
+	margin-top: 20px;
+}
+
+table#forgot_form  {
+text-align:left;
+}
+
+table#forgot_form .left {
+    height: 30px;
+    text-align: left;
+    width: 60px;
+}
+
+table#forgot_form .middle {
+    height: 30px;
+    margin-right: 10px;
+    width: 170px;
+}
+
+table#forgot_form .right {
+    height: 30px;
+    width: 170px;  
+}
+
+#forgot_form input[type="submit"] {
+    background: none repeat scroll 0 0 #666666;
+    border: 1px solid #333333;
+    color: #FFFFFF;
+    height: 22px;
+    width: 190px;
+}
+
+legend {
+	padding-left: 5px;
+	padding-right: 5px;
+	font-size: 12px;
+	padding-bottom:6px;
+	font-weight: bold;
+	color:#999999;
+}
+fieldset.account_form {
+	padding: 13px;
+	display:block;
+	width: 380px;
+	margin-bottom: 10px;
+	border: 1px solid #999999;
+}
+div.account_label, div.account_value {
+	display: block;
+	float: left;
+	line-height: 1.4em;
+	margin-bottom: 7px;
+	height: 20px;
+}
+div.account_label {
+	width: 120px;
+	font-size: 12px;
+	color: #333333;
+	padding-left: 5px;
+}
+div.account_value {
+	width: 250px;
+	overflow:hidden;
+}
+div.account_value input, div.account_value select {
+	width: 220px;
+}
+div.account_value select {
+	 width:226px;
+}
+div.result_message {
+	color: #990000;
+	font-size: 12px;
+	font-weight: bold;
+}
+div.success_message {
+	background: #7bb129 none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    color: #fff;
+    padding: 10px;	
+}

@@ -1,0 +1,54 @@
+<!-- BEGIN main_block -->
+<div id="startpage">
+	<div id="startpage_left">
+	
+		<div class="ui green segment">
+			<i class="huge green text file icon"></i>
+			<a class="innertext" href="{ADMIN_URL}/pages/index.php">{PAGES}</a>
+			<p class="innertext">{PAGES_OVERVIEW}</p>
+		</div>
+
+		<div class="ui purple segment">
+			<i class="huge purple puzzle piece icon"></i>
+			<a class="innertext" href="{ADMIN_URL}/addons/index.php">{ADDONS}</a>
+			<p class="innertext">{ADDONS_OVERVIEW}</p>
+		</div>
+		
+		<div class="ui red segment">
+			<i class="huge red settings icon"></i>
+			<a class="innertext" href="{ADMIN_URL}/settings/index.php">{SETTINGS}</a>
+			<p class="innertext">{SETTINGS_OVERVIEW}</p>
+		</div>
+
+		<div class="ui teal segment">
+			<i class="huge teal users icon"></i>
+			<a class="innertext" href="{ADMIN_URL}/access/index.php">{ACCESS}</a>
+			<p class="innertext">{ACCESS_OVERVIEW}</p>
+		</div>		
+		
+	</div>
+
+	<div id="startpage_right">
+	
+		<div class="ui orange segment">
+			<i class="huge orange photo icon"></i>
+			<a class="innertext" href="{ADMIN_URL}/media/index.php">{MEDIA}</a>
+			<p class="innertext">{MEDIA_OVERVIEW}</p>
+		</div>
+		
+		<div class="ui blue segment">
+			<i class="huge blue pin icon"></i>
+			<a class="innertext" href="{ADMIN_URL}/preferences/index.php">{PREFERENCES}</a>
+			<p class="innertext">{PREFERENCES_OVERVIEW}</p>
+		</div>
+
+		<div class="ui black segment">
+			<i class="huge black wrench icon"></i>
+			<a class="innertext" href="{ADMIN_URL}/admintools/index.php">{ADMINTOOLS}</a>
+			<p class="innertext">{ADMINTOOLS_OVERVIEW}</p>
+		</div>
+		
+	</div>
+	
+</div>
+<!-- END main_block -->

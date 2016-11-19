@@ -1,0 +1,39 @@
+/**
+ * This file is part of an ADDON for use with LEPTON Core.
+ * This ADDON is released under the GNU GPL.
+ * Additional license terms can be seen in the info.php of this module.
+ *
+ * @module          Captcha Control
+ * @author          LEPTON Project
+ * @copyright       2010-2017  LEPTON Project
+ * @link            https://www.LEPTON-cms.org
+ * @license         http://www.gnu.org/licenses/gpl.html
+ * @license_terms   please see info.php of this module
+ *
+ */
+
+table.captcha_table {
+    color: inherit;
+}
+ 
+.text_captcha {
+    color: inherit;
+}
+
+.captcha_table input[type="text"] {
+    margin-right: 10px !important;
+    width: 50px !important;
+	
+}
+
+.captcha_input {
+    color: inherit;
+}
+
+.captcha_expl {
+    color: inherit;
+}
+
+.captcha_iframe   {
+    color: inherit;
+}

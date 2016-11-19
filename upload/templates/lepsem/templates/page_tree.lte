@@ -1,0 +1,71 @@
+{#
+/**
+ *  @template       LEPSem
+ *  @version        see info.php of this template
+ *  @author         cms-lab
+ *  @copyright      2014-2016 cms-lab
+ *  @license        GNU General Public License
+ *  @license terms  see info.php of this template
+ *  @platform       see info.php of this template
+ */
+ #}
+{% autoescape false %}
+
+<div class="four wide column"> <!-- start page-tree -->
+
+	<div class="spacer1"></div>
+	<h3 class="ui green header">
+		<i class="file icon"></i>
+		<div class="content">{{ MENU.PAGES }}</div>
+	</h3>
+	
+{% macro display_pagelink( page, deep ) %}
+	<p style="margin-left: {{ (deep *20) }}px">
+		{% if page.subpages|length > 0 %}
+			<i class="red minus icon"></i>
+		{% endif %}
+		<a class="tree_link" href='{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}'>
+			<i class="green write icon"></i>
+		</a>
+		&nbsp;
+		<a id="sortable" class="tree_link" href='#' onclick="lepsem_adjust_parent('{{page.menu_title}}', {{ page.page_id }});">
+			<i class="black {% if (page.visibility =="public") %}unhide{% else %}hide{% endif %} icon"></i> {{ page.menu_title }} [ {{ page.page_id }} ]
+		</a>
+	</p>
+	{% import _self as pagelink %}
+	{% for subpage in page.subpages %}
+		{{ pagelink.display_pagelink( subpage, deep+1 ) }}
+	{% endfor %}
+{% endmacro %}
+
+	{% import _self as pagelink %}	
+	{% for page in all_pages %}
+		{{ pagelink.display_pagelink( page, 0 ) }}  
+	{% endfor %}
+
+</div> <!-- end page-tree -->
+
+<script type="text/javascript">
+/* <![CDATA[ */
+
+function lepsem_adjust_parent(aPageTitle, aPageId) {
+	var select_ref = document.getElementById("parent_field");
+	if (select_ref) {
+		select_ref.value = aPageTitle;
+	}
+	
+	var select_ref = document.getElementById("parent");
+	if (select_ref) {
+		var max = select_ref.options.length;
+		for (var i = 0; i < max; i++) {
+			if (select_ref.options[i].value == aPageId) {
+				select_ref.selectedIndex = i;
+				// select_ref.options[i].selected = true;
+				break;
+			}
+		}
+	}
+}
+/* ]]> */
+</script>
+{% endautoescape %}

@@ -1,0 +1,332 @@
+/**
+ *  @template       LEPTON-Start
+ *  @version        see info.php of this template
+ *  @author         cms-lab
+ * @copyright       2010-2017 CMS-LAB
+ *  @license        http://creativecommons.org/licenses/by/3.0/
+ *  @license terms  see info.php of this template
+ *  @platform       see info.php of this template
+ */
+
+ 
+ /* Definierte Startwerte alle HTML-Elemente */
+ * { 
+	margin: 0;
+	padding: 0;
+ }
+ 
+ /* Schrift und Hintergrund Browserseite */
+html body { 
+	background:none repeat scroll 0 0 #666;
+	font-family:Arial,Lucida Grande,Lucida Sans Unicode,verdana,geneva,sans-serif;
+	font-size:14px;
+}
+ 
+ a:link, a:visited, a:active {
+	text-decoration:underline;
+	color:#333;
+ }
+  
+ a:hover {
+	color:#e67817;
+ }
+  
+ /* Schrift und Hintergrund Seite */
+ #site {
+	background:none repeat scroll 0 0 #fff;
+	color:#333333;
+	margin:20px auto;
+	width:900px;
+}
+
+ /* Schrift und Hintergrund Kopf */
+ #head {
+ 	height:180px;
+}
+
+#headtitle {
+    background-color: #7BB129;
+    color: #EEEEEE;
+    font-size: 22px;
+    height: 27px;
+    padding-top: 3px;
+    text-align: center;
+}
+
+#spacer {
+	height:12px;
+	background:transparent;
+}
+
+ /* Positionierung, Navigation, Schrift und Hintergrund im linken Bereich */
+#side {
+	float:left;
+	padding-top:10px;
+	width:189px;
+}
+
+#navi1 ul {
+	padding-left:10px;
+	list-style:none;
+}
+ 
+#navi1 li {
+	width:auto;;
+}
+ 
+#navi1 a {
+	background-color:#7BB129;
+	border-bottom:1px solid #CCCCCC;
+	color:#fff;
+	display:block;
+	font-size:16px;
+	padding-bottom:2px;	
+	padding-left:12px;
+	padding-top:2px;
+	text-decoration:none;
+}
+ 
+#navi1 .menu-current a {
+	background-color:#e67817;
+	color:#DDDDDD;
+}
+
+#navi1 a:hover {
+	background-color:#E67817;
+	color:#FFF;
+}
+ 
+#search {
+	font-size:11px;
+	width:168px;
+	margin-top:20px;
+	margin-bottom:20px;
+	margin-left:10px;
+}
+
+#search legend {
+	display:none;
+}
+
+#search fieldset {
+	padding:10px;
+	border:1px dotted #7BB129;
+}
+  
+#search input[type='text'] {
+	background:#ccc;
+	border: 1px solid #ccc;
+	color:#333;
+	width:144px;
+}
+
+#search input[type='submit'] {
+	width:80px;
+	border: 1px solid #7BB129;
+	color:#fff;
+	background:#7BB129;
+	text-align:center;
+	margin-top:10px;
+	margin-left:36px;
+}
+
+#login {
+	font-size:11px;
+	width:168px;
+	margin-top:20px;
+	margin-bottom:20px;
+	margin-left:10px;
+}
+
+#login legend {
+	display:none;
+}
+
+#login fieldset {
+	padding:10px;
+	border:1px dotted #7BB129;
+	color:#7BB129;
+}
+  
+#login input[type='text'] {
+	background:#ccc;
+	border: 1px solid #ccc;
+	color:#333;
+	width:144px;
+	margin-bottom:10px;
+}
+
+#login input[type='password'] {
+	background:#ccc; 
+	border: 1px solid #ccc;
+	color:#333;
+	width:144px;
+}
+
+#login input[type='submit'] {
+	width:80px;
+  border: 1px solid #7BB129;
+	color:#fff;
+	background:#7BB129;
+	text-align:center;
+	margin-top:10px;
+	margin-left:36px;
+	margin-bottom:10px;
+}
+
+#login a {
+	color:#7BB129;
+}
+
+#login a:hover {
+	color:#333;
+}
+
+#frontedit { /* formating the frontedit module */
+    color: #000000;
+    margin-left: 44px;
+    margin-top: 50px;
+    padding: 10px;
+    text-align: left;
+}
+#frontedit a {font-weight:normal;color:red; font-size:13px;}
+#frontedit a:hover {color:#000;}
+#frontedit img {padding-right:10px;}
+
+/* Positionierung, Schrift und Hintergrund Hauptteil */
+#cont {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-left: 1px dotted #7BB129;
+    float: left;
+    font-size: 15px;
+    line-height: 24px;
+    margin-left: 10px;
+    min-height: 442px;
+    padding-left: 10px;
+    padding-right: 20px;
+    padding-top: 36px;
+    width: 670px;
+}
+
+#title {
+    color: #7BB129;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Positionierung, Schrift und Hintergrund Fussbereich */
+#foot {
+	background-color:#7BB129;
+	color:#330000;
+	font-size:10px;
+	height:24px;
+	line-height:24px;
+	text-align:center;
+	width:900px;
+}
+
+#foot ul {
+	list-style:none;
+	display:inline;
+} 
+ 
+#foot li {
+	display:inline;
+	padding:5px;
+}
+
+#foot a {
+  color:#f7f7f7;
+	font-size:14px;
+	list-style:none outside none;
+	padding:4px;
+	text-decoration:none;
+}
+ 
+ #foot a:hover {
+	 color:#333;
+   background-color:#7BB129;
+}
+
+#foot .menu-current a {
+	color:#f7f7f7;
+}
+ 
+/* Footer */
+
+#basic {
+  color: #CCCCCC;
+	display:block;
+	float:left;
+	font-size:11px;
+	height:30px;
+	width:100%;
+}
+
+#basic a {
+	text-decoration:none; 
+  color: #CCCCCC;
+}
+
+#basic a:hover {
+	color:#FFFFFF;
+}
+
+#links {
+	padding-left:14px;
+	float:left;
+	padding-top:10px;
+}
+
+#links a {
+	color:#333;
+	text-decoration:none;
+}
+
+#links a:hover {
+	color:#f7f7f7;
+}
+
+#design {
+  color: #CCCCCC;
+	float:right;
+	padding-right:10px;
+	padding-top:10px;
+}
+
+#design a {
+	text-decoration:none; 
+  color: #CCCCCC;
+}
+
+#design a:hover {
+	color:#FFFFFF;
+}
+
+img.head_img {
+	border: 0px;
+}
+
+.highlight {
+	width: auto;
+	padding-left:3px;
+	padding-right:3px;
+	border: 1px solid #AAAAAA;
+	background-color: #DDDDDD;
+}
+
+pre {
+width:600px; white-space:inherit;
+}
+
+ul.sitemap {
+margin-left:16px;
+}
+
+div.success_message {
+	background: #7bb129 none repeat scroll 0 0;
+    border: 1px solid #ccc;
+    color: #fff;
+    padding: 10px;	
+}

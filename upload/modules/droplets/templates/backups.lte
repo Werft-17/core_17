@@ -1,0 +1,47 @@
+{% include "@droplets/header.lte" %}
+{% autoescape false %}
+  <h2>{{ MOD_DROPLET['Manage backups'] }}</h2>
+  <a href="{{ ADMIN_URL}}/admintools/tool.php?tool=droplets">&laquo; {{ MOD_DROPLET['Back to overview'] }} &laquo;</a><br /><br />
+  {% if info is not empty %}<div class="info ui-corner-all">{{ info }}</div><br />{% endif %}
+  <form method="post" action="{{ action }}">
+  <input type="hidden" name="tool" value="droplets" />
+  <input type="hidden" name="backups" value="1" />
+
+  {% if num_rows == 0 %}
+  <div class="info ui-corner-all">{{ MOD_DROPLET['No Backups found'] }}</div>
+  {% else %}
+  <table class="droplets tablesorter">
+	<thead>
+	  <tr>
+		<th>{{ MOD_DROPLET['Actions'] }}</th>
+		<th>{{ MOD_DROPLET['Name'] }}</th>
+		<th>{{ MOD_DROPLET['Size'] }} (Byte)</th>
+		<th>{{ MOD_DROPLET['Date'] }}</th>
+		<th>{{ MOD_DROPLET['Files'] }}</th>
+	  </tr>
+	</thead>
+	<tbody>
+	{% for item in rows %}
+      <tr>
+        <td>
+          <input type="checkbox" name="markeddroplet[]" id="markeddroplet_{{ item.name }}" value="{{ item.name }}" />
+          <a href="{{ ADMIN_URL }}/admintools/tool.php?tool=droplets&amp;backups=1&amp;delbackup={{ item.name }}"><img src="{{ IMGURL }}/delete.png" /></a>
+          <a href="{{ ADMIN_URL }}/admintools/tool.php?tool=droplets&amp;backups=1&amp;recover={{ item.name }}"><img src="{{ IMGURL }}/import.png" style="width:16px;" title="{{ MOD_DROPLET ['Import'] }}" /></a>
+          <a href="#" class="tooltip"><img src="{{ IMGURL }}/info.png" alt="{{ MOD_DROPLET['List contained files'] }}" /><span class="comment">{{ MOD_DROPLET['Contained files'] }}:<br />{{ item.listfiles }}</span></a>
+		</td>
+        <td>
+		  <a href="{{ item.download }}" title="{{ MOD_DROPLET['Download']}}">{{ item.name }}</a>
+		</td>
+        <td>{{ item.size }}</td>
+        <td>{{ item.date }}</td>
+        <td>{{ item.files }}</td>
+	  </tr>
+	{% endfor %}
+	</tbody>
+  </table><br />
+  {{ MOD_DROPLET['marked'] }}:
+  <input type="submit" name="delete" value="{{ TEXT['DELETE'] }}" />
+  </form>
+  {% endif %}
+{% endautoescape %}
+{% include "@droplets/footer.lte" %}

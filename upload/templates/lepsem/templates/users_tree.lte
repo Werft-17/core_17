@@ -1,0 +1,67 @@
+{#
+/**
+ *  @template       LEPSem
+ *  @version        see info.php of this template
+ *  @author         cms-lab
+ *  @copyright      2014-2016 cms-lab
+ *  @license        GNU General Public License
+ *  @license terms  see info.php of this template
+ *  @platform       see info.php of this template
+ */
+ #}
+{% autoescape false %}
+		<div class="four wide column"> <!-- start  users tree -->
+			 <!-- start  users tree -->
+				<div class="spacer1"></div>
+				<h3 class="ui teal header">
+					<i class="users icon"></i>
+					<div class="content">{{ MENU.USERS }}</div>
+				</h3>
+				{% for temp_user in all_users %}
+				<p><a class="tree_link" href='#' onclick="lepsem_get_user({{temp_user.user_id}});">{{ temp_user.display_name }} ( {{temp_user.username }} ) [ {{ temp_user.user_id }} ]</a></p>
+				{% endfor %}
+
+		</div> <!-- end users tree -->
+
+<script type="text/javascript">
+/* <![CDATA[ */
+
+var xmlhttp;
+if (window.XMLHttpRequest) {
+	// code for IE7+, Firefox, Chrome, Opera, Safari
+	xmlhttp=new XMLHttpRequest();
+} else {
+	// code for IE6, IE5
+	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+}
+
+function lepsem_get_user( aUserID ) {
+	
+	xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState==4) {
+    		if (xmlhttp.status==200) {
+				eval("var user = "+xmlhttp.responseText+";");
+				
+				/**
+				 *	Try to fill the form with the user values
+				 */
+				var ref = document.getElementById("{{ FORM_NAME }}");
+				if (ref) {
+				
+					ref.{{ username_fieldname }}.value = user.username;
+					ref.display_name.value = user.display_name;
+					ref.email.value = user.email;
+					
+				}
+			}
+		}
+	}
+  
+	xmlhttp.open("POST","{{ ADMIN_URL }}/users/get_user.php",true);
+	xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send("id="+aUserID+"&job=gui&{{ hash.h_name }}={{ hash.h_value }}");
+}
+
+/* ]]> */
+</script>
+{% endautoescape %}

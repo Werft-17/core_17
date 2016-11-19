@@ -1,0 +1,150 @@
+{#
+/**
+ *  @template       LEPSem
+ *  @version        see info.php of this template
+ *  @author         cms-lab
+ *  @copyright      2014-2016 cms-lab
+ *  @license        GNU General Public License
+ *  @license terms  see info.php of this template
+ *  @platform       see info.php of this template
+ */
+ #}
+{% autoescape false %}
+<div class="ui green segment"> <!-- start outer search segment -->
+	<div class="ui two column doubling grid container"> <!-- start header grid -->
+
+			<div class="column">
+				<h2 class="ui green header">
+					<i class="huge green tasks icon"></i>
+					<div class="content">{{ HEADING.MODIFY_PAGE_SETTINGS }}</div>
+				</h2>
+			</div>			
+			<div class="column">		
+				<h3 class="ui green right floated header">
+					<div class="content">{{ OVERVIEW.PAGES }}</div>
+				</h3>
+			</div>
+
+	</div> <!-- end header grid -->
+
+	<div class="ui green segment"> <!-- start inner green segment -->	
+
+		<div class="ui two column doubling grid container"> <!-- start content-->	
+
+			{% include "@theme/page_tree.lte" %} <!-- include users tree-->
+
+			<div class="twelve wide column"> <!-- start right -->
+			<div class="ui hidden divider"></div>			
+
+				<div class="ui two column grid">
+
+					<div class="column">
+						<a href="{{ ADMIN_URL }}/pages/modify.php?page_id={{ PAGE_ID }}"  title="{{ HEADING.MODIFY_PAGE }}"><button class="ui right floated basic button" type="submit">
+							<i class="write icon"></i>
+							{{ HEADING.MODIFY_PAGE }}
+						 </button></a>
+					</div>
+				
+					<div class="column">
+						<a href="{{ ADMIN_URL }}/pages/settings.php?page_id={{ PAGE_ID }}" title="{{ TEXT.CHANGE_SETTINGS }}"><button class="ui basic button" type="submit">
+							<i class="setting icon"></i>
+							{{ TEXT.CHANGE_SETTINGS }}
+						 </button></a>
+					</div>			
+				
+				</div>
+						
+				<div class="ui message">{{ TEXT.CURRENT_PAGE }}: <b>{{ PAGE_TITLE }}</b> - ID: {{ PAGE_ID }} |  {{ LAST_MODIFIED }} {{ MODIFIED_BY }} ({{ MODIFIED_BY_USERNAME }}), {{ MODIFIED_WHEN }}</div>			
+				
+				<div class="ui segment">
+					<form name="section_properties" action="{{ ADMIN_URL }}/pages/sections_save.php?page_id={{ PAGE_ID }}" method="post">
+					    <input type="hidden" name="page_id" value="{{ page_info.page_id }}"  />
+						<input type="hidden" name="section_id" value="{{ SECTION_ID }}"  />
+						<table class="ui celled padded striped table">
+							<thead>
+								<tr>
+									<th>{{ TEXT.TYPE }}</th>
+									<th>{{ TEXT.BLOCK }}</th>
+									<th>{{ TEXT.NAME }}</th>
+									<th>{{ TEXT.PUBL_START_DATE }}</th>
+									<th>{{ TEXT.PUBL_END_DATE }}</th>
+									<th class="center aligned">{{ TEXT.ACTIONS }}</th>
+									<th>ID</th>									
+								</tr>
+							</thead>
+							<tbody id="sortable">
+							{% for section in all_sections %}			
+								<tr>
+									<td>
+									  {{ LINK_MODIFY_URL_VAR_MODUL_NAME }}
+									</td>
+								  <td>
+									<select class="ui fluid dropdown" name="block{{ section.section_id }}">
+										{% for block in blocks %}
+										<option value="{{ loop.index }}">{{ block }}</option>
+										{% endfor %}
+									</select>
+								  </td>
+								  <td>
+									<input type="text" value="{{ section.name }}" name="section_name[{{ section.section_id }}]" />									
+								  </td>
+								  <td>
+									<input type="text" id="datepicker" name="start_date{{ section.section_id }}" value="{{ VALUE_PUBL_START }}" />
+								  </td>
+								<td>
+									<input type="text" id="datepicker" name="start_date{{ section.section_id }}" value="{{ VALUE_PUBL_END }}" />
+								</td>
+									<td>									  	
+										<a class="del" href="javascript: confirm_link('{{ TEXT['ARE_YOU_SURE'] }}','{{ ADMIN_URL }}//pages/sections.php?page_id={{ VAR_PAGE_ID }}&amp;section_id={{ VAR_SECTION_ID }}')" title="{{ TEXT.DELETE }}">
+											<i class="large red remove icon"></i>
+										</a>
+									</td>
+									<td>
+									  {{ section.section_id }}
+									</td>
+							{% endfor %}				
+							</tbody>
+						</table>
+						<div class="ui hidden divider"></div>
+					
+						<div class="ui two column grid"> <!-- start submit -->		
+							<div class="row">							
+								<div class="column">							
+									<button class="positive ui button lepsem_submit" type="submit" name="save" >{{ TEXT.SAVE }}</button>
+								</div>										
+								<div class="column">
+								</div>
+							</div>
+						</div> <!-- end submit -->								
+						<div class="ui hidden divider"></div>
+					</form>
+				</div><!-- end grid -->
+			
+				<div class="ui divider"></div>
+				
+				<div class="ui four column grid">
+					<form name="add" action="{ADMIN_URL}/pages/sections.php?page_id={VAR_PAGE_ID}" method="post">
+					<input type="hidden" name="page_id" value="{{ VAR_PAGE_ID }}"  />
+						<div class="column" >
+							<h4 class="ui green dividing header">{{ TEXT.ADD_SECTION }}</h4>
+							<div class="ui hidden divider"></div>
+							<select class="ui fluid dropdown" name="module">
+								{% for module in all_page_modules %}
+								<option value="{{ module.addon_id }}" {% if (module.name == "WYSIWYG") %}selected="selected"{% endif %} >{{ module.name }}</option>
+								{% endfor %}
+							</select>
+						</div>
+						<div class="column">							
+							<button class="positive ui button lepsem_submit" type="submit" name="save" >{{ TEXT.ADD }}</button>
+						</div>
+					</form>
+				</div>
+				
+			</div> <!-- end right -->			
+		</div> <!-- end content -->		
+	
+	</div> <!-- end inner green segment1 -->
+
+</div> <!-- end outer green segment -->
+
+{% endautoescape %}

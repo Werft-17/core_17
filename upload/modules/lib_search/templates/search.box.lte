@@ -1,0 +1,21 @@
+{#
+ * This file is part of an ADDON for use with LEPTON Core.
+ * This ADDON is released under the GNU GPL.
+ * Additional license terms can be seen in the info.php of this module.
+ *
+ * @module          lib_search
+ * @author          LEPTON Project
+ * @copyright       2013-2017 LEPTON Project
+ * @link            https://www.LEPTON-cms.org
+ * @license         http://www.gnu.org/licenses/gpl.html
+ * @license_terms   please see info.php of this module
+ *
+ #}
+{% autoescape false %} 
+<div class="search_box">
+  <form name="search" action="{{ action }}" method="get">
+     <input class="search_box_input" type="text" name="string" value="{{ MOD_SEARCH['Search ...'] }}"  onfocus="javascript:search_box_onfocus(this, '{{ MOD_SEARCH["Search ..."] }}');" onblur="javascript:search_box_onblur(this, '{{ MOD_SEARCH["Search ..."] }}');" />
+  </form>
+</div>
+{% endautoescape %}
+      
