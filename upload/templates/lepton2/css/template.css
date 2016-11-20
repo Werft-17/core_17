@@ -323,11 +323,18 @@ img.head_img {
 }
 
 pre {
-width:600px; white-space:inherit;
+	max-width:600px;
+	white-space: pre;
+	font-family: monospace;
+	font-size: 12px;
+	line-height: 1.6em;
+	background-color: #EEEEEE;
+	color: #880000;
+	padding:10px;
 }
 
 ul.sitemap {
-margin-left:16px;
+	margin-left:16px;
 }
 
 div.success_message {

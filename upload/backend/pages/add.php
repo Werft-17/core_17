@@ -159,10 +159,15 @@ $order->clean($parent);
 $position = $order->get_new($parent);
 
 // Work-out if the page parent (if selected) has a seperate template or language to the default
-$query_parent = $database->query("SELECT template, language FROM ".TABLE_PREFIX."pages WHERE page_id = '$parent'");
-if($query_parent->numRows() > 0)
+$fetch_parent = array();
+$database->execute_query(
+	"SELECT `template`, `language` FROM `".TABLE_PREFIX."pages` WHERE `page_id` = '".$parent."'",
+	true,
+	$fetch_parent
+	false
+);
+if( count($fetch_parent) > 0)
 {
-	$fetch_parent = $query_parent->fetchRow( MYSQL_ASSOC );
 	$template = $fetch_parent['template'];
 	$language = $fetch_parent['language'];
 } else {
