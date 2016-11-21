@@ -169,7 +169,8 @@ $page_values = array(
 	'all_pages'	=> $all_pages,
 	'all_languages' => $all_languages,
 	'all_templates' => $all_templates,
-	'LEPTOKEN'		=> LEPTON_tools::get_leptoken()
+	'LEPTOKEN'		=> LEPTON_tools::get_leptoken(),
+	'PAGE_PARENT'	=> $results_array['parent']
 );
 
 echo $parser->render(

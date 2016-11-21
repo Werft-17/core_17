@@ -296,7 +296,7 @@ function fix_page_trail($parent,$root_parent)
 		true
 	);
 	// Insert values into main page list
-	foreach($all_pages as &$page) {
+	foreach($all_pages as &$page)
 	{
 		// Fix page trail
 		$database->simple_query("UPDATE `".TABLE_PREFIX."pages` SET ".($root_parent != 0 ?"`root_parent` = '$root_parent', ":"")." page_trail = '".get_page_trail($page['page_id'])."' WHERE `page_id` = '".$page['page_id']."'");

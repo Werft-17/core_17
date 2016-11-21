@@ -92,18 +92,18 @@
 									<div class="ui fluid inline fields">
 										<label>{{ TEXT.PARENT }}:</label>
 										<select name="parent" id="parent">
-										{% macro parent_page_option( page, deep, current_page_id) %}
-										<option value="{{ page.page_id }}" {% if page.page_id == current_page_id %}disabled="disabled"{% endif %}>{% for i in 0..deep if i > 0 %}- {% endfor %}{{ page.menu_title }}</option>
+										{% macro parent_page_option( page, deep, current_page_id, parent_page_id) %}
+										<option value="{{ page.page_id }}" {% if page.page_id == current_page_id %}disabled="disabled"{% endif %} {% if page.page_id == parent_page_id %}selected='selected'{% endif %} >{% for i in 0..deep if i > 0 %}- {% endfor %}{{ page.menu_title }}</option>
 										{% import _self as pagelink %}
 											{% for subpage in page.subpages %}
-												{{ pagelink.parent_page_option( subpage, deep+1, current_page_id) }}
+												{{ pagelink.parent_page_option( subpage, deep+1, current_page_id, parent_page_id) }}
 											{% endfor %}
 										{% endmacro %}
 		
 										<option value="0">{{ TEXT.NONE }}</option>
 										{% import _self as pagelink %}	
 										{% for page in all_pages %}
-											{{ pagelink.parent_page_option( page, 0, PAGE_ID ) }}
+											{{ pagelink.parent_page_option( page, 0, PAGE_ID, PAGE_PARENT ) }}
 										{% endfor %}
 										</select>
 									</div>			
