@@ -82,6 +82,11 @@ if($menu_title == '' || substr($menu_title,0,1)=='.')
 	$admin->print_error($MESSAGE['PAGES_BLANK_MENU_TITLE']);
 }
 
+if($template == 0)
+{
+	$template = "";
+}
+
 // Get existing perms
 
 $sql = 'SELECT `parent`,`link`,`position`,`admin_groups`,`admin_users` FROM `'.TABLE_PREFIX.'pages` WHERE `page_id`='.$page_id;
