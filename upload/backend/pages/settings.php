@@ -168,7 +168,8 @@ $page_values = array(
 	'all_groups' => $lepton_core_all_groups,
 	'all_pages'	=> $all_pages,
 	'all_languages' => $all_languages,
-	'all_templates' => $all_templates
+	'all_templates' => $all_templates,
+	'LEPTOKEN'		=> LEPTON_tools::get_leptoken()
 );
 
 echo $parser->render(

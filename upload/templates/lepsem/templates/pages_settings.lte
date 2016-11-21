@@ -59,7 +59,7 @@
 				<div class="ui segment">
 					<form name="settings" action="settings2.php" method="post">
 						<input type="hidden" name="page_id" value="{{ PAGE_ID }}" />
-						<input type="hidden" name="leptoken" value="{LEPTOKEN}" /> 				
+						<input type="hidden" name="leptoken" value="{{ LEPTOKEN }}" /> 				
 						<div class="ui two column doubling grid container"> <!-- start page -->
 									
 							<div class="ten wide column"> <!-- start left column -->

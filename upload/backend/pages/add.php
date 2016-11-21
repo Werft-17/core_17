@@ -163,7 +163,7 @@ $fetch_parent = array();
 $database->execute_query(
 	"SELECT `template`, `language` FROM `".TABLE_PREFIX."pages` WHERE `page_id` = '".$parent."'",
 	true,
-	$fetch_parent
+	$fetch_parent,
 	false
 );
 if( count($fetch_parent) > 0)

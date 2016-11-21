@@ -185,28 +185,34 @@ $database->query($sql);
 $page_trail = get_page_trail($page_id);
 
 // Update page settings in the pages table
-$sql  = 'UPDATE `'.TABLE_PREFIX.'pages` SET ';
-$sql .= '`parent` = '.$parent.', ';
-$sql .= '`page_title` = "'.$page_title.'", ';
-$sql .= '`menu_title` = "'.$menu_title.'", ';
-$sql .= '`menu` = '.$menu.', ';
-$sql .= '`level` = '.$level.', ';
-$sql .= '`page_trail` = "'.$page_trail.'", ';
-$sql .= '`root_parent` = '.$root_parent.', ';
-$sql .= '`link` = "'.$link.'", ';
-$sql .= '`template` = "'.$template.'", ';
-$sql .= '`target` = "'.$target.'", ';
-$sql .= '`description` = "'.$description.'", ';
-$sql .= '`keywords` = "'.$keywords.'", ';
-$sql .= '`position` = '.$position.', ';
-$sql .= '`visibility` = "'.$visibility.'", ';
-$sql .= '`searching` = '.$searching.', ';
-$sql .= '`language` = "'.$language.'", ';
-$sql .= '`page_code` = "'.$page_code.'", ';
-$sql .= '`admin_groups` = "'.$admin_groups.'", ';
-$sql .= '`viewing_groups` = "'.$viewing_groups.'"';
-$sql .= 'WHERE `page_id` = '.$page_id;
-$database->query($sql);
+$fields = array(
+	'parent'		=> $parent,
+	'page_title'	=> $page_title,
+	'menu_title'	=> $menu_title,
+	'menu'			=> $menu,
+	'level'			=> $level,
+	'page_trail'	=> $page_trail,
+	'root_parent'	=> $root_parent,
+	'link'			=> $link,
+	'template'		=> $template,
+	'target'		=> $target,
+	'description'	=> $description,
+	'keywords'		=> $keywords,
+	'position'		=> $position,
+	'visibility'	=> $visibility,
+	'searching'		=> $searching,
+	'language'		=> $language,
+	'page_code'		=> $page_code,
+	'admin_groups'	=> $admin_groups,
+	'viewing_groups' => $viewing_groups
+);
+
+$database->build_and_execute(
+	'update',
+	TABLE_PREFIX.'pages',
+	$fields,
+	"`page_id` = ".$page_id
+);
 
 $target_url = ADMIN_URL.'/pages/settings.php?page_id='.$page_id;
 if($database->is_error())
