@@ -288,19 +288,20 @@ function fix_page_trail($parent,$root_parent)
 	// Get objects and vars from outside this function
 	global $admin, $template, $database, $TEXT, $MESSAGE;
 	// Get page list from database
-	$query = "SELECT page_id FROM ".TABLE_PREFIX."pages WHERE parent = '$parent'";
-	$get_pages = $database->query($query);
+	$all_pages = array();
+	$database->execute_query(
+		"SELECT `page_id` FROM `".TABLE_PREFIX."pages` WHERE `parent` = '".$parent."'",
+		true,
+		$all_pages,
+		true
+	);
 	// Insert values into main page list
-	if($get_pages->numRows() > 0)
-    {
-		while($page = $get_pages->fetchRow())
-        {
-			// Fix page trail
-
-			$database->query("UPDATE ".TABLE_PREFIX."pages SET ".($root_parent != 0 ?"root_parent = '$root_parent', ":"")." page_trail = '".get_page_trail($page['page_id'])."' WHERE page_id = '".$page['page_id']."'");
-			// Run this query on subs
-			fix_page_trail($page['page_id'],$root_parent);
-		}
+	foreach($all_pages as &$page) {
+	{
+		// Fix page trail
+		$database->simple_query("UPDATE `".TABLE_PREFIX."pages` SET ".($root_parent != 0 ?"`root_parent` = '$root_parent', ":"")." page_trail = '".get_page_trail($page['page_id'])."' WHERE `page_id` = '".$page['page_id']."'");
+		// Run this query on subs
+		fix_page_trail($page['page_id'],$root_parent);
 	}
 }
 
@@ -314,8 +315,8 @@ $pagetree_url = ADMIN_URL.'/pages/index.php';
 $target_url = ADMIN_URL.'/pages/settings.php?page_id='.$page_id."&leptoken=".$leptoken;
 
 /**
- *
- *
+ *	M.f.i: Aldus 2016-11-21
+ *		the handling of the current leptoken is not clear 
  */
 if (isset($_POST['leptoken'])) $target_url."&leptoken=".$_POST['leptoken'];
 
