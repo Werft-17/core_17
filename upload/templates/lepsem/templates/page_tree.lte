@@ -27,7 +27,7 @@
 		<a class="tree_link" href='{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}'>
 			<i class="green write icon"></i>
 		</a>
-		<a class="tree_link delete_color" href='{{ ADMIN_URL }}/pages/delete.php?page_id={{ page.page_id }}'>
+		<a class="tree_link delete_color" href='#' onclick="confirm_delete( '{{ page.page_id }}', '{{ page.page_title }}');">
 			<i class="delete_color trash icon"></i>
 		</a>
 		&nbsp;
@@ -67,6 +67,23 @@ function lepsem_adjust_parent(aPageTitle, aPageId) {
 				break;
 			}
 		}
+	}
+}
+
+function confirm_delete(aPageId, aPageTitle) {
+
+	var href='{{ ADMIN_URL }}/pages/delete.php?page_id='+aPageId;
+	var msg = "{{ MESSAGE['PAGES_DELETE_CONFIRM'] }}";
+	
+	msg = msg.replace( "%s", aPageTitle );
+	msg = msg.replace( "&laquo;", "\n\n");
+	msg = msg.replace( "&raquo;", "\n\n");
+	
+	if( true === confirm( msg )) {
+		document.location.href=href;
+		return false;
+	} else {
+		return false;
 	}
 }
 /* ]]> */
