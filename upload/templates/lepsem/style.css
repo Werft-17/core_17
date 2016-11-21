@@ -226,11 +226,17 @@ img.module_detail  {
     width: 100%;
 }
 
-
 .fm_iframe iframe {
     height: 100%;
     left: 0;
     position: absolute;
     top: 0;
     width: 100%;
+}
+
+/**
+ *	Backend experimental
+ */
+.delete_color {
+	color: #888888;
 }

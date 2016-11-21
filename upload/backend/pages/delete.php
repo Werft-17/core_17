@@ -36,8 +36,6 @@ if (defined('LEPTON_PATH')) {
 }
 // end include class.secure.php
 
-
-
 // Get page id
 if(!isset($_GET['page_id']) OR !is_numeric($_GET['page_id'])) {
 	header("Location: index.php");
@@ -50,7 +48,7 @@ require_once(LEPTON_PATH.'/framework/class.admin.php');
 $admin = new admin('Pages', 'pages_delete');
 
 // Include the functions file
-require_once(LEPTON_PATH.'/framework/summary.functions.php');
+// require_once(LEPTON_PATH.'/framework/summary.functions.php');
 
 // Get perms
 if (!$admin->get_page_permission($page_id,'admin')) {
@@ -60,16 +58,20 @@ if (!$admin->get_page_permission($page_id,'admin')) {
 global $database;
 
 // Find out more about the page
-$query = "SELECT * FROM ".TABLE_PREFIX."pages WHERE page_id = '$page_id'";
-$results = $database->query($query);
+$results_array = array();
+$database->execute_query(
+	"SELECT `visibility` FROM `".TABLE_PREFIX."pages` WHERE `page_id` = '".$page_id."'",
+	true,
+	$results_array,
+	false
+);
+
 if($database->is_error()) {
 	$admin->print_error($database->get_error());
 }
-if($results->numRows() == 0) {
+if( count($results_array) == 0) {
 	$admin->print_error($MESSAGE['PAGES_NOT_FOUND']);
 }
-
-$results_array = $results->fetchRow( MYSQL_ASSOC );
 
 $visibility = $results_array['visibility'];
 
@@ -79,27 +81,39 @@ if(PAGE_TRASH != 'disabled' AND $visibility != 'deleted') {
 	// Function to change all child pages visibility to deleted
 	function trash_subs($parent = 0) {
 		global $database;
+		
 		// Query pages
-		$query_menu = $database->query("SELECT page_id FROM ".TABLE_PREFIX."pages WHERE parent = '$parent' ORDER BY position ASC");
-		// Check if there are any pages to show
-		if($query_menu->numRows() > 0) {
-			// Loop through pages
-			while(false !== ($page = $query_menu->fetchRow( MYSQL_ASSOC ))) {
-				// Update the page visibility to 'deleted'
-				$database->query("UPDATE ".TABLE_PREFIX."pages SET visibility = 'deleted' WHERE page_id = '".$page['page_id']."' LIMIT 1");
-				if ($database->is_error()) trigger_error(sprintf('[%s - %s] %s', __FILE__, __LINE__, $database->get_error()), E_USER_ERROR);
-				// Run this function again for all sub-pages
-				trash_subs($page['page_id']);
-			}
+		$temp_pages = array();
+		$database->execute_query(
+			"SELECT `page_id` FROM `".TABLE_PREFIX."pages` WHERE `parent` = '".$parent."' ORDER BY `position` ASC",
+			true,
+			$temp_pages
+		);
+		
+		// Loop through pages
+		foreach($temp_pages as $page) {		
+			// Update the page visibility to 'deleted'
+			$database->simple_query("UPDATE `".TABLE_PREFIX."pages` SET `visibility` = 'deleted' WHERE page_id = '".$page['page_id']."' LIMIT 1");
+
+			if ($database->is_error()) trigger_error(sprintf('[%s - %s] %s', __FILE__, __LINE__, $database->get_error()), E_USER_ERROR);
+
+			// Run this function again for all sub-pages
+			trash_subs($page['page_id']);
 		}
 	}
 	
 	// Update the page visibility to 'deleted'
-	$database->query("UPDATE ".TABLE_PREFIX."pages SET visibility = 'deleted' WHERE page_id = '$page_id' LIMIT 1");
+	$database->simple_query("UPDATE `".TABLE_PREFIX."pages` SET `visibility` = 'deleted' WHERE `page_id` = '".$page_id."' LIMIT 1");
+	
 	if ($database->is_error()) trigger_error(sprintf('[%s - %s] %s', __FILE__, __LINE__, $database->get_error()), E_USER_ERROR);
+	
 	// Run trash subs for this page
 	trash_subs($page_id);
+
 } else {
+
+	LEPTON_tools::register("get_subs");
+	
 	// Really dump the page
 	// Delete page subs
 	$sub_pages = array();

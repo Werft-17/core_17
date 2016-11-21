@@ -27,6 +27,9 @@
 		<a class="tree_link" href='{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}'>
 			<i class="green write icon"></i>
 		</a>
+		<a class="tree_link delete_color" href='{{ ADMIN_URL }}/pages/delete.php?page_id={{ page.page_id }}'>
+			<i class="delete_color trash icon"></i>
+		</a>
 		&nbsp;
 		<a id="sortable" class="tree_link" href='#' onclick="lepsem_adjust_parent('{{page.menu_title}}', {{ page.page_id }});">
 			<i class="black {% if (page.visibility =="public") %}unhide{% else %}hide{% endif %} icon"></i> {{ page.menu_title }} [ {{ page.page_id }} ]
