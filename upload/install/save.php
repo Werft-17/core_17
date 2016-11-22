@@ -484,6 +484,20 @@ if(($handle = fopen($config_filename, 'w')) === false) {
  */
 $ini_filepath = "../framework/classes/setup.ini";
 $s = "
+;\n
+; This file is part of LEPTON Core, released under the GNU GPL\n
+; Please see LICENSE and COPYING files in your package for details, specially for terms and warranties.\n
+; \n
+; NOTICE:LEPTON CMS Package has several different licenses.\n
+; Please see the individual license in the header of each single file or info.php of modules and templates.\n
+;\n
+; @author          LEPTON Project\n
+; @copyright       2010-2017 LEPTON Project\n
+; @link            https://www.LEPTON-cms.org\n
+; @license         http://www.gnu.org/licenses/gpl.html\n
+; @license_terms   please see LICENSE and COPYING files in your package\n
+;\n
+;\n
 \n
 ; DB-setup for LEPTON-CMS\n
 \n
@@ -495,7 +509,6 @@ user = '".$database_username."'\n
 pass = '".$database_password."'\n
 name = '".$database_name."'\n
 prefix = '".$table_prefix."'\n
-charset = 'utf8'\n
 \n
 \n
 ";
