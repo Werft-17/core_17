@@ -89,10 +89,10 @@
 									<input type="text" value="{{ section.name }}" name="section_name[{{ section.section_id }}]" />									
 								  </td>
 								  <td>
-									<input type="text" id="datepicker" name="start_date{{ section.section_id }}" value="{{ VALUE_PUBL_START }}" />
+									<input type="text" id="datepicker_start_{{ section.section_id }}" name="start_date{{ section.section_id }}" value="{{ section.publ_start }}" />
 								  </td>
 								<td>
-									<input type="text" id="datepicker" name="end_date{{ section.section_id }}" value="{{ VALUE_PUBL_END }}" />
+									<input type="text" id="datepicker_end_{{ section.section_id }}" name="end_date{{ section.section_id }}" value="{{ section.publ_end }}" />
 								</td>
 									<td>									  	
 										<a class="del" href="#" onclick="confirm_delete_section('{{ section.section_id }}','{{ section.name }}');" title="{{ TEXT.DELETE }}">
@@ -164,6 +164,14 @@ function confirm_delete_section(aSectionId, aSectionTitle) {
 	}
 
 }
+
+/* ALDUS :: try to enable datepicker */
+$(function() {
+var sect_x ="{% for section in all_sections %}{% if(loop.index0 > 0) %}, {% endif %}#datepicker_start_{{ section.section_id }},#datepicker_end_{{ section.section_id }}{% endfor %}";
+$( sect_x ).datepicker();
+
+});
+  
 /* ]]> */
 </script>
 {% endautoescape %}
