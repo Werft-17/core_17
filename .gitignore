@@ -2,9 +2,10 @@
 #	core_17
 #
 *.DS_Store
-# .gitignore
+.gitignore
 upload/config.php
 upload/config_.php
+upload/framework/classes/setup.ini
 
 upload/account/
 upload/admins/
