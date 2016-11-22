@@ -513,7 +513,7 @@ prefix = '".$table_prefix."'\n
 \n
 ";
 
-$fp = fopen($ini_filepath);
+$fp = fopen($ini_filepath, 'w');
 if($fp) {
 	fwrite( $fp , $s );
 	fclose( $fp);
