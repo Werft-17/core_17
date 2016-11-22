@@ -89,10 +89,10 @@
 									<input type="text" value="{{ section.name }}" name="section_name[{{ section.section_id }}]" />									
 								  </td>
 								  <td>
-									<input type="text" id="datepicker_start_{{ section.section_id }}" name="start_date{{ section.section_id }}" value="{{ section.publ_start }}" />
+									<input type="text" id="datepicker_start_{{ section.section_id }}" name="start_date{{ section.section_id }}" value="{% if( section.publ_start != '0') %}{{ section.publ_start|date('d/m/Y') }}{% endif %}" />
 								  </td>
 								<td>
-									<input type="text" id="datepicker_end_{{ section.section_id }}" name="end_date{{ section.section_id }}" value="{{ section.publ_end }}" />
+									<input type="text" id="datepicker_end_{{ section.section_id }}" name="end_date{{ section.section_id }}" value="{% if( section.publ_end != '0') %}{{ section.publ_end|date('d/m/Y') }}{% endif %}" />
 								</td>
 									<td>									  	
 										<a class="del" href="#" onclick="confirm_delete_section('{{ section.section_id }}','{{ section.name }}');" title="{{ TEXT.DELETE }}">
