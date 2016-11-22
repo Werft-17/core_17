@@ -95,7 +95,7 @@
 									<input type="text" id="datepicker" name="end_date{{ section.section_id }}" value="{{ VALUE_PUBL_END }}" />
 								</td>
 									<td>									  	
-										<a class="del" href="javascript: confirm_link('{{ TEXT['ARE_YOU_SURE'] }}','{{ ADMIN_URL }}//pages/sections.php?page_id={{ VAR_PAGE_ID }}&amp;section_id={{ VAR_SECTION_ID }}')" title="{{ TEXT.DELETE }}">
+										<a class="del" href="#" onclick="confirm_delete_section('{{ section.section_id }}','{{ section.name }}');" title="{{ TEXT.DELETE }}">
 											<i class="large red remove icon"></i>
 										</a>
 									</td>
@@ -149,4 +149,21 @@
 
 </div> <!-- end outer green segment -->
 
+<script type="text/javascript">
+/* <![CDATA[ */
+
+function confirm_delete_section(aSectionId, aSectionTitle) {
+	var msg = "Are you sure you want to delete\nsection %s?";
+	msg = msg.replace("%s", aSectionId+" ("+aSectionTitle+")" );
+	
+	if( true === confirm( msg )) {
+		// document.location.href=href;
+		return false;
+	} else {
+		return false;
+	}
+
+}
+/* ]]> */
+</script>
 {% endautoescape %}
