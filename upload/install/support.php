@@ -17,6 +17,7 @@
 // set error level
  ini_set('display_errors', 1);
  error_reporting(E_ALL|E_STRICT);
+ require_once('../config.php');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
@@ -60,7 +61,7 @@
 
 		<h3><a class='update_link1' href=' https://www.lepton-cms.org/english/contact.php' target='_blank'><h3>or support LEPTON in another way</a> </h3><br />
 			
-		<h3><a class='update_link2' href='../backend/login/index.php'>please login and check installation</></h3>
+		<h3><a class='update_link2' href="<?php echo ADMIN_PATH; ?>/login/index.php">please login and check installation</></h3>
 
 		<div class="spacer"></div>		
 	</div>
