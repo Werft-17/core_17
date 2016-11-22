@@ -56,14 +56,16 @@ if(!isset($_GET['page_id']) OR !is_numeric($_GET['page_id']))
 	 *	Does this page realy exists?
 	 *
 	 */
-	$temp_result = $database->query("SELECT `page_id` from `".TABLE_PREFIX."pages` where `page_id`='".$page_id."'");
-	if (!$temp_result) {
+	$temp_result = array();
+	$database->execute_query(
+		"SELECT `page_id` from `".TABLE_PREFIX."pages` where `page_id`='".$page_id."'",
+		true,
+		$temp_result,
+		false
+	);
+	if ( 0 === count($temp_result) ) {
 		die( header("Location: index.php") );
-	} else {
-		if ( $temp_result->numRows() <> 1 ) {
-			die( header("Location: index.php") );
-		}
-	}
+	} 
 }
 
 // Create new admin object
@@ -107,51 +109,80 @@ $admin = new admin('Pages', 'pages_modify');
 //		}
 //	} elseif(isset($_POST['module']) && $_POST['module'] != '')
 //	{
-//		// Get section info
-//		$module = preg_replace("/\W/", "", addslashes($_POST['module']));  // fix secunia 2010-91-4
-//		
-//		/**
-//		 *	Is the module-name valide? Or in other words: does the module(-name) exists?
-//		 *
-//		 */
-//		$temp_result = $database->query("SELECT `name` from `".TABLE_PREFIX."addons` where `directory`='".$module."'");
-//		if (!$temp_result) {
-//			$admin->print_error($database->get_error());
-//		} else {
-//			if ($temp_result->numRows() <> 1) {
-//				$admin->print_error($MESSAGE['GENERIC_MODULE_VERSION_ERROR']);
-//			}
-//		}
-//		unset($temp_result);
-//		
-//		/**
-//		 *	Got the current user the rights to "use" this module at all?
-//		 *
-//		 */
-//		if (true === in_array($module, $_SESSION['MODULE_PERMISSIONS'] ) ) {
-//			$admin->print_error($MESSAGE['GENERIC_NOT_UPGRADED']);
-//		}
-//		
-//		// Include the ordering class
-//		require(LEPTON_PATH.'/framework/class.order.php');
-//		// Get new order
-//		$order = new order(TABLE_PREFIX.'sections', 'position', 'section_id', 'page_id');
-//		$position = $order->get_new($page_id);	
-//		// Insert module into DB
-//	    $sql  = 'INSERT INTO `'.TABLE_PREFIX.'sections` SET ';
-//	    $sql .= '`page_id` = '.$page_id.', ';
-//	    $sql .= '`module` = "'.$module.'", ';
-//	    $sql .= '`position` = '.$position.', ';
-//	    $sql .= '`block`=1';
-//	    $database->query($sql);
-//		// Get the section id
-//		$section_id = $database->get_one("SELECT LAST_INSERT_ID()");	
-//		// Include the selected modules add file if it exists
-//		if(file_exists(LEPTON_PATH.'/modules/'.$module.'/add.php'))
-//	    {
-//			require(LEPTON_PATH.'/modules/'.$module.'/add.php');
-//		}
-//	}
+
+if( (isset($_POST['job'])) && ($_POST['job'] == "add") )
+{
+	if ( (isset($_POST['module'])) && ($_POST['module'] != ''))
+	{
+
+		// Get module name
+		$module = preg_replace("/\W/", "", addslashes($_POST['module']));  // fix secunia 2010-91-4
+
+		/**
+		 *	Is the module-name valide? Or in other words: does the module(-name) exists?
+		 *
+		 */
+		$temp_result = array();
+		$database->execute_query(
+			"SELECT `name` from `".TABLE_PREFIX."addons` where `directory`='".$module."'",
+			true,
+			$temp_result,
+			false
+		);
+		if (true===$database->is_error())
+		{
+			$admin->print_error($database->get_error());
+		}
+		else 
+		{
+			if ( 0 === count($temp_result) )
+			{
+				$admin->print_error($MESSAGE['GENERIC_MODULE_VERSION_ERROR']." [1]");
+			}
+		}
+		unset($temp_result);	
+
+		/**
+		 *	Got the current user the rights to "use" this module at all?
+		 *
+		 */
+		if (true === in_array($module, $_SESSION['MODULE_PERMISSIONS'] ) )
+		{
+			$admin->print_error($MESSAGE['GENERIC_NOT_UPGRADED']);
+		}
+		
+		
+		// Include the ordering class
+		require(LEPTON_PATH.'/framework/class.order.php');
+		// Get new order
+		$order = new order(TABLE_PREFIX.'sections', 'position', 'section_id', 'page_id');
+		$position = $order->get_new($page_id);	
+	
+		// Insert 'module' into DB
+	    $fields = array(
+	    	'page_id'	=> $page_id,
+	    	'module'	=> $module,
+	    	'position'	=> $position,
+	    	'block'		=> 1			// Attention: insert a new module-section here at block 1
+	    );
+
+	    $database->build_and_execute(
+	    	'insert',
+	    	TABLE_PREFIX.'sections',
+	    	$fields
+	    );
+
+		// Get the section id
+		$section_id = $database->get_one("SELECT LAST_INSERT_ID()");	
+		// Include the selected modules add file if it exists
+		if(file_exists(LEPTON_PATH.'/modules/'.$module.'/add.php'))
+	    {
+			require(LEPTON_PATH.'/modules/'.$module.'/add.php');
+		}	
+	}
+}
+
+//	END: insert a new section
 
 /**
  *	Get page details

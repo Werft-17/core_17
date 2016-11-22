@@ -11,10 +11,9 @@
  #}
 {% autoescape false %}
 
-<div class="four wide column"> <!-- start page-tree -->
+<div class="four wide column palette_page_tree"> <!-- start page-tree -->
 
-	<div class="spacer1"></div>
-	<h3 class="ui green header">
+	<h3 class="ui green header small">
 		<i class="file icon"></i>
 		<div class="content">{{ MENU.PAGES }}</div>
 	</h3>

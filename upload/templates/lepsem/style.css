@@ -240,3 +240,8 @@ img.module_detail  {
 .delete_color {
 	color: #888888;
 }
+.palette_page_tree {
+	-webkit-box-shadow: 10px 10px 50px grey;
+	-moz-box-shadow: 10px 10px 50px grey;
+	box-shadow: 10px 10px 50px grey;
+}

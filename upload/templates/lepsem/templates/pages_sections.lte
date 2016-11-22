@@ -123,8 +123,10 @@
 				<div class="ui divider"></div>
 				
 				<div class="ui four column grid">
-					<form name="add" action="{ADMIN_URL}/pages/sections.php?page_id={VAR_PAGE_ID}" method="post">
-					<input type="hidden" name="page_id" value="{{ VAR_PAGE_ID }}"  />
+					<form name="add" action="{{ ADMIN_URL }}/pages/sections.php?page_id={{ PAGE_ID }}" method="post">
+					<input type="hidden" name="page_id" value="{{ PAGE_ID }}"  />
+					<input type="hidden" name="job" value="add"  />
+					
 						<div class="column" >
 							<h4 class="ui green dividing header">{{ TEXT.ADD_SECTION }}</h4>
 							<div class="ui hidden divider"></div>
