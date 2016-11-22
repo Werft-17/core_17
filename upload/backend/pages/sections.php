@@ -116,6 +116,10 @@ if( (isset($_POST['job'])) && ($_POST['job'] == "add") )
 	{
 
 		// Get module name
+		/**
+		 *	MOTICE!
+		 *	LEPTON 2.3.µ+ and newer: we are submitting the "ADDON_ID" instead of the Name!
+		 */
 		$module = preg_replace("/\W/", "", addslashes($_POST['module']));  // fix secunia 2010-91-4
 
 		/**
@@ -124,7 +128,7 @@ if( (isset($_POST['job'])) && ($_POST['job'] == "add") )
 		 */
 		$temp_result = array();
 		$database->execute_query(
-			"SELECT `name` from `".TABLE_PREFIX."addons` where `directory`='".$module."'",
+			"SELECT `name` from `".TABLE_PREFIX."addons` where `addon_id`='".$module."'",
 			true,
 			$temp_result,
 			false
@@ -140,8 +144,9 @@ if( (isset($_POST['job'])) && ($_POST['job'] == "add") )
 				$admin->print_error($MESSAGE['GENERIC_MODULE_VERSION_ERROR']." [1]");
 			}
 		}
+		$module = $temp_result['directory'];
 		unset($temp_result);	
-
+		echo LEPTON_tools::display( $module );
 		/**
 		 *	Got the current user the rights to "use" this module at all?
 		 *

@@ -76,7 +76,7 @@
 							{% for section in all_sections %}			
 								<tr>
 									<td>
-									  {{ LINK_MODIFY_URL_VAR_MODUL_NAME }}
+									  {{ section.module }}
 									</td>
 								  <td>
 									<select class="ui fluid dropdown" name="block{{ section.section_id }}">
@@ -92,7 +92,7 @@
 									<input type="text" id="datepicker" name="start_date{{ section.section_id }}" value="{{ VALUE_PUBL_START }}" />
 								  </td>
 								<td>
-									<input type="text" id="datepicker" name="start_date{{ section.section_id }}" value="{{ VALUE_PUBL_END }}" />
+									<input type="text" id="datepicker" name="end_date{{ section.section_id }}" value="{{ VALUE_PUBL_END }}" />
 								</td>
 									<td>									  	
 										<a class="del" href="javascript: confirm_link('{{ TEXT['ARE_YOU_SURE'] }}','{{ ADMIN_URL }}//pages/sections.php?page_id={{ VAR_PAGE_ID }}&amp;section_id={{ VAR_SECTION_ID }}')" title="{{ TEXT.DELETE }}">
