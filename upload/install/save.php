@@ -485,32 +485,31 @@ if(($handle = fopen($config_filename, 'w')) === false) {
 $ini_filepath = "../framework/classes/setup.ini";
 $s = "
 ;\n
-; This file is part of LEPTON Core, released under the GNU GPL\n
-; Please see LICENSE and COPYING files in your package for details, specially for terms and warranties.\n
-; \n
-; NOTICE:LEPTON CMS Package has several different licenses.\n
-; Please see the individual license in the header of each single file or info.php of modules and templates.\n
-;\n
-; @author          LEPTON Project\n
-; @copyright       2010-2017 LEPTON Project\n
-; @link            https://www.LEPTON-cms.org\n
-; @license         http://www.gnu.org/licenses/gpl.html\n
-; @license_terms   please see LICENSE and COPYING files in your package\n
-;\n
-;\n
-\n
+; This file is part of LEPTON Core, released under the GNU GPL
+; Please see LICENSE and COPYING files in your package for details, specially for terms and warranties.
+;
+; NOTICE:LEPTON CMS Package has several different licenses.
+; Please see the individual license in the header of each single file or info.php of modules and templates.
+;
+; @author          LEPTON Project
+; @copyright       2010-2017 LEPTON Project
+; @link            https://www.LEPTON-cms.org
+; @license         http://www.gnu.org/licenses/gpl.html
+; @license_terms   please see LICENSE and COPYING files in your package
+;
+;
+
 ; DB-setup for LEPTON-CMS\n
-\n
+
 [database]\n
-type = 'mysql'\n
-host = '".$database_host."'\n
-port = '".$database_port."'\n
-user = '".$database_username."'\n
-pass = '".$database_password."'\n
-name = '".$database_name."'\n
-prefix = '".$table_prefix."'\n
-\n
-\n
+type = 'mysql'
+host = '".$database_host."'
+port = '".$database_port."'
+user = '".$database_username."'
+pass = '".$database_password."'
+name = '".$database_name."'
+prefix = '".$table_prefix."'
+charset = 'utf8'
 ";
 
 $fp = fopen($ini_filepath, 'w');
@@ -526,10 +525,9 @@ if(!file_exists(LEPTON_PATH.'/framework/class.admin.php')) {
 	set_error('It seems that the absolute path you entered is incorrect');
 }
 
-
 // Re-connect to the database, this time using built-in database class
 require_once(LEPTON_PATH.'/framework/classes/lepton_database.php');
-$database=new database();
+$database=new LEPTON_database();
 
 // Check if we should install tables
 if($install_tables == true) {
