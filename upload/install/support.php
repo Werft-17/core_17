@@ -60,7 +60,7 @@
 
 		<h3><a class='update_link1' href=' https://www.lepton-cms.org/english/contact.php' target='_blank'><h3>or support LEPTON in another way</a> </h3><br />
 			
-		<h3><a class='update_link2' href='../admins/login/index.php'>please login and check installation</></h3>
+		<h3><a class='update_link2' href='../backend/login/index.php'>please login and check installation</></h3>
 
 		<div class="spacer"></div>		
 	</div>
