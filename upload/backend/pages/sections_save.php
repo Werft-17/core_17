@@ -108,54 +108,66 @@ $database->execute_query(
 	true
 );
 
-foreach( $all_sections as $section) {
-	if(!is_numeric(array_search($section['module'], $module_permissions))) {
+foreach( $all_sections as $section)
+{
+	if(!is_numeric(array_search($section['module'], $module_permissions)))
+	{
 		// Update the section record with properties
 		$section_id = $section['section_id'];
-		$sql = '';
-		$publ_start = 0;
-		$publ_end = 0;
-		$dst = date("I")?" DST":""; // daylight saving time?
-		if(isset($_POST['block'.$section_id]) AND $_POST['block'.$section_id] != '') {
-			$sql = "block = '".addslashes($_POST['block'.$section_id])."'";
-		}
-			// update publ_start and publ_end, trying to make use of the strtotime()-features like "next week", "+1 month", ...
-		if(isset($_POST['start_date'.$section_id]) AND isset($_POST['end_date'.$section_id])) {
-			if(trim($_POST['start_date'.$section_id]) == '0' OR trim($_POST['start_date'.$section_id]) == '') {
-				$publ_start = 0;
-			} else {
-				$publ_start = jscalendar_to_timestamp($_POST['start_date'.$section_id]);
-			}
-			if(trim($_POST['end_date'.$section_id]) == '0' OR trim($_POST['end_date'.$section_id]) == '') {
-				$publ_end = 0;
-			} else {
-				$publ_end = jscalendar_to_timestamp($_POST['end_date'.$section_id], $publ_start);
-			}
-			
-			if($sql != '') $sql .= ",";
+		
+		$fields = array(
+			'publ_start'	=> 0,
+			'publ_end'		=> 0
+		);
 
-			$sql .= " publ_start = '".addslashes($publ_start)."'";
-			$sql .= ", publ_end = '".addslashes($publ_end)."'";
+		//	[1]	Blocks
+		if(isset($_POST['block'.$section_id]) AND $_POST['block'.$section_id] != '')
+		{
+			$fields['block'] = addslashes($_POST['block'.$section_id]);
 		}
-		if (isset($_POST['section_name'][$section_id])) {
-			if (strlen($sql) > 0) $sql .= ",";
-			
-			$sql .= " `name`='".addslashes($_POST['section_name'][$section_id])."'";
+
+		//	[2]	Start date
+		if( true === isset($_POST['start_date'.$section_id]) )
+		{
+			$start_date = trim($_POST['start_date'.$section_id]);
+			if( ($start_date != "") && ($start_date != 0 ))
+			{
+				$fields['publ_start'] = jscalendar_to_timestamp( $start_date );
+			}
+		}
+
+		//	[3] End date
+		if( true === isset($_POST['end_date'.$section_id]) )
+		{
+			$end_date = trim($_POST['end_date'.$section_id]);
+			if( ($end_date != "") && ($end_date != 0 ))
+			{
+				$fields['publ_end'] = jscalendar_to_timestamp( $end_date );
+			}
 		}
 		
-		$query = "UPDATE ".TABLE_PREFIX."sections SET ".$sql." WHERE section_id = '".$section_id."' LIMIT 1";
-
-		if($sql != '') {
-				$oStatement = $database->db_handle->prepare( $query );
-				$oStatement->execute();
+		//	[4]	Name of the section
+		if (isset($_POST['section_name'][$section_id]))
+		{
+			$fields['name'] = addslashes($_POST['section_name'][$section_id]);
 		}
+		
+		$database->build_and_execute(
+			'update',
+			TABLE_PREFIX."sections",
+			$fields,
+			"`section_id` = ".$section_id
+		);
 	}
 }
 	
 // Check for error or print success message
-if($database->is_error()) {
+if(true === $database->is_error())
+{
 	$admin->print_error($database->get_error(), ADMIN_URL.'/pages/sections.php?page_id='.$page_id);
-} else {
+}
+else
+{
 	$admin->print_success($MESSAGE['PAGES_SECTIONS_PROPERTIES_SAVED'], ADMIN_URL.'/pages/sections.php?page_id='.$page_id);
 }
 
