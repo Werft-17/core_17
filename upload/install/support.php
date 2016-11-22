@@ -24,9 +24,9 @@
 <head>
 <title>LEPTON Installation</title>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-<script type="text/javascript" src="https://doc.lepton-cms.org/modules/lib_semantic/dist/semantic.min.js" ></script>
+<script type="text/javascript" src="<?php echo LEPTON_URL; ?>/modules/lib_semantic/dist/semantic.min.js" ></script>
 
-<link href="https://doc.lepton-cms.org/modules/lib_semantic/dist/semantic.min.css" rel="stylesheet" type="text/css">
+<link href="<?php echo LEPTON_URL; ?>/modules/lib_semantic/dist/semantic.min.css" rel="stylesheet" type="text/css">
 <link href="https://doc.lepton-cms.org/_packinstall/style_200.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -61,7 +61,7 @@
 
 		<h3><a class='update_link1' href=' https://www.lepton-cms.org/english/contact.php' target='_blank'><h3>or support LEPTON in another way</a> </h3><br />
 			
-		<h3><a class='update_link2' href="<?php echo ADMIN_PATH; ?>/login/index.php">please login and check installation</></h3>
+		<h3><a class='update_link2' href="<?php echo ADMIN_URL; ?>/login/index.php">please login and check installation</></h3>
 
 		<div class="spacer"></div>		
 	</div>
