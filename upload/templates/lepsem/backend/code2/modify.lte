@@ -13,8 +13,9 @@
  #}
 {% autoescape false %}
 <!-- Output by Twig -->
+<h3>LEPSEM!!!</h3>
 <div>
-	<form name="codeform{{ SECTION_ID }}" class="whatis_{{ WHATIS }}_{{ SECTION_ID }}" action="{{ LEPTON_URL }}/modules/code2/save.php" method="post">
+	<form name="codeform{{ SECTION_ID }}" id="codeform{{ SECTION_ID }}" class="whatis_{{ WHATIS }}_{{ SECTION_ID }}" action="{{ LEPTON_URL }}/modules/code2/save.php" method="post">
 	<input type="hidden" name="page_id" value="{{ PAGE_ID }}" />
 	<input type="hidden" name="section_id" value="{{ SECTION_ID }}" />
 	<input type="hidden" name="code2_hash" value="{{ CODE2_HASH }}" />
@@ -23,12 +24,16 @@
 			<div class="column">			
 				<div class="ui form">
 					<div class="ui inline fields">
-						<label></label>
-						<select name="whatis" onchange="javascript:changecode{{ SECTION_ID }}()">{{ WHATISSELECT }}</select>
-					</div>			
+						<label>Type</label>
+						<select name="whatis" onchange="javascript:changecode{{ SECTION_ID }}()">
+							{{ WHATISSELECT }}
+						</select>
+					</div>
+					<div class="ui message tiny" id="infotext_output{{ SECTION_ID }}">
+					</div>
 				</div>						
 			</div>				
-					
+			<p></p>
 			<div class="column">
 				<div class="ui form">
 					<div class="inline fields">
@@ -43,7 +48,8 @@
 					<div class="ui inline fields">
 						<i class="green info icon"></i>
 						{{ SECTION_ID }}
-					</div>			
+						
+					</div>		
 				</div>						
 			</div>					
 		</div> <!-- end row -->	
@@ -52,7 +58,7 @@
 			<div class="column">			
 				<div class="ui form">
 					<label></label>
-					<textarea id="content{{ SECTION_ID }}" name="content" class="content_{{ WHATIS }}" rows="0" cols="0">{{ CONTENT }}</textarea>
+					<textarea id="no_wysiwyg" name="content" class="content_{{ WHATIS }}" rows="0" cols="0">{{ CONTENT }}</textarea>
 				</div>						
 			</div>
 		</div>	<!-- end row -->
@@ -69,21 +75,37 @@ function changecode{{ SECTION_ID }}() {
 	var whatis = document.codeform{{ SECTION_ID }}.whatis.options[document.codeform{{ SECTION_ID }}.whatis.selectedIndex].value;
 	var t = gethinttext(whatis, '{{ LANGUAGE }}');	
 	document.getElementById("infotext_output{{ SECTION_ID }}").innerHTML  = t;
-	document.getElementById("content{{ SECTION_ID }}").className = "content_"+whatis;
+	//document.getElementById("content{{ SECTION_ID }}").className = "content_"+whatis;
+	var form_ref = document.getElementById("codeform{{ SECTION_ID }}");
+	if(form_ref) {
+		var ref = form_ref.elements['content'];
+		
+		if (ref) {
+			ref.className="content_"+whatis;
+		}
+	}
 } 
 changecode{{ SECTION_ID }}();
 
 function change_mode{{ SECTION_ID }} (aRef) {
-	var ref = document.getElementById("content{{ SECTION_ID }}");
-	if (ref) {
-		var new_height = (aRef.selectedIndex == 1) ? "400px" : "40px";
-		ref.style.height=new_height;
+	// var ref = document.getElementById("content{{ SECTION_ID }}");
+	var form_ref = document.getElementById("codeform{{ SECTION_ID }}");
+	if(form_ref) {
+		var ref = form_ref.elements['content'];
+		
+		if (ref) {
+			var new_height = (aRef.selectedIndex == 1) ? "400px" : "40px";
+			ref.style.height=new_height;
+		}
 	}
 }
 
-var ref = document.getElementById("content{{ SECTION_ID }}");
-if (ref) {
-	ref.style.height= ({{ MODE_ }} == 1) ? "400px" : "40px";
+var form_ref = document.getElementById("codeform{{ SECTION_ID }}");
+if(form_ref) {
+	var ref = form_ref.elements['content'];
+	if (ref) {
+		ref.style.height= ({{ MODE_ }} == 1) ? "400px" : "40px";
+	}
 }
 //-->
 </script>
