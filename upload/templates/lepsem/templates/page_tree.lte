@@ -23,10 +23,10 @@
 		{% if page.subpages|length > 0 %}
 			<i class="red minus icon"></i>
 		{% endif %}
-		<a class="tree_link" href='{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}'>
+		<a class="tree_link tree_link_act" href='{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}'>
 			<i class="green write icon"></i>
 		</a>
-		<a class="tree_link delete_color" href='#' onclick="confirm_delete( '{{ page.page_id }}', '{{ page.page_title }}');">
+		<a class="tree_link tree_link_act delete_color" href='#' onclick="confirm_delete( '{{ page.page_id }}', '{{ page.page_title }}');">
 			<i class="delete_color trash icon"></i>
 		</a>
 		&nbsp;

@@ -245,3 +245,9 @@ img.module_detail  {
 	-moz-box-shadow: 10px 10px 50px grey;
 	box-shadow: 10px 10px 50px grey;
 }
+
+.tree_link_act {
+	width: 16px;
+	display: block;
+	float:left;
+}
