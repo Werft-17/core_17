@@ -76,7 +76,7 @@
 							{% for section in all_sections %}			
 								<tr>
 									<td>
-									  {{ section.module }}
+									  <a href="{{ ADMIN_URL }}/pages/modify.php?page_id={{ PAGE_ID }}#{{ section.section_id }}">{{ section.module }}</a>
 									</td>
 								  <td>
 									<select class="ui fluid dropdown" name="block{{ section.section_id }}">
