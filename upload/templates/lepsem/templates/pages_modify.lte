@@ -60,7 +60,7 @@
 					{% for section in all_sections %}
 					
 					<!-- section header -->
-					<div class="ui message"><strong>{{ section.module }}</strong> | {{ TEXT.SECTION }}-{{ TEXT.NAME }}: {{ section.name }} | {{ TEXT.SECTION_ID }}: {{ section.section_id }} | {{ TEXT.SECTION }}-{{ TEXT.BLOCK }}: {{ section.block_name }}</div>
+					<div class="ui message" id="{{ SEC_ANCHOR }}{{ section.section_id }}"><strong>{{ section.module }}</strong> | {{ TEXT.SECTION }}-{{ TEXT.NAME }}: {{ section.name }} | {{ TEXT.SECTION_ID }}: {{ section.section_id }} | {{ TEXT.SECTION }}-{{ TEXT.BLOCK }}: {{ section.block_name }}</div>
 					<!-- end section header -->	
 					
 						{{ section.content }}	

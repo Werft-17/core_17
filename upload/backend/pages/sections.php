@@ -323,7 +323,8 @@ $page_vars = array(
 	'all_pages'	=> $all_pages,
 	'all_sections' => $all_sections,
 	'all_page_modules' => $all_page_modules,
-	'blocks'	=> $block // Notice: no '-s' (plural) here!
+	'blocks'	=> $block, // Notice: no '-s' (plural) here!
+	'SEC_ANCHOR'	=> SEC_ANCHOR
 );
 
 echo $parser->render(
