@@ -508,7 +508,6 @@ user = '".$database_username."'
 pass = '".$database_password."'
 name = '".$database_name."'
 prefix = '".$table_prefix."'
-charset = 'utf8'
 ";
 
 $fp = fopen($ini_filepath, 'w');
