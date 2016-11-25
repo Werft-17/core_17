@@ -10,8 +10,8 @@
  */
  #}
 {% autoescape false %}
-</div> <!-- END class container -->
-</div> <!-- END div container -->	
+		</div> <!-- END class container -->
+	</div> <!-- END div container -->	
 
 	<div id="footer">
 		<!-- Please note: the below reference to the GNU GPL should not be removed, as it provides a link for users to read about warranty, etc. -->
@@ -21,7 +21,7 @@
 		<br />
 		<a href="http://www.lepton-cms.org" title="LEPTON Package" target="_blank">LEPTON CMS Package</a> is released under several different licenses.
 	</div>
-	
+</div> <!-- END div pusher -->	
 {{ BACKEND_BODY_MODULE_JS }}
 </body>
 </html>

@@ -34,80 +34,56 @@
 
 </head>
 <body>
-<div id="container">
-	<div id="admin_header">
+<div class="ui vertical inverted left sidebar menu">
+  <a class="item" href="{{ ADMIN_URL }}/start/index.php"><i class="large home icon"></i>{{ TEXT.HOME }}</a>
+  <div class="ui right dropdown item">{{ PAGES }}
+	<i class="dropdown icon"></i>
+    <div class="menu">
+        {% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/index.php"><i class="text file icon"></i>{{ HEADING.ADD_PAGE }}</a>{% endif %}
+		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/modify.php"><i class="text file icon"></i>{{ HEADING.MODIFY_PAGE }}</a>{% endif %}
+		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/settings.php"><i class="text file icon"></i>{{ HEADING.MODIFY_PAGE_SETTINGS }}</a>{% endif %}
+		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/sections.php"><i class="text file icon"></i>{{ HEADING.MANAGE_SECTIONS }}</a>{% endif %}								
+		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/search.php"><i class="text file icon"></i>{{ HEADING.SEARCH_PAGE }}</a>{% endif %}
+    </div>
+  </div> 
+  
+  {% if true == p_media %}<a class="item" href="{{ ADMIN_URL }}/media/index.php"><i class="large photo icon"></i>{{ MEDIA }}</a>{% endif %} 
+  
+  <div class="ui right dropdown item">{{ ADDONS }}
+	<i class="dropdown icon"></i>
+    <div class="menu">
+        {% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/modules/index.php"><i class="puzzle piece icon"></i>{{ MENU.MODULES }}</a>{% endif %}
+		{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/templates/index.php"><i class="puzzle piece icon"></i>{{ MENU.TEMPLATES }}</a>{% endif %}
+		{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/languages/index.php"><i class="puzzle piece icon"></i>{{ MENU.LANGUAGES }}</a>{% endif %}								
+		{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/addons/reload.php"><i class="puzzle piece icon"></i>{{ TEXT.RELOAD }} {{ MENU.ADDONS }}</a>{% endif %}
+    </div>
+  </div>   
+  
+  <div class="ui right dropdown item">{{ TEXT.ADMINISTRATION }}
+	<i class="dropdown icon"></i>
+    <div class="menu">
+		{% if true == p_admintools %}<a class="item" href="{{ ADMIN_URL }}/admintools/index.php"><i class="wrench icon"></i>{{ ADMINTOOLS }}</a>{% endif %}							
+		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/preferences/index.php"><i class="wrench icon"></i>{{ PREFERENCES }}</a>{% endif %}
+		{% if true == p_settings %}<a class="item" href="{{ ADMIN_URL }}/settings/index.php"><i class="wrench icon"></i>{{ SETTINGS }}</a>{% endif %}
+    </div>
+  </div>    
+  
+   <div class="ui right dropdown item">{{ ACCESS }}
+	<i class="dropdown icon"></i>
+    <div class="menu">
+		{% if true == p_access %}<a class="item" href="{{ ADMIN_URL }}/groups/groups.php"><i class="users icon"></i>{{ MENU.GROUPS }}</a>{% endif %}							
+		{% if true == p_access %}<a class="item" href="{{ ADMIN_URL }}/users/index.php"><i class="users icon"></i>{{ MENU.USERS }}</a>{% endif %}
+    </div>
+  </div>    
 
-		<div id="page_menu">
-		
-			<div class="ui menu">
-				<a class="browse item">{{ TEXT.MENU }} <i class="dropdown icon"></i> </a>
-				<div style="top: 565.65px; left: 1px; bottom: auto; right: auto; max-width:1060px; min-width: 500px;" class="ui fluid popup bottom left transition">
-					<div class="ui five column relaxed divided grid">
-						<div class="column">
-							<h4 class="ui green header navi">
-								<i class="green text file icon"></i>
-								<div class="content">{{ PAGES }}</div>
-							</h4>
-							<div class="ui link list">
-								{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/index.php">{{ HEADING.ADD_PAGE }}</a>{% endif %}
-								{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/modify.php">{{ HEADING.MODIFY_PAGE }}</a>{% endif %}
-								{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/settings.php">{{ HEADING.MODIFY_PAGE_SETTINGS }}</a>{% endif %}
-								{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/sections.php">{{ HEADING.MANAGE_SECTIONS }}</a>{% endif %}								
-								{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/search.php">{{ HEADING.SEARCH_PAGE }}</a>{% endif %}
-							</div>
-						</div>
-						<div class="column">
-							<h4 class="ui orange header navi">
-								<i class="orange photo icon"></i>
-								<div class="content">{{ MEDIA }}</div>
-							</h4>
-							<div class="ui link list">
-								{% if true == p_media %}<a class="item" href="{{ ADMIN_URL }}/media/index.php">{{ MEDIA }}</a>{% endif %}
-								{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/preferences/index.php">{{ PREFERENCES }}</a>{% endif %}
-								{% if true == p_admintools %}<a class="item" href="{{ ADMIN_URL }}/admintools/index.php">{{ ADMINTOOLS }}</a>{% endif %}
-								{% if true == p_media %}<a class="item" href="{{ ADMIN_URL }}/media/index.php">{{ MEDIA }}</a>{% endif %}
-							</div>
-						</div>
-						<div class="column">
-							<h4 class="ui purple header navi">
-								<i class="purple puzzle piece icon"></i>
-								<div class="content">{{ ADDONS }}</div>
-							</h4>
-							<div class="ui link list">
-								{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/modules/index.php">{{ MENU.MODULES }}</a>{% endif %}
-								{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/templates/index.php">{{ MENU.TEMPLATES }}</a>{% endif %}
-								{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/languages/index.php">{{ MENU.LANGUAGES }}</a>{% endif %}								
-								{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/addons/reload.php">{{ TEXT.RELOAD }} {{ MENU.ADDONS }}</a>{% endif %}							  
-							</div>
-						</div>						
-						<div class="column">
-							<h4 class="ui blue header navi">
-								<i class="blue wrench icon"></i>
-								<div class="content">{{ TEXT.ADMINISTRATION }}</div>
-							</h4>						
-							<div class="ui link list">
-								<a class="item" href="{{ ADMIN_URL }}/start/index.php">{{ DASHBOARD }}Dashboard</a>
-								{% if true == p_admintools %}<a class="item" href="{{ ADMIN_URL }}/admintools/index.php">{{ ADMINTOOLS }}</a>{% endif %}							
-								{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/preferences/index.php">{{ PREFERENCES }}</a>{% endif %}
-								{% if true == p_settings %}<a class="item" href="{{ ADMIN_URL }}/settings/index.php">{{ SETTINGS }}</a>{% endif %}							
-							</div>
-						</div>						
-						<div class="column">
-							<h4 class="ui teal header navi">
-								<i class="teal users icon"></i>
-								<div class="content">{{ ACCESS }}</div>
-							</h4>
-							<div class="ui link list">
-								{% if true == p_access %}<a class="item" href="{{ ADMIN_URL }}/groups/groups.php">{{ MENU.GROUPS }}</a>{% endif %}							
-								{% if true == p_access %}<a class="item" href="{{ ADMIN_URL }}/users/index.php">{{ MENU.USERS }}</a>{% endif %}													  
-							</div>
-						</div>
-						
-					</div> <!-- end divided grid -->
-				</div>  <!-- end div style -->
-			
-				<div id="website_title">{{ BACKEND_TITLE }} - {{ TEXT_ADMINISTRATION }}</div>
-				
+</div>
+
+<div class="pusher">
+	<div id="container">
+		<div class="ui container">		
+			<div class="ui menu stackable grid">
+				<a class="view-ui toc item"><i class="sidebar icon"></i> {{ TEXT.MENU }}</a>
+				<div class="website_title">{{ BACKEND_TITLE }} - {{ TEXT_ADMINISTRATION }}</div>				
 				<div class="ui right dropdown item">
 					Info
 					<i class="dropdown icon"></i>
@@ -121,17 +97,16 @@
 				<a class="item" href="http://forum.lepton-cms.org" target="_blank" title="{{ TITLE_HELP }}"><i class="grey help large icon"></i></a>
 				<a class="item" href="{{ URL_VIEW }}" target="_blank" title="{{ TITLE_VIEW }}"><i class="grey unhide large icon"></i></a>
 				<a class="item" href="{{ ADMIN_URL }}/logout/index.php" title="{{ TITLE_LOGOUT }}"><i class="red sign out large icon"></i></a>
-
-				
-			</div> <!-- end ui.menu -->
+			</div> <!-- end ui.menu grid -->
 
 			<div class="ui visible message">{{ WELCOME_MESSAGE }} {{ CURRENT_USER }} {{ DISPLAY_NAME }}</div>
 			
 			{% if WARNING %}<div class="ui inverted red segment">{{ WARNING }}</div>{% endif %}
-		
-		</div> <!-- end page_menu-->
-	</div> <!-- end admin_header-->
-		
-	<div class="ui container"> <!-- start content-->
+
+		</div> <!-- end ui container admin_header-->
+	
+		<div class="ui spacer"></div>
+	
+		<div class="ui container"> <!-- start content-->
 
 {% endautoescape %}
