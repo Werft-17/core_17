@@ -65,7 +65,7 @@
 		</div>
 		
 		<form name="{{ FORM_NAME }}" id="{{ FORM_NAME }}" action="{{ ACTION_URL }}" method="post">
-		
+			<input type="hidden" name="leptoken" value="{{ leptoken }}" />
 			<div class="ui blue segment" id="{{ HEADING.GENERAL_SETTINGS }}">
 				<div class="ui two column doubling grid container">
 
@@ -303,7 +303,9 @@
 								<div class="ui inline fields">
 									<label>{{ TEXT.LANGUAGE }}</label>
 									<select name="default_language">
-										<option value="{{ CODE }}"{{ SELECTED }}>{{ NAME }} ({{ CODE }})</option>
+									{% for lang in languages %}
+										<option value="{{ lang.directory }}" {% if(lang.directory == DEFAULT_LANGUAGE) %}selected='selected'{% endif %}>{{ lang.name }} ({{ lang.directory }})</option>
+									{% endfor %}
 									</select>
 								</div>			
 							</div>						
@@ -314,7 +316,7 @@
 								<div class="ui inline fields">
 									<label>{{ TEXT.LINK }} {{ TEXT.CHARSET }}</label>
 									<select name="link_charset">
-										<option value="{{ VALUE }}"{{ SELECTED }}>{{ NAME }}</option>
+										<option value="utf-8" selected='selected'>utf-8</option>
 									</select>
 								</div>			
 							</div>						
@@ -325,7 +327,9 @@
 								<div class="ui inline fields">
 									<label>{{ TEXT.TEMPLATE }}</label>
 									<select name="default_template">
-										<option value="{{ FILE }}"{{ SELECTED }}>{{ NAME }}</option>
+									{% for template in templates %}
+										<option value="template.directory" {% if(DEFAULT_TEMPLATE == template.directory) %}selected='selected'{% endif %}>{{ template.name }}</option>
+									{% endfor %}
 									</select>
 								</div>			
 							</div>						
@@ -336,7 +340,9 @@
 								<div class="ui inline fields">
 									<label>{{ TEXT.THEME }}</label>
 									<select name="default_theme">
-										<option value="{{ FILE }}"{{ SELECTED }}>{{ NAME }}</option>
+									{% for theme in themes %}
+										<option value="{{theme.directory }}" {% if(DEFAULT_THEME == theme.directory) %}selected='selected'{% endif %}>{{ theme.name }}</option>
+									{% endfor %}
 									</select>
 								</div>			
 							</div>						

@@ -9,7 +9,7 @@
  *
  * @author		  Website Baker Project, LEPTON Project
  * @copyright	   2004-2010 Website Baker Project
- * @copyright	   2010-2015 LEPTON Project
+ * @copyright	   2010-2016 LEPTON Project
  * @link			http://www.LEPTON-cms.org
  * @license		 http://www.gnu.org/licenses/gpl.html
  * @license_terms   please see LICENSE and COPYING files in your package
@@ -77,7 +77,8 @@ function build_settings( &$admin, &$database )
 		'MESSAGE'	=> $MESSAGE,
 		'HEADING'	=> $HEADING,
 		'FORM_NAME' 		=> 'settings',
-		'ACTION_URL' 		=> 'save.php',
+		'ACTION_URL' 		=> ADMIN_URL.'/settings/save.php',
+		'leptoken'		=> LEPTON_tools::get_leptoken()
 	);
 
 	//	[2.0] db fields of settings
@@ -136,9 +137,9 @@ function build_settings( &$admin, &$database )
 	
 	return $return_str;
 	
-/**
+/**	****************************
  *	Ende 
- */
+ *	***************************/
 	
 	// *************************************************************************
 	// Create new template object
