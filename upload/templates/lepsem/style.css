@@ -89,34 +89,18 @@ a:hover {
     padding: 20px;
 }
 
-.container {
-    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
-    border: 0 none !important;
-    margin-bottom: 0 !important;
-    padding: 0 !important;
+.spacer {
+    height: 40px;
+    width: 100%;
 }
 
-.ui.grid {
-    padding: 1rem 0;
+.ui.menu .item::before {
+    width: 0px;
 }
-
 
 /* header */
-#admin_header {
-    margin-top: 0 !important;
-    width: 100%;
-}
-
-#page_menu {
-    margin-bottom: 30px;
-    margin-top: 10px;
-    width: 100%;
-}
-
-
-#website_title {
-    color: #666;
-    font-size: 18px;
+.website_title {
+    font-size: 1.4em;
     font-weight: bold;
     padding: 20px;
 }
