@@ -45,9 +45,8 @@ LEPTON_tools::load(
 $admin = new admin('Start', 'start', false, false);
 
 // Get the website title
-$results = $database->query("SELECT value FROM ".TABLE_PREFIX."settings WHERE name = 'title'");
-$results = $results->fetchRow();
-$website_title = $results['value'];
+$website_title = $database->get_one("SELECT `value` FROM `".TABLE_PREFIX."settings` WHERE `name` = 'title'");
+
 $message = '';
 
 // create hash 
@@ -127,53 +126,27 @@ if(!isset($message)) {
 } else {
 	$message_color = 'FF0000';
 }
-	
-// Setup the template
-$template = new Template(THEME_PATH.'/templates');
-$template->set_file('page', 'login_forgot.htt');
-$template->set_block('page', 'main_block', 'main');
-if(defined('FRONTEND')) {
-	$template->set_var('ACTION_URL', 'forgot.php');
-} else {
-	$template->set_var('ACTION_URL', 'index.php');
-}
-$template->set_var('EMAIL', "");
 
-if(isset($display_form)) {
-	$template->set_var('DISPLAY_FORM', 'display:none;');
-}
+$page_values = array(
+	'SECTION_FORGOT' => $MENU['FORGOT'],
+	'MESSAGE_COLOR' => $message_color,
+	'MESSAGE' => $message,
+	'LEPTON_URL' => LEPTON_URL,
+	'ADMIN_URL' => ADMIN_URL,
+	'THEME_URL' => THEME_URL,
+	'VERSION' => VERSION,
+	'LANGUAGE' => strtolower(LANGUAGE),
+	'TEXT_EMAIL' => $TEXT['EMAIL_ADDRESS'],
+	'TEXT_SEND_DETAILS' => $TEXT['SEND_DETAILS'],
+	'TEXT_HOME' => $TEXT['HOME'],
+	'TEXT_NEED_TO_LOGIN' => $TEXT['NEED_TO_LOGIN']
+);
 
-$template->set_var(array(
-				'SECTION_FORGOT' => $MENU['FORGOT'],
-				'MESSAGE_COLOR' => $message_color,
-				'MESSAGE' => $message,
-				'LEPTON_URL' => LEPTON_URL,
-				'ADMIN_URL' => ADMIN_URL,
-				'THEME_URL' => THEME_URL,
-				'VERSION' => VERSION,
-				'LANGUAGE' => strtolower(LANGUAGE),
-				'TEXT_EMAIL' => $TEXT['EMAIL_ADDRESS'],
-				'TEXT_SEND_DETAILS' => $TEXT['SEND_DETAILS'],
-				'TEXT_HOME' => $TEXT['HOME'],
-				'TEXT_NEED_TO_LOGIN' => $TEXT['NEED_TO_LOGIN']
-				) );
+$loader->prependPath( THEME_PATH.'/templates' );
 
-if(defined('FRONTEND')) {
-	$template->set_var('LOGIN_URL', LEPTON_URL.'/account/login.php');
-} else {
-	$template->set_var('LOGIN_URL', ADMIN_URL);
-}
-$template->set_var('INTERFACE_URL', ADMIN_URL.'/interface');	
-
-if(defined('DEFAULT_CHARSET')) {
-	$charset=DEFAULT_CHARSET;
-} else {
-	$charset='utf-8';
-}
-
-$template->set_var('CHARSET', $charset);	
-
-$template->parse('main', 'main_block', false);
-$template->pparse('output', 'page');
+echo $parser->render(
+	"login_forgot.lte",
+	$page_values
+);
 
 ?>
