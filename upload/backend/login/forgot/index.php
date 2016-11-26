@@ -36,20 +36,19 @@ if (defined('LEPTON_PATH')) {
 }
 // end include class.secure.php
 
-// Include the language file
-require(LEPTON_PATH.'/languages/'.DEFAULT_LANGUAGE.'.php');
-// Include the database class file and initiate an object
-require(LEPTON_PATH.'/framework/class.admin.php');
+LEPTON_tools::load(
+	LEPTON_PATH.'/languages/'.DEFAULT_LANGUAGE.'.php',
+	LEPTON_PATH.'/framework/class.admin.php',
+	LEPTON_PATH.'/modules/lib_phpmailer/library.php'
+);
+
 $admin = new admin('Start', 'start', false, false);
-$database = new database();
 
 // Get the website title
 $results = $database->query("SELECT value FROM ".TABLE_PREFIX."settings WHERE name = 'title'");
-$results = $results->fetchRow( MYSQL_ASSOC );
+$results = $results->fetchRow();
 $website_title = $results['value'];
 $message = '';
-
-require_once (LEPTON_PATH.'/modules/lib_phpmailer/library.php');
 
 // create hash 
 $confirm_hash = time();
