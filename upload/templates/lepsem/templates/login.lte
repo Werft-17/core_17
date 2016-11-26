@@ -24,8 +24,7 @@
 			var THEME_URL = "{{ THEME_URL }}";
 		</script>
 		<link href="{{ LEPTON_URL }}/modules/lib_semantic/dist/semantic.min.css" rel="stylesheet" type="text/css" />
-		<link href="{{ THEME_URL }}/login.css" rel="stylesheet" type="text/css" />
-		
+		<link href="{{ THEME_URL }}/login.css" rel="stylesheet" type="text/css" />	
 	</head>
 
 	<body>
@@ -54,7 +53,7 @@
 					  <div class="field">
 						<label>{{ TEXT.PASSWORD }}</label>
 						<div class="ui left icon input">
-							<input type="password" maxlength="{{ MAX_PASSWORD_LEN }}" name="{{ PASSWORD_FIELDNAME }}" id="{{ PASSWORD_FIELDNAME }}" size="54" />
+							<input placeholder="{{ TEXT.PASSWORD }}" type="password" maxlength="{{ MAX_PASSWORD_LEN }}" name="{{ PASSWORD_FIELDNAME }}" id="{{ PASSWORD_FIELDNAME }}" size="54" />
 							<i class="lock icon"></i>
 						</div>
 					  </div>
@@ -73,19 +72,18 @@
 							</div>							
 						</div>
 					</div>
-
-				  <div class="ui segment">
-					<div class="footer_login">
-						<div class="left_footer_login">
-							<a href="http://www.lepton-cms.org" title="LEPTON CMS" target="_blank">LEPTON Core</a> is released under the
-							<a href="http://www.gnu.org/licenses/gpl.html" title="LEPTON Core is GPL" target="_blank">GNU General Public License</a>.
-						</div>
-						<div class="left_footer_login">
-							<a href="http://www.lepton-cms.org" title="LEPTON Package" target="_blank">LEPTON CMS Package</a> is released under several different licenses.
+					
+					<div class="ui segment">
+						<div class="footer_login">
+							<div class="left_footer_login">
+								<a href="http://www.lepton-cms.org" title="LEPTON CMS" target="_blank">LEPTON Core</a> is released under the
+								<a href="http://www.gnu.org/licenses/gpl.html" title="LEPTON Core is GPL" target="_blank">GNU General Public License</a>.
+							</div>
+							<div class="left_footer_login">
+								<a href="http://www.lepton-cms.org" title="LEPTON Package" target="_blank">LEPTON CMS Package</a> is released under several different licenses.
+							</div>
 						</div>
 					</div>
-				</div>
-				</div>
 				</form> 
 			</div>
 
