@@ -17,7 +17,7 @@
  *  semantic functions
  */
 
-/* sidebar navi */
+/* sidebar navi */ 
 $('.ui.sidebar')
    .sidebar('attach events', '.toc.item')
 ;
