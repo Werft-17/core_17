@@ -44,7 +44,7 @@ function build_page(&$admin, &$database)
 	global $parser, $loader;
 	if (!isset($parser))
 	{
-	require_once( LEPTON_PATH."/modules/lib_twig/library.php" );
+		require_once( LEPTON_PATH."/modules/lib_twig/library.php" );
 	}
 	
 	if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
@@ -54,7 +54,7 @@ function build_page(&$admin, &$database)
 	include_once(LEPTON_PATH . '/modules/lib_r_filemanager/library.php');
   
 	$page_values = array(
-	'source'	=> 	LEPTON_URL.'/modules/lib_r_filemanager/filemanager/dialog.php',
+	'source'	=> 	LEPTON_URL.'/modules/lib_r_filemanager/filemanager/dialog.php?akey='.$_SESSION['rfkey'],
 	'image'		=> 	LEPTON_URL.'/modules/lib_r_filemanager/filemanager/img/blank.png',	
 	'id'		=>	"id='r_filemanager'",	
 //	'style'		=> 	"style=''",	

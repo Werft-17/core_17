@@ -14,10 +14,11 @@ upload/include/
 #upload/install/
 upload/languages/
 upload/media/
-upload/modules/
+
 upload/page/
 upload/search/
 upload/temp/
 #upload/templates/
 
 upload/modules/droplets/install/
+upload/modules/newsreader

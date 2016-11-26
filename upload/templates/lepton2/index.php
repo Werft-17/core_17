@@ -37,7 +37,7 @@ if ( !defined( 'LEPTON_PATH' ) ) exit;
 	<!-- Left Column -->
 	<div id="side">	
 		<div id="navi1">
-		<!-- Navigation linke Seite (Hauptnavigation) -->
+		<!-- Main-Navigation on the left) -->
     	<?php
 			show_menu2(1, SM2_ROOT, SM2_ROOT+2, SM2_TRIM|SM2_PRETTY|SM2_XHTML_STRICT); 
     	?>
