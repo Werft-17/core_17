@@ -47,11 +47,11 @@ class LEPTON_core
 			'd.m.Y' => date( 'd.m.Y', $actual_time ) . ' (D.M.Y)',
 			'm-d-Y' => date( 'm-d-Y', $actual_time ) . ' (M-D-Y)',
 			'd-m-Y' => date( 'd-m-Y', $actual_time ) . ' (D-M-Y)',
-			'D|M|d,|Y' => date( 'D M d, Y', $actual_time ),
-			'M|d|Y' => date( 'M d Y', $actual_time ),
-			'd|M|Y' => date( 'd M Y', $actual_time ),
-			'jS|F,|Y' => date( 'jS F, Y', $actual_time ),
-			'l,|jS|F,|Y' => date( 'l, jS F, Y', $actual_time ) 
+			'D M d, Y' => date( 'D M d, Y', $actual_time ),
+			'M d Y' => date( 'M d Y', $actual_time ),
+			'd M Y' => date( 'd M Y', $actual_time ),
+			'jS F, Y' => date( 'jS F, Y', $actual_time ),
+			'l, jS F, Y' => date( 'l, jS F, Y', $actual_time ) 
 		);
 		
 		return $DATE_FORMATS;
@@ -82,8 +82,8 @@ class LEPTON_core
 	 		'system_default' => $sSystemDefault,
 			'H:i' => date( 'H:i', $actual_time ),
 			'H:i:s' => date( 'H:i:s', $actual_time ),
-			'g:i|a' => date( 'g:i a', $actual_time ),
-			'g:i|A' => date( 'g:i A', $actual_time ) 
+			'g:i a' => date( 'g:i a', $actual_time ),
+			'g:i A' => date( 'g:i A', $actual_time ) 
 		);
 		
 		return $TIME_FORMATS;

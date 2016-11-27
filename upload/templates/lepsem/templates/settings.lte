@@ -358,8 +358,8 @@
 								<div class="inline fields">
 									<label>{{ TEXT.TIMEZONE }}</label>
 									<select name="timezone_string" id="timezone_string">
-										{% for temp_time in timezone_table %}
-										<option value="{{ temp_time }}" {% if temp_time == timezone %}selected="selected"{% endif %}>{{ temp_time }}</option>
+										{% for temp_time in timezones %}
+										<option value="{{ temp_time }}" {% if temp_time == DEFAULT_TIMEZONE_STRING %}selected="selected"{% endif %}>{{ temp_time }}</option>
 										{% endfor %}
 									</select>
 								</div>
@@ -371,8 +371,10 @@
 								<div class="inline fields">
 									<label>{{ TEXT.DATE_FORMAT }}</label>
 									<select name="date_format" id="date_format">
-										{% for key, value in DATE_FORMATS %}
-										<option value="{{ key }}" {% if key == DATE_FORMAT %}selected="selected"{% endif %}>{{ value }}</option>
+										{% for key, value in date_formats %}
+										{% if(value != "") %}
+										<option value="{{ key }}" {% if key == DEFAULT_DATE_FORMAT %}selected="selected"{% endif %}>{{ value }}</option>
+										{% endif %}
 										{% endfor %}
 									</select>
 								</div>
@@ -384,8 +386,10 @@
 								<div class="inline fields">
 									<label>{{ TEXT.TIME_FORMAT }}</label>
 									<select name="time_format" id="time_format">
-										{% for key,value in TIME_FORMATS %}
-										<option value="{{ key }}" {% if key == TIME_FORMAT %}selected="selected"{% endif %}>{{ value }}</option>
+										{% for key,value in time_formats %}
+										{% if(value != "") %}
+										<option value="{{ key }}" {% if key == DEFAULT_TIME_FORMAT %}selected="selected"{% endif %}>{{ value }}</option>
+										{% endif %}
 										{% endfor %}
 									</select>
 								</div>
