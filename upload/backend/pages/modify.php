@@ -39,13 +39,27 @@ if (defined('LEPTON_PATH')) {
 if(!isset($_GET['page_id']) || !is_numeric($_GET['page_id'])) {
 	#header("Location: index.php");
 	#exit(0);
-	$page_ID = NULL;
+	$page_id = NULL;
 	$display_details = false;
 } else {
 	$page_id = $_GET['page_id'];
 	$display_details = true;
 }
 
+/**
+ *	If the page_id is NULL we try to get a valid one from the db; the first inside the tree
+ *	M.f.i.: Aldus - 27.11.2016
+ */
+if(NULL === $page_id)
+{
+	$temp = $database->get_one(	"SELECT `page_id` FROM `".TABLE_PREFIX."pages` order by `position` LIMIT 1" );
+	if(is_numeric($temp))
+	{
+		$page_id = $temp;
+		$display_details = true;
+	}
+}
+	
 require_once(LEPTON_PATH.'/framework/class.admin.php');
 $admin = new admin('Pages', 'pages_modify');
 
