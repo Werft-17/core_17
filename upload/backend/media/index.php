@@ -39,27 +39,23 @@ if (defined('LEPTON_PATH')) {
 function build_page(&$admin, &$database)
 {
     global $HEADING, $TEXT, $MENU, $MESSAGE;
-
-	//	Get the template-engine.
 	global $parser, $loader;
-	if (!isset($parser))
-	{
-		require_once( LEPTON_PATH."/modules/lib_twig/library.php" );
-	}
+	
+	LEPTON_tools::load(
+		LEPTON_PATH."/modules/lib_twig/library.php",
+		LEPTON_PATH."/modules/lib_r_filemanager/library.php"
+	);
 	
 	if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
+
 	$loader->prependPath( THEME_PATH."/templates/", "theme" );	// namespace for the Twig-Loader is "theme"
 
-	// Include the functions file
-	include_once(LEPTON_PATH . '/modules/lib_r_filemanager/library.php');
-  
 	$page_values = array(
-	'source'	=> 	LEPTON_URL.'/modules/lib_r_filemanager/filemanager/dialog.php?akey='.$_SESSION['rfkey'],
-	'image'		=> 	LEPTON_URL.'/modules/lib_r_filemanager/filemanager/img/blank.png',	
-	'id'		=>	"id='r_filemanager'",	
+		'source'	=> 	LEPTON_URL.'/modules/lib_r_filemanager/filemanager/dialog.php?akey='.$_SESSION['rfkey'],
+		'image'		=> 	LEPTON_URL.'/modules/lib_r_filemanager/filemanager/img/blank.png',	
+		'id'		=>	"id='r_filemanager'",	
 //	'style'		=> 	"style=''",	
-	'seamless'	=>	"seamless='seamless'"
-
+		'seamless'	=>	"seamless='seamless'"
 	);
 
 	echo $parser->render(

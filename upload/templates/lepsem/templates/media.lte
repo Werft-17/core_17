@@ -12,20 +12,6 @@
 {% autoescape false %}
 
 <div class="ui grid"> <!-- start pages content-->
-  <div class="four wide column"> <!-- start page-tree -->
-  
-  page tree?
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  </div> <!-- end page-tree -->
-  
 	<!-- Media iFrame -->
 	<div class="r_filemanager">
 		<div class="fm_iframe">
