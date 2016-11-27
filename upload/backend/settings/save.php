@@ -39,7 +39,7 @@ if (defined('LEPTON_PATH')) {
 // prevent this file from being accessed directly in the browser (would set all entries in DB settings table to '')
 if (!isset ($_POST['default_language']) || $_POST['default_language'] == '')
 {
-	die(LEPTON_tools::display( $_POST ));
+	// die(LEPTON_tools::display( $_POST ));
     die( header('Location: index.php'));
 }
 
@@ -112,59 +112,78 @@ function save_settings(&$admin, &$database)
 
     // language must be 2 upercase letters only
     $default_language = strtoupper( $admin->get_post('default_language'));
-    $settings['default_language'] = (preg_match('/^[A-Z]{2}$/', $default_language) ? $default_language : $old_settings['default_language']);
-    // without default value
+    $settings['default_language'] = (preg_match('/^[A-Z]{2}$/', $default_language) )
+    	? $default_language
+    	: $old_settings['default_language']
+    	;
+	
+	//	needed for the time/date/timezones here
     $user_time = false;
     
 	// timezone must match a value in the table
-	$default_timezone_string = DEFAULT_TIMEZONESTRING;
-	if (in_array($admin->get_post('default_timezone_string'), $timezone_table)) {
-		$default_timezone_string = $admin->get_post('default_timezone_string');
-	} 
+	$posted_default_timezone_string = $admin->get_post('default_timezone_string');
+	
+	$default_timezone_string = (in_array($posted_default_timezone_string, LEPTON_core::get_timezones() ))
+		? $posted_default_timezone_string
+		: DEFAULT_TIMEZONESTRING
+		;
 
 	// date_format must be a key from /interface/date_formats
     $default_date_format = $admin->get_post('default_date_format');
     $date_format_key = str_replace(' ', '|', $default_date_format);
-    
-    include (LEPTON_PATH.'/framework/var.date_formats.php');
-    
-    $settings['default_date_format'] = (array_key_exists($date_format_key, $DATE_FORMATS) ? $default_date_format : $old_settings['default_date_format']);
-    unset ($DATE_FORMATS);
+        
+    $settings['default_date_format'] = (array_key_exists($date_format_key, LEPTON_core::get_dateformats() )) 
+    	? $default_date_format 
+    	: $old_settings['default_date_format']
+    	;
     
     // time_format must be a key from /interface/time_formats
     $time_format = $admin->get_post('default_time_format');
     $time_format_key = str_replace(' ', '|', $time_format);
-    
-    include (LEPTON_PATH.'/framework/var.time_formats.php');
-    
-    $settings['default_time_format'] = (array_key_exists($time_format_key, $TIME_FORMATS) ? $time_format : $old_settings['default_time_format']);
-    unset ($TIME_FORMATS);
-    
+        
+    $settings['default_time_format'] = (array_key_exists($time_format_key, LEPTON_core::get_timeformats() ))
+    	? $time_format
+    	: $old_settings['default_time_format']
+    	;
+
     // charsets must be a key from /interface/charsets
-    $char_set = ($admin->get_post('default_charset'));
-    include (ADMIN_PATH.'/interface/charsets.php');
-    $settings['default_charset'] = (array_key_exists($char_set, $CHARSETS) ? $char_set : $old_settings['default_charset']);
-    unset ($CHARSETS);
+    $char_set = $admin->get_post('default_charset');
+    $settings['default_charset'] = (array_key_exists($char_set, LEPTON_core::get_charsets() ))
+    	? $char_set 
+    	: $old_settings['default_charset']
+    	;
+
     //  error reporting values validation
-    require (ADMIN_PATH.'/interface/er_levels.php');
-    $settings['er_level'] = isset ($settings['er_level']) && (array_key_exists($settings['er_level'], $ER_LEVELS)) ? intval($settings['er_level']) : $old_settings['er_level'];
-    unset ($ER_LEVELS);
-    //  count groups_id and <> 1, do it with sql statement if groups were added
-    $settings['frontend_login'] = (isset ($settings['frontend_login'])) ? ($settings['frontend_login']) : $old_settings['frontend_login'];
+    $settings['er_level'] = (isset ($settings['er_level']) && (array_key_exists($settings['er_level'], LEPTON_core::get_errorlevels() )))
+    	? intval($settings['er_level']) 
+    	: $old_settings['er_level']
+    	;
+    
+    //  frontend login? M.f.i. (Aldus - 27.11.2016)
+    $settings['frontend_login'] = (isset ($settings['frontend_login'])) 
+    	? $settings['frontend_login'] 
+    	: $old_settings['frontend_login']
+    	;
+    	
+	// M.f.i.:	Aldus - 27.11.2016
+	//	Gibt es eine gruppe bzw. ist die gruppen-id zulässig???
     if (isset ($settings['frontend_signup']))
     {
 		$gid = (int)$settings['frontend_signup'];
-		if ($gid == 0) {
+		if ($gid == 0)
+		{
 			$settings['frontend_signup'] = 0;  // no frontend_signup allowed
 		} else {
-			$sql = "SELECT * FROM ".TABLE_PREFIX."groups WHERE group_id = $gid";
-			if (($result = $database->query($sql)) && ($result->numRows() > 0)) {
+			$sql = "SELECT * FROM `".TABLE_PREFIX."groups` WHERE `group_id` = ".$gid;
+			if (($result = $database->query($sql)) && ($result->numRows() > 0))
+			{
 				$settings['frontend_signup'] = $gid;
 			} else {
 				$settings['frontend_signup'] = $old_settings['frontend_signup'];
 			}
 		}
     }
+    
     // bools checks
     $settings['home_folders'] = isset ($settings['home_folders']) ? ($settings['home_folders']) : $old_settings['home_folders'];
     $settings['homepage_redirection'] = isset ($settings['homepage_redirection']) ? ($settings['homepage_redirection']) : $old_settings['homepage_redirection'];
