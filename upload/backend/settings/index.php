@@ -79,7 +79,10 @@ function build_settings( &$admin, &$database )
 		'FORM_NAME' 		=> 'settings',
 		'ACTION_URL' 		=> ADMIN_URL.'/settings/save.php',
 		'leptoken'		=> LEPTON_tools::get_leptoken(),
-		'error_levels'	=> LEPTON_core::get_errorlevels()
+		'error_levels'	=> LEPTON_core::get_errorlevels(),
+		'timezones'		=> LEPTON_core::get_timezones(),
+		'date_formats'	=> LEPTON_core::get_dateformats(),
+		'time_formats'	=> LEPTON_core::get_timeformats()
 	);
 
 	//	[2.0] db fields of settings
@@ -92,20 +95,8 @@ function build_settings( &$admin, &$database )
 		$template_vars['languages'],
 		true
 	);
-
-	//	[2.2] timezones
-	require( LEPTON_PATH.'/framework/var.timezones.php' );
-	$template_vars['timezones']	= $timezone_table;
 	
-	//	[2.3]  date format
-	require_once(LEPTON_PATH.'/framework/var.date_formats.php' );
-	$template_vars['date_formats']	= $DATE_FORMATS;
-	
-	//	[2.4] time format
-	require( LEPTON_PATH.'/framework/var.time_formats.php' );
-	$template_vars['time_formats'] =  $TIME_FORMATS;#
-	
-	//	[2.6] installed editors
+	//	[2.2] installed editors
 	$database->execute_query(
 		"SELECT `name`,`directory` FROM `" . TABLE_PREFIX . "addons` WHERE `type` = 'module' AND `function`='wysiwyg' ORDER BY `name`",
 		true,
@@ -113,7 +104,7 @@ function build_settings( &$admin, &$database )
 		true
 	);
 
-	//	[2.7.1] template list
+	//	[2.3.1] template list
 	$database->execute_query(
 		"SELECT `name`,`directory` FROM `" . TABLE_PREFIX . "addons` WHERE `type` = 'template' AND `function` != 'theme' ORDER BY `name`",
 		true,
@@ -121,7 +112,7 @@ function build_settings( &$admin, &$database )
 		true
 	);
 
-	//	[2.7.2] backend theme list
+	//	[2.3.2] backend theme list
 	$database->execute_query(
 		"SELECT `name`,`directory` FROM `" . TABLE_PREFIX . "addons` WHERE `type` = 'template' AND `function` = 'theme' ORDER BY `name`",
 		true,
