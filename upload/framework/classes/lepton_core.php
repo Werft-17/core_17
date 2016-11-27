@@ -19,6 +19,26 @@ class LEPTON_core
 {
 	
 	/**
+     * @var Singleton The reference to *Singleton* instance of this class
+     */
+    private static $instance;
+    
+    /**
+	 *	Return the »internal«
+	 *
+	 *	@param	array	Optional params
+	 */
+	public static function getInstance( &$settings=array() )
+    {
+        if (null === static::$instance)
+        {
+            static::$instance = new static();
+        }
+        
+        return static::$instance;
+    }
+    
+	/**
 	 *		Get the date formats
 	 */
 	static function get_dateformats() {

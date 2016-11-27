@@ -46,8 +46,8 @@ function build_settings( &$admin, &$database )
 	$curr_user_is_admin = ( in_array( 1, $admin->get_groups_id() ) );
 
 	// Include the functions file
-	require_once( LEPTON_PATH . '/framework/summary.functions.php' );
-	require_once( LEPTON_PATH . '/framework/summary.utf8.php' );
+	// require_once( LEPTON_PATH . '/framework/summary.functions.php' );
+	// require_once( LEPTON_PATH . '/framework/summary.utf8.php' );
 
 	// check if theme language file exists for the language set by the user (e.g. DE, EN)
 	$lang = ( file_exists( THEME_PATH . '/languages/' . LANGUAGE . '.php' ) ) ? LANGUAGE : 'EN';
@@ -69,6 +69,9 @@ function build_settings( &$admin, &$database )
 	$settings = array();
 	foreach($all_settings as &$ref) $settings[ $ref['name'] ] = $ref['value'];
 
+	//	get an instance from LEPTON_core as we are "call" this more than twice times next
+	$oLEPTON = LEPTON_core::getInstance();
+	
 	/**
 	 *	Init template vars (-storage)
 	 */
@@ -76,13 +79,13 @@ function build_settings( &$admin, &$database )
 		'TEXT'		=> $TEXT,
 		'MESSAGE'	=> $MESSAGE,
 		'HEADING'	=> $HEADING,
-		'FORM_NAME' 		=> 'settings',
-		'ACTION_URL' 		=> ADMIN_URL.'/settings/save.php',
+		'FORM_NAME'		=> 'settings',
+		'ACTION_URL'	=> ADMIN_URL.'/settings/save.php',
 		'leptoken'		=> LEPTON_tools::get_leptoken(),
-		'error_levels'	=> LEPTON_core::get_errorlevels(),
-		'timezones'		=> LEPTON_core::get_timezones(),
-		'date_formats'	=> LEPTON_core::get_dateformats(),
-		'time_formats'	=> LEPTON_core::get_timeformats()
+		'error_levels'	=> $oLEPTON->get_errorlevels(),
+		'timezones'		=> $oLEPTON->get_timezones(),
+		'date_formats'	=> $oLEPTON->get_dateformats(),
+		'time_formats'	=> $oLEPTON->get_timeformats()
 	);
 
 	//	[2.0] db fields of settings
