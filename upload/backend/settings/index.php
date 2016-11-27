@@ -78,7 +78,8 @@ function build_settings( &$admin, &$database )
 		'HEADING'	=> $HEADING,
 		'FORM_NAME' 		=> 'settings',
 		'ACTION_URL' 		=> ADMIN_URL.'/settings/save.php',
-		'leptoken'		=> LEPTON_tools::get_leptoken()
+		'leptoken'		=> LEPTON_tools::get_leptoken(),
+		'error_levels'	=> LEPTON_core::get_errorlevels()
 	);
 
 	//	[2.0] db fields of settings
