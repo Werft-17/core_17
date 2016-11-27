@@ -45,10 +45,6 @@ function build_settings( &$admin, &$database )
 	// check if current user is admin
 	$curr_user_is_admin = ( in_array( 1, $admin->get_groups_id() ) );
 
-	// Include the functions file
-	// require_once( LEPTON_PATH . '/framework/summary.functions.php' );
-	// require_once( LEPTON_PATH . '/framework/summary.utf8.php' );
-
 	// check if theme language file exists for the language set by the user (e.g. DE, EN)
 	$lang = ( file_exists( THEME_PATH . '/languages/' . LANGUAGE . '.php' ) ) ? LANGUAGE : 'EN';
 
@@ -68,13 +64,14 @@ function build_settings( &$admin, &$database )
 
 	$settings = array();
 	foreach($all_settings as &$ref) $settings[ $ref['name'] ] = $ref['value'];
-
-	//	get an instance from LEPTON_core as we are "call" this more than twice times next
-	$oLEPTON = LEPTON_core::getInstance();
 	
 	/**
 	 *	Init template vars (-storage)
 	 */
+
+	//	get an instance from LEPTON_core as we are "call" this more than twice times next
+	$oLEPTON = LEPTON_core::getInstance();
+
 	$template_vars = array(
 		'TEXT'		=> $TEXT,
 		'MESSAGE'	=> $MESSAGE,
