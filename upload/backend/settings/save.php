@@ -47,6 +47,7 @@ if (!isset ($_POST['default_language']) || $_POST['default_language'] == '')
  *	Find out if the user was view advanced options or not
  *
  */
+if(!isset($_POST['advanced'])) $_POST['advanced'] = "";
 $advanced = ($_POST['advanced'] == 'yes') ? '?advanced=yes' : '';
 $submit = isset ($_POST['submit']) && ($_POST['submit'] == $TEXT['SAVE']) ? 'save' : 'advanced';
 
@@ -92,7 +93,7 @@ function save_settings(&$admin, &$database)
 	 */
     $sql = 'SELECT `name`, `value` FROM `'.TABLE_PREFIX.'settings` ORDER BY `name`';
     if ($res_settings = $database->query($sql) ) {
-        while( false !== ($row = $res_settings->fetchRow( MYSQL_ASSOC ) ) ) {
+        while( false !== ($row = $res_settings->fetchRow() ) ) {
             $old_settings[$row['name']] = $row['value'];
             /**
              *	WARNING: bad structure begins here, must be reworked!
