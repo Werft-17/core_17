@@ -21,7 +21,7 @@
 					<div class="two column row">
 						<div class="column">			
 							<div class="ui form">
-								<div class="ui inline fields">
+								<div class="field">
 									<label>{{ TEXT.VISIBILITY }}:</label>
 									<select name="visibility">
 										<option value="public" selected='selected'>{{ TEXT.PUBLIC }}</option>
@@ -36,7 +36,7 @@
 						
 						<div class="column">			
 							<div class="ui form">
-								<div class="ui inline fields">
+								<div class="field">
 									<label>{{ TEXT.TEMPLATE }}</label>
 									<select name="search_template">
 										<option value="{{ FILE }}"{{ SELECTED }}>{{ NAME }}</option>
@@ -51,7 +51,7 @@
 					<div class="one column row">
 						<div class="column">		
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<label>{{ TEXT.MODULE_ORDER }}</label>
 									<input type="text" name="search_module_order" value="{{ SEARCH_MODULE_ORDER }}" />
 								</div>
@@ -63,7 +63,7 @@
 					<div class="two column row">
 						<div class="column">		
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<label>{{ TEXT.MAX_EXCERPT }}</label>
 									<input type="text" name="search_max_excerpt" value="{{ SEARCH_MAX_EXCERPT }}" />
 								</div>
@@ -72,7 +72,7 @@
 						
 						<div class="column">		
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<label>{{ TEXT.TIME_LIMIT }}</label>
 									<input type="text" name="search_time_limit" value="{{ SEARCH_TIME_LIMIT }}" />
 								</div>
