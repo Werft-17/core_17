@@ -132,8 +132,8 @@ padding:10px;
 }
 
 
-.navi {
-    margin-left: -18px !important;
+.ui.styled.accordion .accordion .active.title, .ui.styled.accordion .active.title {
+    background: #eee none repeat scroll 0 0;
 }
 
 /* content */
