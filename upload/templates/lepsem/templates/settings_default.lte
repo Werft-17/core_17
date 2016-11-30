@@ -127,7 +127,7 @@
 								<div class="inline fields">
 									<label>{{ TEXT.LEPTOKEN_LIFETIME }}</label>
 									<input type="text" name="leptoken_lifetime" value="{{ LEPTOKEN_LIFETIME }}" />
-									<div class="ui message lepsem_submit">{{ HELP.LEPTOKEN_LIFETIME }}</div>
+									<div class="ui message lepsem_submit">{{ TEXT.HELP_LEPTOKEN_LIFETIME }}</div>
 								</div>
 							</div>					
 						</div>									
@@ -139,7 +139,7 @@
 								<div class="inline fields">
 									<label>{{ TEXT.MAX_ATTEMPTS }}</label>
 									<input type="text" name="max_attempts" value="{{ MAX_ATTEMPTS }}" />
-									<div class="ui message lepsem_submit">{{ HELP.MAX_ATTEMPTS }}</div>
+									<div class="ui message lepsem_submit">{{ TEXT.HELP_MAX_ATTEMPTS }}</div>
 								</div>
 							</div>					
 						</div>				
