@@ -34,7 +34,7 @@
 				<div class="two column row">
 					<div class="column">
 						<div class="ui form">
-							<div class="inline fields">
+							<div class="field">
 								<label>{{ TEXT.DISPLAY_NAME }}:</label>
 								<input type="text" id="display_name" name="display_name" value="{{ current_user.display_name }}" />
 							</div>
@@ -43,7 +43,7 @@
 					
 					<div class="column">
 						<div class="ui form">
-							<div class="inline fields">
+							<div class="field">
 								<label>{{ TEXT.EMAIL }}:</label>
 								<input type="text" id="email" name="email" value="{{ current_user.email }}" />
 							</div>
@@ -54,7 +54,7 @@
 				<div class="two column row">
 					<div class="column">			
 						<div class="ui form">
-							<div class="inline fields">
+							<div class="field">
 								<label>{{ TEXT.LANGUAGE }}:</label>
 								<select name="language" id="language">
 									{% for lang in languages %}
@@ -67,7 +67,7 @@
 					
 					<div class="column">			
 						<div class="ui form">
-							<div class="inline fields">
+							<div class="field">
 								<label>{{ INIT_PAGE_LABEL }}:</label>
 								{{ INIT_PAGE_SELECT }}
 							</div>
@@ -78,7 +78,7 @@
 				<div class="three column row">
 					<div class="column">			
 						<div class="ui form">
-							<div class="inline fields">
+							<div class="field">
 								<label>{{ TEXT.TIMEZONE }}:</label>
 								<select name="timezone_string" id="timezone_string">
 									{% for temp_time in timezone_table %}
@@ -91,7 +91,7 @@
 				
 					<div class="column">			
 						<div class="ui form">
-							<div class="inline fields">
+							<div class="field">
 								<label>{{ TEXT.DATE_FORMAT }}:</label>
 								<select name="date_format" id="date_format">
 									{% for key, value in DATE_FORMATS %}
@@ -104,7 +104,7 @@
 					
 					<div class="column">			
 						<div class="ui form">
-							<div class="inline fields">
+							<div class="field">
 								<label>{{ TEXT.TIME_FORMAT }}:</label>
 								<select name="time_format" id="time_format">
 									{% for key,value in TIME_FORMATS %}
@@ -119,7 +119,7 @@
 				<div class="two column row">
 					<div class="column">			
 						<div class="ui form">
-							<div class="inline fields">
+							<div class="field">
 								<label>{{ TEXT.NEW_PASSWORD }}:</label>
 								<input type="password" id="new_password_1" name="new_password_1" value="{{ EMPTY_STRING }}" />
 							</div>
@@ -128,7 +128,7 @@
 					
 					<div class="column">			
 						<div class="ui form">
-							<div class="inline fields">
+							<div class="field">
 								<label>{{ TEXT.RETYPE_NEW_PASSWORD }}:</label>
 								<input type="password" id="new_password_2" name="new_password_2" value="{{ EMPTY_STRING }}" />
 							</div>
@@ -139,23 +139,21 @@
 			</div> <!-- end divided grid -->
 
 			<div class="ui grid">				
-				<h4 class="ui horizontal divider red header">
+				<h4 class="ui horizontal divider orange header">
 				  <i class="warning sign icon"></i>
 				  {{ TEXT.NEED_CURRENT_PASSWORD }}
 				</h4>				
 
-				<div class="two column row">
+				<div class="row">
 					<div class="column">			
 						<div class="ui form">
 							<div class="inline fields">
-								<label>{{ TEXT.CURRENT_PASSWORD }}:</label>
+								<label class="oneliner">{{ TEXT.CURRENT_PASSWORD }}:</label>
 								<input type="password" id="current_password" name="current_password" value="{{ EMPTY_STRING }}" />
 							</div>
 						</div>					
 					</div>	
-					
-					<div class="column">							
-					</div>				
+								
 				</div> <!-- end row -->
 			</div> <!-- end  grid -->				
 
