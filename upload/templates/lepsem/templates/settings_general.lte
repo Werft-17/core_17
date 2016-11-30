@@ -63,8 +63,10 @@
 								<textarea name="website_footer" rows="3">{{ WEBSITE_FOOTER }}</textarea>
 							</div>					
 						</div>	
-						
-					<div class="three column row">
+
+					<div class="ui spacer2"></div>
+					
+					<div class="four column row">
 						<div class="column">			
 							<div class="ui form">
 								<div class="inline fields">
@@ -75,53 +77,29 @@
 								</div>
 							</div>					
 						</div>				
-					
+
 						<div class="column">			
 							<div class="ui form">
 								<div class="inline fields">
-									<label for="{{ TEXT.PAGE_LANGUAGES }}">{{ TEXT.PAGE_LANGUAGES }}</label>
-									
-									<div class="field">
-										<div class="ui radio checkbox">
-											<input name="page_languages" id="page_languages_true" value="false"{{ PAGE.LANGUAGES_ENABLED }} type="radio" />
-											<label for="page_languages_true">{{ TEXT.ENABLED }}</label>
-										</div>
-									</div>
-							
-									<div class="field">
-										<div class="ui radio checkbox">
-											<input name="page_languages" id="page_languages_false" value="false"{{ PAGE.LANGUAGES_DISABLED }} type="radio" />
-											<label for="page_languages_false">{{ TEXT.DISABLED }}</label>
-										</div>
+									<div class="ui checkbox">	
+										<input type="checkbox" name="page_languages" id="page_languages_true" value="false"{{ PAGE.LANGUAGES_ENABLED }} />
+										<label for="{{ TEXT.PAGE_LANGUAGES }}">{{ TEXT.PAGE_LANGUAGES }}</label>
 									</div>
 								</div>
-							</div>									
+							</div>					
+						</div>
+						
+						<div class="column">			
+							<div class="ui form">
+								<div class="inline fields">
+									<div class="ui checkbox">	
+										<input type="checkbox" name="page_trash" id="page_trash_inline" value="inline"{{ PAGE.TRASH_INLINE }} />
+										<label for="{{ TEXT.PAGE_TRASH }}">{{ TEXT.PAGE_TRASH }}</label>
+									</div>
+								</div>
+							</div>					
 						</div>
 
-						<div class="column">			
-							<div class="ui form">
-								<div class="inline fields">
-									<label for="{{ TEXT.PAGE_LANGUAGES }}">{{ TEXT.PAGE_TRASH }}</label>
-									
-									<div class="field">
-										<div class="ui radio checkbox">
-											<input type="radio" name="page_trash" id="page_trash_inline" value="inline"{{ PAGE.TRASH_INLINE }} />
-											<label for="page_trash_inline">{{ TEXT.INLINE }}</label>
-										</div>
-									</div>
-							
-									<div class="field">
-										<div class="ui radio checkbox">
-											<input type="radio" name="page_trash" id="page_trash_disabled" value="disabled"{{ PAGE.TRASH_DISABLED }} />
-											<label for="page_trash_disabled">{{ TEXT.DISABLED }}</label>
-										</div>
-									</div>
-								</div>
-							</div>									
-						</div>				
-					</div> <!-- end row -->	
-
-					<div class="three column row">
 						<div class="column">			
 							<div class="ui form">
 								<div class="inline fields">
@@ -131,14 +109,29 @@
 									</div>
 								</div>
 							</div>					
-						</div>				
+						</div>
+						
+					</div> <!-- end row -->	
 					
+					<div class="four column row">
+	
+						<div class="column">			
+							<div class="ui form">
+								<div class="inline fields">
+									<div class="ui checkbox">	
+										<input type="checkbox" name="frontend_login" id="frontend_login_true" value="true"{{ PRIVATE_ENABLED }} />
+										<label for="{{ TEXT.LOGIN }}">{{ TEXT.LOGIN }}</label>										
+									</div>
+								</div>
+							</div>					
+						</div>
+						
 						<div class="column">			
 							<div class="ui form">
 								<div class="inline fields">
 									<div class="ui checkbox">	
 										<input type="checkbox" name="manage_sections" id="manage_sections_true" value="true"{{ MANAGE_SECTIONS_ENABLED }} />
-										<label for="{{ TEXT.MANAGE_SECTIONS }}">{{ TEXT.MANAGE_SECTIONS }}</label>										
+										<label for="{{ HEADING.MANAGE_SECTIONS }}">{{ HEADING.MANAGE_SECTIONS }}</label>										
 									</div>
 								</div>
 							</div>					
@@ -153,13 +146,8 @@
 									</div>
 								</div>
 							</div>					
-						</div>			
-					</div> <!-- end row -->	
+						</div>	
 
-					<div class="three column row">
-						<div class="column">							
-						</div>				
-					
 						<div class="column">			
 							<div class="ui form">
 								<div class="inline fields">
@@ -170,21 +158,13 @@
 								</div>
 							</div>					
 						</div>
-
-						<div class="column">			
-							<div class="ui form">
-								<div class="inline fields">
-									<div class="ui checkbox">	
-										<input type="checkbox" name="frontend_login" id="frontend_login_true" value="true"{{ PRIVATE_ENABLED }} />
-										<label for="{{ TEXT.LOGIN }}">{{ TEXT.LOGIN }}</label>										
-									</div>
-								</div>
-							</div>					
-						</div>			
+						
 					</div> <!-- end row -->	
+
+					<div class="ui spacer2"></div>
 					
 					<div class="three column row">
-						<div class="column">			
+						<div class="five wide column">			
 							<div class="ui form">
 								<div class="ui inline fields">
 									<label>{{ TEXT.PAGE_LEVEL_LIMIT }}</label>
@@ -194,17 +174,8 @@
 								</div>			
 							</div>						
 						</div>				
-					
-						<div class="column">
-							<div class="ui form">
-								<div class="inline fields">
-									<label>{{ TEXT.REDIRECT_AFTER }}</label>
-									<input type="text" name="redirect_timer" value="{{ REDIRECT_TIMER }}" />
-								</div>
-							</div>							
-						</div>	
-						
-						<div class="column">			
+
+						<div class="five wide column">			
 							<div class="ui form">
 								<div class="ui inline fields">
 									<label>{{ TEXT.SIGNUP }}</label>
@@ -213,7 +184,17 @@
 									</select>
 								</div>			
 							</div>						
-						</div>					
+						</div>
+						
+						<div class="six wide column">
+							<div class="ui form">
+								<div class="inline fields">
+									<label>{{ TEXT.REDIRECT_AFTER }}</label>
+									<input type="text" name="redirect_timer" value="{{ REDIRECT_TIMER }}" />
+								</div>
+							</div>							
+						</div>	
+											
 					</div> <!-- end row -->						
 
 					<div class="two column row">
