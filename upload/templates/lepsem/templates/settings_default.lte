@@ -18,34 +18,11 @@
 	<div class="ui basic segment">
 		<div class="ui two column doubling grid container">
 
-					<div class="three column row">
-						<div class="column">			
-							<div class="ui form">
-								<div class="ui inline fields">
-									<label>{{ TEXT.LANGUAGE }}</label>
-									<select name="default_language">
-									{% for lang in languages %}
-										<option value="{{ lang.directory }}" {% if(lang.directory == DEFAULT_LANGUAGE) %}selected='selected'{% endif %}>{{ lang.name }} ({{ lang.directory }})</option>
-									{% endfor %}
-									</select>
-								</div>			
-							</div>						
-						</div>	
-
-						<div class="column">			
-							<div class="ui form">
-								<div class="ui inline fields">
-									<label>{{ TEXT.LINK }} {{ TEXT.CHARSET }}</label>
-									<select name="link_charset">
-										<option value="utf-8" selected='selected'>utf-8</option>
-									</select>
-								</div>			
-							</div>						
-						</div>
+					<div class="four column row">
 						
-						<div class="column">			
+						<div class="five wide column">			
 							<div class="ui form">
-								<div class="ui inline fields">
+								<div class="field">
 									<label>{{ TEXT.TEMPLATE }}</label>
 									<select name="default_template">
 									{% for template in templates %}
@@ -56,14 +33,38 @@
 							</div>						
 						</div>
 
-						<div class="column">			
+						<div class="five wide column">			
 							<div class="ui form">
-								<div class="ui inline fields">
+								<div class="field">
 									<label>{{ TEXT.THEME }}</label>
 									<select name="default_theme">
 									{% for theme in themes %}
 										<option value="{{theme.directory }}" {% if(DEFAULT_THEME == theme.directory) %}selected='selected'{% endif %}>{{ theme.name }}</option>
 									{% endfor %}
+									</select>
+								</div>			
+							</div>						
+						</div>
+
+						<div class="three wide column">			
+							<div class="ui form">
+								<div class="field">
+									<label>{{ TEXT.LANGUAGE }}</label>
+									<select name="default_language">
+									{% for lang in languages %}
+										<option value="{{ lang.directory }}" {% if(lang.directory == DEFAULT_LANGUAGE) %}selected='selected'{% endif %}>{{ lang.name }} ({{ lang.directory }})</option>
+									{% endfor %}
+									</select>
+								</div>			
+							</div>						
+						</div>	
+
+						<div class="three wide column">			
+							<div class="ui form">
+								<div class="field">
+									<label>{{ TEXT.LINK }} {{ TEXT.CHARSET }}</label>
+									<select name="link_charset">
+										<option value="utf-8" selected='selected'>utf-8</option>
 									</select>
 								</div>			
 							</div>						
@@ -74,7 +75,7 @@
 					<div class="three column row">
 						<div class="column">			
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<label>{{ TEXT.TIMEZONE }}</label>
 									<select name="timezone_string" id="timezone_string">
 										{% for temp_time in timezones %}
@@ -87,7 +88,7 @@
 					
 						<div class="column">			
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<label>{{ TEXT.DATE_FORMAT }}</label>
 									<select name="date_format" id="date_format">
 										{% for key, value in date_formats %}
@@ -102,7 +103,7 @@
 						
 						<div class="column">			
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<label>{{ TEXT.TIME_FORMAT }}</label>
 									<select name="time_format" id="time_format">
 										{% for key,value in time_formats %}
