@@ -27,7 +27,7 @@
 					<div class="two column row">
 						<div class="column">
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<label>{{ TEXT.WBMAILER_DEFAULT_SENDER_MAIL }}</label>
 									<input type="text" name="server_email" value="{{ SERVER_EMAIL }}" />
 								</div>
@@ -36,7 +36,7 @@
 						
 						<div class="column">
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<label>{{ TEXT.WBMAILER_DEFAULT_SENDER_NAME }}</label>
 									<input type="text" name="wbmailer_default_sendername" value="{{ WBMAILER_DEFAULT_SENDER_NAME }}" />
 								</div>
@@ -79,7 +79,7 @@
 						
 					</div> <!-- end row -->					
 
-					<h4 class="ui horizontal divider blue header">
+					<h4 class="ui horizontal divider orange header">
 					  {{ TEXT.WBMAILER_SMTP_AUTH }}
 					</h4>					
 
@@ -92,7 +92,7 @@
 					<div class="two column row">					
 						<div class="column">			
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<label>{{ TEXT.WBMAILER_SMTP_HOST }}</label>
 									<input type="text" name="wbmailer_smtp_host" value="{{ WBMAILER_SMTP_HOST }}" />
 								</div>
@@ -101,7 +101,7 @@
 					
 						<div class="column">			
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<div class="ui checkbox">									
 										<input type="checkbox" name="wbmailer_smtp_auth" id="wbmailer_smtp_auth" onclick="javascript: toggle_wbmailer_auth();"  value="true"{{ SMTP_AUTH_SELECTED }} />
 										<label for="wbmailer_smtp_auth" onclick="javascript: toggle_wbmailer_auth(this.value);">{{ TEXT.WBMAILER_SMTP_AUTH }}</label>									
@@ -116,7 +116,7 @@
 					<div class="two column row">					
 						<div class="column">			
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<label>{{ TEXT.WBMAILER_SMTP_USERNAME }}</label>
 									<input type="text" name="wbmailer_smtp_username" value="{{ WBMAILER_SMTP_USERNAME }}" />
 								</div>
@@ -125,7 +125,7 @@
 					
 						<div class="column">			
 							<div class="ui form">
-								<div class="inline fields">
+								<div class="field">
 									<label>{{ TEXT.WBMAILER_SMTP_PASSWORD }}</label>
 									<input type="password" name="wbmailer_smtp_password" value="{{ WBMAILER_SMTP_PASSWORD }}" />
 								</div>
