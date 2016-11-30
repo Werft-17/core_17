@@ -94,8 +94,12 @@ a:hover {
     width: 100%;
 }
 
-.ui.menu .item::before {
-    width: 0px;
+.ui.vertical.menu .item {
+    line-height: 40px;
+}
+
+.ui.vertical.menu .item > i.icon {
+    margin: 16px;
 }
 
 /* header */
@@ -135,6 +139,12 @@ padding:10px;
 /* content */
 #content_container {
     margin-bottom: 30px;
+    width: 100%;
+}
+
+.fixed {
+    bottom: 0;
+    position: fixed !important;
     width: 100%;
 }
 

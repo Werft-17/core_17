@@ -27,6 +27,11 @@ $('.ui.checkbox')
   .checkbox()
 ;
 
+/* settings accordion */
+$('.ui.accordion')
+  .accordion()
+;
+
  /* initialize drop down buttons */
 $('.ui.dropdown, ui.select.dropdown ')
   .dropdown({
