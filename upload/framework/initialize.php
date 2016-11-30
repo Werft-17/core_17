@@ -56,8 +56,7 @@ if ( file_exists( dirname( __FILE__ ) . '/classes/lepton_database.php' ) )
 	
 	LEPTON_tools::register( "get_leptoken" );
 
-	// Create database class
-	// global $database;
+	// Get an instance from class database
 	$database = LEPTON_database::getInstance();
 	
 	// Get website settings (title, keywords, description, header, and footer)
@@ -138,14 +137,31 @@ if ( file_exists( dirname( __FILE__ ) . '/classes/lepton_database.php' ) )
 		session_name( APP_NAME . 'sessionid' );
 		
 		$cookie_settings = session_get_cookie_params();
-		session_set_cookie_params( 3 * 3600, // three hours
-			$cookie_settings[ "path" ], $cookie_settings[ "domain" ], ( strtolower( substr( $_SERVER[ 'SERVER_PROTOCOL' ], 0, 5 ) ) === 'https' ), // secure-bool
-			true // http only
-			);
-		unset( $cookie_settings );
+		
+		$server_is_https = (isset($_SERVER['HTTPS']))
+			? ( strtolower( $_SERVER[ 'HTTPS' ] )  == 'on' )
+			: false
+			;
+			
+		session_set_cookie_params(
+			3 * 3600, // three hours
+			$cookie_settings[ "path" ],
+			$cookie_settings[ "domain" ],
+			$server_is_https, // secure-bool
+			true // http only?
+		);
 		
 		session_start();
 		define( 'SESSION_STARTED', true );
+		
+		unset( $cookie_settings );
+		unset( $server_is_https );
+		
+	}
+	//	Try to set the session cookie to the current time + 3
+	if( true === isset($_COOKIE[ APP_NAME . 'sessionid' ]))
+	{
+		setcookie(session_name(), $_COOKIE[ APP_NAME . 'sessionid' ], time() + (3*3600), '/');
 	}
 	
 	if ( defined( 'ENABLED_ASP' ) && ENABLED_ASP && !isset( $_SESSION[ 'session_started' ] ) )
