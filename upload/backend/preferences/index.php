@@ -94,29 +94,15 @@ function build_page( &$admin, &$database )
 		$languages
 	);
 
-	/**
-	 *	Get the time-formats
-	 */
-	include_once( LEPTON_PATH.'/framework/var.time_formats.php' );
-	$temp_timeformats = array();
-	foreach($TIME_FORMATS as $key=>$val) $temp_timeformats[(str_replace("|", " ", $key))] = $val;
-	
-	/**
-	 *	Get the date-formats
-	 */
-	include_once( LEPTON_PATH."/framework/var.date_formats.php" );
-	$temp_dateformats = array();
-	foreach($DATE_FORMATS as $key=>$val) $temp_dateformats[(str_replace("|", " ", $key))] = $val;
-	
 	$page_values = array(
 		'current_user'	=> $current_user,
 		'languages'		=> $languages,
 		'LANGUAGE'		=> LANGUAGE,
-		'timezone_table'	=> $timezone_table,
+		'timezone_table'	=> LEPTON_core::get_timezones(),
 		'timezone'			=> isset( $_SESSION[ 'TIMEZONE_STRING' ] ) ? $_SESSION[ 'TIMEZONE_STRING' ] : DEFAULT_TIMEZONESTRING,
-		'TIME_FORMATS'		=> $temp_timeformats,
+		'TIME_FORMATS'		=> LEPTON_core::get_timeformats(),
 		'TIME_FORMAT'		=> TIME_FORMAT,
-		'DATE_FORMATS'		=> $temp_dateformats,
+		'DATE_FORMATS'		=> LEPTON_core::get_dateformats(),
 		'DATE_FORMAT'		=> DATE_FORMAT,
 		'EMPTY_STRING'		=> '',
 		'JS_TEXT_NEED_PASSWORD_TO_CONFIRM' => js_alert_encode($TEXT['NEED_PASSWORD_TO_CONFIRM']),
