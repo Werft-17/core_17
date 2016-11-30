@@ -88,6 +88,7 @@
 					Info
 					<i class="dropdown icon"></i>
 					<div class="menu">
+						<div class="item">{{ CURRENT_USER }} {{ DISPLAY_NAME }}</div>					
 						<div class="item">LEPTON CMS Version: {{ VERSION }}{{ SUBVERSION }}</div>
 						<div class="item">Backend Theme: {{ THEME_NAME }} {{ THEME_VERSION }}</div>
 					</div>
@@ -98,8 +99,6 @@
 				<a class="item" href="{{ URL_VIEW }}" target="_blank" title="{{ TITLE_VIEW }}"><i class="grey unhide large icon"></i></a>
 				<a class="item" href="{{ ADMIN_URL }}/logout/index.php" title="{{ TITLE_LOGOUT }}"><i class="red sign out large icon"></i></a>
 			</div> <!-- end ui.menu grid -->
-
-			<div class="ui visible message">{{ WELCOME_MESSAGE }} {{ CURRENT_USER }} {{ DISPLAY_NAME }}</div>
 			
 			{% if WARNING %}<div class="ui inverted red segment">{{ WARNING }}</div>{% endif %}
 
