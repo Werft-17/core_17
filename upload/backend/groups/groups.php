@@ -215,7 +215,7 @@ if($_POST['action'] == 'modify')
 	
 
 	echo $parser->render(
-		'@theme/groups_form.lte',
+		'@theme/groups.lte',
 		$page_values
 	);
 

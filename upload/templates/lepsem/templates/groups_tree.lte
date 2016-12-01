@@ -14,7 +14,7 @@
 			<div class="four wide column"> <!-- start  groups tree -->
 				<div class="spacer1"></div>
 				<h3 class="ui teal header">
-					<i class="cubes icon"></i>
+					<i class="users icon"></i>
 					<div class="content">{{ MENU.GROUPS }}</div>
 				</h3>
 				{% for group in all_groups %}

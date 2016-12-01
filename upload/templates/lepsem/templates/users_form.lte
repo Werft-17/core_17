@@ -15,7 +15,7 @@
 
 			<div class="column">
 				<h2 class="ui teal header">
-					<i class="huge teal users icon"></i>
+					<i class="huge teal user icon"></i>
 					<div class="content">{{ TEXT.MANAGE_USERS }}</div>
 				</h2>
 			</div>			
@@ -33,34 +33,29 @@
 
 			{% include "@theme/users_tree.lte" %} <!-- include users tree-->
 
-			<div class="twelve wide column"> <!-- start add user -->
+			<div class="twelve wide column"> <!-- start add users -->
 				<form name="{{ FORM_NAME }}" id="{{ FORM_NAME }}" action="{{ ACTION_URL }}" method="post">
-					<input type="hidden" name="user_id" value="{{ user.user_id }}" />
-					<input type="hidden" name="username_fieldname" value="{{ username_fieldname }}" />			
-				
+					<input type="hidden" name="users_id" value="{{ users.users_id }}" />
+					<input type="hidden" name="usersname_fieldname" value="{{ usersname_fieldname }}" />	
+					
+					<div class="ui message">{{ NEWUSERHINT }}</div>				
 					<div class="ui two column doubling grid container"> <!-- start level 1-->
-						
-						<div class="ui teal message user_message">
-							<i class="close icon"></i>
-							<div class="header">{{ MENU.USERS }}</div>
-							<p>{{ NEWUSERHINT }}</p>
-						</div>					
 					
 						 <!-- start row users -->
 							<div class="column">
 								<div class="ui form">
-									<div class="inline fields">
+									<div class="field">
 										<label>{{ TEXT.USERNAME }}:</label>
-										<input type="text" name="{{ username_fieldname }}" value="{{ user.username }}" />
+										<input type="text" name="{{ usersname_fieldname }}" value="{{ users.usersname }}" />
 									</div>
 								</div>							
 							</div>	
 						
 							<div class="column">			
 								<div class="ui form">
-									<div class="inline fields">
+									<div class="field">
 										<label>{{ TEXT.DISPLAY_NAME }}:</label>
-										<input type="text" name="display_name" value="{{ user.display_name }}" />
+										<input type="text" name="display_name" value="{{ users.display_name }}" />
 									</div>
 								</div>					
 							</div>					
@@ -69,20 +64,20 @@
 
 							<div class="column">
 								<div class="ui form">
-									<div class="inline fields">
+									<div class="field">
 										<label>{{ TEXT.EMAIL }}:</label>
-										<input type="text" name="email" value="{{ user.email }}" />
+										<input type="text" name="email" value="{{ users.email }}" />
 									</div>
 								</div>							
 							</div>
 							<div class="column">			
 								<div class="ui form">
-									<div class="inline fields">
+									<div class="field">
 										<label>{{ TEXT.HOME_FOLDER }}:</label>
-										<select class="ui fluid dropdown" name="home_folder">
+										<select name="home_folder">
 											<option value="">{{ TEXT.NONE }}</option>
 											{% for folder in media_dirs %}
-											<option value="{{ folder }}" {%  if (folder == user.home_folder) %}selected='selected'{% endif %}>{{ folder }}</option>
+											<option value="{{ folder }}" {%  if (folder == users.home_folder) %}selected='selected'{% endif %}>{{ folder }}</option>
 											{% endfor %}
 										</select>
 									</div>
@@ -93,7 +88,7 @@
 
 							<div class="column">			
 								<div class="ui form">
-									<div class="inline fields">
+									<div class="field">
 										<label>{{ TEXT.GROUP }}:</label>
 										<select name="groups[]" multiple="">
 										{% for group in all_groups %}		
@@ -106,9 +101,9 @@
 							
 							<div class="column">
 							
-									<div class="ui segment">
+									<div class="ui segment custom_segment">
 										<div class="ui checkbox">
-											<input type="checkbox" name="active[]" id="active" value="1" {% if user.active == 1 %}checked="checked"{% endif %} />
+											<input type="checkbox" name="active[]" id="active" value="1" {% if users.active == 1 %}checked="checked"{% endif %} />
 											<label>{{ TEXT.ACTIVE }}</label>
 										</div>
 
@@ -119,18 +114,18 @@
 
 							<div class="column">			
 								<div class="ui form">
-									<div class="inline fields">
+									<div class="field">
 										<label>{{ TEXT.PASSWORD }}:</label>
-										<input type="password" name="password" value="{{ user.password }}" />
+										<input type="password" name="password" value="{{ users.password }}" />
 									</div>
 								</div>					
 							</div>	
 							
 							<div class="column">			
 								<div class="ui form">
-									<div class="inline fields">
+									<div class="field">
 										<label>{{ TEXT.RETYPE_PASSWORD }}:</label>
-										<input type="password" name="password2" value="{{ user.password }}" />
+										<input type="password" name="password2" value="{{ users.password }}" />
 									</div>
 								</div>					
 							</div>				
@@ -164,7 +159,7 @@
 
 				</form>
 			
-			</div> <!-- end add user -->
+			</div> <!-- end add users -->
 		
 		</div> <!-- end content -->	
 	

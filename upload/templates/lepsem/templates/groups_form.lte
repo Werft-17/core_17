@@ -15,7 +15,7 @@
 
 			<div class="column">
 				<h2 class="ui teal header">
-					<i class="huge teal cubes icon"></i>
+					<i class="huge teal users icon"></i>
 					<div class="content">{{ TEXT.MANAGE_GROUPS }}</div>
 				</h2>
 			</div>			

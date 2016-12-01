@@ -174,9 +174,8 @@ img.module_detail  {
     margin: 10px !important;
 }
 
-.user_message {
-    margin: 15px 20px 20px !important;
-    width: 100%;
+.custom_segment {
+    margin-top: 24px !important;
 }
 
 .access_group label {
@@ -192,7 +191,7 @@ img.module_detail  {
 }
 
 
-/* settings for lib r_filemanager */
+/* settings for lib r_filemanager in media */
 .r_filemanager         {
     background: #ffffff none repeat scroll 0 0;
     height: 100%;
