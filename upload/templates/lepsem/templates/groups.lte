@@ -36,144 +36,121 @@
 			<div class="twelve wide column"> <!-- start left side -->
 	
 				
-				<div class="ui doubling grid container"> <!-- start level 1-->
-					<div class="ui hidden divider"></div>		
+				<div class="ui basic segment"> <!-- start level 1-->
+					<div class="ui fluid form">
 
-					<form name="{{ FORM_NAME }}" id="{{ FORM_NAME }}" action="{{ ACTION_URL }}" method="post">
-						<input type="hidden" name="group_id" id="group_id" value="{{ group.group_id }}" />
-						<input type="hidden" name="job" id="group_form_job" value="save" />
-						
-
-						
-						{# ######### start tabs ######## #}	
-						<div class="ui grid">
-
-							<div class="ui segments">
+						<form name="{{ FORM_NAME }}" id="{{ FORM_NAME }}" action="{{ ACTION_URL }}" method="post">
+							<input type="hidden" name="group_id" id="group_id" value="{{ group.group_id }}" />
+							<input type="hidden" name="job" id="group_form_job" value="save" />
 							
-								<div class="ui basic segment">
-									<div class="ui form">									
-										<div class="inline fields access_group">
-											<label>{{ HEADING.ADD_GROUP }}, {{ HEADING.MODIFY_DELETE_GROUP }}:</label>
-											<input type="text" class="ui" name="group_name" id="group_name" value="{{ group.name }}" />
-										</div>
-									</div>
-								</div>							
-								
-								<div class="ui segments">
-								    <div class="ui basic segment">
-									  <h4 class="ui teal header">{{ TEXT.SYSTEM_PERMISSIONS }}</h4>
-									</div>
-									{%  for sys_key in system_permissions %}						
-									<div class="ui basic segment">
+							<div class="column">			
+								<div class="ui form">
+									<div class="field">
+										<label>{{ HEADING.ADD_GROUP }}, {{ HEADING.MODIFY_DELETE_GROUP }}:</label>
+										<input type="text" class="ui" name="group_name" id="group_name" value="{{ group.name }}" />
+									</div>			
+								</div>						
+							</div>
 
-										<h4 class="ui teal top attached block header">
-										
+							<div class="spacer4"></div>		
+
+							<div class="ui styled fluid accordion">
+
+								<div class="title active">
+									<i class="dropdown icon"></i>
+									{{ TEXT.SYSTEM_PERMISSIONS }}
+								</div>							
+								<div class="content active">	
+									<div class="accordion transition visible" style="display: block ! important;">
+									{%  for sys_key in system_permissions %}
+										<div class="title">
+											<i class="dropdown icon"></i>
 											{{ sys_key.label }}
-										</h4>
-										<div class="ui attached segment">
-										{# ### subkeys ### #}
-										{% for subkey in sys_key.sub_keys %}									
+										</div>
 										
-											
-												<div class="ui checkbox access_groups">
+										<div class="content">
+											{% for subkey in sys_key.sub_keys %}
+											<div class="ui checkbox access_groups">
 												<input type="checkbox" name="{{ subkey.name }}" id="{{ subkey.name }}" value="1" {% if subkey.checked ==1 %}checked="checked"{% endif %} />
 												<label for="{{ subkey.name }}">{{ subkey.label }}</label>
-												</div>
-																																										
-										{% endfor %}
-										{# ### end subkeys ### #}
+											</div>	
+											{% endfor %}											
 										</div>
-									</div>
-
-								{% endfor %}
-								</div>
+										
+									{% endfor %}
+									</div>										
+								</div>							
 								
-								<div class="ui segments">
-								    <div class="ui basic segment">
-									  <h4 class="ui teal header">{{ TEXT.TEMPLATE_PERMISSIONS  }}</h4>
-									</div>
-					
-									<div class="ui basic segment">
-
-										<h4 class="ui teal top attached block header">
-											{{ MENU.TEMPLATES }}
-										</h4>
-										<div class="ui attached segment">
-									{% for template in template_permissions %}											
-											<div class="ui checkbox access_groups">
-												<input type="checkbox" value="1" id="{{ template.directory }}" name="{{ template.directory }}" {% if (template.permission == 1) %}checked="checked"{% endif %} />
-												<label for="{{ template.directory }}">{{ template.name }}</label>
-											</div>
-									{% endfor %}											
-										</div>
-									</div>
-								</div>	
-
-								<div class="ui segments">
-								    <div class="ui basic segment">
-									  <h4 class="ui teal header">{{ TEXT.MODULE_PERMISSIONS  }}</h4>
-									</div>
-				
-									<div class="ui basic segment">
-
-										<h4 class="ui teal top attached block header">
-											{{ MENU.MODULES }}
-										</h4>
-										<div class="ui attached segment">
-									{% for module in module_permissions %}											
-											<div class="ui checkbox access_groups">
-												<input type="checkbox" value="1" id="{{ module.directory }}" name="{{ module.directory }}" {% if module.permission == 1 %}checked="checked"{% endif %} />
-												<label for="{{ module.directory }}">{{ module.name }}</label>
-											</div>
-									{% endfor %}											
-										</div>
-									</div>
-
-									<div class="ui basic segment">
-
-										<h4 class="ui teal top attached block header">
-											{{ MENU.ADMINTOOLS }}
-										</h4>
-										<div class="ui attached segment">
-									{% for tool in admintools_permissions %}											
-											<div class="ui checkbox access_groups">
-												<input type="checkbox" value=1" id="{{ tool.directory }}" name="{{ tool.directory }}" {% if tool.premission == 1 %}checked="checked"{% endif %} />
-												<label for="{{ tool.directory }}">{{ tool.name }}</label>
-											</div>
-									{% endfor %}											
-										</div>
-									</div>									
-
-								</div>
 								
-								<div class="ui hidden divider"></div>								
-								
-							</div> <!-- end ui segments -->
-
-						</div><!-- end ui grid -->
-						{# ######### end tabs ######## #}	
-	
-
-						<div class="ui hidden divider"></div>
+								<div class="title">
+									<i class="dropdown icon"></i>
+									{{ TEXT.TEMPLATE_PERMISSIONS  }}
+								</div>							
+								<div class="content">	
+									<div class="accordion transition visible" style="display: block ! important;">
 									
-						<div class="ui three column grid"> <!-- start submit -->		
-							<div class="row">
-								<div class="column">
-								</div>
+										<div class="title">
+											<i class="dropdown icon"></i>
+											{{ MENU.TEMPLATES }}
+										</div>										
+										<div class="content">
+											{% for template in template_permissions %}											
+													<div class="ui checkbox access_groups">
+														<input type="checkbox" value="1" id="{{ template.directory }}" name="{{ template.directory }}" {% if (template.permission == 1) %}checked="checked"{% endif %} />
+														<label for="{{ template.directory }}">{{ template.name }}</label>
+													</div>
+											{% endfor %}											
+										</div>
+										
+										<div class="title">
+											<i class="dropdown icon"></i>
+											{{ MENU.MODULES }}
+										</div>										
+										<div class="content">
+											{% for module in module_permissions %}											
+													<div class="ui checkbox access_groups">
+														<input type="checkbox" value="1" id="{{ module.directory }}" name="{{ module.directory }}" {% if module.permission == 1 %}checked="checked"{% endif %} />
+														<label for="{{ module.directory }}">{{ module.name }}</label>
+													</div>
+											{% endfor %}											
+										</div>
+										
+										<div class="title">
+											<i class="dropdown icon"></i>
+											{{ MENU.ADMINTOOLS }}
+										</div>										
+										<div class="content">
+											{% for tool in admintools_permissions %}											
+													<div class="ui checkbox access_groups">
+														<input type="checkbox" value=1" id="{{ tool.directory }}" name="{{ tool.directory }}" {% if tool.premission == 1 %}checked="checked"{% endif %} />
+														<label for="{{ tool.directory }}">{{ tool.name }}</label>
+													</div>
+											{% endfor %}											
+										</div>
+										
+									</div>										
+								</div>		
+
 							
-								<div class="column">			
-									<button class="positive ui button lepsem_submit" type="submit" >{{ TEXT.SAVE }}</button>
-									<button class="negative ui button lepsem_submit" type="reset" name="reset" onclick="clear_group_form();">{{ TEXT.RESET }}</button>
-								</div>	
-								
-								<div class="column">
-									<button class="negative ui right floated button lepsem_submit" type="button" name="delete" id="group_form_delete" style="visibility: hidden;" onclick="prepare_delete();" >{{ TEXT.DELETE }}</button>
-								</div>
 							</div>
-						</div> <!-- end submit -->	
-						
-					</form>
-					<div class="ui hidden divider"></div>					
+							<div class="ui basic segment">
+								<div class="ui two column stackable grid"> <!-- start submit -->	
+									<div class="column">
+										<button class="positive ui button lepsem_submit">
+											<input type="submit" name="submit" value="{{ TEXT.SAVE }}" />							
+										</button>					
+									</div>					
+								
+									<div class="column">			
+										<button class="negative ui button lepsem_submit">
+											<input type="reset" name="reset" value="{{ TEXT.RESET }}" />							
+										</button>					
+									</div>	
+													
+								</div> <!-- end submit-->
+							</div>
+						</form>
+					</div>					
 				</div> <!-- end level 1 -->
 		
 			</div> <!-- end left side -->
