@@ -10,24 +10,24 @@
  */
  #}
 {% autoescape false %}
-<div class="ui purple segment"> <!-- start outer purple segment -->
+<div class="ui yellow segment"> <!-- start outer yellow segment -->
 	<div class="ui two column doubling grid container"> <!-- start header grid -->
 
 			<div class="column">
-				<h2 class="ui purple header">
-					<i class="huge purple diamond icon"></i>
+				<h2 class="ui yellow header">
+					<i class="huge yellow diamond icon"></i>
 					<div class="content">{{  MENU.TEMPLATES }}</div>
 				</h2>
 			</div>			
 			<div class="column">		
-				<h3 class="ui purple right floated header">
+				<h3 class="ui yellow right floated header">
 					<div class="content">{{ OVERVIEW.TEMPLATES }}</div>
 				</h3>
 			</div>
 
 	</div> <!-- end header grid -->
 
-	<div class="ui purple segment"> <!-- start inner purple segment -->	
+	<div class="ui yellow segment"> <!-- start inner yellow segment -->	
 
 		<div class="ui two column doubling grid container"> <!-- start content-->
 
@@ -154,7 +154,7 @@
 	
 	
 	
-	</div> <!-- end inner purple segment1 -->
+	</div> <!-- end inner yellow segment1 -->
 
-</div> <!-- end outer purple segment -->
+</div> <!-- end outer yellow segment -->
 {% endautoescape %}

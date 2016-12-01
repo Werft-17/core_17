@@ -13,8 +13,8 @@
 		<div class="four wide column"> <!-- start  modules tree -->
 		 <!-- start  modules tree -->
 				<div class="spacer1"></div>
-				<h3 class="ui purple header">
-					<i class="plug icon"></i>
+				<h3 class="ui yellow header">
+					<i class="wrench icon"></i>
 					<div class="content">{{ MENU.MODULES }}</div>
 				</h3>
 				{% for module in all_modules %}

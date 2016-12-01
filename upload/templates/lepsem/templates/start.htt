@@ -8,8 +8,8 @@
 			<p class="innertext">{PAGES_OVERVIEW}</p>
 		</div>
 
-		<div class="ui purple segment">
-			<i class="huge purple puzzle piece icon"></i>
+		<div class="ui yellow segment">
+			<i class="huge yellow puzzle piece icon"></i>
 			<a class="innertext" href="{ADMIN_URL}/addons/index.php">{ADDONS}</a>
 			<p class="innertext">{ADDONS_OVERVIEW}</p>
 		</div>

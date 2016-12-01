@@ -13,7 +13,7 @@
 		<div class="four wide column"> <!-- start  languages tree -->
 		 <!-- start  languages tree -->
 				<div class="spacer1"></div>
-				<h3 class="ui purple header">
+				<h3 class="ui yellow header">
 					<i class="flag icon"></i>
 					<div class="content">{{ MENU.LANGUAGES }}</div>
 				</h3>

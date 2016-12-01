@@ -13,7 +13,7 @@
 		<div class="four wide column"> <!-- start  templates tree -->
 		 <!-- start  templates tree -->
 				<div class="spacer1"></div>
-				<h3 class="ui purple header">
+				<h3 class="ui yellow header">
 					<i class="diamond icon"></i>
 					<div class="content">{{ MENU.TEMPLATES }}</div>
 				</h3>

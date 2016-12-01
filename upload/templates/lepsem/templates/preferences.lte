@@ -15,7 +15,7 @@
 
 			<div class="column">
 				<h2 class="ui blue header">
-					<i class="huge blue pin icon"></i>
+					<i class="huge blue setting icon"></i>
 					<div class="content">{{ HEADING.MY_SETTINGS }}</div>
 				</h2>
 			</div>			
