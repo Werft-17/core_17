@@ -65,6 +65,32 @@ function lepsem_get_module_info( aModuleID ) {
  					}
  				}
  				
+ 				/**
+ 				 *	Aldus: 30-11-2016
+ 				 */
+ 				var temp_select = document.getElementById('LEPTON_ui_select_install');
+ 				if(temp_select) {
+					for(var i =0; i < temp_select.options.length; i++) {
+ 						if(temp_select.options[ i ].text == module.directory) {
+ 							temp_select.options[ i ].selected = true;
+							temp_select.selectedIndex = i;
+							break;
+						}						
+ 					}
+ 				}
+ 				
+ 				temp_select = document.getElementById('LEPTON_ui_select_upgrade');
+ 				if(temp_select) {
+ 					for(var i =0; i < temp_select.options.length; i++) {
+						if(temp_select.options[ i ].text == module.directory) {
+							temp_select.options[ i ].selected = true;
+							temp_select.selectedIndex = i;
+							break;
+						}						
+ 					}
+ 				}
+ 				
+ 				
  			} else {
  				alert("Error: "+xmlhttp.status);
  			}
@@ -83,7 +109,7 @@ function lepsem_fill_form_field( aId, aValue, aType ) {
 			ref.innerHTML = aValue;
 		} else {
 			if ( 2 == aType) {
-			ref.src = "{{ LEPTON_URL }}/modules/"+aValue+"/icon.png";
+				ref.src = "{{ LEPTON_URL }}/modules/"+aValue+"/icon.png";
 			}
 			ref.value = aValue;
 		}
