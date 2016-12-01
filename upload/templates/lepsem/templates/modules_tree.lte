@@ -74,10 +74,14 @@ function lepsem_get_module_info( aModuleID ) {
  						if(temp_select.options[ i ].text == module.directory) {
  							temp_select.options[ i ].selected = true;
 							temp_select.selectedIndex = i;
+							
+							$('#LEPTON_ui_select_install').dropdown('set selected', module.directory);
+ 				
 							break;
 						}						
  					}
  				}
+ 				
  				
  				temp_select = document.getElementById('LEPTON_ui_select_upgrade');
  				if(temp_select) {
@@ -85,6 +89,9 @@ function lepsem_get_module_info( aModuleID ) {
 						if(temp_select.options[ i ].text == module.directory) {
 							temp_select.options[ i ].selected = true;
 							temp_select.selectedIndex = i;
+							
+							$('#LEPTON_ui_select_upgrade').dropdown('set selected', module.directory);
+							
 							break;
 						}						
  					}
