@@ -67,37 +67,11 @@ function lepsem_get_module_info( aModuleID ) {
  				
  				/**
  				 *	Aldus: 30-11-2016
+ 				 *		see: http://semantic-ui.com/modules/dropdown.html#behavior
  				 */
- 				var temp_select = document.getElementById('LEPTON_ui_select_install');
- 				if(temp_select) {
-					for(var i =0; i < temp_select.options.length; i++) {
- 						if(temp_select.options[ i ].text == module.directory) {
- 							temp_select.options[ i ].selected = true;
-							temp_select.selectedIndex = i;
-							
-							$('#LEPTON_ui_select_install').dropdown('set selected', module.directory);
- 				
-							break;
-						}						
- 					}
- 				}
- 				
- 				
- 				temp_select = document.getElementById('LEPTON_ui_select_upgrade');
- 				if(temp_select) {
- 					for(var i =0; i < temp_select.options.length; i++) {
-						if(temp_select.options[ i ].text == module.directory) {
-							temp_select.options[ i ].selected = true;
-							temp_select.selectedIndex = i;
-							
-							$('#LEPTON_ui_select_upgrade').dropdown('set selected', module.directory);
-							
-							break;
-						}						
- 					}
- 				}
- 				
- 				
+				$('#LEPTON_ui_select_install').dropdown('set selected', module.directory);
+				$('#LEPTON_ui_select_upgrade').dropdown('set selected', module.directory);
+
  			} else {
  				alert("Error: "+xmlhttp.status);
  			}
