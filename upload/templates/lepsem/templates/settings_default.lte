@@ -128,7 +128,7 @@
 								<div class="inline fields">
 									<label class="oneliner">{{ TEXT.LEPTOKEN_LIFETIME }}</label>
 									<div class="ui icon button" data-tooltip="{{ TEXT.HELP_LEPTOKEN_LIFETIME }}">
-									  <i class="red help icon"></i>
+									  <i class="red info icon"></i>
 									</div>
 									<input type="text" name="leptoken_lifetime" value="{{ LEPTOKEN_LIFETIME }}" />
 								</div>
@@ -140,7 +140,7 @@
 								<div class="inline fields">
 									<label class="oneliner">{{ TEXT.MAX_ATTEMPTS }}</label>
 									<div class="ui icon button" data-tooltip="{{ TEXT.HELP_MAX_ATTEMPTS }}">
-									  <i class="red help icon"></i>
+									  <i class="red info icon"></i>
 									</div>									
 									<input type="text" name="max_attempts" value="{{ MAX_ATTEMPTS }}" />
 								</div>

@@ -39,11 +39,11 @@
   <div class="ui right dropdown item">{{ PAGES }}
 	<i class="dropdown icon"></i>
     <div class="menu">
-        {% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/index.php"><i class="text file icon"></i>{{ HEADING.ADD_PAGE }}</a>{% endif %}
-		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/modify.php"><i class="text file icon"></i>{{ HEADING.MODIFY_PAGE }}</a>{% endif %}
-		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/settings.php"><i class="text file icon"></i>{{ HEADING.MODIFY_PAGE_SETTINGS }}</a>{% endif %}
-		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/sections.php"><i class="text file icon"></i>{{ HEADING.MANAGE_SECTIONS }}</a>{% endif %}								
-		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/search.php"><i class="text file icon"></i>{{ HEADING.SEARCH_PAGE }}</a>{% endif %}
+        {% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/index.php"><i class="add square icon"></i>{{ HEADING.ADD_PAGE }}</a>{% endif %}
+		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/modify.php"><i class="write square icon"></i>{{ HEADING.MODIFY_PAGE }}</a>{% endif %}
+		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/settings.php"><i class="settings icon"></i>{{ HEADING.MODIFY_PAGE_SETTINGS }}</a>{% endif %}
+		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/sections.php"><i class="list layout icon"></i>{{ HEADING.MANAGE_SECTIONS }}</a>{% endif %}								
+		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/pages/search.php"><i class="search icon"></i>{{ HEADING.SEARCH_PAGE }}</a>{% endif %}
     </div>
   </div> 
   
@@ -53,9 +53,9 @@
 	<i class="dropdown icon"></i>
     <div class="menu">
         {% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/modules/index.php"><i class="puzzle piece icon"></i>{{ MENU.MODULES }}</a>{% endif %}
-		{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/templates/index.php"><i class="puzzle piece icon"></i>{{ MENU.TEMPLATES }}</a>{% endif %}
-		{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/languages/index.php"><i class="puzzle piece icon"></i>{{ MENU.LANGUAGES }}</a>{% endif %}								
-		{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/addons/reload.php"><i class="puzzle piece icon"></i>{{ TEXT.RELOAD }} {{ MENU.ADDONS }}</a>{% endif %}
+		{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/templates/index.php"><i class="diamond piece icon"></i>{{ MENU.TEMPLATES }}</a>{% endif %}
+		{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/languages/index.php"><i class="flag piece icon"></i>{{ MENU.LANGUAGES }}</a>{% endif %}								
+		{% if true == p_addons %}<a class="item" href="{{ ADMIN_URL }}/addons/reload.php"><i class="refresh piece icon"></i>{{ TEXT.RELOAD }} {{ MENU.ADDONS }}</a>{% endif %}
     </div>
   </div>   
   
@@ -63,8 +63,8 @@
 	<i class="dropdown icon"></i>
     <div class="menu">
 		{% if true == p_admintools %}<a class="item" href="{{ ADMIN_URL }}/admintools/index.php"><i class="wrench icon"></i>{{ ADMINTOOLS }}</a>{% endif %}							
-		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/preferences/index.php"><i class="wrench icon"></i>{{ PREFERENCES }}</a>{% endif %}
-		{% if true == p_settings %}<a class="item" href="{{ ADMIN_URL }}/settings/index.php"><i class="wrench icon"></i>{{ SETTINGS }}</a>{% endif %}
+		{% if true == p_pages %}<a class="item" href="{{ ADMIN_URL }}/preferences/index.php"><i class="setting icon"></i>{{ PREFERENCES }}</a>{% endif %}
+		{% if true == p_settings %}<a class="item" href="{{ ADMIN_URL }}/settings/index.php"><i class="settings icon"></i>{{ SETTINGS }}</a>{% endif %}
     </div>
   </div>    
   
@@ -72,7 +72,7 @@
 	<i class="dropdown icon"></i>
     <div class="menu">
 		{% if true == p_access %}<a class="item" href="{{ ADMIN_URL }}/groups/groups.php"><i class="users icon"></i>{{ MENU.GROUPS }}</a>{% endif %}							
-		{% if true == p_access %}<a class="item" href="{{ ADMIN_URL }}/users/index.php"><i class="users icon"></i>{{ MENU.USERS }}</a>{% endif %}
+		{% if true == p_access %}<a class="item" href="{{ ADMIN_URL }}/users/index.php"><i class="user icon"></i>{{ MENU.USERS }}</a>{% endif %}
     </div>
   </div>    
 
@@ -96,7 +96,7 @@
 
 				<a class="item" href="{{ ADMIN_URL }}/start/index.php" title="{{ TITLE_START }}"><i class="grey home large icon"></i></a>
 				<a class="item" href="http://forum.lepton-cms.org" target="_blank" title="{{ TITLE_HELP }}"><i class="grey help large icon"></i></a>
-				<a class="item" href="{{ URL_VIEW }}" target="_blank" title="{{ TITLE_VIEW }}"><i class="grey unhide large icon"></i></a>
+				<a class="item" href="{{ URL_VIEW }}" target="_blank" title="{{ TITLE_VIEW }}"><i class="grey world large icon"></i></a>
 				<a class="item" href="{{ ADMIN_URL }}/logout/index.php" title="{{ TITLE_LOGOUT }}"><i class="red sign out large icon"></i></a>
 			</div> <!-- end ui.menu grid -->
 			
