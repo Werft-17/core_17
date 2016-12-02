@@ -44,6 +44,8 @@ require(LEPTON_PATH.'/modules/admin.php');
 $langfile = (dirname(__FILE__))."/languages/". LANGUAGE .".php";
 require_once ( !file_exists($langfile) ? (dirname(__FILE__))."/languages/EN.php" : $langfile );
 
+// Include EditArea wrapper functions
+require_once(LEPTON_PATH . '/modules/edit_area/register.php');
 require_once(LEPTON_PATH.'/modules/edit_area/class.editorinfo.php');
 
 require_once(LEPTON_PATH.'/framework/summary.module_edit_css.php');

@@ -44,13 +44,10 @@ else
 require_once(LEPTON_PATH . '/framework/class.wb.php');
 
 //	At this time required by backend/start
-require_once(LEPTON_PATH . '/include/phplib/template.inc');
+//require_once(LEPTON_PATH . '/include/phplib/template.inc');
 
 // Get version
 require_once(ADMIN_PATH . '/interface/version.php');
-
-// Include EditArea wrapper functions
-require_once(LEPTON_PATH . '/modules/edit_area/register.php');
 
 class admin extends wb
 {
