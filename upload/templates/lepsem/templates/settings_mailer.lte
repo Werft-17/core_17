@@ -38,7 +38,7 @@
 							<div class="ui form">
 								<div class="field">
 									<label>{{ TEXT.WBMAILER_DEFAULT_SENDER_NAME }}</label>
-									<input type="text" name="wbmailer_default_sendername" value="{{ WBMAILER_DEFAULT_SENDER_NAME }}" />
+									<input type="text" name="wbmailer_default_sendername" value="{{ WBMAILER_DEFAULT_SENDERNAME }}" />
 								</div>
 							</div>							
 						</div>							
