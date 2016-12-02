@@ -104,7 +104,7 @@
 							<div class="ui form">
 								<div class="inline fields">
 									<div class="ui checkbox">									
-										<input type="checkbox" name="home_folders" id="home_folders_true" value="true"{{ HOME_FOLDERS_ENABLED }} />
+										<input type="checkbox" name="home_folders" id="home_folders_true" value="true" {% if('true' == HOME_FOLDERS_ENABLED) %}selected='selected'{% endif %} />
 										<label for="{{ TEXT.HOME_FOLDERS }}">{{ TEXT.HOME_FOLDERS }}</label>										
 									</div>
 								</div>
@@ -169,7 +169,9 @@
 								<div class="field">
 									<label>{{ TEXT.PAGE_LEVEL_LIMIT }}</label>
 									<select name="page_level_limit">
-										<option value="{{ NUMBER }}"{{ SELECTED }}>{{ NUMBER }}</option>
+									{% for i in  range(0, 10) %}
+										<option value="{{ i }}" {% if(i == PAGE_LEVEL_LIMIT) %}selected='selected'{% endif %}>{{ i }}</option>
+									{% endfor %}
 									</select>
 								</div>			
 							</div>						
@@ -216,7 +218,9 @@
 								<div class="field">
 									<label>{{ TEXT.WYSIWYG_EDITOR }}</label>
 									<select name="wysiwyg_editor">
-										<option value="{{ FILE }}"{{ SELECTED }}>{{ NAME }}</option>
+									{% for editor in editors %}
+										<option value="{{ editor.directory }}" {% if(editor.directory == WYSIWYG_EDITOR) %}selected='selected'{% endif %}>{{ editor.name }}</option>
+									{% endfor %}
 									</select>
 								</div>			
 							</div>						

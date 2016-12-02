@@ -120,7 +120,7 @@ function build_settings( &$admin, &$database )
 		true
 	);
 
-	$return_str = LEPTON_tools::display( $template_vars['themes'], "pre", "ui message" );
+	$return_str = ""; // LEPTON_tools::display( $template_vars['themes'], "pre", "ui message" );
 	
 	$return_str .= $parser->render(
 		"@theme/settings.lte",
