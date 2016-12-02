@@ -44,11 +44,29 @@ if(file_exists(LEPTON_PATH .'/modules/initial_page/classes/class.init_page.php')
 require_once(LEPTON_PATH.'/framework/class.admin.php');
 $admin = new admin('Start','start');
 
+//get pages info
+$pages = array();
+$database->execute_query(
+"SELECT * FROM `".TABLE_PREFIX."pages` where std_id='".$std_id."' ",
+true,
+$pages,
+true
+);
+
+$count_page = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."pages` order by `modified_when` ");
+$count_sections = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."sections` ");
+$count_section = ($count_sections -1);
+
+
+
+
 $page_values = array(
 	'ADMIN_URL'	=> ADMIN_URL,
-	'THEME_URL'	=> THEME_URL,
+	'THEME_URL'	=> THEME_PATH,
 	'LEPTON_URL' => LEPTON_URL,
-	'MENU.DASHBOARD'	=> $HEADING['ADMINISTRATION_TOOLS']
+	'count_section' => $count_section,
+	'count_page' => $count_page,
+	'MESSAGE.PAGES_LAST_MODIFIED'	=> $MESSAGE['PAGES_LAST_MODIFIED']
 
 );
 

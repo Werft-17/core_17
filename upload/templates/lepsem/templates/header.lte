@@ -35,7 +35,7 @@
 </head>
 <body>
 <div class="ui vertical inverted left sidebar menu">
-  <a class="item" href="{{ ADMIN_URL }}/start/index.php"><i class="large home icon"></i>{{ TEXT.HOME }}</a>
+  <a class="item" href="{{ ADMIN_URL }}/start/index.php"><i class="large home icon"></i>{{ MENU.START }}</a>
   <div class="ui right dropdown item">{{ PAGES }}
 	<i class="dropdown icon"></i>
     <div class="menu">
