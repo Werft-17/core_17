@@ -71,7 +71,7 @@
 							<div class="ui form">
 								<div class="inline fields">
 									<div class="ui checkbox">	
-										<input type="checkbox" name="multiple_menus" id="multiple_menus_true" value="true"{{ MULTIPLE_MENUS_ENABLED }} />
+										<input type="checkbox" name="multiple_menus" id="multiple_menus_true" value="true" {% if('true' == MULTIPLE_MENUS) %}checked='checked'{% endif %} />
 										<label for="{{ TEXT.MULTIPLE_MENUS }}">{{ TEXT.MULTIPLE_MENUS }}</label>										
 									</div>
 								</div>
@@ -82,7 +82,7 @@
 							<div class="ui form">
 								<div class="inline fields">
 									<div class="ui checkbox">	
-										<input type="checkbox" name="page_languages" id="page_languages_true" value="false"{{ PAGE.LANGUAGES_ENABLED }} />
+										<input type="checkbox" name="page_languages" id="page_languages_true" value="true" {% if('true' == PAGE_LANGUAGES) %}checked='checked'{% endif %} />
 										<label for="{{ TEXT.PAGE_LANGUAGES }}">{{ TEXT.PAGE_LANGUAGES }}</label>
 									</div>
 								</div>
