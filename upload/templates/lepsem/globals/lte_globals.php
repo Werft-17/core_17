@@ -37,11 +37,13 @@ global $MENU;
 global $OVERVIEW;
 global $HEADING;
 global $MESSAGE;
+global $START;
 
 $parser->addGlobal("TEXT", $TEXT);
 $parser->addGlobal("MENU", $MENU);
 $parser->addGlobal("OVERVIEW", $OVERVIEW);
 $parser->addGlobal("HEADING", $HEADING);
 $parser->addGlobal("MESSAGE", $MESSAGE);
+$parser->addGlobal("START", $START);
 
 ?>

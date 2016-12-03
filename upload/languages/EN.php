@@ -710,6 +710,23 @@ $OVERVIEW = array(
 	'VIEW' 					=> 'Quickly view and browse your website in a new window...'
 );
 
+$START = array(
+	'PAGE' 						=> 'Count pages',
+	'SECTIONS' 					=> 'Count sections',
+	'MODIFIED_WHEN'				=> 'Last update',
+	'LINK_FE' 					=> 'Link frontend',
+	'LINK_BE' 					=> 'Link backend',
+	'MODULES' 					=> 'Verwaltung der LEPTON Module...',
+	'PAGES' 					=> 'Verwaltung Ihrer Webseiten...',
+	'PREFERENCES' 				=> '&Auml;ndern pers&ouml;nlicher Einstellungen wie E-Mail Adresse, Passwort, usw.... ',
+	'SETTINGS' 					=> '&Auml;ndern der Optionen für LEPTON...',
+	'START' 					=> 'Überblick über die Verwaltung',
+	'TEMPLATES' 				=> 'Ändern des Designs Ihrer Webseite mit Vorlagen...',
+	'USERS' 					=> 'Verwaltung von Benutzern, die sich in LEPTON einloggen dürfen...',
+	'VIEW' 						=> 'Ansicht Ihrer Webseite in einem neuen Fenster...'
+); 
+
+
 /*
  * Create the old languages definitions only if specified in settings
  */

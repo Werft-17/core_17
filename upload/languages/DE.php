@@ -708,6 +708,22 @@ $OVERVIEW = array(
 	'VIEW' 						=> 'Ansicht Ihrer Webseite in einem neuen Fenster...'
 ); // OVERVIEW
 
+$START = array(
+	'PAGE' 					=> 'Anzahl Seiten',
+	'SECTIONS' 					=> 'Anzahl Sektionen',
+	'MODIFIED_WHEN'				=> 'Letzte Änderung',
+	'LINK_FE' 					=> 'Link Frontend',
+	'LINK_BE' 					=> 'Link Backend',
+	'MODULES' 					=> 'Verwaltung der LEPTON Module...',
+	'PAGES' 					=> 'Verwaltung Ihrer Webseiten...',
+	'PREFERENCES' 				=> '&Auml;ndern pers&ouml;nlicher Einstellungen wie E-Mail Adresse, Passwort, usw.... ',
+	'SETTINGS' 					=> '&Auml;ndern der Optionen für LEPTON...',
+	'START' 					=> 'Überblick über die Verwaltung',
+	'TEMPLATES' 				=> 'Ändern des Designs Ihrer Webseite mit Vorlagen...',
+	'USERS' 					=> 'Verwaltung von Benutzern, die sich in LEPTON einloggen dürfen...',
+	'VIEW' 						=> 'Ansicht Ihrer Webseite in einem neuen Fenster...'
+); 
+
 /*
  * Create the old languages definitions only if specified in settings
  */

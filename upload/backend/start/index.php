@@ -36,6 +36,12 @@ if (defined('LEPTON_PATH')) {
 }
 // end include class.secure.php
 
+// enable custom dashboard
+if(file_exists(THEME_PATH .'/backend/start/index.php')) {
+	require_once (THEME_PATH .'/backend/start/index.php');
+	die();
+}
+	
 // exec initial_page
 if(file_exists(LEPTON_PATH .'/modules/initial_page/classes/class.init_page.php') && isset($_SESSION['USER_ID'])) {
 	require_once (LEPTON_PATH .'/modules/initial_page/classes/class.init_page.php');
@@ -44,18 +50,26 @@ if(file_exists(LEPTON_PATH .'/modules/initial_page/classes/class.init_page.php')
 require_once(LEPTON_PATH.'/framework/class.admin.php');
 $admin = new admin('Start','start');
 
+if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
+	
 //get pages info
 $pages = array();
 $database->execute_query(
-"SELECT * FROM `".TABLE_PREFIX."pages` where std_id='".$std_id."' ",
+"SELECT * FROM `".TABLE_PREFIX."pages` ORDER BY `modified_when` DESC ",
 true,
 $pages,
 true
 );
 
-$count_page = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."pages` order by `modified_when` ");
-$count_sections = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."sections` ");
-$count_section = ($count_sections -1);
+$last_pmodified = date("d.m.Y - H:i", $pages[0]['modified_when']);
+$last_plink = LEPTON_URL.PAGES_DIRECTORY.$pages[0]['link'].PAGE_EXTENSION;
+$last_plink = ADMIN_URL.'/pages/modify.php?page_id='.$pages[0]['page_id'];
+
+//$result = print_r($last_plink_intern);
+
+$count_pages = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."pages`");
+$count_section = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."sections` ");
+$count_sections = ($count_section -1);
 
 
 
@@ -64,14 +78,16 @@ $page_values = array(
 	'ADMIN_URL'	=> ADMIN_URL,
 	'THEME_URL'	=> THEME_PATH,
 	'LEPTON_URL' => LEPTON_URL,
-	'count_section' => $count_section,
-	'count_page' => $count_page,
+	'count_sections' => $count_sections,
+	'count_pages' => $count_pages,
+	'last_pmodified' => $last_pmodified,
+	'last_plink' => $last_plink,	
 	'MESSAGE.PAGES_LAST_MODIFIED'	=> $MESSAGE['PAGES_LAST_MODIFIED']
 
 );
 
 echo $parser->render(
-	'@theme/start.lte',
+	'@theme/dashboard.lte',
 	$page_values
 );
 
