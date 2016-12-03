@@ -8,17 +8,13 @@ upload/config_.php
 upload/framework/classes/setup.ini
 
 upload/account/
-upload/admins/
-#upload/framework/
 upload/include/
-#upload/install/
 upload/languages/
 upload/media/
 
 upload/page/
-upload/search/
 upload/temp/
-#upload/templates/
+upload/templates/
 
 upload/modules/droplets/install/
 upload/modules/newsreader
