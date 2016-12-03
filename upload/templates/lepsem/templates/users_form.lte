@@ -36,7 +36,7 @@
 			<div class="twelve wide column"> <!-- start add users -->
 				<form name="{{ FORM_NAME }}" id="{{ FORM_NAME }}" action="{{ ACTION_URL }}" method="post">
 					<input type="hidden" name="users_id" value="{{ users.users_id }}" />
-					<input type="hidden" name="usersname_fieldname" value="{{ usersname_fieldname }}" />	
+					<input type="hidden" name="username_fieldname" value="{{ username_fieldname }}" />	
 					
 					<div class="ui message">{{ NEWUSERHINT }}</div>				
 					<div class="ui two column doubling grid container"> <!-- start level 1-->
@@ -46,7 +46,7 @@
 								<div class="ui form">
 									<div class="field">
 										<label>{{ TEXT.USERNAME }}:</label>
-										<input type="text" name="{{ usersname_fieldname }}" value="{{ users.usersname }}" />
+										<input type="text" name="{{ username_fieldname }}" value="{{ users.usersname }}" />
 									</div>
 								</div>							
 							</div>	
