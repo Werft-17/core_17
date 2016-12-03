@@ -52,14 +52,41 @@ $admin = new admin('Start','start');
 
 if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
 	
-//get pages and sections info
+// get pages and sections info
 $pages = array();
 $database->execute_query(
-"SELECT * FROM `".TABLE_PREFIX."pages` ORDER BY `modified_when` DESC ",
-true,
-$pages,
-true
+	"SELECT * FROM `".TABLE_PREFIX."pages` ORDER BY `modified_when` DESC ",
+	true,
+	$pages,
+	true
 );
+
+/**
+ *	try to get the last git release
+ */
+try{
+
+	$url = "https://api.github.com/repos/LEPTON-project/LEPTON/git/refs/tags";
+
+	$ch = curl_init( $url );
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_USERAGENT, "test");
+	$result = curl_exec($ch);
+	curl_close($ch);
+
+	$temp_array = json_decode( $result );
+
+	$last_info = array_pop( $temp_array );
+		
+	$temp = explode("/", $last_info->ref);
+
+	$last_release_string = array_pop( $temp );
+
+} catch( Exception $error) {
+	$last_release_string = $error->getMessage();
+}
+
+$is_uptodate = (version_compare( VERSION, $last_release_string, "<=" )) ? 1 : 0;
 
 $last_pmodified = date("d.m.Y - H:i", $pages[0]['modified_when']);
 $page_link_fe = LEPTON_URL.PAGES_DIRECTORY.$pages[0]['link'].PAGE_EXTENSION;
@@ -94,7 +121,9 @@ $page_values = array(
 	'lepton_link' => 'https://lepton-cms.org',
 	'page_link_fe' => $page_link_fe,
 	'page_link_be' => $page_link_be,	
-	'MESSAGE.PAGES_LAST_MODIFIED'	=> $MESSAGE['PAGES_LAST_MODIFIED']
+	'MESSAGE.PAGES_LAST_MODIFIED'	=> $MESSAGE['PAGES_LAST_MODIFIED'],
+	'last_release_string'	=> $last_release_string,
+	'is_uptodate' => $is_uptodate
 
 );
 
