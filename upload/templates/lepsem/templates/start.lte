@@ -45,7 +45,12 @@
 										| {{ START.MODIFIED_WHEN }} {{ last_pmodified }} 
 										| <a href="{{ page_link_be }}" target="_blank">{{ START.LINK_BE }}</a>
 										| <a href="{{ page_link_fe }}" target="_blank">{{ START.LINK_FE }}</a> 
-					</h4>
+					</h4>					
+				</div>
+			  </div>
+
+			  <div class="item">
+				<div class="content">
 					<h4 class="ui header">{{ START.SECTIONS }}: {{ count_sections }}
 										| {{ START.MODIFIED_WHEN }} {{ last_pmodified }} 
 										| <a href="{{ page_link_be }}" target="_blank">{{ START.LINK_BE }}</a>
@@ -106,7 +111,7 @@
 				</div>
 				<div class="column">
 					  <div class="header">LEPTON Home</div>
-					  <div class="meta"><a href="https://lepton-cms.org" target="_blank">LINK</a></div>			  
+					  <div class="meta"><a href="{{ lepton_link }}" target="_blank">LINK</a></div>			  
 					  <div class="description">All infos around LEPTON and the cms</div>
 				</div>	
 			</div>		

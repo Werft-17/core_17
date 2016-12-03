@@ -52,7 +52,7 @@ $admin = new admin('Start','start');
 
 if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
 	
-//get pages an sections info
+//get pages and sections info
 $pages = array();
 $database->execute_query(
 "SELECT * FROM `".TABLE_PREFIX."pages` ORDER BY `modified_when` DESC ",
@@ -78,7 +78,7 @@ $count_languages = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."add
 $count_users = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."users` ");
 $count_groups = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."groups` ");
 
-//$result = print_r($count_modules);
+
 $page_values = array(
 	'ADMIN_URL'	=> ADMIN_URL,
 	'THEME_URL'	=> THEME_PATH,
