@@ -99,7 +99,7 @@ $page_values = array(
 );
 
 echo $parser->render(
-	'@theme/dashboard.lte',
+	'@theme/start.lte',
 	$page_values
 );
 
