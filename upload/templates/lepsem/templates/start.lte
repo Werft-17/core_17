@@ -91,17 +91,17 @@
 			<div class="ui four column stackable grid">	
 				<div class="column">
 					  <div class="header">LEPTON Forum</div>
-					  <div class="meta"><a href="" target="_blank">LINK</a></div>			  
+					  <div class="meta"><a href="http://forum.lepton-cms.org" target="_blank">LINK</a></div>			  
 					  <div class="description">Where users help users, please register...</div>
 				</div>
 				<div class="column">
 					  <div class="header">LEPTON Docu</div>
-					  <div class="meta"><a href="https:doc.lepton-cms.org" target="_blank">LINK</a></div>		  
+					  <div class="meta"><a href="https://doc.lepton-cms.org" target="_blank">LINK</a></div>		  
 					  <div class="description">Knowledge base not only for developers...</div>
 				</div>
 				<div class="column">
 					  <div class="header">LEPTON Addons</div>
-					  <div class="meta"><a href="http://lepton-cms.com" target="_blank">LINK</a></div>			  
+					  <div class="meta"><a href="http://www.lepton-cms.com" target="_blank">LINK</a></div>			  
 					  <div class="description">Extend your installation with useful addons</div>
 				</div>
 				<div class="column">
