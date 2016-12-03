@@ -711,19 +711,20 @@ $OVERVIEW = array(
 );
 
 $START = array(
+	'DASHBOARD'					=> 'Installation Overview',
 	'PAGE' 						=> 'Count pages',
 	'SECTIONS' 					=> 'Count sections',
 	'MODIFIED_WHEN'				=> 'Last update',
 	'LINK_FE' 					=> 'Link frontend',
 	'LINK_BE' 					=> 'Link backend',
-	'MODULES' 					=> 'Verwaltung der LEPTON Module...',
-	'PAGES' 					=> 'Verwaltung Ihrer Webseiten...',
-	'PREFERENCES' 				=> '&Auml;ndern pers&ouml;nlicher Einstellungen wie E-Mail Adresse, Passwort, usw.... ',
-	'SETTINGS' 					=> '&Auml;ndern der Optionen für LEPTON...',
-	'START' 					=> 'Überblick über die Verwaltung',
-	'TEMPLATES' 				=> 'Ändern des Designs Ihrer Webseite mit Vorlagen...',
-	'USERS' 					=> 'Verwaltung von Benutzern, die sich in LEPTON einloggen dürfen...',
-	'VIEW' 						=> 'Ansicht Ihrer Webseite in einem neuen Fenster...'
+	'UPDATE' 					=> 'A New LEPTON release is published!',
+	'LINK_HOME' 				=> 'For details please see ',
+	'HOMEPAGE' 					=> 'LEPTON Homepage',
+	'MODULES' 					=> 'Installed Modules',
+	'LANGUAGES' 				=> 'Installed Languages',
+	'TEMPLATES' 				=> 'Installed Templates',
+	'USERS' 					=> 'Registered Users',
+	'GROUPS' 					=> 'Registered Groups'
 ); 
 
 
