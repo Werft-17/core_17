@@ -88,23 +88,26 @@ if( $page_template === 0)
 }
 
 // Get existing perms
-$sql = 'SELECT `parent`,`link`,`position`,`admin_groups`,`admin_users` FROM `'.TABLE_PREFIX.'pages` WHERE `page_id`='.$page_id;
-$results = $database->query($sql);
+$results_array = array();
+$results = $database->execute_query(
+	'SELECT `parent`,`link`,`position`,`admin_groups`,`admin_users` FROM `'.TABLE_PREFIX.'pages` WHERE `page_id`='.$page_id,
+	true,
+	$results_array,
+	false
+);
 
-$results_array = $results->fetchRow();
-$old_parent = $results_array['parent'];
-$old_link = $results_array['link'];
-$old_position = $results_array['position'];
-$old_admin_groups = explode(',', str_replace('_', '', $results_array['admin_groups']));
-$old_admin_users = explode(',', str_replace('_', '', $results_array['admin_users']));
-
+$old_parent			= $results_array['parent'];
+$old_link			= $results_array['link'];
+$old_position		= $results_array['position'];
+$old_admin_groups	= explode(',', str_replace('_', '', $results_array['admin_groups']));
+$old_admin_users	= explode(',', str_replace('_', '', $results_array['admin_users']));
 
 $in_old_group = FALSE;
 foreach($admin->get_groups_id() as $cur_gid)
 {
     if (in_array($cur_gid, $old_admin_groups))
     {
-	$in_old_group = TRUE;
+		$in_old_group = TRUE;
     }
 }
 if((!$in_old_group) AND !is_numeric(array_search($admin->get_user_id(), $old_admin_users)))
@@ -166,26 +169,27 @@ if($parent == '0')
 	}
 	if($parent_section == '/')
     {
-      $parent_section = '';
+		$parent_section = '';
     }
 	$link = '/'.$parent_section.page_filename($page_link);
 	$filename = LEPTON_PATH.PAGES_DIRECTORY.'/'.$parent_section.page_filename($page_link).PAGE_EXTENSION;
 }
 
-// Check if a page with same page filename exists
-$sql = 'SELECT `page_id`,`page_title` FROM `'.TABLE_PREFIX.'pages` WHERE `link` = "'.$link.'" AND `page_id` != '.$page_id;
-$get_same_page = $database->query($sql);
+// [3] Check if a page with same page filename exists
+$get_same_page = array();
+$database->execute_query(
+	'SELECT `page_id`,`page_title` FROM `'.TABLE_PREFIX.'pages` WHERE `link` = "'.$link.'" AND `page_id` != '.$page_id,
+	true,
+	$get_same_page,
+	false
+);
 
-if($get_same_page->numRows() > 0)
+if( count($get_same_page) > 0 )
 {
 	$admin->print_error($MESSAGE['PAGES_PAGE_EXISTS']);
 }
 
-// Update page with new order
-$sql = 'UPDATE `'.TABLE_PREFIX.'pages` SET `parent`='.$parent.', `position`='.$position.' WHERE `page_id`='.$page_id.'';
-$database->query($sql);
-
-// Get page trail
+// [4] Get page trail
 $page_trail = get_page_trail($page_id);
 
 // Update page settings in the pages table
@@ -195,7 +199,7 @@ $fields = array(
 	'menu_title'	=> $menu_title,
 	'menu'			=> $menu,
 	'level'			=> $level,
-	'page_trail'	=> $page_trail,
+	'page_trail'	=> $page_trail,	// [4]
 	'root_parent'	=> $root_parent,
 	'link'			=> $link,
 	'template'		=> $page_template,
