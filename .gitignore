@@ -4,7 +4,6 @@
 *.DS_Store
 .gitignore
 upload/config.php
-upload/config_.php
 upload/framework/classes/setup.ini
 
 upload/account/
@@ -14,11 +13,12 @@ upload/media/
 
 upload/page/
 upload/temp/
-upload/templates/
+# upload/templates/
 
 upload/modules/droplets/install/
-upload/modules/newsreader
+upload/modules/newsreader/
 upload/modules/lib_r_filemanager/filemanager/thumbs/
 
 upload/templates/lepsem/backend/start/
 upload/templates/lepsem/backend/start_/
+upload/templates/aldus_sketchbook/

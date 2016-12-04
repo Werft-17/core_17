@@ -76,7 +76,6 @@ if((!$in_old_group) AND !is_numeric(array_search($admin->get_user_id(), $old_adm
 }
 
 // Get page details
-$sql = 'SELECT * FROM `'.TABLE_PREFIX.'pages` WHERE `page_id`='.$page_id;
 $database->execute_query(
 	'SELECT * FROM `'.TABLE_PREFIX.'pages` WHERE `page_id`='.$page_id,
 	true,
@@ -170,7 +169,8 @@ $page_values = array(
 	'all_languages' => $all_languages,
 	'all_templates' => $all_templates,
 	'LEPTOKEN'		=> LEPTON_tools::get_leptoken(),
-	'PAGE_PARENT'	=> $results_array['parent']
+	'PAGE_PARENT'	=> $results_array['parent'],
+	'page_values'	=> $results_array
 );
 
 echo $parser->render(

@@ -159,7 +159,7 @@
 										<option value="0">{{ TEXT.SYSTEM_DEFAULT }}</option>
 										<option value="">----------------------</option>
 										{% for template in all_templates %}
-											<option value="{{ template.directory }}">{{ template.name }}</option>
+											<option value="{{ template.directory }}" {% if(template.directory == page_values.template) %}selected='selected'{% endif %}>{{ template.name }}</option>
 										{% endfor %}
 										</select>
 									</div>			

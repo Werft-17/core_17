@@ -64,7 +64,7 @@ $keywords = htmlspecialchars(addslashes($admin->get_post('keywords')) );
 $page_code = htmlspecialchars(addslashes($admin->get_post('page_code')));
 $parent = $admin->get_post_escaped('parent');
 $visibility = $admin->get_post_escaped('visibility');
-$template = $admin->get_post_escaped('template');
+$page_template = $admin->get_post_escaped('template');
 $target = $admin->get_post_escaped('target');
 $admin_groups = $admin->get_post_escaped('admin_groups');
 $viewing_groups = $admin->get_post_escaped('viewing_groups');
@@ -82,13 +82,12 @@ if($menu_title == '' || substr($menu_title,0,1)=='.')
 	$admin->print_error($MESSAGE['PAGES_BLANK_MENU_TITLE']);
 }
 
-if($template == 0)
+if( $page_template === 0)
 {
-	$template = "";
+	$page_template = "";
 }
 
 // Get existing perms
-
 $sql = 'SELECT `parent`,`link`,`position`,`admin_groups`,`admin_users` FROM `'.TABLE_PREFIX.'pages` WHERE `page_id`='.$page_id;
 $results = $database->query($sql);
 
@@ -199,7 +198,7 @@ $fields = array(
 	'page_trail'	=> $page_trail,
 	'root_parent'	=> $root_parent,
 	'link'			=> $link,
-	'template'		=> $template,
+	'template'		=> $page_template,
 	'target'		=> $target,
 	'description'	=> $description,
 	'keywords'		=> $keywords,
@@ -291,7 +290,7 @@ if(!is_writable(LEPTON_PATH.PAGES_DIRECTORY.'/'))
 function fix_page_trail($parent,$root_parent)
 {
 	// Get objects and vars from outside this function
-	global $admin, $template, $database, $TEXT, $MESSAGE;
+	global $admin, $database, $TEXT, $MESSAGE;
 	// Get page list from database
 	$all_pages = array();
 	$database->execute_query(
