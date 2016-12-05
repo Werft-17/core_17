@@ -51,34 +51,58 @@ require_once(LEPTON_PATH.'/framework/class.admin.php');
 $admin = new admin('Start','start');
 
 if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
-	
 
+/**	********
+ *	[1] Try to get the last git release
+ *
+ */
+//	[1.1] Init bool
+$is_uptodate = true;
+$is_curl_error = false; 
 
-//try to get the last git release
-try{
+//	[1.2]	Try to get the response
+$url = "https://api.github.com/repos/LEPTON-project/LEPTON/git/refs/tags";
+$oCurl = curl_init( $url );
 
-	$url = "https://api.github.com/repos/LEPTON-project/LEPTON/git/refs/tags";
+//	[1.3]	curl settings
+//		see: http://php.net/manual/de/function.curl-setopt.php
+curl_setopt(	$oCurl , CURLOPT_RETURNTRANSFER,	true);
+//	[1.3.1]
+// 		Make sure your request has a User-Agent header (http://developer.github.com/v3/#user-agent-required). Check https://developer.github.com for other possible causes.
+curl_setopt(	$oCurl , CURLOPT_USERAGENT,			"test");
 
-	$ch = curl_init( $url );
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_USERAGENT, "test");
-	$result = curl_exec($ch);
-	curl_close($ch);
+curl_setopt(	$oCurl , CURLOPT_CERTINFO,			true );
+// curl_setopt(	$oCurl , CURLOPT_POST,				true );
+// curl_setopt(	$oCurl , CURLOPT_RETURNTRANSFER,	true);
+ 
+//	[1.4]	Get the "response"
+$result = curl_exec( $oCurl );
+//	[1.4.1]
+if( false === $result)
+{
+	$result = curl_error( $oCurl );
+	$is_curl_error = true;
+}
 
+//	[1.5]	Close the curl handle
+curl_close( $oCurl );
+
+//	[1.6]	Parse the result
+if( false === $is_curl_error)
+{
 	$temp_array = json_decode( $result );
-
 	$last_info = array_pop( $temp_array );
-		
 	$temp = explode("/", $last_info->ref);
 
 	$last_release_string = array_pop( $temp );
-
-} catch( Exception $error) {
-	$last_release_string = $error->getMessage();
+	
+	$is_uptodate = (version_compare( LEPTON_VERSION, $last_release_string, "<=" )) ? 1 : 0;
+} else {
+	$last_release_string = $result;
 }
-
-$is_uptodate = (version_compare( VERSION, $last_release_string, "<=" )) ? 1 : 0;
-//die(print_r($ch));
+//	End of [1]
+// echo LEPTON_tools::display( $result, "pre", "ui message");
+// echo LEPTON_tools::display( $last_release_string, "pre", "ui message");
 
 // get pages and sections info
 $pages = array();
