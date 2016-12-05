@@ -712,6 +712,8 @@ $OVERVIEW = array(
 
 $START = array(
 	'DASHBOARD'					=> 'Installation Overview',
+	'SITE_INFOS' 				=> 'Site-Statistics',
+	'HELP_LINKS' 				=> 'Helpful Links',		
 	'PAGE' 						=> 'Count pages',
 	'SECTIONS' 					=> 'Count sections',
 	'MODIFIED_WHEN'				=> 'Last update',

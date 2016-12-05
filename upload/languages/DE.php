@@ -710,6 +710,8 @@ $OVERVIEW = array(
 
 $START = array(
 	'DASHBOARD'					=> 'Überblick über die Installation',
+	'SITE_INFOS' 				=> 'Seiten-Statistik',
+	'HELP_LINKS' 				=> 'Hilfreiche Links',			
 	'PAGE' 						=> 'Anzahl Seiten',
 	'SECTIONS' 					=> 'Anzahl Sektionen',
 	'MODIFIED_WHEN'				=> 'Letzte Änderung',

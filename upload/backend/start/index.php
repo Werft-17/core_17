@@ -52,18 +52,9 @@ $admin = new admin('Start','start');
 
 if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
 	
-// get pages and sections info
-$pages = array();
-$database->execute_query(
-	"SELECT * FROM `".TABLE_PREFIX."pages` ORDER BY `modified_when` DESC ",
-	true,
-	$pages,
-	true
-);
 
-/**
- *	try to get the last git release
- */
+
+//try to get the last git release
 try{
 
 	$url = "https://api.github.com/repos/LEPTON-project/LEPTON/git/refs/tags";
@@ -87,7 +78,16 @@ try{
 }
 
 $is_uptodate = (version_compare( VERSION, $last_release_string, "<=" )) ? 1 : 0;
-//die(print_r($is_uptodate));
+//die(print_r($ch));
+
+// get pages and sections info
+$pages = array();
+$database->execute_query(
+	"SELECT * FROM `".TABLE_PREFIX."pages` ORDER BY `modified_when` DESC ",
+	true,
+	$pages,
+	true
+);
 
 $last_pmodified = date("d.m.Y - H:i", $pages[0]['modified_when']);
 $page_link_fe = LEPTON_URL.PAGES_DIRECTORY.$pages[0]['link'].PAGE_EXTENSION;
