@@ -23,12 +23,12 @@
 							<div class="ui form">
 								<div class="field">
 									<label>{{ TEXT.VISIBILITY }}:</label>
-									<select name="visibility">
-										<option value="public" selected='selected'>{{ TEXT.PUBLIC }}</option>
-										<option value="private">{{ TEXT.PRIVATE }}</option>
-										<option value="registered">{{ TEXT.REGISTERED }}</option>
-										<option value="hidden">{{ TEXT.HIDDEN }}</option>
-										<option value="none">{{ TEXT.NONE }}</option>
+									<select name="search">
+										<option value="public" {% if(SEARCH == 'public') %}selected='selected'{% endif %}>{{ TEXT.PUBLIC }}</option>
+										<option value="private" {% if(SEARCH == 'private') %}selected='selected'{% endif %}>{{ TEXT.PRIVATE }}</option>
+										<option value="registered" {% if(SEARCH == 'registered') %}selected='selected'{% endif %}>{{ TEXT.REGISTERED }}</option>
+										<option value="hidden" {% if(SEARCH == 'hidden') %}selected='selected'{% endif %}>{{ TEXT.HIDDEN }}</option>
+										<option value="none" {% if(SEARCH == 'none') %}selected='selected'{% endif %}>{{ TEXT.NONE }}</option>
 									</select>
 								</div>			
 							</div>							
@@ -39,7 +39,9 @@
 								<div class="field">
 									<label>{{ TEXT.TEMPLATE }}</label>
 									<select name="search_template">
-										<option value="{{ FILE }}"{{ SELECTED }}>{{ NAME }}</option>
+									{% for template in templates %}
+										<option value="{{ template.directory }}" {% if(DEFAULT_TEMPLATE == template.directory) %}selected='selected'{% endif %}>{{ template.name }}</option>
+									{% endfor %}
 									</select>
 								</div>			
 							</div>						

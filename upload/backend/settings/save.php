@@ -400,12 +400,22 @@ function save_settings(&$admin, &$database)
         	$update_fields
         );
         
-        // Query current search settings in the db, then loop through them and update the db with the new value
-        $sql = 'SELECT `name`, `value` FROM `'.TABLE_PREFIX.'search` ';
-        $sql .= 'WHERE `extra` = ""';
-        $res_search = $database->query($sql);
+        if($database->is_error())
+        {
+        	$err_msg[] = $database->get_error();
+        }
         
-        while ($row = $res_search->fetchRow())
+        // Query current search settings in the db, then loop through them and update the db with the new value
+        $search_update_values = array();
+        $all_search_settings = array();
+        $database->execute_query(
+        	"SELECT `name`, `value` FROM `".TABLE_PREFIX."search` WHERE `extra` = '' ",
+        	true,
+        	$all_search_settings,
+        	true
+        );
+        
+        foreach( $all_search_settings as &$row) 
         {
             $old_value = $row['value'];
             $post_name = 'search_'.$row['name'];
@@ -413,19 +423,26 @@ function save_settings(&$admin, &$database)
             // hold old value if post is empty
             if (isset ($value))
             {
-            // check search template
+            	// check search template
                 $value = (($value == '') && ($setting_name == 'template')) ? $settings['default_template'] : $admin->get_post($post_name);
                 $value = (($admin->get_post($post_name) == '') && ($setting_name != 'template')) ? $value : $admin->get_post($post_name);
                 $value = addslashes($value);
-                $sql = 'UPDATE `'.TABLE_PREFIX.'search` ';
-                $sql .= 'SET `value` = "'.$value.'" ';
-                $sql .= 'WHERE `name` = "'.$row['name'].'" ';
-                $sql .= 'AND `extra` = ""';
-				
-				$database->query($sql);
+			
+				$search_update_values[] = array("name" => $row['name'], "value" => $value);
             }
         }
+        $database->simple_query(
+        	"UPDATE `".TABLE_PREFIX."search` SET `value`= :value WHERE `name`= :name AND `extra` = '' ",
+        	 $search_update_values
+        );
+        
+		if($database->is_error())
+        {
+        	$err_msg[] = $database->get_error();
+        }
+
     }
+    
     return ((sizeof($err_msg) > 0) ? implode('<br />', $err_msg) : '');
 }
 
