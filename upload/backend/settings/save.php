@@ -394,7 +394,7 @@ function save_settings(&$admin, &$database)
 				$update_fields[] = array( "value"=>$value, "name"=>$setting_name );
 			}
         }
-        
+        // die(LEPTON_tools::display( $update_fields, "pre", "ui message"));
         $database->simple_query(
         	"UPDATE `".TABLE_PREFIX."settings` SET `value`= :value WHERE `name`= :name",
         	$update_fields

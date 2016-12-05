@@ -26,7 +26,7 @@
 									<label>{{ TEXT.TEMPLATE }}</label>
 									<select name="default_template">
 									{% for template in templates %}
-										<option value="template.directory" {% if(DEFAULT_TEMPLATE == template.directory) %}selected='selected'{% endif %}>{{ template.name }}</option>
+										<option value="{{ template.directory }}" {% if(DEFAULT_TEMPLATE == template.directory) %}selected='selected'{% endif %}>{{ template.name }}</option>
 									{% endfor %}
 									</select>
 								</div>			
@@ -39,7 +39,7 @@
 									<label>{{ TEXT.THEME }}</label>
 									<select name="default_theme">
 									{% for theme in themes %}
-										<option value="{{theme.directory }}" {% if(DEFAULT_THEME == theme.directory) %}selected='selected'{% endif %}>{{ theme.name }}</option>
+										<option value="{{ theme.directory }}" {% if(DEFAULT_THEME == theme.directory) %}selected='selected'{% endif %}>{{ theme.name }}</option>
 									{% endfor %}
 									</select>
 								</div>			
