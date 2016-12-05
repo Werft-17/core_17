@@ -365,39 +365,47 @@ function save_settings(&$admin, &$database)
     // if no validation errors, try to update the database, otherwise return errormessages
     if (sizeof($err_msg) == 0)
     {
-    // Query current settings in the db, then loop through them and update the db with the new value
-        $sql = 'SELECT `name` FROM `'.TABLE_PREFIX.'settings` ';
-        $sql .= 'ORDER BY `name`';
-        $results = $database->query($sql);
-        while ($row = $results->fetchRow( MYSQL_ASSOC ))
+		// Query current settings in the db, then loop through them and update the db with the new value
+        
+        $update_fields = array();
+        $current_settings_names = array();
+        
+        $database->execute_query(
+        	"SELECT `name` FROM `".TABLE_PREFIX."settings` WHERE `name` <> 'lepton_version' ORDER BY `name`",
+        	true,
+        	$current_settings_names,
+        	true
+        );
+        
+        foreach($current_settings_names as &$ref)
         {
-        // get fieldname from table and store it
-            $setting_name = $row['name'];
-            // set saved POST value from stored fieldname
-            $value = $settings[$row['name']];
-            if (!in_array($setting_name, $allow_tags_in_fields))
+        	$setting_name	= $ref['name'];
+        	$value = $settings[ $setting_name ];
+        	
+			if (!in_array($setting_name, $allow_tags_in_fields))
             {
-                $value = strip_tags($value);
+            	$value = strip_tags($value);
             }
 
             $passed = in_array($setting_name, $allow_empty_values);
-
-            if ((trim($value) <> '') || $passed == true )
-            {
-                $value = trim(addslashes($value));
-                $sql = 'UPDATE `'.TABLE_PREFIX.'settings` ';
-                $sql .= 'SET `value` = \''.$value.'\' ';
-                $sql .= 'WHERE `name` <> \'wb_version\' ';
-                $sql .= 'AND `name` = \''.$setting_name.'\' ';
-
-                $database->query($sql);
-            }
+			
+			if ( (trim($value) <> '') || ($passed == true) )
+			{
+				$update_fields[] = array( "value"=>$value, "name"=>$setting_name );
+			}
         }
+        
+        $database->simple_query(
+        	"UPDATE `".TABLE_PREFIX."settings` SET `value`= :value WHERE `name`= :name",
+        	$update_fields
+        );
+        
         // Query current search settings in the db, then loop through them and update the db with the new value
         $sql = 'SELECT `name`, `value` FROM `'.TABLE_PREFIX.'search` ';
         $sql .= 'WHERE `extra` = ""';
         $res_search = $database->query($sql);
-        while ($row = $res_search->fetchRow( MYSQL_ASSOC ))
+        
+        while ($row = $res_search->fetchRow())
         {
             $old_value = $row['value'];
             $post_name = 'search_'.$row['name'];
