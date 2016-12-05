@@ -31,10 +31,10 @@
 	<div class="ui basic segment">
 	
 		{% if(0 == is_uptodate) %}
-		<div class="ui icon warning message">
+		<div class="ui icon {% if(is_curl_error == true) %}red {% endif %}warning message">
 		  <i class="warning sign icon"></i>
 		  <div class="content">
-			<div class="header">{{ START.UPDATE }} {{ last_release_string }}</div>			
+			<div class="header">{% if(is_curl_error == false) %}{{ START.UPDATE }} {% endif %}{{ last_release_string }}</div>			
 			<p>{{ START.LINK_HOME }}<a href="{{ lepton_link }}" target="_blank">{{ START.HOMEPAGE }}</a></p>
 		  </div>
 		</div>

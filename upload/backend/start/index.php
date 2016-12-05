@@ -61,54 +61,60 @@ $is_uptodate = 0;
 $is_curl_error = false; 
 $last_release_string = "";
 
-//	[1.2]	Try to get the response
+//	Try to get the response
 $url = "https://api.github.com/repos/LEPTON-project/LEPTON/git/refs/tags";
 $oCurl = curl_init( $url );
 
-//	[1.3]	curl settings
-//		see: http://php.net/manual/de/function.curl-setopt.php
-curl_setopt(	$oCurl , CURLOPT_RETURNTRANSFER,	true);
-//	[1.3.1]
-// 		Make sure your request has a User-Agent header (http://developer.github.com/v3/#user-agent-required). Check https://developer.github.com for other possible causes.
-curl_setopt(	$oCurl , CURLOPT_USERAGENT,			(isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "test") );
-
-curl_setopt(	$oCurl , CURLOPT_CERTINFO,			true );
-// curl_setopt(	$oCurl , CURLOPT_POST,				true );
-// curl_setopt(	$oCurl , CURLOPT_RETURNTRANSFER,	true);
- 
-//	[1.4]	Get the "response"
-$result = curl_exec( $oCurl );
-//	[1.4.1]
-if( false === $result)
+if(!$oCurl)
 {
-	$result = curl_error( $oCurl );
-	$is_curl_error = true;
+	$is_curl_error = true; 
+	$last_release_string = "Can't init curl!";
 }
-
-//	[1.5]	Close the curl handle
-curl_close( $oCurl );
-
-//	[1.6]	Parse the result
-if( false === $is_curl_error)
+else
 {
-	$temp_array = json_decode( $result );
-	if( NULL === $temp_array ) {
-		$is_curl_error = true;
-		$is_uptodate = 0;
-		$last_release_string = $result;
-		echo LEPTON_tools::display( $result, "pre", "ui message");
-		
-	} else {
-	
-		$last_info = array_pop( $temp_array );
-		$temp = explode("/", $last_info->ref);
+	// curl settings
+	//		see: http://php.net/manual/de/function.curl-setopt.php
+	curl_setopt(	$oCurl , CURLOPT_RETURNTRANSFER,	true);
+	// 		Make sure your request has a User-Agent header (http://developer.github.com/v3/#user-agent-required). Check https://developer.github.com for other possible causes.
+	curl_setopt(	$oCurl , CURLOPT_USERAGENT,			(isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : "test") );
 
-		$last_release_string = array_pop( $temp );
-		
-		$is_uptodate = (version_compare( LEPTON_VERSION, $last_release_string, "=" )) ? 1 : 0;
+	curl_setopt(	$oCurl , CURLOPT_CERTINFO,			true );
+	// curl_setopt(	$oCurl , CURLOPT_POST,				true );
+	// curl_setopt(	$oCurl , CURLOPT_RETURNTRANSFER,	true);
+ 
+	// Get the "response"
+	$result = curl_exec( $oCurl );
+	if( false === $result)
+	{
+		$result = curl_error( $oCurl );
+		$is_curl_error = true;
 	}
-} else {
-	$last_release_string = $result;
+
+	//	Close the curl handle
+	curl_close( $oCurl );
+
+	//	Parse the result
+	if( false === $is_curl_error)
+	{
+		$temp_array = json_decode( $result );
+		if( NULL === $temp_array ) {
+			$is_curl_error = true;
+			$is_uptodate = 0;
+			$last_release_string = $result;
+			echo LEPTON_tools::display( $result, "pre", "ui message");
+		
+		} else {
+	
+			$last_info = array_pop( $temp_array );
+			$temp = explode("/", $last_info->ref);
+
+			$last_release_string = array_pop( $temp );
+		
+			$is_uptodate = (version_compare( LEPTON_VERSION, $last_release_string, "=" )) ? 1 : 0;
+		}
+	} else {
+		$last_release_string = $result;
+	}
 }
 //	End of [1]
 // echo LEPTON_tools::display( $_SERVER, "pre", "ui message");
@@ -157,7 +163,8 @@ $page_values = array(
 	'page_link_fe' => $page_link_fe,
 	'page_link_be' => $page_link_be,	
 	'last_release_string'	=> $last_release_string,
-	'is_uptodate' => $is_uptodate
+	'is_uptodate' => $is_uptodate,
+	'is_curl_error'	=> $is_curl_error
 
 );
 
