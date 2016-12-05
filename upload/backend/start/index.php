@@ -82,6 +82,9 @@ else
 	// curl_setopt(	$oCurl , CURLOPT_POST,				true );
 	// curl_setopt(	$oCurl , CURLOPT_RETURNTRANSFER,	true);
  
+	curl_setopt(	$oCurl, CURLOPT_SSL_VERIFYHOST, 0);
+	curl_setopt(	$oCurl, CURLOPT_SSL_VERIFYPEER, 0);
+	
 	// Get the "response"
 	$result = curl_exec( $oCurl );
 	if( false === $result)

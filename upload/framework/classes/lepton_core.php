@@ -189,10 +189,10 @@ class LEPTON_core
 	
 	/**
 	 *	Get the error-levels
-	 */
-	
+	 */	
 	static function get_errorlevels()
 	{	
+		global $TEXT;
 		// Create array
 		$ER_LEVELS = array();
 
