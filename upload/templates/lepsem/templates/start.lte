@@ -29,29 +29,21 @@
 	</div>	
 	
 	<div class="ui basic segment">
+	
 		{% if(0 == is_uptodate) %}
-		
 		<div class="ui icon warning message">
 		  <i class="warning sign icon"></i>
 		  <div class="content">
-			<div class="header">{{ START.UPDATE }} NEW Version: {{ last_release_string }}</div>			
+			<div class="header">{{ START.UPDATE }} {{ last_release_string }}</div>			
 			<p>{{ START.LINK_HOME }}<a href="{{ lepton_link }}" target="_blank">{{ START.HOMEPAGE }}</a></p>
 		  </div>
 		</div>
-		
-		{% else %}
-		
-		<div class="ui green icon message">
-		  <i class="warning sign icon"></i>
-		  <div class="content">
-			<div class="header">Up to Date: {{ last_release_string }} is the current release</div>			
-		  </div>
-		</div>
-		
 		{% endif %}
+		
 		<div class="ui grey message">
 			<div class="ui relaxed divided list">
 			  <div class="item">
+				<div class="ui header">{{ START.SITE_INFOS }}</div>
 				<div class="content">
 					<h4 class="ui header">{{ START.PAGE }}: {{ count_pages }} 
 										| {{ START.MODIFIED_WHEN }} {{ last_pmodified }} 

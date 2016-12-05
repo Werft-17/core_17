@@ -87,6 +87,7 @@ try{
 }
 
 $is_uptodate = (version_compare( VERSION, $last_release_string, "<=" )) ? 1 : 0;
+//die(print_r($is_uptodate));
 
 $last_pmodified = date("d.m.Y - H:i", $pages[0]['modified_when']);
 $page_link_fe = LEPTON_URL.PAGES_DIRECTORY.$pages[0]['link'].PAGE_EXTENSION;
@@ -121,7 +122,6 @@ $page_values = array(
 	'lepton_link' => 'https://lepton-cms.org',
 	'page_link_fe' => $page_link_fe,
 	'page_link_be' => $page_link_be,	
-	'MESSAGE.PAGES_LAST_MODIFIED'	=> $MESSAGE['PAGES_LAST_MODIFIED'],
 	'last_release_string'	=> $last_release_string,
 	'is_uptodate' => $is_uptodate
 
