@@ -42,46 +42,25 @@ if (!isset ($_POST['default_language']) || $_POST['default_language'] == '')
     die( header('Location: index.php'));
 }
 
-/**
- *	Find out if the user was view advanced options or not
- *
- */
-if(!isset($_POST['advanced'])) $_POST['advanced'] = "";
-$advanced = ($_POST['advanced'] == 'yes') ? '?advanced=yes' : '';
-$submit = isset ($_POST['submit']) && ($_POST['submit'] == $TEXT['SAVE']) ? 'save' : 'advanced';
-
 require_once (LEPTON_PATH.'/framework/class.admin.php');
+
 /**
  *	Getting the admin-instance and print the "admin header"
  *
  */
-if ($advanced == '') {
-	$admin = new admin('Settings', 'settings_basic');
-} else {
-	$admin = new admin('Settings', 'settings_advanced');
-}
+$admin = new admin('Settings', 'settings_basic');
 
 /**
  *	Create a back link
  *
  */
-$js_back = ADMIN_URL.'/settings/index.php'.$advanced;
+$js_back = ADMIN_URL.'/settings/index.php';
 
 function save_settings(&$admin, &$database)
 {
-    global $MESSAGE, $HEADING, $TEXT, $timezone_table;
+    global $MESSAGE, $HEADING, $TEXT;
 	
     $err_msg	= array();
-    
-    /**
-     *	Find out if the user was view advanced options or not
-     *	M.f.i.	As this test has happend before!
-     *
-     */
-    $advanced = ($_POST['advanced'] == 'yes') ? '?advanced=yes' : '';
-    unset ($_POST['advanced']);
-    $submit = isset ($_POST['submit']) && ($_POST['submit'] == $TEXT['SAVE']) ? 'save' : '';
-    unset ($_POST['submit']);
     
     $settings = array();
     $old_settings = array();
@@ -90,67 +69,64 @@ function save_settings(&$admin, &$database)
 	 *	Query current settings in the db, then loop through them to get old values
 	 *
 	 */
-    $sql = 'SELECT `name`, `value` FROM `'.TABLE_PREFIX.'settings` ORDER BY `name`';
-    if ($res_settings = $database->query($sql) ) {
-        while( false !== ($row = $res_settings->fetchRow() ) ) {
-            $old_settings[$row['name']] = $row['value'];
-            /**
-             *	WARNING: bad structure begins here, must be reworked!
-             */
-            $settings[$row['name']] = $admin->get_post($row['name']);
-        }
+	$current_values = array();
+	$database->execute_query(
+		"SELECT `name`, `value` FROM `".TABLE_PREFIX."settings` WHERE `name` <> 'lepton_version' ORDER BY `name`",
+		true,
+		$current_values,
+		true
+	);
+	
+	if( count( $current_values ) == 0 )
+    {
+        $err_msg[] = $MESSAGE['SETTINGS_UNABLE_OPEN_CONFIG']." [100]";
     }
     else
     {
-        $err_msg[] = $MESSAGE['SETTINGS_UNABLE_OPEN_CONFIG'];
-    }
+		foreach( $current_values as &$ref)
+		{
+			$old_settings[ $ref['name'] ] = $ref['value'];
+			$settings[ $ref['name'] ] = $admin->get_post( $ref['name'] );
+		}
+	}
 
     $allow_tags_in_fields = array('website_header', 'website_footer');
 
 	$allow_empty_values = array('website_description','backend_title','website_keywords','website_header','website_footer','sec_anchor','pages_directory');
 
     // language must be 2 upercase letters only
-    $default_language = strtoupper( $admin->get_post('default_language'));
+    $default_language = strtoupper( $settings['default_language'] );
     $settings['default_language'] = (preg_match('/^[A-Z]{2}$/', $default_language) )
     	? $default_language
     	: $old_settings['default_language']
     	;
 	
-	//	needed for the time/date/timezones here
+	// needed for the time/date/timezones here
     $user_time = false;
     
 	// timezone must match a value in the table
-	$posted_default_timezone_string = $admin->get_post('default_timezone_string');
-	
-	$default_timezone_string = (in_array($posted_default_timezone_string, LEPTON_core::get_timezones() ))
-		? $posted_default_timezone_string
-		: DEFAULT_TIMEZONESTRING
-		;
+	if( !in_array( $settings['default_timezone_string'] , LEPTON_core::get_timezones() ))
+	{
+		$settings['default_timezone_string'] = DEFAULT_TIMEZONESTRING;
+	}
 
 	// date_format must be a key from /interface/date_formats
-    $default_date_format = $admin->get_post('default_date_format');
-    $date_format_key = str_replace(' ', '|', $default_date_format);
-        
-    $settings['default_date_format'] = (array_key_exists($date_format_key, LEPTON_core::get_dateformats() )) 
-    	? $default_date_format 
-    	: $old_settings['default_date_format']
-    	;
-    
+    if( !array_key_exists($settings['default_date_format'], LEPTON_core::get_dateformats() ))
+    {
+    	 $settings['default_date_format'] = $old_settings['default_date_format'];
+    }
+
     // time_format must be a key from /interface/time_formats
-    $time_format = $admin->get_post('default_time_format');
-    $time_format_key = str_replace(' ', '|', $time_format);
-        
-    $settings['default_time_format'] = (array_key_exists($time_format_key, LEPTON_core::get_timeformats() ))
-    	? $time_format
-    	: $old_settings['default_time_format']
-    	;
+	if( !array_key_exists($settings['default_time_format'], LEPTON_core::get_timeformats() ))
+	{
+		$settings['default_time_format'] = $old_settings['default_time_format'];
+	}
 
     // charsets must be a key from /interface/charsets
-    $char_set = $admin->get_post('default_charset');
-    $settings['default_charset'] = (array_key_exists($char_set, LEPTON_core::get_charsets() ))
-    	? $char_set 
-    	: $old_settings['default_charset']
-    	;
+    if( !array_key_exists($settings['default_charset'], LEPTON_core::get_charsets() ))
+    {
+    	$settings['default_charset'] = $old_settings['default_charset'];
+    }
 
     //  error reporting values validation
     $settings['er_level'] = (isset ($settings['er_level']) && (array_key_exists($settings['er_level'], LEPTON_core::get_errorlevels() )))
@@ -267,27 +243,24 @@ function save_settings(&$admin, &$database)
 	}
 
     // Work-out file mode
-    if ($advanced == '')
-    {
     // Check if should be set to 777 or left alone
         if (isset ($_POST['world_writeable']) && $_POST['world_writeable'] == 'true')
         {
             $settings['string_file_mode'] = '0666';
             $settings['string_dir_mode'] = '0777';
         }
-    }
-    else
-    {
-        $settings['string_dir_mode'] = '0755';
-        $settings['string_file_mode'] = '0644';
-    }
+    	else
+    	{
+        	$settings['string_dir_mode'] = '0755';
+        	$settings['string_file_mode'] = '0644';
+    	}
 
     // check home folder settings
     // remove home folders for all users if the option is changed to "false"
     if ( $settings['home_folders'] == 'false' && $old_settings['home_folders'] == 'true' ) {
         $sql = 'UPDATE `'.TABLE_PREFIX.'users` ';
         $sql .= 'SET `home_folder` = \'\';';
-        if (!$database->query($sql))
+        if (false === $database->simple_query( "UPDATE `".TABLE_PREFIX."users` SET `home_folder` = '';" ))
         {
             $err_msg[] = $database->get_error();
         }
@@ -446,12 +419,8 @@ function save_settings(&$admin, &$database)
     return ((sizeof($err_msg) > 0) ? implode('<br />', $err_msg) : '');
 }
 
-if ($submit == 'advanced')
-{   // if Javascript is disabled
-    $admin->print_success($TEXT['REDIRECT_AFTER'].' '.$MENU['SETTINGS'], $js_back );
-    exit ();
-}
 $retval = save_settings($admin, $database);
+
 if ($retval == '')
 {
     $admin->print_success($MESSAGE['SETTINGS_SAVED'], $js_back );
@@ -460,5 +429,7 @@ else
 {
     $admin->print_error($retval, $js_back);
 }
+
 $admin->print_footer();
+
 ?>

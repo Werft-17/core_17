@@ -90,7 +90,7 @@
 							<div class="ui form">
 								<div class="field">
 									<label>{{ TEXT.DATE_FORMAT }}</label>
-									<select name="date_format" id="date_format">
+									<select name="default_date_format" id="date_format">
 										{% for key, value in date_formats %}
 										{% if(value != "") %}
 										<option value="{{ key }}" {% if key == DEFAULT_DATE_FORMAT %}selected="selected"{% endif %}>{{ value }}</option>
@@ -105,7 +105,7 @@
 							<div class="ui form">
 								<div class="field">
 									<label>{{ TEXT.TIME_FORMAT }}</label>
-									<select name="time_format" id="time_format">
+									<select name="default_time_format" id="time_format">
 										{% for key,value in time_formats %}
 										{% if(value != "") %}
 										<option value="{{ key }}" {% if key == DEFAULT_TIME_FORMAT %}selected="selected"{% endif %}>{{ value }}</option>
