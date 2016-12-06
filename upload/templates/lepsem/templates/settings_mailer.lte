@@ -75,8 +75,7 @@
 								<i class="icon mail"></i>{{ TEXT.WBMAILER_SEND_TESTMAIL }}
 								</button>
 							</a>
-							<div id="ajax_response">test
-							</div>				
+							<div id="ajax_response"></div>				
 						</div>						
 						
 					</div> <!-- end row -->					
