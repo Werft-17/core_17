@@ -710,27 +710,6 @@ $OVERVIEW = array(
 	'VIEW' 					=> 'Quickly view and browse your website in a new window...'
 );
 
-$START = array(
-	'DASHBOARD'					=> 'Installation Overview',
-	'SITE_INFOS' 				=> 'Site-Statistics',
-	'HELP_LINKS' 				=> 'Helpful Links',		
-	'PAGE' 						=> 'Count pages',
-	'PAGE_DETAILS' 				=> 'Page Details',
-	'PAGE_PERMISSION' 			=> 'Page Permissions',		
-	'SECTIONS' 					=> 'Count sections',
-	'MODIFIED_WHEN'				=> 'Last update',
-	'LINK_FE' 					=> 'Link frontend',
-	'LINK_BE' 					=> 'Link backend',
-	'UPDATE' 					=> 'A later LEPTON version is released! Current Version: ',
-	'LINK_HOME' 				=> 'For details please see ',
-	'HOMEPAGE' 					=> 'LEPTON Homepage',
-	'MODULES' 					=> 'Installed Modules',
-	'LANGUAGES' 				=> 'Installed Languages',
-	'TEMPLATES' 				=> 'Installed Templates',
-	'USERS' 					=> 'Registered Users',
-	'GROUPS' 					=> 'Registered Groups'
-); 
-
 
 /*
  * Create the old languages definitions only if specified in settings
