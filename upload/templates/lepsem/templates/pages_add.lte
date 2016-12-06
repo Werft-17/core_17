@@ -28,7 +28,7 @@
 	</div> <!-- end header grid -->
 
 	<div class="ui green segment"> <!-- start inner green segment -->	
-		<div class="ui styled fluid accordion">
+		<div class="ui styled fluid accordion"> <!-- start content-->
 			{% include "@theme/page_tree.lte" %} <!-- include page tree-->
 			<div class="title">
 				<i class="dropdown icon"></i>

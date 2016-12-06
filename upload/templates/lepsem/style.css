@@ -184,6 +184,11 @@ img.module_detail  {
     padding: 6px;
 }
 
+.page_section {
+    float: right;
+    margin: 0;
+    padding: 0;
+}
 
 /* settings for lib r_filemanager in media */
 .r_filemanager         {
