@@ -90,7 +90,7 @@ $page_values = array(
 );
 
 echo $parser->render(
-	"@theme/pages.lte",
+	"@theme/pages_add.lte",
 	$page_values
 );
 
