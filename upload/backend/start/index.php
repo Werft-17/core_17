@@ -68,7 +68,7 @@ $matches = array();
 $result = preg_match ( "/releases\/tag\/(.*)\"/i" , $current_release_source, $matches); 
 
 $current_release = $matches[1];
-echo LEPTON_tools::display( $current_release, "pre", "ui message" );
+// echo LEPTON_tools::display( $current_release, "pre", "ui message" );
 $is_uptodate = (version_compare( LEPTON_VERSION, $current_release, "=" )) ? 1 : 0;
 
 // get pages and sections info
