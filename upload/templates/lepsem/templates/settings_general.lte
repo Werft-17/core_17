@@ -10,11 +10,11 @@
  */
  #}
 {% autoescape false %}
-<div class="active title">
+<div class="title">
 	<i class="dropdown icon"></i>
 	{{ HEADING.GENERAL_SETTINGS }}
 </div>
-<div class="active content">
+<div class="content">
 	<div class="ui basic segment">
 		<div class="ui two column doubling grid container">
 
