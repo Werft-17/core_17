@@ -713,6 +713,8 @@ $START = array(
 	'SITE_INFOS' 				=> 'Seiten-Statistik',
 	'HELP_LINKS' 				=> 'Hilfreiche Links',			
 	'PAGE' 						=> 'Anzahl Seiten',
+	'PAGE_DETAILS' 				=> 'Eingerichtete User',
+	'PAGE_DETAILS' 				=> 'Eingerichtete User',	
 	'SECTIONS' 					=> 'Anzahl Sektionen',
 	'MODIFIED_WHEN'				=> 'Letzte Änderung',
 	'LINK_FE' 					=> 'Link Frontend',
@@ -722,7 +724,7 @@ $START = array(
 	'HOMEPAGE' 					=> 'LEPTON Homepage',
 	'MODULES' 					=> 'Installierte Module',
 	'LANGUAGES' 				=> 'Installierte Sprachen',
-	'TEMPLATES' 				=> 'Installierte Templates',
+	'TEMPLATES' 				=> 'Installierte Templates',	
 	'USERS' 					=> 'Eingerichtete User',
 	'GROUPS' 					=> 'Eingerichtete Gruppen'
 ); 

@@ -10,14 +10,12 @@
  */
  #}
 {% autoescape false %}
+<div class="title">
+	<i class="dropdown icon"></i>
+	{{ TEXT.PAGES_DIRECTORY }}
+</div>
+<div class="content"> <!-- start page-tree -->
 
-<div class="four wide column palette_page_tree"> <!-- start page-tree -->
-
-	<h3 class="ui green header small">
-		<i class="file icon"></i>
-		<div class="content">{{ MENU.PAGES }}</div>
-	</h3>
-	
 {% macro display_pagelink( page, deep ) %}
 	<p style="margin-left: {{ (deep *20) }}px">
 		{% if page.subpages|length > 0 %}
