@@ -53,13 +53,22 @@ $admin = new admin('Start','start');
 if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
 
 // get current release no
-$url = "https://raw.githubusercontent.com/LEPTON-project/LEPTON/master/upload/admins/interface/version.php";
-$current_release_source = file_get_contents($url, false);
+$url = "https://github.com/LEPTON-project/LEPTON/releases/latest";
+
+$context = stream_context_create(
+    array(
+        'http' => array(
+            'follow_location' => false
+        )
+    )
+);
+$current_release_source = file_get_contents($url, false, $context);
 
 $matches = array();
-$result = preg_match ( "/define\(\'VERSION\'\, \'(.*)\'\)/i" , $current_release_source, $matches); 
+$result = preg_match ( "/releases\/tag\/(.*)\"/i" , $current_release_source, $matches); 
 
 $current_release = $matches[1];
+echo LEPTON_tools::display( $current_release, "pre", "ui message" );
 $is_uptodate = (version_compare( LEPTON_VERSION, $current_release, "=" )) ? 1 : 0;
 
 // get pages and sections info
