@@ -72,7 +72,7 @@
 						<div class="column">
 							<a href="{{ ADMIN_URL }}/settings/index.php#{{ HEADING.GENERAL_SETTINGS }}"  title="{{ HEADING.GENERAL_SETTINGS }}">
 								<button class="ui basic button lepsem_submit" type="submit" id="checkmail" name="checkmail" onclick="send_testmail('{{ ADMIN_URL }}/settings/ajax_testmail.php');return false;">
-								<i class="icon mail"></i>{{ TEXT.WBMAILER_SENDTESTMAIL }}
+								<i class="icon mail"></i>{{ TEXT.WBMAILER_SEND_TESTMAIL }}
 								</button>
 							</a>						
 						</div>						
@@ -137,4 +137,5 @@
 		</div> <!-- end grid container -->
 	</div> <!-- end segment general settings -->
 </div>	
+<script src="{{ ADMIN_URL }}/settings/setting.js" type="text/javascript"></script>
 {% endautoescape %}	
