@@ -27,23 +27,23 @@
 		
 	</div>	
 	
-	<div class="ui blue segment">
-{% if TOOL_NONE_FOUND != "" %}
-		{{ TOOL_NONE_FOUND }}
-{% else %}
+	<div class="ui basic segment">
+		{% if TOOL_NONE_FOUND != "" %}
+				{{ TOOL_NONE_FOUND }}
+		{% else %}
 
-	{% for tool in all_tools %}
-		<h3 class="ui block header">
-			<img src="{{ LEPTON_URL}}/modules/{{ tool.directory }}/icon.png" alt="tool" />
-			<div class="content">
-				<a class="admintools_link" href="{{ ADMIN_URL }}/admintools/tool.php?tool={{ tool.directory }}">{{ tool.name }}</a>
-				<div class="sub header">{{ tool.description }}</div>
-			 </div>
-		</h3>
-		
-	{% endfor %}
-	
-{% endif %}
+			{% for tool in all_tools %}
+				<h3 class="ui block header">
+					<img src="{{ LEPTON_URL}}/modules/{{ tool.directory }}/icon.png" alt="tool" />
+					<div class="content">
+						<a class="admintools_link" href="{{ ADMIN_URL }}/admintools/tool.php?tool={{ tool.directory }}">{{ tool.name }}</a>
+						<div class="sub header">{{ tool.description }}</div>
+					 </div>
+				</h3>
+				
+			{% endfor %}
+			
+		{% endif %}
 	
 	</div> <!-- end inner blue segment -->
 </div> <!-- end outer blue segment -->	

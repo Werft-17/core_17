@@ -27,7 +27,7 @@
 
 	</div> <!-- end header grid -->
 
-	<div class="ui teal segment"> <!-- start inner teal segment -->	
+	<div class="ui basic segment"> <!-- start inner teal segment -->	
 
 		<div class="ui two column doubling grid container"> <!-- start content-->	
 
