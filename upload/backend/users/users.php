@@ -195,7 +195,7 @@ if($_POST['action'] == 'modify')
 	
 	// Parse template object
 	echo $parser->render(
-		'@theme/users_form.lte',
+		'@theme/users.lte',
 		$page_values
 	);
 	
