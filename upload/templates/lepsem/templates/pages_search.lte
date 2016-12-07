@@ -28,14 +28,14 @@
 		</div>
 	</div> <!-- end header grid -->
 
-	<div class="ui green segment"> <!-- start inner green segment -->	
-
-		<div class="ui vertically divided grid"> <!-- start content-->	
-
-			{% include "@theme/page_tree.lte" %} <!-- include users tree-->
-
-			<div class="twelve wide column"> <!-- start right -->
-				<div class="ui hidden divider"></div>
+	<div class="ui basic segment"> <!-- start inner green segment -->	
+		<div class="ui styled fluid accordion"> <!-- start accordion-->
+			{% include "@theme/page_tree.lte" %} <!-- include page tree-->
+			<div class="title">
+				<i class="dropdown icon"></i>
+				{{ HEADING.SEARCH_PAGE }}
+			</div>
+			<div class="content"><!-- start content -->
 				
 				<form action="{ADMIN_URL}/pages/index.php" method="post">				
 					<div class="ui vertically divided grid"> <!-- start level 1-->			
@@ -92,14 +92,11 @@
 						</div> <!-- end result -->
 					</div> <!-- end level 1 -->
 				</form>
-			</div> <!-- end right -->
+			</div> <!-- end content -->
 		
-		</div> <!-- end content -->	
-	
-	
-	
+		</div> <!-- end accordion -->	
+		
 	</div> <!-- end inner green segment1 -->
 
 </div> <!-- end outer green segment -->
-
 {% endautoescape %}

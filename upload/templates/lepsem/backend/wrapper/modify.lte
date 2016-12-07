@@ -18,8 +18,8 @@
 	<div class="ui row">
 		<div class="column">
 			<div class="ui form">
-				<div class="inline fields">
-					<label>{{ TEXT.URL }} erpe </label>
+				<div class="field">
+					<label>{{ TEXT.URL }}</label>
 					<input type="text" name="url" value="{{ URL }}" />
 				</div>
 			</div>							
@@ -29,7 +29,7 @@
 	<div class="ui row">
 		<div class="column">
 			<div class="ui form">
-				<div class="inline fields">
+				<div class="field">
 					<label>{{ TEXT.HEIGHT }}</label>
 					<input type="text" name="height" value="{{ HEIGHT }}" />
 				</div>
