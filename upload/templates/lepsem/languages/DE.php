@@ -39,6 +39,9 @@ $THEME = array(
 	'NO_SHOW_THUMBS' 			=> 'Vorschaubilder verstecken',
 	'TEXT_HEADER' 				=> 'Maximale Bildergr&ouml;&szlig;e f&uuml;r Ordner festlegen</b><br><small><i>(&Auml;nderung nur beim Hochladen)</i></small>',
 	'ADDON_PERMISSIONS' 		=> 'Zugriffsrechte für Addons',
+	'ADD_LEVEL_0' 				=> 'auch Ebene 0',
+	'UPLOAD' 					=> 'hochladen',
+	'CREATE' 					=> 'erstellen',		
 	'DASHBOARD'					=> 'Überblick über die Installation',
 	'SITE_INFOS' 				=> 'Seiten-Statistik',
 	'HELP_LINKS' 				=> 'Hilfreiche Links',			
@@ -60,4 +63,5 @@ $THEME = array(
 	'USERS' 					=> 'Eingerichtete User',
 	'GROUPS' 					=> 'Eingerichtete Gruppen'
 ); 
+
 ?>

@@ -39,6 +39,9 @@ $THEME = array(
 	'NO_SHOW_THUMBS' 			=> 'Hide thumbnails',
 	'TEXT_HEADER' 				=> 'Set maximum imagesize for a folder</b><br><small><i>(resizing on new uploads only)</i></small>',
 	'ADDON_PERMISSIONS' 		=> 'Addon Permissions',	
+	'ADD_LEVEL_0' 				=> 'add level 0',
+	'UPLOAD' 					=> 'upload',
+	'CREATE' 					=> 'create',	
 	'DASHBOARD'					=> 'Installation Overview',
 	'SITE_INFOS' 				=> 'Site-Statistics',
 	'HELP_LINKS' 				=> 'Helpful Links',		
@@ -59,4 +62,5 @@ $THEME = array(
 	'USERS' 					=> 'Registered Users',
 	'GROUPS' 					=> 'Registered Groups'
 ); 
+
 ?>
