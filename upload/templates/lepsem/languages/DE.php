@@ -39,7 +39,7 @@ $TEXT['ADMIN_ONLY'] = 'diese Optionen nur Administratoren zug&auml;nglich machen
 $TEXT['NO_SHOW_THUMBS'] = 'Vorschaubilder verstecken';
 $TEXT['TEXT_HEADER'] = 'Maximale Bildergr&ouml;&szlig;e f&uuml;r Ordner festlegen</b><br><small><i>(&Auml;nderung nur beim Hochladen)</i></small>';
 
-$START = array(
+$THEME = array(
 	'DASHBOARD'					=> 'Überblick über die Installation',
 	'SITE_INFOS' 				=> 'Seiten-Statistik',
 	'HELP_LINKS' 				=> 'Hilfreiche Links',			

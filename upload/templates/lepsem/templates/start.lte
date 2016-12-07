@@ -22,7 +22,7 @@
 			</div>			
 			<div class="column">		
 				<h3 class="ui grey right floated header">
-					<div class="content">{{ START.DASHBOARD }}</div>
+					<div class="content">{{ THEME.DASHBOARD }}</div>
 				</h3>
 			</div>
 		
@@ -34,8 +34,8 @@
 		<div class="ui icon red warning message">
 		  <i class="warning sign icon"></i>
 		  <div class="content">
-			<div class="header">{{ START.UPDATE }} {{ current_release }}</div>			
-			<p>{{ START.LINK_HOME }}<a href="{{ lepton_link }}" target="_blank">{{ START.HOMEPAGE }}</a></p>
+			<div class="header">{{ THEME.UPDATE }} {{ current_release }}</div>			
+			<p>{{ THEME.LINK_HOME }}<a href="{{ lepton_link }}" target="_blank">{{ THEME.HOMEPAGE }}</a></p>
 		  </div>
 		</div>
 		{% endif %}
@@ -43,22 +43,22 @@
 		<div class="ui grey message">
 			<div class="ui relaxed divided list">
 			  <div class="item">
-				<div class="ui header">{{ START.SITE_INFOS }}</div>
+				<div class="ui header">{{ THEME.SITE_INFOS }}</div>
 				<div class="content">
-					<h4 class="ui header">{{ START.PAGE }}: {{ count_pages }} 
-										| {{ START.MODIFIED_WHEN }} {{ last_pmodified }} 
-										| <a href="{{ page_link_be }}" target="_blank">{{ START.LINK_BE }}</a>
-										| <a href="{{ page_link_fe }}" target="_blank">{{ START.LINK_FE }}</a> 
+					<h4 class="ui header">{{ THEME.PAGE }}: {{ count_pages }} 
+										| {{ THEME.MODIFIED_WHEN }} {{ last_pmodified }} 
+										| <a href="{{ page_link_be }}" target="_blank">{{ THEME.LINK_BE }}</a>
+										| <a href="{{ page_link_fe }}" target="_blank">{{ THEME.LINK_FE }}</a> 
 					</h4>					
 				</div>
 			  </div>
 
 			  <div class="item">
 				<div class="content">
-					<h4 class="ui header">{{ START.SECTIONS }}: {{ count_sections }}
-										| {{ START.MODIFIED_WHEN }} {{ last_pmodified }} 
-										| <a href="{{ page_link_be }}" target="_blank">{{ START.LINK_BE }}</a>
-										| <a href="{{ page_link_fe }}" target="_blank">{{ START.LINK_FE }}</a> 
+					<h4 class="ui header">{{ THEME.SECTIONS }}: {{ count_sections }}
+										| {{ THEME.MODIFIED_WHEN }} {{ last_pmodified }} 
+										| <a href="{{ page_link_be }}" target="_blank">{{ THEME.LINK_BE }}</a>
+										| <a href="{{ page_link_fe }}" target="_blank">{{ THEME.LINK_FE }}</a> 
 					</h4>					
 				</div>
 			  </div>
@@ -67,27 +67,27 @@
 				<div class="ui horizontal list">
 					<div class="item">
 						<div class="content">
-							<h4 class="ui header">{{ START.MODULES }}: {{ count_modules }}</h4>
+							<h4 class="ui header">{{ THEME.MODULES }}: {{ count_modules }}</h4>
 						</div>
 					</div>					
 					<div class="item">
 						<div class="content">
-							<h4 class="ui header">{{ START.TEMPLATES }}: {{ count_templates }}</h4>
+							<h4 class="ui header">{{ THEME.TEMPLATES }}: {{ count_templates }}</h4>
 						</div>
 					</div>
 					<div class="item">
 						<div class="content">
-							<h4 class="ui header">{{ START.LANGUAGES }}: {{ count_languages }}</h4>
+							<h4 class="ui header">{{ THEME.LANGUAGES }}: {{ count_languages }}</h4>
 						</div>
 					</div>
 					<div class="item">
 						<div class="content">
-							<h4 class="ui header">{{ START.USERS }}: {{ count_users }}</h4>
+							<h4 class="ui header">{{ THEME.USERS }}: {{ count_users }}</h4>
 						</div>
 					</div>
 					<div class="item">
 						<div class="content">
-							<h4 class="ui header">{{ START.GROUPS }}: {{ count_groups }}</h4>
+							<h4 class="ui header">{{ THEME.GROUPS }}: {{ count_groups }}</h4>
 						</div>
 					</div>					
 				</div>
@@ -97,7 +97,7 @@
 		</div>
 	
 		<div class="ui green message">	
-			<div class="ui header">{{ START.HELP_LINKS }}</div>
+			<div class="ui header">{{ THEME.HELP_LINKS }}</div>
 			<div class="spacer1"></div>
 			<div class="ui four column stackable grid">	
 				<div class="column">

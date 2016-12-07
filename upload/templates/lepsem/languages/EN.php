@@ -39,7 +39,7 @@ $TEXT['ADMIN_ONLY'] = 'Settings for administrator only';
 $TEXT['NO_SHOW_THUMBS'] = 'Hide thumbnails';
 $TEXT['TEXT_HEADER'] = 'Set maximum imagesize for a folder</b><br><small><i>(resizing on new uploads only)</i></small>';
 
-$START = array(
+$THEME = array(
 	'DASHBOARD'					=> 'Installation Overview',
 	'SITE_INFOS' 				=> 'Site-Statistics',
 	'HELP_LINKS' 				=> 'Helpful Links',		
