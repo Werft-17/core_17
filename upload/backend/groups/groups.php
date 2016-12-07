@@ -7,11 +7,10 @@
  * NOTICE:LEPTON CMS Package has several different licenses.
  * Please see the individual license in the header of each single file or info.php of modules and templates.
  *
- *
- * @author		  LEPTON Project
- * @copyright	   2010-2017 LEPTON Project
- * @link			http://www.LEPTON-cms.org
- * @license		 http://www.gnu.org/licenses/gpl.html
+ * @author          LEPTON Project
+ * @copyright       2010-2017 LEPTON Project
+ * @link            http://www.LEPTON-cms.org
+ * @license         http://www.gnu.org/licenses/gpl.html
  * @license_terms   please see LICENSE and COPYING files in your package
  *
  */
@@ -74,7 +73,8 @@ if($_POST['action'] == 'modify')
 			'name'	=> "",
 			'system_permissions' => "",
 			'module_permissions' => "",
-			'template_permissions' => ""
+			'template_permissions' => "",
+			'language_permissions' => ""			
 		);
 		
 	} else {
@@ -189,6 +189,27 @@ if($_POST['action'] == 'modify')
 		);
 	}
 	
+	/**	*****************************
+	 *	Get the language permissions
+	 */
+	$all_languages = array();
+	$database->execute_query(
+		'SELECT `name`,`directory` FROM `'.TABLE_PREFIX.'addons` WHERE `type` = "language" ORDER BY `name`',
+		true,
+		$all_languages
+	);
+	
+	$group_language_permissions = explode(',', $group['language_permissions']);
+
+	$language_permissions = array();
+	foreach($all_languages as &$language) {
+		$language_permissions[] = array(
+			'name'	=> $language['name'],
+			'directory' => $language['directory'],
+			'permission' => in_array($language['directory'], $group_language_permissions) ? 1 : 0
+		);
+	}	
+//die(print_r($language_permissions));		
 	/**
 	 *	Get/Build secure-hash for the js-calls
 	 */
@@ -208,6 +229,7 @@ if($_POST['action'] == 'modify')
 		'module_permissions' => $module_permissions,
 		'admintools_permissions' => $admintools_permissions,
 		'template_permissions'	=> $template_permissions,
+		'language_permissions'	=> $language_permissions,		
 		'hash'	=> $hash,
 		'FORM_NAME' => "groups_".random_string(12),
 		'GROUPS_CONFIRM_DELETE' => $MESSAGE['GROUPS_CONFIRM_DELETE']

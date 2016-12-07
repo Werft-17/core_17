@@ -6,13 +6,11 @@
  * NOTICE:LEPTON CMS Package has several different licenses.
  * Please see the individual license in the header of each single file or info.php of modules and templates.
  *
- *
  * @author          LEPTON Project
  * @copyright       2010-2017 LEPTON Project
  * @link            http://www.LEPTON-cms.org
  * @license         http://www.gnu.org/licenses/gpl.html
  * @license_terms   please see LICENSE and COPYING files in your package
- * @version         $Id: save.php 1172 2011-10-04 15:26:26Z frankh $
  *
  */
  
@@ -134,6 +132,25 @@ foreach($all_modules as &$module) {
 }
 $module_permissions = implode(",", $group_module_permissions);
 
+/**	**************************
+ *	Get the language permissions
+ */
+$all_languages = array();
+$database->execute_query(
+	'SELECT `name`,`directory` FROM `'.TABLE_PREFIX.'addons` WHERE `type` = "language"  ORDER BY `name`',
+	true,
+	$all_languages
+);
+$group_language_permissions = array();
+foreach($all_languages as &$language) {
+	if (isset($_POST[ $language['directory'] ])) {
+		if (intval($_POST[ $language['directory'] ]) == 1) {
+			$group_language_permissions[] = $language['directory'];
+		}
+	}
+}
+$language_permissions = implode(",", $group_language_permissions);
+
 /**	*****************************
  *	Get the templates permissions
  */
@@ -158,7 +175,8 @@ $fields = array(
 	'name' => $group_name,
 	'system_permissions' => $system_permissions,
 	'module_permissions' => $module_permissions,
-	'template_permissions' => $template_permissions
+	'template_permissions' => $template_permissions,
+	'language_permissions' => $language_permissions	
 );
 
 if ($group_id === -1) {

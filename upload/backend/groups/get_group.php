@@ -131,6 +131,23 @@ foreach($all_templates as &$template) {
 	$group_values[ $template['directory'] ] = (in_array($template['directory'], $group_template_permissions) ) ? 1 : 0;
 }
 
+/**	*************
+ *	Get languages
+ *
+ */
+$all_languages = array();
+$database->execute_query(
+	'SELECT `name`,`directory` FROM `'.TABLE_PREFIX.'addons` WHERE `type` = "language" ORDER BY `name`',
+	true,
+	$all_languages
+);
+	
+$group_language_permissions = explode(',', $group['language_permissions']);
+
+foreach($all_languages as &$language) {
+	$group_values[ $language['directory'] ] = (in_array($language['directory'], $group_language_permissions) ) ? 1 : 0;
+}
+
 /**
  *	Return the result-array in JSON (JavaScript Object-Notation)
  *

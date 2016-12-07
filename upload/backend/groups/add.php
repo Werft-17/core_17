@@ -7,13 +7,11 @@
  * NOTICE:LEPTON CMS Package has several different licenses.
  * Please see the individual license in the header of each single file or info.php of modules and templates.
  *
- *
- * @author		  LEPTON Project
- * @copyright	   2010-2017 LEPTON Project
- * @link			http://www.LEPTON-cms.org
- * @license		 http://www.gnu.org/licenses/gpl.html
+ * @author          LEPTON Project
+ * @copyright       2010-2017 LEPTON Project
+ * @link            http://www.LEPTON-cms.org
+ * @license         http://www.gnu.org/licenses/gpl.html
  * @license_terms   please see LICENSE and COPYING files in your package
- * @version		 $Id: add.php 1172 2011-10-04 15:26:26Z frankh $
  *
  */
  
@@ -59,7 +57,7 @@ if($results->numRows()>0) {
 require(ADMIN_PATH.'/groups/get_permissions.php');
 
 // Update the database
-$query = "INSERT INTO ".TABLE_PREFIX."groups (name,system_permissions,module_permissions,template_permissions) VALUES ('$group_name','$system_permissions','$module_permissions','$template_permissions')";
+$query = "INSERT INTO ".TABLE_PREFIX."groups (name,system_permissions,module_permissions,template_permissions,language_permissions) VALUES ('$group_name','$system_permissions','$module_permissions','$template_permissions','$language_permissions')";
 
 $database->query($query);
 if($database->is_error()) {

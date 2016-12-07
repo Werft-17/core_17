@@ -135,7 +135,7 @@
 										<div class="content">
 											{% for language in language_permissions %}											
 													<div class="ui checkbox access_groups">
-														<input type="checkbox" value=1" id="{{ language.directory }}" name="{{ langauge.directory }}" {% if language.permission == 1 %}checked="checked"{% endif %} />
+														<input type="checkbox" value=1" id="{{ language.directory }}" name="{{ language.directory }}" {% if language.permission == 1 %}checked="checked"{% endif %} />
 														<label for="{{ language.directory }}">{{ language.name }}</label>
 													</div>
 											{% endfor %}											
