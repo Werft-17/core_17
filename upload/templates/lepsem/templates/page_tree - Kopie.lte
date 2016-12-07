@@ -16,26 +16,32 @@
 </div>
 <div class="content"> <!-- start page-tree -->
 
-	<table class="ui striped small collapsing compact table">
-		<thead>
-			<tr>
-				<th>{{ THEME.PAGE_ID }}</th>
-				<th>{{ TEXT.VISIBILITY }}/{{ TEXT.MENU_TITLE }}</th>
-				<th>{{ TEXT.PAGE_TITLE }}</th>
-				<th>{{ TEXT.URL }}</th>
-				<th class="center aligned">{{ TEXT.ACTIONS }}</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-			  <td>John</td>
-			  <td>Approved</td>
-			  <td>None</td>
-			  <td>Approved</td>
-			  <td>None</td>			  
-			</tr>
-		</tbody>
-	</table>
+{% macro display_pagelink( page, deep ) %}
+	<p style="margin-left: {{ (deep *20) }}px">
+		{% if page.subpages|length > 0 %}
+			<i class="red minus icon"></i>
+		{% endif %}
+		<a class="tree_link tree_link_act" href='{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}'>
+			<i class="green write icon"></i>
+		</a>
+		<a class="tree_link tree_link_act delete_color" href='#' onclick="confirm_delete( '{{ page.page_id }}', '{{ page.page_title }}');">
+			<i class="delete_color trash icon"></i>
+		</a>
+		&nbsp;
+		<a id="sortable" class="tree_link" href='{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}' onclick="lepsem_adjust_parent('{{page.menu_title}}', {{ page.page_id }});">
+			<i class="black {% if (page.visibility =="public") %}unhide{% else %}hide{% endif %} icon"></i> {{ page.menu_title }} [ {{ page.page_id }} ]
+		</a>
+	</p>
+	{% import _self as pagelink %}
+	{% for subpage in page.subpages %}
+		{{ pagelink.display_pagelink( subpage, deep+1 ) }}
+	{% endfor %}
+{% endmacro %}
+
+	{% import _self as pagelink %}	
+	{% for page in all_pages %}
+		{{ pagelink.display_pagelink( page, 0 ) }}  
+	{% endfor %}
 
 </div> <!-- end page-tree -->
 

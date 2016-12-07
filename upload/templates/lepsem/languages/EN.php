@@ -42,6 +42,7 @@ $THEME = array(
 	'SITE_INFOS' 				=> 'Site-Statistics',
 	'HELP_LINKS' 				=> 'Helpful Links',		
 	'PAGE' 						=> 'Count pages',
+	'PAGE_ID' 					=> 'ID',		
 	'PAGE_DETAILS' 				=> 'Page Details',
 	'PAGE_PERMISSION' 			=> 'Page Permissions',		
 	'SECTIONS' 					=> 'Count sections',
