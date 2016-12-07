@@ -710,7 +710,6 @@ $OVERVIEW = array(
 	'VIEW' 					=> 'Quickly view and browse your website in a new window...'
 );
 
-
 /*
  * Create the old languages definitions only if specified in settings
  */

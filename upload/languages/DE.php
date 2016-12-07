@@ -708,7 +708,6 @@ $OVERVIEW = array(
 	'VIEW' 						=> 'Ansicht Ihrer Webseite in einem neuen Fenster...'
 ); // OVERVIEW
 
-
 /*
  * Create the old languages definitions only if specified in settings
  */
