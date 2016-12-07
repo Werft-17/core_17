@@ -38,6 +38,7 @@ $THEME = array(
 	'ADMIN_ONLY' 				=> 'diese Optionen nur Administratoren zugänglich machen',
 	'NO_SHOW_THUMBS' 			=> 'Vorschaubilder verstecken',
 	'TEXT_HEADER' 				=> 'Maximale Bildergr&ouml;&szlig;e f&uuml;r Ordner festlegen</b><br><small><i>(&Auml;nderung nur beim Hochladen)</i></small>',
+	'ADDON_PERMISSIONS' 		=> 'Zugriffsrechte für Addons',
 	'DASHBOARD'					=> 'Überblick über die Installation',
 	'SITE_INFOS' 				=> 'Seiten-Statistik',
 	'HELP_LINKS' 				=> 'Hilfreiche Links',			
@@ -54,7 +55,8 @@ $THEME = array(
 	'HOMEPAGE' 					=> 'LEPTON Homepage',
 	'MODULES' 					=> 'Installierte Module',
 	'LANGUAGES' 				=> 'Installierte Sprachen',
-	'TEMPLATES' 				=> 'Installierte Templates',	
+	'TEMPLATES' 				=> 'Installierte Templates',
+	'ADDON_PERMISSIONS' 		=> 'Installierte Templates',		
 	'USERS' 					=> 'Eingerichtete User',
 	'GROUPS' 					=> 'Eingerichtete Gruppen'
 ); 
