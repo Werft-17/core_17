@@ -34,12 +34,10 @@ if (defined('LEPTON_PATH')) {
 //Modul Description
 $template_description 	= 'Enhanced backend theme for LEPTON CMS';
 
-//Texts
-$TEXT['ADMIN_ONLY'] = 'Settings for administrator only';
-$TEXT['NO_SHOW_THUMBS'] = 'Hide thumbnails';
-$TEXT['TEXT_HEADER'] = 'Set maximum imagesize for a folder</b><br><small><i>(resizing on new uploads only)</i></small>';
-
 $THEME = array(
+	'ADMIN_ONLY' 				=> 'Settings for administrator only',
+	'NO_SHOW_THUMBS' 			=> 'Hide thumbnails',
+	'TEXT_HEADER' 				=> 'Set maximum imagesize for a folder</b><br><small><i>(resizing on new uploads only)</i></small>',
 	'DASHBOARD'					=> 'Installation Overview',
 	'SITE_INFOS' 				=> 'Site-Statistics',
 	'HELP_LINKS' 				=> 'Helpful Links',		

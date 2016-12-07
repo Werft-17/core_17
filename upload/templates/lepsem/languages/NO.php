@@ -33,8 +33,10 @@ if (defined('LEPTON_PATH')) {
  
 //Modul Description
 $template_description 	= 'Standard design mal for Admin sidene i LEPTON CMS';
-//Texts
-$TEXT['ADMIN_ONLY'] = 'Innstillinger kun for Admin';
-$TEXT['NO_SHOW_THUMBS'] = 'Skjul miniatyrbilder';
-$TEXT['TEXT_HEADER'] = 'Angi maksimal bilde størrelse for en mappe</b><br><small><i>(endrer bildestørrelse kun ved opplasting av nye bilder)</i></small>';
+
+$THEME = array(
+	'ADMIN_ONLY' 				=> 'Innstillinger kun for Admin',
+	'NO_SHOW_THUMBS' 			=> 'Skjul miniatyrbilder',
+	'TEXT_HEADER' 				=> 'Angi maksimal bilde størrelse for en mappe</b><br><small><i>(endrer bildestørrelse kun ved opplasting av nye bilder)</i></small>'
+); 
 ?>
