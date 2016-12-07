@@ -19,20 +19,20 @@
 	<table class="ui striped small collapsing compact table">
 		<thead>
 			<tr>
-				<th>{{ THEME.PAGE_ID }}</th>
 				<th>{{ TEXT.VISIBILITY }}/{{ TEXT.MENU_TITLE }}</th>
 				<th>{{ TEXT.PAGE_TITLE }}</th>
 				<th>{{ TEXT.URL }}</th>
 				<th class="center aligned">{{ TEXT.ACTIONS }}</th>
+				<th class="center aligned">{{ THEME.PAGE_ID }}</th>				
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-			  <td>John</td>
-			  <td>Approved</td>
-			  <td>None</td>
-			  <td>Approved</td>
-			  <td>None</td>			  
+			  <td class="selectable"><a href="#">Page Link</a></td>
+			  <td>Mein Seitentitel</td>
+			  <td>hier/die/URL</td>
+			  <td>Icons</td>	
+			  <td>22</td>			  
 			</tr>
 		</tbody>
 	</table>
