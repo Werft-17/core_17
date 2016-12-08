@@ -29,38 +29,36 @@ if (defined('LEPTON_PATH')) {
 }
 // end include class.secure.php
 
-
- 
-//Modul Description
-$template_description 	= 'Enhanced backend theme for LEPTON CMS';
+//	Template/Theme Description
+$template_description 	= 'Enhanced backend theme for LEPTON CMS.';
 
 $THEME = array(
-	'ADMIN_ONLY' 				=> 'Settings for administrator only',
-	'NO_SHOW_THUMBS' 			=> 'Hide thumbnails',
-	'TEXT_HEADER' 				=> 'Set maximum imagesize for a folder</b><br><small><i>(resizing on new uploads only)</i></small>',
-	'ADDON_PERMISSIONS' 		=> 'Addon Permissions',	
-	'ADD_LEVEL_0' 				=> 'add level 0',
-	'UPLOAD' 					=> 'upload',
-	'CREATE' 					=> 'create',	
-	'DASHBOARD'					=> 'Installation Overview',
-	'SITE_INFOS' 				=> 'Site-Statistics',
-	'HELP_LINKS' 				=> 'Helpful Links',		
-	'PAGE' 						=> 'Count pages',
-	'PAGE_ID' 					=> 'ID',		
-	'PAGE_DETAILS' 				=> 'Page Details',
-	'PAGE_PERMISSION' 			=> 'Page Permissions',		
-	'SECTIONS' 					=> 'Count sections',
-	'MODIFIED_WHEN'				=> 'Last update',
-	'LINK_FE' 					=> 'Link frontend',
-	'LINK_BE' 					=> 'Link backend',
-	'UPDATE' 					=> 'A later LEPTON version is released! Current Version: ',
-	'LINK_HOME' 				=> 'For details please see ',
-	'HOMEPAGE' 					=> 'LEPTON Homepage',
-	'MODULES' 					=> 'Installed Modules',
-	'LANGUAGES' 				=> 'Installed Languages',
-	'TEMPLATES' 				=> 'Installed Templates',
-	'USERS' 					=> 'Registered Users',
-	'GROUPS' 					=> 'Registered Groups'
+	'ADMIN_ONLY' 		=> 'Settings for administrator only',
+	'NO_SHOW_THUMBS' 	=> 'Hide thumbnails',
+	'TEXT_HEADER' 		=> 'Set maximum imagesize for a folder</b><br><small><i>(resizing on new uploads only)</i></small>',
+	'ADDON_PERMISSIONS' => 'Addon Permissions',	
+	'ADD_LEVEL_0' 		=> 'add level 0',
+	'UPLOAD' 			=> 'upload',
+	'CREATE' 			=> 'create',	
+	'DASHBOARD'			=> 'Installation Overview',
+	'SITE_INFOS' 		=> 'Site-Statistics',
+	'HELP_LINKS' 		=> 'Helpful Links',		
+	'PAGE' 				=> 'Count pages',
+	'PAGE_ID' 			=> 'ID',		
+	'PAGE_DETAILS' 		=> 'Page Details',
+	'PAGE_PERMISSION' 	=> 'Page Permissions',		
+	'SECTIONS' 			=> 'Count sections',
+	'MODIFIED_WHEN'		=> 'Last update',
+	'LINK_FE' 			=> 'Link frontend',
+	'LINK_BE' 			=> 'Link backend',
+	'UPDATE' 			=> 'A later LEPTON version is released! Current Version: ',
+	'LINK_HOME' 		=> 'For details please see ',
+	'HOMEPAGE' 			=> 'LEPTON Homepage',
+	'MODULES' 			=> 'Installed Modules',
+	'LANGUAGES' 		=> 'Installed Languages',
+	'TEMPLATES' 		=> 'Installed Templates',
+	'USERS' 			=> 'Registered Users',
+	'GROUPS' 			=> 'Registered Groups'
 ); 
 
 ?>

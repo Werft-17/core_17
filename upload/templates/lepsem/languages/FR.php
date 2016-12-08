@@ -10,7 +10,6 @@
  *  @platform       see info.php of this template
  *  @requirements   PHP 5.2.x and higher
  */
-
  
 // include class.secure.php to protect this file and the whole CMS!
 if (defined('LEPTON_PATH')) {	
@@ -31,14 +30,12 @@ if (defined('LEPTON_PATH')) {
 }
 // end include class.secure.php
 
-
- 
-//Modul Description
+//	Template/Theme Description
 $template_description 	= 'Enhanced backend theme for Lepton CMS';
 
 $THEME = array(
-	'ADMIN_ONLY' 				=> 'Seul l&apos;administrateur peut modifier ces r&eacute;glages',
-	'NO_SHOW_THUMBS' 			=> 'Cacher les vignettes',
-	'TEXT_HEADER' 				=> 'D&eacute;finir la taille des images par dossier</b><br><small><i>(Redimensionnement seulement lors d&apos;un nouvel upload)</i></small>'
+	'ADMIN_ONLY'		=> 'Seul l&apos;administrateur peut modifier ces r&eacute;glages',
+	'NO_SHOW_THUMBS'	=> 'Cacher les vignettes',
+	'TEXT_HEADER'		=> 'D&eacute;finir la taille des images par dossier</b><br><small><i>(Redimensionnement seulement lors d&apos;un nouvel upload)</i></small>'
 ); 
 ?>

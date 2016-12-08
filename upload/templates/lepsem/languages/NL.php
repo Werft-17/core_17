@@ -29,14 +29,12 @@ if (defined('LEPTON_PATH')) {
 }
 // end include class.secure.php
 
-
-
-//Modul Description
+//	Template/Theme Description
 $template_description 	= 'Geavanceerde admin-template voor LEPTON CMS';
 
 $THEME = array(
-	'ADMIN_ONLY' 				=> 'Instellingen alleen beschikbaar voor administrator',
-	'NO_SHOW_THUMBS' 			=> 'Thumbnails niet weergeven',
-	'TEXT_HEADER' 				=> 'Stel de maximale grootte voor \'resized\' afbeeldingen in per folder</b><br><small><i>(NB: werkt alleen bij nieuwe uploads)</i></small>'
+	'ADMIN_ONLY'		=> 'Instellingen alleen beschikbaar voor administrator',
+	'NO_SHOW_THUMBS'	=> 'Thumbnails niet weergeven',
+	'TEXT_HEADER' 		=> 'Stel de maximale grootte voor \'resized\' afbeeldingen in per folder</b><br><small><i>(NB: werkt alleen bij nieuwe uploads)</i></small>'
 ); 
 ?>
