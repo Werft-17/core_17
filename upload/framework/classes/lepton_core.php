@@ -210,5 +210,27 @@ class LEPTON_core
 
 		return $ER_LEVELS;
 	}
+	
+	
+	/**
+	 *	Backend-Theme specific language values
+	 */
+	static function get_backend_translation( $sKey="" )
+	{
+		global $TEXT, $THEME;
+		
+		if( (isset($THEME)) && (isset($THEME[ $sKey ]) ) )
+		{
+			return $THEME[ $sKey ];
+		}
+		elseif( isset($TEXT[ $sKey] ) )
+		{
+			return $TEXT[ $sKey];
+		}
+		else
+		{
+			return "** ".$sKey." (Key not found in Languages!)";
+		}
+	}
 }
 ?>

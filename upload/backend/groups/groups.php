@@ -93,7 +93,7 @@ if($_POST['action'] == 'modify')
 	 *	Get the system permissions
 	 */
 	$system_lookups = array(
-		'pages'		=> array('view', 'add', 'add level 0','settings', 'modify','delete'),
+		'pages'		=> array('view', 'add', 'add_level_0','settings', 'modify','delete'),
 		'media'		=> array('view','upload','rename','delete','create'),
 		'modules'	=> array('view','install','uninstall'),
 		'templates' => array('view','install','uninstall'),
@@ -107,6 +107,11 @@ if($_POST['action'] == 'modify')
 	$group_system_permissions = explode(',', $group['system_permissions']);
 	
 	$system_permissions = array();
+	
+	//	As we are "calling" a static method more than two times we are 
+	//	using an instance here for the reference for the class
+	$oLEPTON_core = LEPTON_core::getInstance();
+	
 	foreach($system_lookups as $sys_key => $subkeys) {
 		
 		$sub_keys = array();
@@ -114,7 +119,8 @@ if($_POST['action'] == 'modify')
 		foreach($subkeys as $item) {
 			$sub_keys[] = array(
 				'name' => $sys_key."_".$item,
-				'label' => (isset($TEXT[ strtoupper($item) ])) ? $TEXT[ strtoupper($item) ] : "*".$item."!",
+				// 'label' => (isset($TEXT[ strtoupper($item) ])) ? $TEXT[ strtoupper($item) ] : "*".$item."!",
+				'label'	=> $oLEPTON_core->get_backend_translation( strtoupper($item) ),
 				'checked' => in_array( $sys_key."_".$item, $group_system_permissions ) ? 1 : 0
 			);
 		}
