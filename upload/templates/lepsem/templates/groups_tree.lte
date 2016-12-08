@@ -39,6 +39,7 @@ function lepsem_get_Group( aGroupID ) {
 	xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState==4) {
      		if (xmlhttp.status==200) {
+     			
 	     		eval ("var group = "+xmlhttp.responseText+";");
      		
 	     		/**

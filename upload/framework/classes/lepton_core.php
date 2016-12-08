@@ -214,12 +214,43 @@ class LEPTON_core
 	
 	/**
 	 *	Backend-Theme specific language values
+	 *
+	 *	@param	string	Any valid keystring. Default is NULL.
+	 *	@return string	The value if the key or a warning about the missing key.
+	 *
+	 *	@notice	You can use the method to "preload" the theme-language file passing NULL 
+	 *			to load them where you need them!
 	 */
-	static function get_backend_translation( $sKey="" )
+	static function get_backend_translation( $sKey=NULL )
 	{
 		global $TEXT, $THEME;
 		
-		if( (isset($THEME)) && (isset($THEME[ $sKey ]) ) )
+		if(!isset($THEME))
+		{
+			/**
+			 *	Backend-Theme can also have additional language-files
+			 */
+			if(file_exists( THEME_PATH."/languages/".LANGUAGE.".php" ))
+			{
+				require_once( THEME_PATH."/languages/".LANGUAGE.".php" );
+			}
+			elseif( file_exists( THEME_PATH."/languages/EN.php" ) )
+			{
+				require_once( THEME_PATH."/languages/".LANGUAGE.".php" );
+			}
+			else
+			{
+				// avoid errors and conflicts for non existing $TEME 
+				$THEME = array();
+			}
+		}
+		
+		if( $sKey == NULL)
+		{
+			return "";
+		}
+		
+		if( isset($THEME[ $sKey ]) )
 		{
 			return $THEME[ $sKey ];
 		}

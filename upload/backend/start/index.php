@@ -36,6 +36,7 @@ if (defined('LEPTON_PATH')) {
 }
 // end include class.secure.php
 
+
 // enable custom dashboard
 if(file_exists(THEME_PATH .'/backend/start/index.php')) {
 	require_once (THEME_PATH .'/backend/start/index.php');
@@ -49,6 +50,9 @@ if(file_exists(LEPTON_PATH .'/modules/initial_page/classes/class.init_page.php')
 }
 require_once(LEPTON_PATH.'/framework/class.admin.php');
 $admin = new admin('Start','start');
+
+//	Pre-load the theme langages 
+LEPTON_core::get_backend_translation();
 
 if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
 

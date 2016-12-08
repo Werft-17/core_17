@@ -110,7 +110,7 @@ if($_POST['action'] == 'modify')
 	
 	//	As we are "calling" a static method more than two times we are 
 	//	using an instance here for the reference for the class
-	$oLEPTON_core = LEPTON_core::getInstance();
+	$LEPTON_core = LEPTON_core::getInstance();
 	
 	foreach($system_lookups as $sys_key => $subkeys) {
 		
@@ -119,8 +119,7 @@ if($_POST['action'] == 'modify')
 		foreach($subkeys as $item) {
 			$sub_keys[] = array(
 				'name' => $sys_key."_".$item,
-				// 'label' => (isset($TEXT[ strtoupper($item) ])) ? $TEXT[ strtoupper($item) ] : "*".$item."!",
-				'label'	=> $oLEPTON_core->get_backend_translation( strtoupper($item) ),
+				'label'	=> $LEPTON_core->get_backend_translation( strtoupper($item) ),
 				'checked' => in_array( $sys_key."_".$item, $group_system_permissions ) ? 1 : 0
 			);
 		}
