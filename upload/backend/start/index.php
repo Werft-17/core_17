@@ -115,7 +115,6 @@ $page_values = array(
 	'page_link_be' 	=> $page_link_be,	
 	'current_release'=> $current_release,
 	'is_uptodate' 	=> $is_uptodate
-
 );
 
 echo $parser->render(

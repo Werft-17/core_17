@@ -197,7 +197,7 @@ if ( file_exists( dirname( __FILE__ ) . '/classes/lepton_database.php' ) )
 			require_once( LEPTON_PATH . '/languages/' . LANGUAGE . '.php' );
 		}
 	}
-
+	
 	/**
 	 *	Setting the correct default timezone
 	 *	to avoid "date" conflicts and warnings
@@ -215,6 +215,24 @@ if ( file_exists( dirname( __FILE__ ) . '/classes/lepton_database.php' ) )
 	// Set Theme dir
 	define( 'THEME_URL', LEPTON_URL . '/templates/' . DEFAULT_THEME );
 	define( 'THEME_PATH', LEPTON_PATH . '/templates/' . DEFAULT_THEME );
+	
+	/**
+	 *	Backend-Theme can also have additional language-files
+	 */
+	if(file_exists( THEME_PATH."/languages/".LANGUAGE.".php" ))
+	{
+		require_once( THEME_PATH."/languages/".LANGUAGE.".php" );
+	}
+	elseif( file_exists( THEME_PATH."/languages/EN.php" ) )
+	{
+		require_once( THEME_PATH."/languages/".LANGUAGE.".php" );
+	}
+	else
+	{
+		// avoid errors and conflicts for non existing $TEME 
+		global $THEME;
+		$THEME = array();
+	}
 	
 	$database->prompt_on_error( PROMPT_MYSQL_ERRORS );
 	
