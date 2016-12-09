@@ -84,7 +84,7 @@
 								
 								<div class="title">
 									<i class="dropdown icon"></i>
-									{{ THEME.ADDON_PERMISSIONS  }}
+									{{ THEME.ADDON_PERMISSIONS }}
 								</div>							
 								<div class="content">	
 									<div class="accordion transition visible" style="display: block ! important;">

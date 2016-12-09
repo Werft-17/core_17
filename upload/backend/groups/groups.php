@@ -45,6 +45,12 @@ if (!isset($parser))
 {
 	require_once( LEPTON_PATH."/modules/lib_twig/library.php" );
 }
+
+//	As we are "calling" a static method more than two times we are 
+//	using an instance here for the reference for the class
+$LEPTON_core = LEPTON_core::getInstance();
+$LEPTON_core->get_backend_translation();
+	
 if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
 $loader->prependPath( THEME_PATH."/templates/", "theme" );	// namespace for the Twig-Loader is "theme"
 
