@@ -240,7 +240,7 @@ class LEPTON_core
 			}
 			else
 			{
-				// avoid errors and conflicts for non existing $TEME 
+				// avoid errors and conflicts for non existing $THEME 
 				$THEME = array();
 			}
 		}
