@@ -27,13 +27,27 @@
 			</tr>
 		</thead>
 		<tbody>
+{# ### einzelne seite als "Zeile" ### #}
+{% macro display_pagelink( page, deep ) %}
 			<tr>
-			  <td class="selectable"><a href="#">Page Link</a></td>
-			  <td>Mein Seitentitel</td>
-			  <td>hier/die/URL</td>
-			  <td>Icons</td>	
-			  <td>22</td>			  
+				<td class="selectable"><a href="{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}">{{ page.menu_title }}</a></td>
+				<td>{{ page.page_title }}</td>
+				<td>{{ page.link }}</td>
+				<td>Icons</td>
+				<td>{{ page.page_id }}</td>
 			</tr>
+	{% import _self as pagelink %}
+	{% for subpage in page.subpages %}
+		{{ pagelink.display_pagelink( subpage, deep+1 ) }}
+	{% endfor %}
+{% endmacro %}
+
+	{% import _self as pagelink %}	
+	{% for page in all_pages %}
+		{{ pagelink.display_pagelink( page, 0 ) }}  
+	{% endfor %}
+
+{# ### ende einzelne Seite ### #}
 		</tbody>
 	</table>
 
