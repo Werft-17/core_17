@@ -114,10 +114,6 @@ if($_POST['action'] == 'modify')
 	
 	$system_permissions = array();
 	
-	//	As we are "calling" a static method more than two times we are 
-	//	using an instance here for the reference for the class
-	$LEPTON_core = LEPTON_core::getInstance();
-	
 	foreach($system_lookups as $sys_key => $subkeys) {
 		
 		$sub_keys = array();
