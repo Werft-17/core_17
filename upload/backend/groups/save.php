@@ -85,7 +85,7 @@ if (isset($_POST['job'])) {
  *	Get the system permissions
  */
 $system_lookups = array(
-	'pages'		=> array('view', 'add', 'add level 0','settings', 'modify','delete'),
+	'pages'		=> array('view', 'add', 'add_level_0','settings', 'modify','delete'),
 	'media'		=> array('view','upload','rename','delete','create'),
 	'modules'	=> array('view','install','uninstall'),
 	'templates' => array('view','install','uninstall'),
