@@ -34,13 +34,19 @@ if (defined('LEPTON_PATH')) {
 // end include class.secure.php
 
 
-
+/* alter Code
 require_once (LEPTON_PATH.'/modules/lib_phpmailer/phpmailer/PHPMailerAutoload.php');
 
 PHPMailerAutoload('PHPMailer');
 PHPMailerAutoload('SMTP');
 PHPMailerAutoload('POP3');
 
+*/
+//neuer Code
+//https://github.com/PHPMailer/PHPMailer/tree/6.0
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
+require 'vendor/autoload.php';
 
 ?>

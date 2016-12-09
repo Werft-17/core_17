@@ -1,12 +1,34 @@
-# ChangeLog
+# PHPMailer Change Log
 
-## Version 5.2.16 (June 6th 2016)
-* Added DKIM example
-* Fixed empty additional_parameters problem
-* Fixed wrong version number in VERSION file!
-* Improve line-length tests
-* Use instance settings for SMTP::connect by default
-* Use more secure auth mechanisms first
+## Version 6.0
+This is a major update that breaks backwards compatibility.
+
+* **Requires PHP 5.5 or later**
+* Uses the `PHPMailer\PHPMailer` namespace
+* File structure simplified, classes live in the `src/` folder
+* The custom autoloader has been removed, now PSR-4 compatible: [**use composer**](https://getcomposer.org)!
+* Classes & Exceptions renamed to make use of the namespace
+* Most statically called functions now use the `static` keyword instead of `self`, so it's possible to override static internal functions in subclasses, for example `validateAddress()`
+* `Extras` classes have been removed - use packages from [packagist.org](https://packagist.org) instead
+* All elements previously marked as deprecated have been removed:
+  * `PHPMailer->Version`
+  * `PHPMailer->ReturnPath`
+  * `PHPMailer->PluginDir`
+  * `PHPMailer->encodeQPphp()`
+  * `SMTP->CRLF`
+  * `SMTP->Version`
+  * `SMTP->SMTP_PORT`
+  * `POP3->CRLF`
+  * `POP3->Version`
+* NTLM authentication removed - never worked anyway!
+  * `PHPMailer->Workstation`
+  * `PHPMailer->Realm`
+* `SMTP::authenticate` method signature changed
+* `parseAddresses()` is now static
+* `validateAddress()` is now called statically from `parseAddresses()`
+* `PHPMailer->SingleToArray` is now protected
+* Extensive reworking of XOAUTH2, adding support for Google, Yahoo and Microsoft providers, thanks to @sherryl4george
+* Major cleanup of docs and examples
 
 ## Version 5.2.15 (May 10th 2016)
 * Added ability to inject custom address validators, and set the default validator
