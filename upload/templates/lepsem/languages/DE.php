@@ -35,7 +35,7 @@ $template_description 	= 'Ein erweitertes Backend-Theme für LEPTON CMS.';
 $THEME = array(
 	'ADMIN_ONLY' 		=> 'Diese Optionen nur Administratoren zugänglich machen!',
 	'NO_SHOW_THUMBS' 	=> 'Vorschaubilder verstecken',
-	'TEXT_HEADER' 		=> 'Maximale Bildergr&ouml;&szlig;e f&uuml;r Ordner festlegen</b><br><small><i>(&Auml;nderung nur beim Hochladen)</i></small>',
+	'TEXT_HEADER' 		=> 'Maximale Bildergröße fürr Ordner festlegen</b><br><small><i>(Änderung nur beim Hochladen)</i></small>',
 	'ADDON_PERMISSIONS' => 'Zugriffsrechte für Addons',
 	'ADD_LEVEL_0' 		=> 'auch Ebene 0',
 	'UPLOAD' 			=> 'hochladen',
@@ -57,7 +57,6 @@ $THEME = array(
 	'MODULES' 			=> 'Installierte Module',
 	'LANGUAGES' 		=> 'Installierte Sprachen',
 	'TEMPLATES' 		=> 'Installierte Templates',
-	'ADDON_PERMISSIONS' => 'Installierte Templates',		
 	'USERS' 			=> 'Eingerichtete User',
 	'GROUPS' 			=> 'Eingerichtete Gruppen'
 ); 
