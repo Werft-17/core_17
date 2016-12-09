@@ -98,7 +98,7 @@ if($_POST['action'] == 'modify')
 		'modules'	=> array('view','install','uninstall'),
 		'templates' => array('view','install','uninstall'),
 		'languages' => array('view','install','uninstall'),
-		'settings'	=> array('basic','advanced'),
+		'settings'	=> array('modify'),
 		'users'		=> array('view','add','modify','delete'),
 		'groups'	=> array('view','add','modify','delete'),
 		'admintools' => array('settings')
