@@ -42,9 +42,7 @@ header( "Cache-Control: no-cache, must-revalidate" );
 header( "Pragma: no-cache" );
 header( "Content-Type: text/html; charset:utf-8;" );
 
-// not needed, config is loaded with class.secure
-// include realpath(dirname(__FILE__)).'/../../config.php';
-include realpath(dirname(__FILE__)).'/../../framework/class.admin.php';
+require_once (LEPTON_PATH.'/framework/class.admin.php');
 $admin = new admin('Settings', 'settings_basic');
 
 $curr_user_is_admin = ( in_array(1, $admin->get_groups_id()) );

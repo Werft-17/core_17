@@ -60,6 +60,15 @@ if (file_exists($database_file)) {
 	}
 }
 
+// delete class.wbmailer
+$database_file = LEPTON_PATH.'/framework/class.wbmailer.php';
+if (file_exists($database_file)) {
+	$result = unlink ($database_file);
+	if (false === $result) {
+		echo "Cannot delete file ".$database_file.". Please check file permissions and ownership or delete file manually.";
+	}
+}
+
 echo "<h5>Delete files: successfull</h5>"; 
 
 
