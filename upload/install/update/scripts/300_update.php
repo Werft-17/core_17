@@ -18,7 +18,7 @@
  ini_set('display_errors', 1);
  error_reporting(E_ALL|E_STRICT);
 
-echo '<h3>Current process : updating to LEPTON 2.4.1</h3>';
+die ('<h3>Current process : updating to LEPTON 3.0.0</h3>');
  
 echo '<h5>Current process : delete unneeded files</h5>';
 // keep in mind to rework initialize.php
@@ -65,12 +65,12 @@ echo "<h5>run upgrade.php of modified modules: successfull</h5>";
 
 // at last: set db to current release-no
  echo '<h5>set database to new release</h5>';
-$database->simple_query('UPDATE `' . TABLE_PREFIX . 'settings` SET `value` =\'2.4.1\' WHERE `name` =\'lepton_version\'');
+$database->simple_query('UPDATE `' . TABLE_PREFIX . 'settings` SET `value` =\'3.0.0\' WHERE `name` =\'lepton_version\'');
 
 
 /**
  *  success message
  */
-echo "<h3>update to LEPTON 2.4.1 successfull!</h3><br />"; 
+echo "<h3>update to LEPTON 3.0.0 successfull!</h3><br />"; 
 
 ?>
