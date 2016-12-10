@@ -647,13 +647,13 @@ $database->simple_query("ALTER DATABASE `".DB_NAME."` DEFAULT CHARACTER SET utf8
 	." ('operating_system', '$operating_system'),"
 	." ('string_file_mode', '$file_mode'),"
 	." ('string_dir_mode', '$dir_mode'),"
-	." ('wbmailer_routine', 'phpmail'),"
+	." ('mailer_routine', 'phpmail'),"
 	." ('server_email', '$admin_email'),"		// avoid that mail provider (e.g. mail.com) reject mails like yourname@mail.com
-	." ('wbmailer_default_sendername', 'LEPTON Mailer'),"
-	." ('wbmailer_smtp_host', ''),"
-	." ('wbmailer_smtp_auth', ''),"
-	." ('wbmailer_smtp_username', ''),"
-	." ('wbmailer_smtp_password', ''),"
+	." ('mailer_default_sendername', 'LEPTON Mailer'),"
+	." ('mailer_smtp_host', ''),"
+	." ('mailer_smtp_auth', ''),"
+	." ('mailer_smtp_username', ''),"
+	." ('mailer_smtp_password', ''),"
 	." ('mediasettings', ''),"
 	." ('enable_old_language_definitions','true')";
 	$database->simple_query($settings_rows);

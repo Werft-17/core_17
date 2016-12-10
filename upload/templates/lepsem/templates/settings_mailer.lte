@@ -38,7 +38,7 @@
 							<div class="ui form">
 								<div class="field">
 									<label>{{ TEXT.MAILER_DEFAULT_SENDER_NAME }}</label>
-									<input type="text" name="wbmailer_default_sendername" value="{{ MAILER_DEFAULT_SENDERNAME }}" />
+									<input type="text" name="mailer_default_sendername" value="{{ MAILER_DEFAULT_SENDERNAME }}" />
 								</div>
 							</div>							
 						</div>							
@@ -53,15 +53,15 @@
 									
 									<div class="field">
 										<div class="ui radio checkbox">
-											<input type="radio" name="wbmailer_routine" id="wbmailer_routine_phpmailx" onclick="javascript: change_wbmailer('phpmail');" value="phpmail"{{ PHPMAIL_SELECTED }} />
-											<label for="wbmailer_routine_phpmail" javascript: change_wbmailer('phpmail');">{{ TEXT.MAILER_PHP }}</label>
+											<input type="radio" name="mailer_routine" id="mailer_routine_phpmailx" onclick="javascript: change_mailer('phpmail');" value="phpmail"{{ PHPMAIL_SELECTED }} />
+											<label for="mailer_routine_phpmail" javascript: change_mailer('phpmail');">{{ TEXT.MAILER_PHP }}</label>
 										</div>
 									</div>
 							
 									<div class="field">
 										<div class="ui radio checkbox">
-											<input type="radio" name="wbmailer_routine" id="wbmailer_routine_smtp" onclick="javascript: change_wbmailer('smtp');" value="smtp"{{ SMTPMAIL_SELECTED }} />
-											<label for="wbmailer_routine_smtp" onclick="javascript: change_wbmailer('smtp');">{{ TEXT.MAILER_SMTP }}</label>
+											<input type="radio" name="mailer_routine" id="mailer_routine_smtp" onclick="javascript: change_mailer('smtp');" value="smtp"{{ SMTPMAIL_SELECTED }} />
+											<label for="mailer_routine_smtp" onclick="javascript: change_mailer('smtp');">{{ TEXT.MAILER_SMTP }}</label>
 										</div>
 									</div>
 									
@@ -95,7 +95,7 @@
 							<div class="ui form">
 								<div class="field">
 									<label>{{ TEXT.MAILER_SMTP_HOST }}</label>
-									<input type="text" name="wbmailer_smtp_host" value="{{ MAILER_SMTP_HOST }}" />
+									<input type="text" name="mailer_smtp_host" value="{{ MAILER_SMTP_HOST }}" />
 								</div>
 							</div>					
 						</div>
@@ -104,8 +104,8 @@
 							<div class="ui form">
 								<div class="field">
 									<div class="ui checkbox">									
-										<input type="checkbox" name="wbmailer_smtp_auth" id="wbmailer_smtp_auth" onclick="javascript: toggle_wbmailer_auth();"  value="true"{{ SMTP_AUTH_SELECTED }} />
-										<label for="wbmailer_smtp_auth" onclick="javascript: toggle_wbmailer_auth(this.value);">{{ TEXT.MAILER_SMTP_AUTH }}</label>									
+										<input type="checkbox" name="mailer_smtp_auth" id="mailer_smtp_auth" onclick="javascript: toggle_mailer_auth();"  value="true"{{ SMTP_AUTH_SELECTED }} />
+										<label for="mailer_smtp_auth" onclick="javascript: toggle_mailer_auth(this.value);">{{ TEXT.MAILER_SMTP_AUTH }}</label>									
 									</div>
 									<div class="ui message lepsem_submit">{{ TEXT.MAILER_SMTP_AUTH_NOTICE }}</div>										
 								</div>
@@ -119,7 +119,7 @@
 							<div class="ui form">
 								<div class="field">
 									<label>{{ TEXT.MAILER_SMTP_USERNAME }}</label>
-									<input type="text" name="wbmailer_smtp_username" value="{{ MAILER_SMTP_USERNAME }}" />
+									<input type="text" name="mailer_smtp_username" value="{{ MAILER_SMTP_USERNAME }}" />
 								</div>
 							</div>					
 						</div>
@@ -128,7 +128,7 @@
 							<div class="ui form">
 								<div class="field">
 									<label>{{ TEXT.MAILER_SMTP_PASSWORD }}</label>
-									<input type="password" name="wbmailer_smtp_password" value="{{ MAILER_SMTP_PASSWORD }}" />
+									<input type="password" name="mailer_smtp_password" value="{{ MAILER_SMTP_PASSWORD }}" />
 								</div>
 							</div>					
 						</div>				

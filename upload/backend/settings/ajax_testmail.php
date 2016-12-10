@@ -58,7 +58,7 @@ $settings = array();
 $sql      = 'SELECT `name`, `value` FROM `'.TABLE_PREFIX.'settings`';
 if ( $res_settings = $database->query( $sql ) ) {
     while ($row = $res_settings->fetchRow( )) {
-        $settings[ strtoupper($row['name']) ] = ( $row['name'] != 'wbmailer_smtp_password' ) ? htmlspecialchars($row['value']) : $row['value'];
+        $settings[ strtoupper($row['name']) ] = ( $row['name'] != 'mailer_smtp_password' ) ? htmlspecialchars($row['value']) : $row['value'];
 	}
 }
 ob_clean();
