@@ -54,9 +54,9 @@ if (!is_object($admin))
 		 *  check php version
 		 */
 		echo("<h3'>Check PHP Version</h3>");		
-		if (version_compare(PHP_VERSION, "5.5.5", "<"))
+		if (version_compare(PHP_VERSION, "5.5.0", "<"))
 		{ 
-			die ("<h3 class='bad'>No update possible, please update your PHP version to 5.5.5. or greater (use php7.x if possible)<br />Your PHP Version : ". PHP_VERSION ." !</h3>");						
+			die ("<h3 class='bad'>No update possible, please update your PHP version to 5.5.0. or greater (use php7.x if possible)<br />Your PHP Version : ". PHP_VERSION ." !</h3>");						
 		} 	
 		echo("<h3 class='good'>Your PHP Version : ". PHP_VERSION ." !</h3>");		
 

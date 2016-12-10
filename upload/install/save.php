@@ -748,11 +748,6 @@ $database->simple_query("ALTER DATABASE `".DB_NAME."` DEFAULT CHARACTER SET utf8
 	if ($database->is_error()) trigger_error(sprintf('[%s - %s] %s', __FILE__, __LINE__, $database->get_error()), E_USER_ERROR);
 
 	// Admin user
-	// function compatibility from php 5.3.7 to php 5.5
-	// can be removed if php 5.5 is required as a minimum 
-	if (!function_exists('password_hash')) {
-		require_once (LEPTON_PATH.'/modules/lib_lepton/hash/password.php');
-	} 
 	$insert_admin_user = "INSERT INTO `".TABLE_PREFIX."users` (user_id,group_id,groups_id,active,username,password,email,display_name,`home_folder`) VALUES ('1','1','1','1','$admin_username','".password_hash( $admin_password, PASSWORD_DEFAULT)."','$admin_email','Administrator', '')";
 	$database->simple_query($insert_admin_user);
 	if ($database->is_error()) trigger_error(sprintf('[%s - %s] %s', __FILE__, __LINE__, $database->get_error()), E_USER_ERROR);

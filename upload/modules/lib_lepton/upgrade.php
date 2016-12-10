@@ -49,4 +49,8 @@ if (file_exists($temp_path)) {
 	}
 }
 
+// delete hash directory, not neede with php > 5.5
+if (file_exists (LEPTON_URL.'/modules/lib_lepton/hash/index.php')) {
+		rm_full_dir( LEPTON_PATH.'/modules/lib_lepton/hash' ); 
+}
 ?>
