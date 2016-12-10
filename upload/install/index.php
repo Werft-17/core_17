@@ -190,13 +190,13 @@ function test_pass_length() {
 					</div>				
 					<div class="column">
 						<div class="ui horizontal segment">
-						<p>PHP Version min 5.3.7</p>
+						<p>PHP Version min 5.5.0</p>
 						</div>
 					</div>
 					<div class="column">
 						<div class="ui horizontal segment">
 							<?php
-							if (version_compare(PHP_VERSION, '5.3.7', '>='))
+							if (version_compare(PHP_VERSION, '5.5.0', '>='))
 								{
 							?><font class="good">Yes</font><?php
 							} else {
@@ -269,13 +269,13 @@ function test_pass_length() {
 				<div class="ui two column grid">					
 					<div class="column">
 						<div class="ui horizontal segment">
-						<?php if (version_compare(PHP_VERSION, '5.3.7', '<')){ ?>
+						<?php if (version_compare(PHP_VERSION, '5.5.0', '<')){ ?>
 						<p>Your current PHP Version is: <?php print PHP_VERSION;  ?></p>
 						</div>
 					</div>
 					<div class="column">
 						<div class="ui horizontal segment">
-							<h4 class="warning">Please upgrade your PHP Release to 5.3.7 or higher</h4>
+							<h4 class="warning">Please upgrade your PHP Release to 5.5.0 or higher</h4>
 							<?php } ?>
 						</div>
 					</div>
