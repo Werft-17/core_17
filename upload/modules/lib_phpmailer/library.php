@@ -35,18 +35,21 @@ if (defined('LEPTON_PATH')) {
 
 
 /* alter Code
-//require_once (LEPTON_PATH.'/modules/lib_phpmailer/phpmailer/PHPMailerAutoload.php');
+require_once (LEPTON_PATH.'/modules/lib_phpmailer/phpmailer/PHPMailerAutoload.php');
 
 PHPMailerAutoload('PHPMailer');
 PHPMailerAutoload('SMTP');
 PHPMailerAutoload('POP3');
 */
 
+
 //neuer Code
 //https://github.com/PHPMailer/PHPMailer/tree/6.0
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
-require LEPTON_PATH.'/modules/lib_phpmailer/phpmailer/src/PHPMailer.php';
-
+require_once (LEPTON_PATH.'/modules/lib_phpmailer/phpmailer/PHPMailerAutoload.php');
+//require LEPTON_PATH.'/modules/lib_phpmailer/phpmailer/src/PHPMailer.php';
+PHPMailerAutoload('PHPMailer');
+PHPMailerAutoload('SMTP');
+PHPMailerAutoload('POP3');
 ?>

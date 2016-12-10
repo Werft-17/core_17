@@ -64,12 +64,12 @@ if ( $res_settings = $database->query( $sql ) ) {
 ob_clean();
 
 // send mail
-if( $admin->mail( $settings['SERVER_EMAIL'], $settings['SERVER_EMAIL'], 'LEPTON PHP MAILER', $TEXT['WBMAILER_TESTMAIL_TEXT'] ) ) {
-    echo "<div style='border: 2px solid #006600; padding: 5px; text-align: center; background-color: #dff2bf;'>", $TEXT['WBMAILER_TESTMAIL_SUCCESS'], "</div>";
+if( $admin->mail( $settings['SERVER_EMAIL'], $settings['SERVER_EMAIL'], 'LEPTON PHP MAILER', $TEXT['MAILER_TESTMAIL_TEXT'] ) ) {
+    echo "<div style='border: 2px solid #006600; padding: 5px; text-align: center; background-color: #dff2bf;'>", $TEXT['MAILER_TESTMAIL_SUCCESS'], "</div>";
 }
 else {
     $message = ob_get_clean();
-    echo "<div style='border: 2px solid #CC0000; padding: 5px; text-align: center; background-color: #ffbaba;'>", $TEXT['WBMAILER_TESTMAIL_FAILED'], "<br />$message<br /></div>";
+    echo "<div style='border: 2px solid #CC0000; padding: 5px; text-align: center; background-color: #ffbaba;'>", $TEXT['MAILER_TESTMAIL_FAILED'], "<br />$message<br /></div>";
 }
 
 ?>

@@ -12,7 +12,7 @@
 {% autoescape false %}
 <div class="title">
 	<i class="dropdown icon"></i>
-	{{ HEADING.WBMAILER_SETTINGS }}
+	{{ HEADING.MAILER_SETTINGS }}
 </div>
 <div class="content">
 	<div class="ui basic segment">
@@ -20,7 +20,7 @@
 
 					<div class="one column row">
 						<div class="column">				
-							<div class="ui info message lepsem_submit">{{ TEXT.WBMAILER_DEFAULT_SETTINGS_NOTICE }}</div>
+							<div class="ui info message lepsem_submit">{{ TEXT.MAILER_DEFAULT_SETTINGS_NOTICE }}</div>
 						</div>							
 					</div>							
 
@@ -28,7 +28,7 @@
 						<div class="column">
 							<div class="ui form">
 								<div class="field">
-									<label>{{ TEXT.WBMAILER_DEFAULT_SENDER_MAIL }}</label>
+									<label>{{ TEXT.MAILER_DEFAULT_SENDER_MAIL }}</label>
 									<input type="text" name="server_email" value="{{ SERVER_EMAIL }}" />
 								</div>
 							</div>							
@@ -37,8 +37,8 @@
 						<div class="column">
 							<div class="ui form">
 								<div class="field">
-									<label>{{ TEXT.WBMAILER_DEFAULT_SENDER_NAME }}</label>
-									<input type="text" name="wbmailer_default_sendername" value="{{ WBMAILER_DEFAULT_SENDERNAME }}" />
+									<label>{{ TEXT.MAILER_DEFAULT_SENDER_NAME }}</label>
+									<input type="text" name="wbmailer_default_sendername" value="{{ MAILER_DEFAULT_SENDERNAME }}" />
 								</div>
 							</div>							
 						</div>							
@@ -49,19 +49,19 @@
 						<div class="column">			
 							<div class="ui form">
 								<div class="inline fields">
-									<label for="{{ TEXT.PAGE_LANGUAGES }}">{{ TEXT.WBMAILER_FUNCTION }}</label>
+									<label for="{{ TEXT.PAGE_LANGUAGES }}">{{ TEXT.MAILER_FUNCTION }}</label>
 									
 									<div class="field">
 										<div class="ui radio checkbox">
 											<input type="radio" name="wbmailer_routine" id="wbmailer_routine_phpmailx" onclick="javascript: change_wbmailer('phpmail');" value="phpmail"{{ PHPMAIL_SELECTED }} />
-											<label for="wbmailer_routine_phpmail" javascript: change_wbmailer('phpmail');">{{ TEXT.WBMAILER_PHP }}</label>
+											<label for="wbmailer_routine_phpmail" javascript: change_wbmailer('phpmail');">{{ TEXT.MAILER_PHP }}</label>
 										</div>
 									</div>
 							
 									<div class="field">
 										<div class="ui radio checkbox">
 											<input type="radio" name="wbmailer_routine" id="wbmailer_routine_smtp" onclick="javascript: change_wbmailer('smtp');" value="smtp"{{ SMTPMAIL_SELECTED }} />
-											<label for="wbmailer_routine_smtp" onclick="javascript: change_wbmailer('smtp');">{{ TEXT.WBMAILER_SMTP }}</label>
+											<label for="wbmailer_routine_smtp" onclick="javascript: change_wbmailer('smtp');">{{ TEXT.MAILER_SMTP }}</label>
 										</div>
 									</div>
 									
@@ -72,7 +72,7 @@
 						<div class="column">
 							<a href="{{ ADMIN_URL }}/settings/index.php#{{ HEADING.GENERAL_SETTINGS }}"  title="{{ HEADING.GENERAL_SETTINGS }}">
 								<button class="ui basic button lepsem_submit" type="submit" id="checkmail" name="checkmail" onclick="send_testmail('{{ ADMIN_URL }}/settings/ajax_testmail.php');return false;">
-								<i class="icon mail"></i>{{ TEXT.WBMAILER_SEND_TESTMAIL }}
+								<i class="icon mail"></i>{{ TEXT.MAILER_SEND_TESTMAIL }}
 								</button>
 							</a>
 							<div id="ajax_response"></div>				
@@ -81,12 +81,12 @@
 					</div> <!-- end row -->					
 
 					<h4 class="ui horizontal divider orange header">
-					  {{ TEXT.WBMAILER_SMTP_AUTH }}
+					  {{ TEXT.MAILER_SMTP_AUTH }}
 					</h4>					
 
 					<div class="one column row">
 						<div class="column">				
-							<div class="ui info message lepsem_submit">{{ TEXT.WBMAILER_NOTICE }}</div>
+							<div class="ui info message lepsem_submit">{{ TEXT.MAILER_NOTICE }}</div>
 						</div>							
 					</div>
 
@@ -94,8 +94,8 @@
 						<div class="column">			
 							<div class="ui form">
 								<div class="field">
-									<label>{{ TEXT.WBMAILER_SMTP_HOST }}</label>
-									<input type="text" name="wbmailer_smtp_host" value="{{ WBMAILER_SMTP_HOST }}" />
+									<label>{{ TEXT.MAILER_SMTP_HOST }}</label>
+									<input type="text" name="wbmailer_smtp_host" value="{{ MAILER_SMTP_HOST }}" />
 								</div>
 							</div>					
 						</div>
@@ -105,9 +105,9 @@
 								<div class="field">
 									<div class="ui checkbox">									
 										<input type="checkbox" name="wbmailer_smtp_auth" id="wbmailer_smtp_auth" onclick="javascript: toggle_wbmailer_auth();"  value="true"{{ SMTP_AUTH_SELECTED }} />
-										<label for="wbmailer_smtp_auth" onclick="javascript: toggle_wbmailer_auth(this.value);">{{ TEXT.WBMAILER_SMTP_AUTH }}</label>									
+										<label for="wbmailer_smtp_auth" onclick="javascript: toggle_wbmailer_auth(this.value);">{{ TEXT.MAILER_SMTP_AUTH }}</label>									
 									</div>
-									<div class="ui message lepsem_submit">{{ TEXT.WBMAILER_SMTP_AUTH_NOTICE }}</div>										
+									<div class="ui message lepsem_submit">{{ TEXT.MAILER_SMTP_AUTH_NOTICE }}</div>										
 								</div>
 							</div>									
 						</div>					
@@ -118,8 +118,8 @@
 						<div class="column">			
 							<div class="ui form">
 								<div class="field">
-									<label>{{ TEXT.WBMAILER_SMTP_USERNAME }}</label>
-									<input type="text" name="wbmailer_smtp_username" value="{{ WBMAILER_SMTP_USERNAME }}" />
+									<label>{{ TEXT.MAILER_SMTP_USERNAME }}</label>
+									<input type="text" name="wbmailer_smtp_username" value="{{ MAILER_SMTP_USERNAME }}" />
 								</div>
 							</div>					
 						</div>
@@ -127,8 +127,8 @@
 						<div class="column">			
 							<div class="ui form">
 								<div class="field">
-									<label>{{ TEXT.WBMAILER_SMTP_PASSWORD }}</label>
-									<input type="password" name="wbmailer_smtp_password" value="{{ WBMAILER_SMTP_PASSWORD }}" />
+									<label>{{ TEXT.MAILER_SMTP_PASSWORD }}</label>
+									<input type="password" name="wbmailer_smtp_password" value="{{ MAILER_SMTP_PASSWORD }}" />
 								</div>
 							</div>					
 						</div>				

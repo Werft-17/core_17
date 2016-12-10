@@ -272,7 +272,7 @@ function save_settings(&$admin, &$database)
     // Work-out which wbmailer routine should be checked
     if ((isset ($settings['server_email'])) && (!$admin->validate_email($settings['server_email'])))
     {
-        $err_msg[] = $TEXT['WBMAILER_DEFAULT_SENDER_MAIL'];
+        $err_msg[] = $TEXT['MAILER_DEFAULT_SENDER_MAIL'];
     }
     $wbmailer_default_sendername = (isset ($settings['wbmailer_default_sendername'])) ? $settings['wbmailer_default_sendername'] : $old_settings['wbmailer_default_sendername'];
     if (($wbmailer_default_sendername <> ''))
@@ -281,7 +281,7 @@ function save_settings(&$admin, &$database)
     }
     else
     {
-        $err_msg[] = $MESSAGE['MOD_FORM_REQUIRED_FIELDS'].': '.$TEXT['WBMAILER_DEFAULT_SENDER_NAME'];
+        $err_msg[] = $MESSAGE['MOD_FORM_REQUIRED_FIELDS'].': '.$TEXT['MAILER_DEFAULT_SENDER_NAME'];
     }
     $wbmailer_routine = isset ($settings['wbmailer_routine']) ? $settings['wbmailer_routine'] : $old_settings['wbmailer_routine'];
     if (($wbmailer_routine == 'smtp'))
@@ -301,7 +301,7 @@ function save_settings(&$admin, &$database)
             }
             else
             {
-                $err_msg[] = $MESSAGE['MOD_FORM_REQUIRED_FIELDS'].': '.$TEXT['WBMAILER_SMTP_HOST'];
+                $err_msg[] = $MESSAGE['MOD_FORM_REQUIRED_FIELDS'].': '.$TEXT['MAILER_SMTP_HOST'];
             }
         }
         // Work-out if SMTP authentification should be checked
@@ -314,7 +314,7 @@ function save_settings(&$admin, &$database)
             $wbmailer_smtp_username = (isset ($settings['wbmailer_smtp_username'])) ? $settings['wbmailer_smtp_username'] : $old_settings['wbmailer_smtp_username'];
             if (($wbmailer_smtp_username == '') && !preg_match($pattern, $wbmailer_smtp_username))
             {
-                $err_msg[] = $TEXT['WBMAILER_SMTP'].': '.$MESSAGE['LOGIN_AUTHENTICATION_FAILED'];
+                $err_msg[] = $TEXT['MAILER_SMTP'].': '.$MESSAGE['LOGIN_AUTHENTICATION_FAILED'];
             }
             else
             {
@@ -326,7 +326,7 @@ function save_settings(&$admin, &$database)
             $current_password = ($current_password == null ? '' : $current_password);
             if (($current_password == ''))
             {
-                $err_msg[] = $TEXT['WBMAILER_SMTP'].': '.$MESSAGE['LOGIN_AUTHENTICATION_FAILED'];
+                $err_msg[] = $TEXT['MAILER_SMTP'].': '.$MESSAGE['LOGIN_AUTHENTICATION_FAILED'];
             }
             elseif (preg_match($pattern, $current_password))
             {

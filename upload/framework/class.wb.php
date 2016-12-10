@@ -332,7 +332,9 @@ class wb extends SecureCMS
 		/* 
 		INTEGRATED OPEN SOURCE PHPMAILER CLASS FOR SMTP SUPPORT AND MORE
 		SOME SERVICE PROVIDERS DO NOT SUPPORT SENDING MAIL VIA PHP AS IT DOES NOT PROVIDE SMTP AUTHENTICATION
-		NEW WBMAILER CLASS IS ABLE TO SEND OUT MESSAGES USING SMTP WHICH RESOLVE THESE ISSUE (C. Sommer)
+		LEPMAILER CLASS IS ABLE TO SEND OUT MESSAGES USING SMTP WHICH RESOLVE THESE ISSUE (C. Sommer)
+
+		From my point of view this is old stuff and can be removed, as phpmailer offers classes for smtp and pop3 in the meantime!
 		
 		NOTE:
 		To use SMTP for sending out mails, you have to specify the SMTP host of your domain

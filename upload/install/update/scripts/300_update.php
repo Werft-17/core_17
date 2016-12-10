@@ -14,13 +14,33 @@
  * @license_terms   please see LICENSE and COPYING files in your package
  */
 
+ /* only for direct test purposes 
+ require_once('../../../config.php');
+global $admin;
+if (!is_object($admin))
+{
+    require_once(LEPTON_PATH . '/framework/class.admin.php');
+    $admin = new admin('Addons', 'modules', false, false);
+}
+ */
 // set error level
  ini_set('display_errors', 1);
  error_reporting(E_ALL|E_STRICT);
 
-die ('<h3>Current process : updating to LEPTON 3.0.0</h3>');
- 
-echo '<h5>Current process : delete unneeded files</h5>';
+echo ('<h3>Current process : updating to LEPTON 3.0.0</h3>');
+
+echo ('<h5>Current process : rename database fields</h5>'); 
+$database->simple_query('UPDATE `' . TABLE_PREFIX . 'settings` SET `name` =\'mailer_routine\' WHERE `name` =\'wbmailer_routine\'');
+$database->simple_query('UPDATE `' . TABLE_PREFIX . 'settings` SET `name` =\'mailer_default_sendername\' WHERE `name` =\'wbmailer_default_sendername\'');
+$database->simple_query('UPDATE `' . TABLE_PREFIX . 'settings` SET `name` =\'mailer_smtp_host\' WHERE `name` =\'wbmailer_smtp_host\'');
+$database->simple_query('UPDATE `' . TABLE_PREFIX . 'settings` SET `name` =\'mailer_smtp_auth\' WHERE `name` =\'wbmailer_smtp_auth\'');
+$database->simple_query('UPDATE `' . TABLE_PREFIX . 'settings` SET `name` =\'mailer_smtp_username\' WHERE `name` =\'wbmailer_smtp_username\'');
+$database->simple_query('UPDATE `' . TABLE_PREFIX . 'settings` SET `name` =\'mailer_smtp_password\' WHERE `name` =\'wbmailer_smtp_password\'');
+die ('<h5>Rename database fields: successfull</h5>'); 
+
+echo ('<h5>Current process : delete unneeded files</h5>'); 
+
+
 // keep in mind to rework initialize.php
 
 // delete config_sik
