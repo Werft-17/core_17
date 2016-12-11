@@ -300,7 +300,7 @@ class qForm {
 		$toArray = explode(',',$toaddress);
 		$fromaddress = $toArray[0];
 	
-		$myMail = new lepmailer();
+		$myMail = new lib_phpmailer_lepton(); // new lepmailer();
 		// set user defined from address
 		if ($fromaddress!='') {
 			if($fromname!='') $myMail->FromName = $fromname;  	// FROM-NAME
