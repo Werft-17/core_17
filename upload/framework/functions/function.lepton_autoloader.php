@@ -44,18 +44,20 @@ function lepton_autoloader( $aClassName ) {
 			$look_up = $terms[0];
 			for( $i=1; $i< $n; $i++) {
 				$temp_dir = $look_up."_".$terms[$i];
-				$path = LEPTON_PATH."/modules/".$look_up."/classes/".$aClassName.".php";
+				$path = LEPTON_PATH."/modules/".$temp_dir."/classes/".$aClassName.".php";
 				if(file_exists($path)) {
 					require_once($path);
 					break;
 				} else {
 					$temp_dir = $look_up."-".$terms[$i];
-					$path = LEPTON_PATH."/modules/".$look_up."/classes/".$aClassName.".php";
+					$path = LEPTON_PATH."/modules/".$temp_dir."/classes/".$aClassName.".php";
 					if(file_exists($path)) {
 						require_once($path);
 						break;
 					}
 				}
+				
+				$look_up = $temp_dir;
 			}
 		}
 	}
