@@ -49,6 +49,14 @@ include_once( LEPTON_PATH . '/framework/class.securecms.php' );
 //require_once( LEPTON_PATH . "/framework/class.lepmailer.php" );
 require_once( LEPTON_PATH . "/modules/lib_phpmailer/library.php" );
 
+// prüft vor Benutzung ob die gewünschte Klasse definiert ist
+if (class_exists('POP3')) {
+   die('POP3');
+   // $myclass = new MyClass();
+}
+die('pop3 nicht geladen');
+
+
 class wb extends SecureCMS
 {
 	
@@ -339,7 +347,7 @@ class wb extends SecureCMS
 		
 		NOTE:
 		To use SMTP for sending out mails, you have to specify the SMTP host of your domain
-		via the Settings panel in the backend of Website Baker
+		via the settings panel in the backend
 		*/
 		
 		$fromaddress = preg_replace( '/[\r\n]/', '', $fromaddress );
@@ -348,7 +356,7 @@ class wb extends SecureCMS
 		$message     = preg_replace( '/\r\n?|\n/', '<br \>', $message );
 		
 		// create PHPMailer object and define default settings
-		$myMail = new PHPmailer();
+		$myMail = new PHPMailer();
 		
 		// set user defined from address
 		if ( $fromaddress != '' )
