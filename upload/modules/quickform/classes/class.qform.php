@@ -294,13 +294,14 @@ class qForm {
 	 *	@param	array	Attachments
 	 */	
 	public function mail($toaddress, $subject, $message, $fromname='', $replyto = '', $attachments=array() ) {
-		
-		require_once(LEPTON_PATH."/framework/class.lepmailer.php");
-		
+
+		require_once(LEPTON_PATH."/modules/lib_phpmailer/library.php");
+				
 		$toArray = explode(',',$toaddress);
 		$fromaddress = $toArray[0];
-	
-		$myMail = new lib_phpmailer_lepton(); // new lepmailer();
+		
+		$myMail = new PHPMailer(); // new lepmailer();
+		
 		// set user defined from address
 		if ($fromaddress!='') {
 			if($fromname!='') $myMail->FromName = $fromname;  	// FROM-NAME

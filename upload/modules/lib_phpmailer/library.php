@@ -45,15 +45,15 @@ PHPMailerAutoload('POP3');
 
 //neuer Code
 //https://github.com/PHPMailer/PHPMailer/tree/6.0
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+#use PHPMailer\PHPMailer\PHPMailer;
+#use PHPMailer\PHPMailer\Exception;
 
 require_once (LEPTON_PATH.'/modules/lib_phpmailer/phpmailer/PHPMailerAutoload.php');
-spl_autoload_register("PHPMailerAutoload");
+// spl_autoload_register("PHPMailerAutoload", true, true);
 
-require_once LEPTON_PATH.'/modules/lib_phpmailer/phpmailer/src/PHPMailer.php';
+// require_once LEPTON_PATH.'/modules/lib_phpmailer/phpmailer/src/PHPMailer.php';
 
-PHPMailerAutoload('PHPMailer');
-PHPMailerAutoload('SMTP');
-PHPMailerAutoload('POP3');
+// PHPMailerAutoload('PHPMailer');
+// PHPMailerAutoload('SMTP');
+// PHPMailerAutoload('POP3');
 ?>

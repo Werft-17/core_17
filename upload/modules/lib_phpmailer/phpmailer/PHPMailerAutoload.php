@@ -23,8 +23,9 @@
  */
 function PHPMailerAutoload($classname)
 {
-    //Can't use __DIR__ as it's only in PHP 5.3+
-    $filename = dirname(__FILE__).DIRECTORY_SEPARATOR.'class.'.strtolower($classname).'.php';
+    //	Can't use __DIR__ as it's only in PHP 5.3+
+    // $filename = dirname(__FILE__).DIRECTORY_SEPARATOR.'class.'.strtolower($classname).'.php';
+    $filename = LEPTON_PATH."/modules/lib_phpmailer/phpmailer/src/".$classname.".php";
     if (is_readable($filename)) {
         require $filename;
     }
