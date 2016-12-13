@@ -39,38 +39,64 @@ $database->simple_query('UPDATE `' . TABLE_PREFIX . 'settings` SET `name` =\'mai
 die ('<h5>Rename database fields: successfull</h5>'); 
 
 echo ('<h5>Current process : delete unneeded files</h5>'); 
-
-
 // KEEP IN MIND TO REWORK initialize.php
 
-// delete config_sik
-$sik_file = LEPTON_PATH.'/config_sik.php';
-if (file_exists($sik_file)) {
-	$result = unlink ($sik_file);
-	if (false === $result) {
-		echo "Cannot delete file ".$sik_file.". Please check file permissions and ownership or delete file manually.";
-	}
-}
-// delete class.database
-$database_file = LEPTON_PATH.'/framework/class.database.php';
-if (file_exists($database_file)) {
-	$result = unlink ($database_file);
-	if (false === $result) {
-		echo "Cannot delete file ".$database_file.". Please check file permissions and ownership or delete file manually.";
-	}
-}
+$file = array (
+"/config_sik.php",
+"/framework/class.database.php",
+"/framework/class.wbmailer.php"
 
-// delete class.wbmailer
-$database_file = LEPTON_PATH.'/framework/class.wbmailer.php';
-if (file_exists($database_file)) {
-	$result = unlink ($database_file);
-	if (false === $result) {
-		echo "Cannot delete file ".$database_file.". Please check file permissions and ownership or delete file manually.";
+);
+ 
+foreach ($file as $del)
+{
+    $temp_path = LEPTON_PATH . $del;
+    if (file_exists($temp_path)) 
+	{
+		$result = unlink ($temp_path);
+		if (false === $result) {
+		echo "Cannot delete file ".$temp_path.". Please check file permissions and ownership or delete file manually.";
+		}
 	}
-}
+}	
 
 echo "<h5>Delete files: successfull</h5>"; 
 
+// introduce phpmailer release 6.x
+echo '<h5>Current process : replace old phpmailer</h5>';
+//first delete
+$to_delete = array (
+"/modules/lib_phpmailer",
+);
+ 
+foreach ($to_delete as $del)
+{
+    $temp_path = LEPTON_PATH . $del;
+
+
+    if (file_exists($temp_path)) 
+		{
+    	rm_full_dir( LEPTON_PATH . $del );
+		} else {
+				echo ("<h4 style='color:green;text-align:center;font-size:20px;'> directory $del not exists</h4>");
+				}
+}
+
+//then move new addon
+$to_move = array (
+"/modules/lib_phpmailer"
+);
+
+	// move new used directories
+foreach ($to_move as $file)
+{
+    $temp_path = LEPTON_PATH .'/install/L3U'. $file ;
+
+	rename( $temp_path,dirname(__FILE__).$file);
+	
+}	
+		
+echo "<h5>replace old phpmailer: successfull</h5>";
 
 /**
  *  run upgrade.php of all modified modules
@@ -78,7 +104,7 @@ echo "<h5>Delete files: successfull</h5>";
  */
  echo '<h5>Current process : run modules upgrade.php</h5>';  
 $upgrade_modules = array(
-
+    "lib_phpmailer",
     "tiny_mce_4"	
 );
 
