@@ -49,6 +49,7 @@ $THEME = array(
 	'PAGE_PERMISSION' 	=> 'Seiten Berechtigung',	
 	'SECTIONS' 			=> 'Anzahl Sektionen',
 	'MODIFIED_WHEN'		=> 'Letzte Änderung',
+	'NEED_CURRENT_PASSWORD'	=> 'Änderungen mit aktuellem Passwort bestätigen',	
 	'LINK_FE' 			=> 'Link Frontend',
 	'LINK_BE' 			=> 'Link Backend',
 	'UPDATE' 			=> 'Eine neuere LEPTON Version ist verfügbar! Aktuelle Version: ',

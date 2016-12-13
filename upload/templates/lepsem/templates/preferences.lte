@@ -141,7 +141,7 @@
 			<div class="ui grid">				
 				<h4 class="ui horizontal divider orange header">
 				  <i class="warning sign icon"></i>
-				  {{ TEXT.NEED_CURRENT_PASSWORD }}
+				  {{ THEME.NEED_CURRENT_PASSWORD }}
 				</h4>				
 
 				<div class="row">
