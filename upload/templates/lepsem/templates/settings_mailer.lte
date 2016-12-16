@@ -53,14 +53,14 @@
 									
 									<div class="field">
 										<div class="ui radio checkbox">
-											<input type="radio" name="mailer_routine" id="mailer_routine_phpmailx" onclick="javascript: change_mailer('phpmail');" value="phpmail"{{ PHPMAIL_SELECTED }} />
+											<input type="radio" name="mailer_routine" id="mailer_routine_phpmailx" onclick="javascript: change_mailer('phpmail');" value="phpmail" {% if(MAILER_ROUTINE == "phpmail") %}checked="checked"{% endif %} />
 											<label for="mailer_routine_phpmail" javascript: change_mailer('phpmail');">{{ TEXT.MAILER_PHP }}</label>
 										</div>
 									</div>
 							
 									<div class="field">
 										<div class="ui radio checkbox">
-											<input type="radio" name="mailer_routine" id="mailer_routine_smtp" onclick="javascript: change_mailer('smtp');" value="smtp"{{ SMTPMAIL_SELECTED }} />
+											<input type="radio" name="mailer_routine" id="mailer_routine_smtp" onclick="javascript: change_mailer('smtp');" value="smtp" {% if(MAILER_ROUTINE == "smtp") %}checked="checked"{% endif %} />
 											<label for="mailer_routine_smtp" onclick="javascript: change_mailer('smtp');">{{ TEXT.MAILER_SMTP }}</label>
 										</div>
 									</div>
