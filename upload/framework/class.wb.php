@@ -47,15 +47,6 @@ include_once( LEPTON_PATH . '/framework/class.securecms.php' );
 
 // Include mailer class (subclass of PHPmailer)
 //require_once( LEPTON_PATH . "/framework/class.lepmailer.php" );
-require_once( LEPTON_PATH . "/modules/lib_phpmailer/library.php" );
-
-// prüft vor Benutzung ob die gewünschte Klasse definiert ist
-if (class_exists('POP3')) {
-   die('POP3');
-   // $myclass = new MyClass();
-}
-die('pop3 nicht geladen');
-
 
 class wb extends SecureCMS
 {
@@ -356,7 +347,7 @@ class wb extends SecureCMS
 		$message     = preg_replace( '/\r\n?|\n/', '<br \>', $message );
 		
 		// create PHPMailer object and define default settings
-		$myMail = new PHPMailer();
+		$myMail = new LEPTON_mailer();
 		
 		// set user defined from address
 		if ( $fromaddress != '' )

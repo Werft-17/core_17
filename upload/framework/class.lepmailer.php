@@ -50,4 +50,6 @@ else
 
 // DO we really need this class any longer????
 
+echo "<h1>WARNING: this file (". __FILE__ .") is DEPRECATED inside LEPTON-CMS 3.0!</h1>";
+
 ?>
