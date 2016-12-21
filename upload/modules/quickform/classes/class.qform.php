@@ -231,12 +231,12 @@ class qForm {
 	public function get_history ( $id, $max = 20) {
 		global $database;
 		$result = array();
-		$res = $database->query("SELECT * FROM ".TABLE_PREFIX."mod_quickform_data WHERE `section_id` = '$id' order by message_id desc limit 0,$max ");
-		if($res) {
-			while ($row = $res->fetchRow()) {
-				$result[] = $row;
-			}
-		}
+		$database->execute_query(
+			"SELECT * FROM `".TABLE_PREFIX."mod_quickform_data` WHERE `section_id` = '".$id."' order by `message_id` desc limit 0,".$max,
+			true,
+			$result,
+			true
+		);
 		return $result;
 	}
 	
@@ -294,13 +294,13 @@ class qForm {
 	 *	@param	array	Attachments
 	 */	
 	public function mail($toaddress, $subject, $message, $fromname='', $replyto = '', $attachments=array() ) {
-
+		
+		require_once( LEPTON_PATH . "/modules/lib_phpmailer/library.php" );	
+		
 		$toArray = explode(',',$toaddress);
 		$fromaddress = $toArray[0];
-
-		require_once(LEPTON_PATH."/modules/lib_phpmailer/library.php");		
-		$myMail = new PHPMailer();
-		
+	
+		$myMail = new phpmailer();
 		// set user defined from address
 		if ($fromaddress!='') {
 			if($fromname!='') $myMail->FromName = $fromname;  	// FROM-NAME
