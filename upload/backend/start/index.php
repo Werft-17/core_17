@@ -36,6 +36,7 @@ if (defined('LEPTON_PATH')) {
 }
 // end include class.secure.php
 
+ini_set('allow_url_fopen',1);
 
 // enable custom dashboard
 if(file_exists(THEME_PATH .'/backend/start/index.php')) {
@@ -55,6 +56,7 @@ $admin = new admin('Start','start');
 LEPTON_core::get_backend_translation();
 
 if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
+
 
 // get current release no
 $url = "https://github.com/LEPTON-project/LEPTON/releases/latest";
