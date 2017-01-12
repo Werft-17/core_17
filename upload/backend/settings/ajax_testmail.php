@@ -42,6 +42,7 @@ header( "Cache-Control: no-cache, must-revalidate" );
 header( "Pragma: no-cache" );
 header( "Content-Type: text/html; charset:utf-8;" );
 
+require_once (LEPTON_PATH.'/modules/lib_phpmailer/library.php');
 require_once (LEPTON_PATH.'/framework/class.admin.php');
 $admin = new admin('Settings', 'settings');
 
@@ -62,12 +63,17 @@ if ( $res_settings = $database->query( $sql ) ) {
 ob_clean();
 
 // send mail
-if( $admin->mail( $settings['SERVER_EMAIL'], $settings['SERVER_EMAIL'], 'LEPTON PHP MAILER', $TEXT['MAILER_TESTMAIL_TEXT'] ) ) {
-    echo "<div class='ui positive message'>", $TEXT['MAILER_TESTMAIL_SUCCESS'], "</div>";
-}
-else {
-    $message = ob_get_clean();
-    echo "<div class='ui negative  message'>", $TEXT['MAILER_TESTMAIL_FAILED'], "<br />$message<br /></div>";
+$mail = new PHPMailer;
+$mail->setFrom(SERVER_EMAIL, 'System');	
+$mail->addAddress(SERVER_EMAIL, 'System');
+$mail->Subject = 'LEPTON PHP MAILER';
+$mail->msgHTML($TEXT['MAILER_TESTMAIL_TEXT']);
+
+if (!$mail->send()) {
+	 echo "<div class='ui negative  message'>".$TEXT['MAILER_TESTMAIL_FAILED']."<br /> ".$mail->ErrorInfo."<br /></div>";
+	
+} else {
+    echo "<div class='ui positive message'>".$TEXT['MAILER_TESTMAIL_SUCCESS']."</div>";
 }
 
 ?>
