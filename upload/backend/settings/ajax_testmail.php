@@ -48,7 +48,7 @@ $admin = new admin('Settings', 'settings');
 $curr_user_is_admin = ( in_array(1, $admin->get_groups_id()) );
 
 if ( ! $curr_user_is_admin ) {
-    echo "<div style='border: 2px solid #CC0000; padding: 5px; text-align: center; background-color: #ffbaba;'>You're not allowed to use this function!</div>";
+    echo "<div class='ui negative  message'>You're not allowed to use this function!</div>";
     exit;
 }
 
@@ -63,11 +63,11 @@ ob_clean();
 
 // send mail
 if( $admin->mail( $settings['SERVER_EMAIL'], $settings['SERVER_EMAIL'], 'LEPTON PHP MAILER', $TEXT['MAILER_TESTMAIL_TEXT'] ) ) {
-    echo "<div style='border: 2px solid #006600; padding: 5px; text-align: center; background-color: #dff2bf;'>", $TEXT['MAILER_TESTMAIL_SUCCESS'], "</div>";
+    echo "<div class='ui positive message'>", $TEXT['MAILER_TESTMAIL_SUCCESS'], "</div>";
 }
 else {
     $message = ob_get_clean();
-    echo "<div style='border: 2px solid #CC0000; padding: 5px; text-align: center; background-color: #ffbaba;'>", $TEXT['MAILER_TESTMAIL_FAILED'], "<br />$message<br /></div>";
+    echo "<div class='ui negative  message'>", $TEXT['MAILER_TESTMAIL_FAILED'], "<br />$message<br /></div>";
 }
 
 ?>
