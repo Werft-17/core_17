@@ -47,19 +47,19 @@ class LEPTON_mailer extends PHPMailer
 	public function __construct()
 	{
 		// set method to send out emails
-		if ( WBMAILER_ROUTINE == "smtp" AND strlen( WBMAILER_SMTP_HOST ) > 5 )
+		if ( MAILER_ROUTINE == "smtp" AND strlen( MAILER_SMTP_HOST ) > 5 )
 		{
 			// use SMTP for all outgoing mails send
 			$this->IsSMTP();
-			$this->Host = WBMAILER_SMTP_HOST;
+			$this->Host = MAILER_SMTP_HOST;
 			
 			// check if SMTP authentification is required
-			if ( WBMAILER_SMTP_AUTH == "true" && strlen( WBMAILER_SMTP_USERNAME ) > 1 && strlen( WBMAILER_SMTP_PASSWORD ) > 1 )
+			if ( MAILER_SMTP_AUTH == "true" && strlen( MAILER_SMTP_USERNAME ) > 1 && strlen( MAILER_SMTP_PASSWORD ) > 1 )
 			{
 				// use SMTP authentification
 				$this->SMTPAuth = true; // enable SMTP authentification
-				$this->Username = WBMAILER_SMTP_USERNAME; // set SMTP username
-				$this->Password = WBMAILER_SMTP_PASSWORD; // set SMTP password
+				$this->Username = MAILER_SMTP_USERNAME; // set SMTP username
+				$this->Password = MAILER_SMTP_PASSWORD; // set SMTP password
 			}
 		}
 		else
@@ -79,7 +79,7 @@ class LEPTON_mailer extends PHPMailer
 		{
 			$this->FromName = isset( $_SESSION[ 'DISPLAY_NAME' ] ) 
 				? $_SESSION[ 'DISPLAY_NAME' ] 
-				: WBMAILER_DEFAULT_SENDERNAME
+				: MAILER_DEFAULT_SENDERNAME
 				;
 		}
 		

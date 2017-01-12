@@ -42,7 +42,6 @@ header( "Cache-Control: no-cache, must-revalidate" );
 header( "Pragma: no-cache" );
 header( "Content-Type: text/html; charset:utf-8;" );
 
-require_once (LEPTON_PATH.'/modules/lib_phpmailer/library.php');
 require_once (LEPTON_PATH.'/framework/class.admin.php');
 $admin = new admin('Settings', 'settings');
 
@@ -63,7 +62,7 @@ if ( $res_settings = $database->query( $sql ) ) {
 ob_clean();
 
 // send mail
-$mail = new PHPMailer;
+$mail = new LEPTON_mailer;
 $mail->setFrom(SERVER_EMAIL, 'System');	
 $mail->addAddress(SERVER_EMAIL, 'System');
 $mail->Subject = 'LEPTON PHP MAILER';
