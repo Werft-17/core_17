@@ -105,9 +105,9 @@ $count_groups = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."groups
 
 
 $page_values = array(
-	'ADMIN_URL'		=> ADMIN_URL,
-	'THEME_URL'		=> THEME_PATH,
-	'LEPTON_URL' 	=> LEPTON_URL,
+//	'ADMIN_URL'		=> ADMIN_URL,
+//	'THEME_URL'		=> THEME_PATH,
+//	'LEPTON_URL' 	=> LEPTON_URL,
 	'count_sections'=> $count_sections,
 	'count_pages'	=> $count_pages,
 	'count_modules' => $count_modules,
@@ -120,7 +120,8 @@ $page_values = array(
 	'page_link_fe' 	=> $page_link_fe,
 	'page_link_be' 	=> $page_link_be,	
 	'current_release'=> $current_release,
-	'is_uptodate' 	=> $is_uptodate
+	'is_uptodate' 	=> $is_uptodate,
+	'THEME'	=> $THEME
 );
 
 echo $parser->render(
