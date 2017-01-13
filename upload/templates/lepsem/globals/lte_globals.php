@@ -39,11 +39,12 @@ global $HEADING;
 global $MESSAGE;
 global $THEME;
 
+
 $parser->addGlobal("TEXT", $TEXT);
 $parser->addGlobal("MENU", $MENU);
 $parser->addGlobal("OVERVIEW", $OVERVIEW);
 $parser->addGlobal("HEADING", $HEADING);
-$parser->addGlobal("MESSAGE", $MESSAGE);
-$parser->addGlobal("THEME", $THEME);
+// $parser->addGlobal("MESSAGE", $MESSAGE);
+// $parser->addGlobal("THEME", $THEME);
 
 ?>
