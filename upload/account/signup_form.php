@@ -61,7 +61,7 @@ if (isset($_GET['err']) && (int)($_GET['err']) == ($_GET['err'])) {
 require_once(LEPTON_PATH . '/modules/lib_twig/library.php');
 
 
-// see if there exists a template file in "account-htt" folder  inside the current template
+// see if there exists a template file in "account" folder
 require_once( dirname( __FILE__)."/../framework/class.lepton.filemanager.php" );
 global $lepton_filemanager;
 $template_path = $lepton_filemanager->resolve_path( 
