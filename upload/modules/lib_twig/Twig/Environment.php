@@ -3,7 +3,7 @@
 /*
  * This file is part of Twig.
  *
- * (c) 2009 Fabien Potencier
+ * (c) Fabien Potencier
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,10 +16,10 @@
  */
 class Twig_Environment
 {
-    const VERSION = '2.0.0';
-    const VERSION_ID = 20000;
+    const VERSION = '2.1.0';
+    const VERSION_ID = 20100;
     const MAJOR_VERSION = 2;
-    const MINOR_VERSION = 0;
+    const MINOR_VERSION = 1;
     const RELEASE_VERSION = 0;
     const EXTRA_VERSION = '';
 
@@ -334,21 +334,25 @@ class Twig_Environment
      *
      * @return Twig_Template A template instance representing the given template name
      *
-     * @throws Twig_Error_Loader When the template cannot be found
-     * @throws Twig_Error_Syntax When an error occurred during compilation
+     * @throws Twig_Error_Loader  When the template cannot be found
+     * @throws Twig_Error_Runtime When a previously generated cache is corrupted
+     * @throws Twig_Error_Syntax  When an error occurred during compilation
      *
      * @internal
      */
     public function loadTemplate($name, $index = null)
     {
-        $cls = $this->getTemplateClass($name, $index);
+        $cls = $mainCls = $this->getTemplateClass($name);
+        if (null !== $index) {
+            $cls .= '_'.$index;
+        }
 
         if (isset($this->loadedTemplates[$cls])) {
             return $this->loadedTemplates[$cls];
         }
 
         if (!class_exists($cls, false)) {
-            $key = $this->cache->generateKey($name, $cls);
+            $key = $this->cache->generateKey($name, $mainCls);
 
             if (!$this->isAutoReload() || $this->isTemplateFresh($name, $this->cache->getTimestamp($key))) {
                 $this->cache->load($key);
@@ -359,7 +363,7 @@ class Twig_Environment
                 $this->cache->write($key, $content);
                 $this->cache->load($key);
 
-                if (!class_exists($cls, false)) {
+                if (!class_exists($mainCls, false)) {
                     /* Last line of defense if either $this->bcWriteCacheFile was used,
                      * $this->cache is implemented as a no-op or we have a race condition
                      * where the cache was cleared between the above calls to write to and load from
@@ -367,6 +371,10 @@ class Twig_Environment
                      */
                     eval('?>'.$content);
                 }
+            }
+
+            if (!class_exists($cls, false)) {
+                throw new Twig_Error_Runtime(sprintf('Failed to load Twig template "%s", index "%s": cache is corrupted.', $name, $index), -1, $source);
             }
         }
 
