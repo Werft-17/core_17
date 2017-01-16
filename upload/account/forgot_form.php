@@ -118,8 +118,7 @@ if(!isset($message)) {
 require_once(LEPTON_PATH . '/modules/lib_twig/library.php');
 
 
-// see if there exists a template file in "account-htt" folder  inside the current template
-
+// see if there exists a template file in "account" folder
 require_once( dirname( __FILE__)."/../framework/class.lepton.filemanager.php" );
 global $lepton_filemanager;
 $template_path = $lepton_filemanager->resolve_path( 
@@ -129,6 +128,17 @@ $template_path = $lepton_filemanager->resolve_path(
 );
 
 if ($template_path === NULL) die("Can't find a valid template for this form!");
+
+
+
+
+// see if there exists a frontend template file or use the fallback
+if (file_exists(LEPTON_PATH.'/templates/'.DEFAULT_TEMPLATE.'/frontend/login/forgot_form.php')) 
+{
+	require_once(LEPTON_PATH.'/templates/'.DEFAULT_TEMPLATE.'/frontend/login/forgot_form.php');
+}
+else
+{
 
 //initialize twig template engine
 	global $parser;		// twig parser
@@ -170,5 +180,5 @@ unset($_SESSION['result_message']);
 			"forgot_form.lte",	//	template-filename
 			$data			//	template-data
 		);
-
+}
 ?>
