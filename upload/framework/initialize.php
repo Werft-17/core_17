@@ -9,41 +9,31 @@
  *
  * @author		Website Baker Project, LEPTON Project
  * @copyright	2004-2010 Website Baker Project
- * @copyright       2010-2017 LEPTON Project
- * @link            https://www.LEPTON-cms.org
+ * @copyright	2010-2017 LEPTON Project
+ * @link		https://www.LEPTON-cms.org
  * @license		http://www.gnu.org/licenses/gpl.html
  * @license_terms	please see LICENSE and COPYING files in your package
- * @reformatted 2013-05-31
  */
 
 // include class.secure.php to protect this file and the whole CMS!
-if ( defined( 'LEPTON_PATH' ) )
-{
-	include( LEPTON_PATH . '/framework/class.secure.php' );
-}
-else
-{
+if (defined('LEPTON_PATH')) {	
+	include(LEPTON_PATH.'/framework/class.secure.php'); 
+} else {
 	$oneback = "../";
-	$root    = $oneback;
-	$level   = 1;
-	while ( ( $level < 10 ) && ( !file_exists( $root . '/framework/class.secure.php' ) ) )
-	{
+	$root = $oneback;
+	$level = 1;
+	while (($level < 10) && (!file_exists($root.'/framework/class.secure.php'))) {
 		$root .= $oneback;
 		$level += 1;
 	}
-	if ( file_exists( $root . '/framework/class.secure.php' ) )
-	{
-		include( $root . '/framework/class.secure.php' );
-	}
-	else
-	{
-		trigger_error( sprintf( "[ <b>%s</b> ] Can't include class.secure.php!", $_SERVER[ 'SCRIPT_NAME' ] ), E_USER_ERROR );
+	if (file_exists($root.'/framework/class.secure.php')) { 
+		include($root.'/framework/class.secure.php'); 
+	} else {
+		trigger_error(sprintf("[ <b>%s</b> ] Can't include class.secure.php!", $_SERVER['SCRIPT_NAME']), E_USER_ERROR);
 	}
 }
 // end include class.secure.php
 
-if ( file_exists( dirname( __FILE__ ) . '/classes/lepton_database.php' ) )
-{
 
 	require_once( __DIR__."/functions/function.lepton_autoloader.php" );
 	spl_autoload_register( "lepton_autoloader", true);
@@ -217,7 +207,4 @@ if ( file_exists( dirname( __FILE__ ) . '/classes/lepton_database.php' ) )
 	define( 'THEME_PATH', LEPTON_PATH . '/templates/' . DEFAULT_THEME );
 
 	$database->prompt_on_error( PROMPT_MYSQL_ERRORS );
-	
-}
-
 ?>
