@@ -119,7 +119,7 @@
 							<div class="ui form">
 								<div class="inline fields">
 									<div class="ui checkbox">	
-										<input type="checkbox" name="frontend_login" id="frontend_login_true" value="true"{{ PRIVATE_ENABLED }} />
+										<input type="checkbox" name="frontend_login" id="frontend_login_true" value="true" {% if( true == FRONTEND_LOGIN) %}checked='checked'{% endif %} />
 										<label for="{{ TEXT.LOGIN }}">{{ TEXT.LOGIN }}</label>										
 									</div>
 								</div>
