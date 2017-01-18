@@ -36,25 +36,4 @@ else
 }
 // end include class.secure.php
 
-// OBLIGATORY VARIABLES
-$template_directory     = 'semantic';
-$template_name          = 'Semantic-Frontend';
-$template_function      = 'template';
-$template_version       = '3.0.0';
-$template_platform      = '2.0';
-$template_author        = 'CMS-LAB';
-$template_license       = 'http://creativecommons.org/licenses/by/3.0/';
-$template_license_terms = 'you have to keep the frontend-backlink to cms-lab untouched';
-$template_description   = 'This template bases on <a href="http://semantic-ui.com" target="_blank">Semantic</a>';
-$template_guid          = 'd4365367-db03-4f3c-8304-42e88abc008f';
-
-// OPTIONAL VARIABLES FOR ADDITIONAL MENUES AND BLOCKS
-$menu[ 1 ]  = 'Main';
-$menu[ 2 ]  = 'Foot';
-$menu[ 3 ]  = 'Pseudomenu';
-$block[ 1 ] = 'Content1';
-$block[ 2 ] = 'Content2';
-$block[ 3 ] = 'Content3';
-$block[ 4 ] = 'News';
-
 ?>
