@@ -30,11 +30,11 @@
 	<div class="ui basic segment"> <!-- start inner green segment -->	
 		<div class="ui styled fluid accordion"> <!-- start accordion-->
 			{% include "@theme/page_tree.lte" %} <!-- include page tree-->
-			<div class="title">
+			<div class="title active">
 				<i class="dropdown icon"></i>
 				{{ HEADING.MODIFY_PAGE }}
 			</div>			
-			<div class="content"><!-- start content -->
+			<div class="content active"><!-- start content -->
 				<div class="spacer2"></div>
 				<div class="ui two column stackable grid"> <!-- start buttons -->			
 					<div class="column">
@@ -60,13 +60,13 @@
 				<div class="accordion transition visible" style="display: block ! important;">
 					<!-- begin  display all sections -->
 					{% for section in all_sections %}
-					<div class="title">
+					<div class="title {% if(loop.index0 == 0) %}active{% endif %}">
 						<i class="dropdown icon"></i>
 						<!-- section header -->
 						<div class="page_section" id="{{ SEC_ANCHOR }}{{ section.section_id }}">{{ TEXT.SECTION }}: {{ section.module }} | {{ TEXT.SECTION }}-{{ TEXT.NAME }}: {{ section.name }} | {{ TEXT.SECTION_ID }}: {{ section.section_id }} | {{ TEXT.SECTION }}-{{ TEXT.BLOCK }}: {{ section.block_name }}</div>
 						<!-- end section header -->	
 					</div>										
-					<div class="content">					
+					<div class="content {% if(loop.index0 == 0) %}active{% endif %}"">
 						{{ section.content }}	
 					</div>					
 					{% endfor %}
