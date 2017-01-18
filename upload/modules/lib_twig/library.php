@@ -43,8 +43,8 @@ else
 global $parser;
 global $loader;
 
-require_once (LEPTON_PATH.'/modules/lib_twig/Twig/Autoloader.php');
-Twig_Autoloader::register();
+//require_once (LEPTON_PATH.'/modules/lib_twig/Twig/Autoloader.php');
+//Twig_Autoloader::register();
 
 $loader = new Twig_Loader_Filesystem( LEPTON_PATH.'/' );
 
