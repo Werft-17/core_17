@@ -8,11 +8,12 @@
  *  @platform       see info.php of this template
  */
  
-#frontend_login_template {
-	margin-top: 20px;
+button, input, optgroup, select, textarea {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0 !important;
+    border: 0 none !important;
 }
 
-#frontend_signup_template {
+#frontend_template {
 	margin-top: 20px;
 }
 
