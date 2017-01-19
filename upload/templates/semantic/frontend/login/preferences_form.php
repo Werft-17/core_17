@@ -42,7 +42,7 @@ global $loader;		// twig file manager
 if (!is_object($parser)) require_once( LEPTON_PATH."/modules/lib_twig/library.php" );
 
 // prependpath to make sure twig is looking in this module template folder first
-$loader->prependPath( dirname(__FILE__)."/templates/" );
+$loader->prependPath( dirname(__FILE__)."/templates/" );	
 
 /**	*********
  *	languages
@@ -67,8 +67,7 @@ while( false != ($data = $result->fetchRow() ) ) {
  *	default timezone
  *
  */
-global $timezone_table;
-
+$timezone_table = LEPTON_core::get_timezones();
 $timezone = array();
 foreach ($timezone_table as $title)
 {
@@ -145,6 +144,8 @@ $_SESSION['wb_apf_hash'] = $hash;
  *	Delete any "result_message" if there is one.
  */
 if( true === isset($_SESSION['result_message']) ) unset($_SESSION['result_message']);
+
+global $TEXT,$HEADING;
 
 $data = array(
 	'TEMPLATE_DIR' 				=>	TEMPLATE_DIR,

@@ -1,10 +1,10 @@
 {% autoescape false %}
 <!-- custom template for account/login_form.php: LEPTON_URL/templates/semantic/frontend/login/templates -->
 <div id="frontend_template">
-{% if(signup_message!='') %}<div class='success_message'> {{ signup_message }}</div>	{% endif %}
+{% if(signup_message!='') %}<div class='ui success message'> {{ signup_message }}</div>	{% endif %}
 		<div class="ui basic segment">
-			<h2>{{ TEXT_LOGIN }}</h2>
-			<div class="ui warning message">{{ MESSAGE }}</div>		
+		<h2>{{ TEXT_LOGIN }}</h2>
+		<div class="ui warning message">{{ MESSAGE }}</div>		
 				
 			<div class="ui basic form segment">
 				<form class="ui form" action="{{ LOGIN_URL }}" method="post">
@@ -34,7 +34,7 @@
 					</div>
 																
 					<div class="spacer"></div>
-					<div class="ui submit button"><input type="submit" name="submit" value="{{ TEXT_LOGIN }}" /></div>
+					<div class="ui positive button"><input type="submit" name="submit" value="{{ TEXT_LOGIN }}" /></div>
 					<div class="spacer"></div>								
 
 				</form>
