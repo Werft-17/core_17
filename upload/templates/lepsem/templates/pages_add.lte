@@ -30,11 +30,11 @@
 	<div class="ui basic segment"> <!-- start inner green segment -->	
 		<div class="ui styled fluid accordion"> <!-- start content-->
 			{% include "@theme/page_tree.lte" %} <!-- include page tree-->
-			<div class="title">
+			<div class="title active">
 				<i class="dropdown icon"></i>
 				{{ HEADING.ADD_PAGE }}
 			</div>
-			<div class="content">
+			<div class="content active">
 				<div class="ui fluid form">
 					<form name="add" action="add.php" method="post">				
 						<div class="ui two column doubling grid container"> <!-- start page -->
