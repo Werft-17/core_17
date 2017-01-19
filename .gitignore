@@ -18,6 +18,7 @@ upload/temp/
 upload/modules/droplets/install/
 upload/modules/newsreader/
 upload/modules/lib_r_filemanager/filemanager/thumbs/
+upload/modules/lib_loremgen/
 
 upload/templates/lepsem/backend/start/
 upload/templates/lepsem/backend/start_/

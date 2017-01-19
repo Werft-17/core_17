@@ -112,7 +112,8 @@ foreach($DATE_FORMATS AS $format => $title) {
  */
 $time_format = array();
 
-include(LEPTON_PATH.'/framework/var.time_formats.php');
+// include(LEPTON_PATH.'/framework/var.time_formats.php');
+$TIME_FORMATS = LEPTON_core::get_timeformats();
 foreach($TIME_FORMATS AS $format => $title) {
 	$format = str_replace('|', ' ', $format); // Add's white-spaces (not able to be stored in array key)
 
