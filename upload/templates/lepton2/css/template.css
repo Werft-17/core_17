@@ -33,10 +33,10 @@ html body {
   
  /* Schrift und Hintergrund Seite */
  #site {
-	background:none repeat scroll 0 0 #fff;
-	color:#333333;
-	margin:0px auto;
-	width:900px;
+    background: #fff none repeat scroll 0 0;
+    color: #333333;
+    margin: 20px auto 0;
+    width: 900px;
 	
 	-webkit-box-shadow: 10px 10px 50px grey;
 	-moz-box-shadow: 10px 10px 50px grey;
