@@ -1017,20 +1017,24 @@ function check_syntax( $code )
  **/
 function get_settings()
 {
-    global $admin, $database;
-    $settings = array();
-    $query    = $database->query( 'SELECT * FROM ' . TABLE_PREFIX . 'mod_droplets_settings' );
-    if ( $query->numRows() )
+	global $admin, $database;
+	$settings = array();
+	$org_settings = array();
+	$database->execute_query(
+		'SELECT * FROM ' . TABLE_PREFIX . 'mod_droplets_settings',
+		true,
+		$org_settings,
+		true
+	);
+	foreach($org_settings as $row)
     {
-        while ( $row = $query->fetchRow() )
-        {
-            if ( substr_count( $row[ 'value' ], '|' ) )
-            {
-                $row[ 'value' ] = explode( '|', $row[ 'value' ] );
-            }
-            $settings[ $row[ 'attribute' ] ] = $row[ 'value' ];
-        }
-    }
+    	if ( substr_count( $row[ 'value' ], '|' ) )
+		{
+			$row[ 'value' ] = explode( '|', $row[ 'value' ] );
+		}
+		$settings[ $row[ 'attribute' ] ] = $row[ 'value' ];
+	}
+
     return $settings;
 } // end function get_settings()
 

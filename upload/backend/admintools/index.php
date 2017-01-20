@@ -34,6 +34,11 @@ if (defined('LEPTON_PATH')) {
 }
 // end include class.secure.php
 
+// global $parser;
+// global $loader;
+
+// if(!isset($parser)) require_once LEPTON_PATH."/modules/lib_twig/library.php";
+
 require_once(LEPTON_PATH.'/framework/class.admin.php');
 $admin = new admin('admintools', 'admintools');
 
@@ -71,7 +76,7 @@ $page_values = array(
 	'all_tools'	=> $all_tools
 );
 
-echo $parser->render(
+echo $admin->parser->render(
 	'@theme/admintools.lte',
 	$page_values
 );
