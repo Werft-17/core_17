@@ -116,10 +116,7 @@ class admin extends wb
 		global $MENU;
 		global $OVERVIEW;
 		global $HEADING;
-
-		global $parser;
-		global $loader;
-		// require_once LEPTON_PATH."/modules/lib_twig/library.php";
+		
 		lib_twig::register();
 		
 		$this->loader = new Twig_Loader_Filesystem( LEPTON_PATH.'/' );
