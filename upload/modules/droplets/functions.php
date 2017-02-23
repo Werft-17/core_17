@@ -40,7 +40,6 @@ else
 }
 // end include class.secure.php
 
-// Include EditArea wrapper functions
 require_once(LEPTON_PATH . '/modules/edit_area/register.php');
 
 /**
@@ -91,7 +90,7 @@ function droplet_install( $temp_file, $temp_unzip ) {
 
     // Include the PclZip class file
     if (!function_exists("PclZipUtilPathReduction")) {
-    require_once(LEPTON_PATH.'/modules/lib_lepton/pclzip/pclzip.lib.php');
+		require_once(LEPTON_PATH.'/modules/lib_lepton/pclzip/pclzip.lib.php');
     }
     $errors  = array();
     $count   = 0;
@@ -132,8 +131,8 @@ function droplet_install( $temp_file, $temp_unzip ) {
                         $id   = $found;
                     }
                     // execute
-                    $result = $database->query("$stmt INTO ".TABLE_PREFIX."mod_droplets VALUES(" . ( $id!==NULL ? "'".$id."'" : 'NULL' ). ",'$name','$code','$description','".time()."','".(isset( $_SESSION[ 'USER_ID' ] ) ? $_SESSION[ 'USER_ID' ] : '1')."',1,0,0,0,'$usage')");
-                    if( ! $database->is_error() ) {
+                    $result = $database->simple_query("$stmt INTO ".TABLE_PREFIX."mod_droplets VALUES(" . ( $id!==NULL ? "'".$id."'" : 'NULL' ). ",'$name','$code','$description','".time()."','".(isset( $_SESSION[ 'USER_ID' ] ) ? $_SESSION[ 'USER_ID' ] : '1')."',1,0,0,0,'$usage')");
+                    if( !$database->is_error() ) {
                         $count++;
                         $imports[$name] = 1;
                     }
@@ -1017,24 +1016,20 @@ function check_syntax( $code )
  **/
 function get_settings()
 {
-	global $admin, $database;
-	$settings = array();
-	$org_settings = array();
-	$database->execute_query(
-		'SELECT * FROM ' . TABLE_PREFIX . 'mod_droplets_settings',
-		true,
-		$org_settings,
-		true
-	);
-	foreach($org_settings as $row)
+    global $admin, $database;
+    $settings = array();
+    $query    = $database->query( 'SELECT * FROM ' . TABLE_PREFIX . 'mod_droplets_settings' );
+    if ( $query->numRows() )
     {
-    	if ( substr_count( $row[ 'value' ], '|' ) )
-		{
-			$row[ 'value' ] = explode( '|', $row[ 'value' ] );
-		}
-		$settings[ $row[ 'attribute' ] ] = $row[ 'value' ];
-	}
-
+        while ( $row = $query->fetchRow() )
+        {
+            if ( substr_count( $row[ 'value' ], '|' ) )
+            {
+                $row[ 'value' ] = explode( '|', $row[ 'value' ] );
+            }
+            $settings[ $row[ 'attribute' ] ] = $row[ 'value' ];
+        }
+    }
     return $settings;
 } // end function get_settings()
 
