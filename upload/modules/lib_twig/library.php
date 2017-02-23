@@ -47,6 +47,7 @@ global $loader;
 lib_twig::register();
 
 $loader = new Twig_Loader_Filesystem( LEPTON_PATH.'/' );
+$loader->prependPath( LEPTON_PATH."/templates/".DEFAULT_THEME."/templates/", "theme" );
 
 $parser = new Twig_Environment( $loader, array(
 	'cache' => false,

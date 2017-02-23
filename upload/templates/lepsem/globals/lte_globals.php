@@ -39,7 +39,6 @@ global $HEADING;
 global $MESSAGE;
 global $THEME;
 
-
 $parser->addGlobal("TEXT", $TEXT);
 $parser->addGlobal("MENU", $MENU);
 $parser->addGlobal("OVERVIEW", $OVERVIEW);

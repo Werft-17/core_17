@@ -45,7 +45,7 @@ if (defined('LEPTON_PATH')) {
 	);
 	
 	LEPTON_tools::register( "get_leptoken" );
-
+	
 	// Get an instance from class database
 	$database = LEPTON_database::getInstance();
 	
@@ -207,4 +207,7 @@ if (defined('LEPTON_PATH')) {
 	define( 'THEME_PATH', LEPTON_PATH . '/templates/' . DEFAULT_THEME );
 
 	$database->prompt_on_error( PROMPT_MYSQL_ERRORS );
+
+	LEPTON_tools::load( LEPTON_PATH . "/modules/lib_twig/library.php" );
+
 ?>

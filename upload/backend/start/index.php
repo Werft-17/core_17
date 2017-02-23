@@ -55,8 +55,9 @@ $admin = new admin('Start','start');
 //	Pre-load the theme langages 
 LEPTON_core::get_backend_translation();
 
-if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
-
+if(file_exists(THEME_PATH."/globals/lte_globals.php")) {
+	require_once(THEME_PATH."/globals/lte_globals.php");
+}
 
 // get current release no
 $url = "https://github.com/LEPTON-project/LEPTON/releases/latest";
@@ -94,20 +95,16 @@ $count_pages = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."pages`"
 $count_section = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."sections` ");
 $count_sections = ($count_section -1);
 
-//get addons info
+// get addons info
 $count_modules = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."addons` WHERE `type`='module' ");
 $count_templates = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."addons` WHERE `type`='template' ");
 $count_languages = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."addons` WHERE `type`='language' ");
 
-//get users and groups info
+// get users and groups info
 $count_users = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."users` ");
 $count_groups = $database->get_one("SELECT COUNT(*) FROM `".TABLE_PREFIX."groups` ");
 
-
 $page_values = array(
-//	'ADMIN_URL'		=> ADMIN_URL,
-//	'THEME_URL'		=> THEME_PATH,
-//	'LEPTON_URL' 	=> LEPTON_URL,
 	'count_sections'=> $count_sections,
 	'count_pages'	=> $count_pages,
 	'count_modules' => $count_modules,
