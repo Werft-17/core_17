@@ -20,7 +20,7 @@
 	<div class="ui divider"></div>  
   {% if info is not empty %}<div class="ui blue message">{{ info }}</div>{% endif %}
   
-<form method="post" action="{{ action }}">
+<form method="post" action="{{ action }}" id="droplets_manage_backups">
 	<input type="hidden" name="tool" value="droplets" />
 	<input type="hidden" name="backups" value="1" />
 	
@@ -43,8 +43,8 @@
 			<tr>
 				<td>
 				<input type="checkbox" name="markeddroplet[]" id="markeddroplet_{{ item.name }}" value="{{ item.name }}" />
-				<a href="{{ ADMIN_URL }}/admintools/tool.php?tool=droplets&amp;backups=1&amp;delbackup={{ item.name }}" title="{{ TEXT.DELETE }}"><i class="large red remove icon"></i></a>
-				<a href="{{ ADMIN_URL }}/admintools/tool.php?tool=droplets&amp;backups=1&amp;recover={{ item.name }}" title="{{ MOD_DROPLET ['Import'] }}"><i class="large green download icon"></i></a>					  
+				<a href="#" onclick="droplets_set_action('delbackup', '{{ item.name }}');" title="{{ TEXT.DELETE }}"><i class="large red remove icon"></i></a>
+				<a href="#" onclick="droplets_set_action('recover','{{ item.name }}');" title="{{ MOD_DROPLET ['Import'] }}"><i class="large green download icon"></i></a>					  
 				<a href="#" class="tooltip"><i class="large info circle icon" title="{{ MOD_DROPLET['List contained files'] }}"></i><span class="comment">{{ MOD_DROPLET['Contained files'] }}:<br />{{ item.listfiles }}</span></a>			  				  
 				</td>
 				<td>
@@ -73,6 +73,6 @@
 	</div> <!-- end submit -->
 	<div class="ui hidden divider"></div>	
 </form>
-  {% endif %}
+{% endif %}
 {% endautoescape %}
 {% include "@droplets/footer.lte" %}

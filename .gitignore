@@ -16,6 +16,8 @@ upload/temp/
 # upload/templates/
 
 upload/modules/droplets/install/
+upload/modules/droplets/export/
+
 upload/modules/newsreader/
 upload/modules/lib_r_filemanager/filemanager/thumbs/
 upload/modules/lib_loremgen/

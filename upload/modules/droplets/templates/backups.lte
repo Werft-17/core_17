@@ -3,7 +3,7 @@
   <h2>{{ MOD_DROPLET['Manage backups'] }}</h2>
   <a href="{{ ADMIN_URL}}/admintools/tool.php?tool=droplets">&laquo; {{ MOD_DROPLET['Back to overview'] }} &laquo;</a><br /><br />
   {% if info is not empty %}<div class="info ui-corner-all">{{ info }}</div><br />{% endif %}
-  <form method="post" action="{{ action }}">
+  <form method="post" action="{{ action }}" id="droplets_manage_backups">
   <input type="hidden" name="tool" value="droplets" />
   <input type="hidden" name="backups" value="1" />
 
@@ -25,8 +25,8 @@
       <tr>
         <td>
           <input type="checkbox" name="markeddroplet[]" id="markeddroplet_{{ item.name }}" value="{{ item.name }}" />
-          <a href="{{ ADMIN_URL }}/admintools/tool.php?tool=droplets&amp;backups=1&amp;delbackup={{ item.name }}"><img src="{{ IMGURL }}/delete.png" /></a>
-          <a href="{{ ADMIN_URL }}/admintools/tool.php?tool=droplets&amp;backups=1&amp;recover={{ item.name }}"><img src="{{ IMGURL }}/import.png" style="width:16px;" title="{{ MOD_DROPLET ['Import'] }}" /></a>
+          <a href="#" onclick="droplets_set_action('delbackup', '{{ item.name }}');"><img src="{{ IMGURL }}/delete.png" /></a>
+          <a href="#" onclick="droplets_set_action('recover','{{ item.name }}');"><img src="{{ IMGURL }}/import.png" style="width:16px;" title="{{ MOD_DROPLET ['Import'] }}" /></a>
           <a href="#" class="tooltip"><img src="{{ IMGURL }}/info.png" alt="{{ MOD_DROPLET['List contained files'] }}" /><span class="comment">{{ MOD_DROPLET['Contained files'] }}:<br />{{ item.listfiles }}</span></a>
 		</td>
         <td>
