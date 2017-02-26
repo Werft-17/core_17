@@ -57,27 +57,28 @@ function save_preferences( &$admin, &$database)
 	$language         = strtoupper($admin->get_post('language'));
 	$language         = (preg_match('/^[A-Z]{2}$/', $language) ? $language : DEFAULT_LANGUAGE);
 	$user_time = true;
+	
 // timezone must match a value in the table
-	$timezone_string = DEFAULT_TIMEZONESTRING;
-	if (in_array($admin->get_post('timezone_string'),  LEPTON_core::get_timezones() )) {
-		$timezone_string = $admin->get_post('timezone_string');
-	} 
+	$posted_timezone_string = $admin->get_post('timezone_string');
+	$timezone_string =  (in_array( $posted_timezone_string,  LEPTON_core::get_timezones() ))
+		? $posted_timezone_string
+		: DEFAULT_TIMEZONESTRING
+		;
+
 // date_format must be a key from /interface/date_formats
-	$date_format      = $admin->get_post('date_format');
-	$date_format_key  = str_replace(' ', '|', $date_format);
-	$user_time = true;
-	include( LEPTON_PATH.'/framework/var.date_formats.php' );
-	$date_format = (array_key_exists($date_format_key, $DATE_FORMATS) ? $date_format : 'system_default');
-	$date_format = ($date_format == 'system_default' ? '' : $date_format);
-	unset($DATE_FORMATS);
+	$posted_date_format      = $admin->get_post('date_format');
+	$date_format = (array_key_exists($posted_date_format, LEPTON_core::get_dateformats()) 
+		? $posted_date_format 
+		: '' // 'system_default'
+	);
+
 // time_format must be a key from /interface/time_formats	
-	$time_format      = $admin->get_post('time_format');
-	$time_format_key  = str_replace(' ', '|', $time_format);
-	$user_time = true;
-	include( LEPTON_PATH.'/framework/var.time_formats.php' );
-	$time_format = (array_key_exists($time_format_key, $TIME_FORMATS) ? $time_format : 'system_default');
-	$time_format = ($time_format == 'system_default' ? '' : $time_format);
-	unset($TIME_FORMATS);
+	$posted_time_format      = $admin->get_post('time_format');
+	$time_format = (array_key_exists($posted_time_format, LEPTON_core::get_dateformats())
+		? $time_format 
+		: '' //'system_default'
+	);
+
 // email should be validatet by core
 	$email = ( $admin->get_post('email') == null ? '' : $admin->get_post('email') );
 	if( !$admin->validate_email($email) )
@@ -101,7 +102,7 @@ function save_preferences( &$admin, &$database)
 	if($current_password == '')
 	{
 		$err_msg[] = $MESSAGE['PREFERENCES_CURRENT_PASSWORD_INCORRECT'];
-	}else {
+	} else {
 	// if new_password is empty, still let current one
 		if( $new_password_1 == '' )
 		{
