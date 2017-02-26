@@ -42,7 +42,7 @@ include_once( LEPTON_PATH.'/framework/var.timezones.php' );
 
 function save_preferences( &$admin, &$database)
 {
-	global $MESSAGE, $timezone_table;
+	global $MESSAGE;
 	$err_msg = array();
 
 // Get entered values and validate all
@@ -59,7 +59,7 @@ function save_preferences( &$admin, &$database)
 	$user_time = true;
 // timezone must match a value in the table
 	$timezone_string = DEFAULT_TIMEZONESTRING;
-	if (in_array($admin->get_post('timezone_string'), $timezone_table)) {
+	if (in_array($admin->get_post('timezone_string'),  LEPTON_core::get_timezones() )) {
 		$timezone_string = $admin->get_post('timezone_string');
 	} 
 // date_format must be a key from /interface/date_formats
@@ -146,13 +146,16 @@ function save_preferences( &$admin, &$database)
 				false
 		);			
 			
-		if( count($results_array) > 0) {
+		if( count($results_array) > 0)
+		{
 			$check = password_verify($current_password,$results_array['password']);
-			if($check != 1) {
+			if($check != 1)
+			{
 				$err_msg[] = $MESSAGE['PREFERENCES_CURRENT_PASSWORD_INCORRECT']." [save: #7]";
 				return ( (sizeof($err_msg) > 0) ? implode('<br />', $err_msg) : '' );					
 			} 
-			} else {
+		} else
+		{
 				$fields=array(
 					'display_name'  => $display_name,
 					'password' 		=> $new_password_1,	
@@ -170,7 +173,8 @@ function save_preferences( &$admin, &$database)
 					'`user_id` = '.$admin_user_id
 				);
 
-				if( $success == true) {
+				if( $success == true)
+				{
 					
 					// update successfull, takeover values into the session
 					$_SESSION['DISPLAY_NAME'] = $display_name;
@@ -180,25 +184,30 @@ function save_preferences( &$admin, &$database)
 					$_SESSION['TIMEZONE_STRING'] = $timezone_string;
 					date_default_timezone_set($timezone_string);
 					// Update date format
-					if($date_format != '') {
+					if($date_format != '')
+					{
 						$_SESSION['DATE_FORMAT'] = $date_format;
 						if(isset($_SESSION['USE_DEFAULT_DATE_FORMAT'])) { unset($_SESSION['USE_DEFAULT_DATE_FORMAT']); }
-					} else {
+					} else
+					{
 						$_SESSION['USE_DEFAULT_DATE_FORMAT'] = true;
 						if(isset($_SESSION['DATE_FORMAT'])) { unset($_SESSION['DATE_FORMAT']); }
 					}
 					// Update time format
-					if($time_format != '') {
+					if($time_format != '')
+					{
 						$_SESSION['TIME_FORMAT'] = $time_format;
 						if(isset($_SESSION['USE_DEFAULT_TIME_FORMAT'])) { unset($_SESSION['USE_DEFAULT_TIME_FORMAT']); }
-					} else {
+					} else
+					{
 						$_SESSION['USE_DEFAULT_TIME_FORMAT'] = true;
 						if(isset($_SESSION['TIME_FORMAT'])) { unset($_SESSION['TIME_FORMAT']); }
 					}
-				} else {
+				} else
+				{
 					$err_msg[] = 'invalid database UPDATE call in '.__FILE__.'::'.__FUNCTION__.'before line '.__LINE__;
 				}
-			}
+			
 		}
 	}
 	return ( (sizeof($err_msg) > 0) ? implode('<br />', $err_msg) : '' );

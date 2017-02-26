@@ -122,7 +122,7 @@ class lib_lepton_datetools
 	 */
 	public $CORE_date_formats = array(
 		'l, jS F, Y'=> '%A, %e %B, %Y',
-		'jS F, Y'	=> '%eS %B, %Y',
+		'jS F, Y'	=> '%e %B, %Y',
 		'd M Y'		=> '%d %a %Y',
 		'M d Y'		=> '%a %d %Y',
 		'D M d, Y'	=> '%a %b %d, %Y',	##
