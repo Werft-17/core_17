@@ -40,13 +40,12 @@ else
 }
 // end include class.secure.php
 
-<?php
 /**
  * This file is part of an ADDON for use with LEPTON Core.
  * This ADDON is released under the GNU GPL.
  * Additional license terms can be seen in the info.php of this module.
  *
- * @module          lib_datetools
+ * @module          lib_lepton :: datetools
  * @author          LEPTON Project
  * @copyright       2010-2017 LEPTON Project
  * @link            https://www.LEPTON-cms.org
@@ -54,7 +53,7 @@ else
  * @license_terms   please see info.php of this module
  *
  */
-class lib_datetools
+class lib_lepton_datetools
 {
 	
 	/**
