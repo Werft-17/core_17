@@ -33,8 +33,8 @@ if (defined('LEPTON_PATH')) {
 $module_directory       = 'code2';
 $module_name            = 'Code2';
 $module_function        = 'page';
-$module_version         = '2.3.2';
-$module_platform        = '1.3';
+$module_version         = '2.4.0';
+$module_platform        = '2.2.0';
 $module_author          = 'Ryan Djurovich, Chio Maisriml, Thorn, Aldus.';
 $module_license         = 'GNU General Public License';
 $module_license_terms   = '-';
