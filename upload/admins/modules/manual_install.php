@@ -50,7 +50,9 @@ require_once('../../framework/class.admin.php');
 
 // check user permissions for admintools (redirect users with wrong permissions)
 $admin = new admin('Admintools', 'admintools', false, false);
-if ($admin->get_permission('admintools') == false) { die(header('Location: ../../index.php')); }
+if ($admin->get_permission('admintools') == false) { 
+	die(header('Location: ../../index.php')); 
+}
 
 // check if the referer URL if available
 $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : 
@@ -58,29 +60,27 @@ $referer = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] :
 
 // if referer is set, check if script was invoked from "admin/modules/index.php"
 $required_url = ADMIN_URL . '/modules/index.php';
-if ($referer != '' && (!(strpos($referer, $required_url) !== false))) 
-{ die(header('Location: ../../index.php')); }
+if ($referer != '' && (!(strpos($referer, $required_url) !== false))) { 
+	die(header('Location: ../../index.php')); 
+}
 
-// include WB functions file
+// include functions file
 require_once(LEPTON_PATH . '/framework/summary.functions.php');
 
-// load WB language file
-require_once(LEPTON_PATH . '/languages/' . LANGUAGE .'.php');
 
 // create Admin object with admin header
 $admin = new admin('Addons', '', true, false);
 $js_back = ADMIN_URL . '/modules/index.php?advanced';
 
 /**
- * Manually execute the specified module file (install.php, upgrade.php or uninstall.php)
+ * Manually execute the specified module file (install.php, upgrade.php)
  */
 // check if specified module folder exists
 $mod_path = LEPTON_PATH . '/modules/' . basename(LEPTON_PATH . '/' . $_POST['file']);
 
 // let the old variablename if module use it
 $module_dir = $mod_path;
-if (!file_exists($mod_path . '/' . $_POST['action'] . '.php'))
-{
+if (!file_exists($mod_path . '/' . $_POST['action'] . '.php'))		{
     $admin->print_error($TEXT['NOT_FOUND'].': <tt>"'.htmlentities(basename($mod_path)).'/'.$_POST['action'].'.php"</tt> ', $js_back);
 }
 
@@ -96,7 +96,6 @@ switch ($_POST['action'])
 {
 	case 'install':
 	case 'upgrade':
-	case 'uninstall':
 		$admin->print_success($msg, $js_back);
 		break;
 		
