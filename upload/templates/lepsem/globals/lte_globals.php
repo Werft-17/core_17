@@ -39,11 +39,17 @@ global $HEADING;
 global $MESSAGE;
 global $THEME;
 
+if(file_exists(THEME_PATH."/languages/index.php"))
+{
+	$lang = THEME_PATH."/languages/". LANGUAGE .".php";
+	require_once ( !file_exists($lang) ? THEME_PATH."/languages/EN.php" : $lang );
+}
+
 $parser->addGlobal("TEXT", $TEXT);
 $parser->addGlobal("MENU", $MENU);
 $parser->addGlobal("OVERVIEW", $OVERVIEW);
 $parser->addGlobal("HEADING", $HEADING);
-// $parser->addGlobal("MESSAGE", $MESSAGE);
-// $parser->addGlobal("THEME", $THEME);
+$parser->addGlobal("MESSAGE", $MESSAGE);
+$parser->addGlobal("THEME", $THEME);
 
 ?>

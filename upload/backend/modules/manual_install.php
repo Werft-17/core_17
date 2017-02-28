@@ -57,11 +57,8 @@ require_once('../../framework/class.admin.php');
 // check user permissions for admintools (redirect users with wrong permissions)
 $admin = new admin('Admintools', 'admintools', false, false);
 if ($admin->get_permission('admintools') == false) {
-#	die(header('Location: ../../index.php'));
+	die(header('Location: ../../index.php'));
 }
-
-// load WB language file
-require_once(LEPTON_PATH . '/languages/' . LANGUAGE .'.php');
 
 // create Admin object with admin header
 $admin = new admin('Addons', '', true, false);
