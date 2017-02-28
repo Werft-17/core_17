@@ -10,11 +10,11 @@
  */
  #}
 {% autoescape false %}
-<div class="title">
+<div class="title {% if(open_tree == 1) %}active{% endif %}">
 	<i class="dropdown icon"></i>
 	{{ TEXT.PAGES_DIRECTORY }}
 </div>
-<div class="content"> <!-- start page-tree -->
+<div class="content {% if(open_tree == 1) %}active{% endif %}"> <!-- start page-tree -->
 
 	<table class="ui striped small collapsing compact table">
 		<thead>
@@ -33,7 +33,7 @@
 				<td class="selectable"><a href="{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}">{{ page.menu_title }}</a></td>
 				<td>{{ page.page_title }}</td>
 				<td>{{ page.link }}</td>
-				<td>Icons</td>
+				<td>Icons***</td>
 				<td>{{ page.page_id }}</td>
 			</tr>
 	{% import _self as pagelink %}

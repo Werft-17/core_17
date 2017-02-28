@@ -86,11 +86,12 @@ page_tree( 0, $all_pages, $fields );
 $page_values = array(
 	'all_groups' => $all_groups,
 	'all_page_modules' => $all_page_modules,
-	'all_pages'	=> $all_pages
+	'all_pages'	=> $all_pages,
+	'open_tree'	=> 1
 );
 
 echo $parser->render(
-	"@theme/pages_add.lte",
+	"@theme/pages_overview.lte",
 	$page_values
 );
 

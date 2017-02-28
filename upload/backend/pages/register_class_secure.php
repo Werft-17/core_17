@@ -29,6 +29,7 @@ $files_to_register = array(
 	$basepath."modify.php",
 	$basepath."move_down.php",
 	$basepath."move_up.php",
+	$basepath."overview.php",
 	$basepath."restore.php",
 	$basepath."save.php",
 	$basepath."search.php",
