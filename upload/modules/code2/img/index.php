@@ -1,17 +1,13 @@
 <?php
 
 /**
- * This file is part of LEPTON Core, released under the GNU GPL
- * Please see LICENSE and COPYING files in your package for details, specially for terms and warranties.
- * 
- * NOTICE:LEPTON CMS Package has several different licenses.
- * Please see the individual license in the header of each single file or info.php of modules and templates.
- *
- * @author          LEPTON Project
- * @copyright       2010-2017 LEPTON Project
- * @link            https://www.LEPTON-cms.org
- * @license         http://www.gnu.org/licenses/gpl.html
- * @license_terms   please see LICENSE and COPYING files in your package
+ *  @module         code2
+ *  @version        see info.php of this module
+ *  @authors        Ryan Djurovich, Chio Maisriml, Thomas Hornik, Dietrich Roland Pehlke
+ *  @copyright      2004-2017 Ryan Djurovich, Chio Maisriml, Thomas Hornik, Dietrich Roland Pehlke
+ *  @license        GNU General Public License
+ *  @license terms  see info.php of this module
+ *  @platform       see info.php of this module
  *
  */
 
