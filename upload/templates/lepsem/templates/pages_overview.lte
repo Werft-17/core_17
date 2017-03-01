@@ -11,26 +11,25 @@
  #}
 {% autoescape false %}
 
-<div class="ui green segment"> <!-- start outer search segment -->
+<div class="ui olive segment"> <!-- start outer search segment -->
 	<div class="ui vertically divided grid"> <!-- start header grid -->
 		<div class="two column row">
 			<div class="column">
-				<h2 class="ui green header">
-					<i class="huge green find icon"></i>
-					<div class="content">{{ HEADING.SEARCH_PAGE }} ÄNDERN</div>
+				<h2 class="ui olive header">
+					<i class="tiny olive browser icon"></i>
+					<div class="content">{{ MENU.PAGES }}</div>
 				</h2>
 			</div>			
 			<div class="column">		
-				<h3 class="ui green right floated header">
-					<div class="content">{{ HEADING.SEARCH_PAGE }} ÄNDERN</div>
+				<h3 class="ui olive right floated header">
+					<div class="content">Übersicht</div>
 				</h3>
 			</div>
 		</div>
 	</div> <!-- end header grid -->
-<h1>OVERVIEW</h1>
 	<div class="ui basic segment"> <!-- start inner green segment -->	
 		<div class="ui styled fluid accordion"> <!-- start accordion-->
-			{% include "@theme/page_tree.lte" with [open_tree] %} <!-- include page tree-->
+			{% include "@theme/page_tree_expanded.lte" with [open_tree] %} <!-- include page tree-->
 			<div class="title">
 				<i class="dropdown icon"></i>
 				{{ HEADING.SEARCH_PAGE }}

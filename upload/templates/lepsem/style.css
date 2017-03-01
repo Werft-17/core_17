@@ -239,3 +239,14 @@ img.module_detail  {
 	display: block;
 	float:left;
 }
+
+.lepsem_spacer{
+	min-width:30px;
+	border-left: 1px solid #DDDDDD;
+	margin-right:5px;
+}
+
+.lepsem_item_left {
+	float:right;
+	display:block;
+}
