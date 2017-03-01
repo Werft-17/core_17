@@ -47,31 +47,29 @@
 							<a href="#"><i class="olive clone icon"></i></a>
 						-->	
 							
-							
-							
-							
-<div class="ui menu tiny">
-	<div class="ui pointing dropdown link item">
-		<i class="olive edit icon"></i>
-		<div class="ui menu">
-			<a href="#" class="item lepsem_item_left"><i class="olive edit icon"></i></a>
-			<a href="#" class="item lepsem_item_left"><i class="olive settings icon"></i></a>
-			<a href="#" class="item lepsem_item_left"><i class="olive list layout icon"></i></a>
-		</div>
+<div class="ui pointing dropdown item">
+	<i class="olive edit icon"></i>
+	<div class="ui menu">
+		<a href="{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}" class="item lepsem_item_left" title="Edit Page: {{ page.page_title }}"><i class="olive edit icon"></i></a>
+		<a href="{{ ADMIN_URL }}/pages/settings.php?page_id={{ page.page_id }}" class="item lepsem_item_left" title="Edit settings"><i class="olive settings icon"></i></a>
+		<a href="{{ ADMIN_URL }}/pages/sections.php?page_id={{ page.page_id }}" class="item lepsem_item_left" title="manage sections for '{{ page.page_title }}'"><i class="olive list layout icon"></i></a>
 	</div>
-  <div class="ui pointing dropdown link item">
-		<i class="olive arrow up icon"></i>
-		<i class="olive arrow down icon"></i>
-		<div class="menu">
-			<div class="item">Move top</div>
-			<div class="item">move up</div>
-			<div class="item">move down</div>
-			<div class="item">move bottom</div>
-		</div>
+</div>
+
+<div class="ui pointing dropdown link item">
+	<i class="olive arrow up icon"></i>
+	<i class="olive arrow down icon"></i>
+	<div class="menu">
+		<div class="item">Move top</div>
+		<div class="item">move up</div>
+		<div class="item">move down</div>
+		<div class="item">move bottom</div>
 	</div>
+</div>
+
   	<a href="#" class="item"><i class="olive trash icon"></i></a>
 	<a href="#" class="item"><i class="olive clone icon"></i></a>
-</div>
+
 				</td>
 			</tr>
 	{% import _self as pagelink %}

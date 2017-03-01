@@ -30,12 +30,12 @@
 	<div class="ui basic segment"> <!-- start inner green segment -->	
 		<div class="ui styled fluid accordion"> <!-- start accordion-->
 			{% include "@theme/page_tree.lte" %} <!-- include page tree-->
-			<div class="title">
-				<i class="dropdown icon"></i>
+			<div class="title active">
+				<i class="dropdown icon active"></i>
 				{{ HEADING.MODIFY_PAGE_SETTINGS }}
 			</div>
 
-			<div class="content"><!-- start content -->
+			<div class="content active"><!-- start content -->
 				<div class="spacer2"></div>
 				<div class="ui two column stackable grid"> <!-- start buttons -->					
 					<div class="column">

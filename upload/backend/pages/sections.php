@@ -308,6 +308,8 @@ $database->execute_query(
 $block = array( $TEXT["MAIN"] );
 require( LEPTON_PATH."/templates/".(( $page_info['template'] == "" ) ? DEFAULT_TEMPLATE : $page_info['template'])."/info.php" );
 
+if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
+
 /** ****************************
  *	Collect vars and render page
  */

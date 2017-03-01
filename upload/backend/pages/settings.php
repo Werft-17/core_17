@@ -173,6 +173,8 @@ $page_values = array(
 	'page_values'	=> $results_array
 );
 
+if(file_exists(THEME_PATH."/globals/lte_globals.php")) require_once(THEME_PATH."/globals/lte_globals.php");
+
 echo $parser->render(
 	'@theme/pages_settings.lte',
 	$page_values
