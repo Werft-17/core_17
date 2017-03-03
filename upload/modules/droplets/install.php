@@ -40,10 +40,10 @@ else
 }
 // end include class.secure.php
 
-//	We'll collect all errors during the installation first.
+//	Collect all errors during the installation to display them all.
 $droplets_install_errors = array();
 
-// create the droplets table
+//	create the droplets table
 $table = TABLE_PREFIX .'mod_droplets'; 
 $database->simple_query("CREATE TABLE IF NOT EXISTS `".$table."`  (
 		`id` INT NOT NULL auto_increment,
