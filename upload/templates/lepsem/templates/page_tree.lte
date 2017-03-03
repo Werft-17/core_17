@@ -33,7 +33,7 @@
 			<tr>
 				<td class="center aligned">{{ page.page_id }}</td>
 				<td class="aligned"><i class="ui icon unhide"></i></td>
-				<td class="selectable"><span class="page_tree_deep_{{ deep }}">{% if(page.subpages|length > 0) %}<i class="ui icon caret down"></i>{% endif %}<a href="{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}">{{ page.menu_title }}</a></span></td>
+				<td class="selectable"><span class="page_tree_deep_{{ deep }}"><i class="{% if(page.subpages|length > 0) %}ui icon caret right{% else %}noicon{% endif %}"></i><a href="{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}">{{ page.menu_title }}</a></span></td>
 				<td><span class="page_tree_deep_{{ deep }}">{{ page.page_title }}</span></td>
 				<td>{{ page.link }}</td>
 				<td class="ui single line">
