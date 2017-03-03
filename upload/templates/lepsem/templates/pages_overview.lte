@@ -56,7 +56,7 @@
 						<div class="ui row"><!-- start result -->
 							<div class="column">
 							  {% if info is not empty %}<div class="ui red message">{{ TEXT.NONE_FOUND }}</div>{% endif %}
-								<table class="ui celled padded striped table">
+								<table class="ui celled padded striped single line table">
 									<thead>
 										<tr>
 											<th>{{ TEXT.ACTIONS }}</th>
@@ -68,7 +68,7 @@
 									<tbody>
 									{% for item in rows %}			
 										<tr>
-											<td class="single line">
+											<td>
 												<a href="{ADMIN_URL}/pages/modify.php?page_id={PAGE_ID}" title="{TEXT_MODIFY}"><i class="large write icon"></i></a>
 												<a href="{ADMIN_URL}/pages/settings.php?page_id={PAGE_ID}" title="{TEXT_SETTINGS}"><i class="large setting icon"></i></a>
 												<a href="{ADMIN_URL}/pages/sections.php?page_id={PAGE_ID}" title="{TEXT_SECTION}"><i class="large list icon"></i></a>
