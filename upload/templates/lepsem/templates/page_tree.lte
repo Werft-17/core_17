@@ -16,7 +16,7 @@
 </div>
 <div class="content {% if(open_tree == 1) %}active{% endif %}"> <!-- start page-tree -->
 
-	<table class="ui small striped compact table">
+	<table class="ui small striped compact table" id="table-3">
 		<thead>
 			<tr>
 				<th class="center aligned">{{ THEME.PAGE_ID }}</th>
@@ -29,8 +29,8 @@
 		</thead>
 		<tbody>
 {# ### Jede einzelne Seite als Zeile ### #}
-{% macro display_pagelink( page, deep ) %}
-			<tr>
+{% macro display_pagelink( page, deep, num ) %}
+			<tr id="3.{{ deep }}.{{ num }}">
 				<td class="center aligned">{{ page.page_id }}</td>
 				<td class="aligned"><i class="ui icon unhide"></i></td>
 				<td class="selectable"><span class="page_tree_deep_{{ deep }}"><i class="{% if(page.subpages|length > 0) %}ui icon caret right{% else %}noicon{% endif %}"></i><a href="{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}">{{ page.menu_title }}</a></span></td>
@@ -49,19 +49,21 @@
 			</tr>
 	{% import _self as pagelink %}
 	{% for subpage in page.subpages %}
-		{{ pagelink.display_pagelink( subpage, deep+1 ) }}
+		{{ pagelink.display_pagelink( subpage, deep+1, loop.index ) }}
 	{% endfor %}
 {% endmacro %}
 
 	{% import _self as pagelink %}	
 	{% for page in all_pages %}
-		{{ pagelink.display_pagelink( page, 0 ) }}  
+		{{ pagelink.display_pagelink( page, 0, loop.index ) }}
 	{% endfor %}
 
 {# ### ende einzelne Seite ### #}
 		</tbody>
 	</table>
-
+<div id="debugArea">
+	hello
+</div>
 </div> <!-- end page-tree -->
 
 <script type="text/javascript">
