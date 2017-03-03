@@ -12,14 +12,15 @@
 {% autoescape false %}
 <div class="title {% if(open_tree == 1) %}active{% endif %}">
 	<i class="dropdown icon"></i>
-	{{ TEXT.PAGES_DIRECTORY }} extended
+	{{ TEXT.PAGES_DIRECTORY }} (extended)
 </div>
 <div class="content {% if(open_tree == 1) %}active{% endif %}"> <!-- start page-tree -->
 
 	<table class="ui small striped compact table">
 		<thead>
 			<tr>
-				<th class="center aligned">{{ THEME.PAGE_ID }}</th>			
+				<th class="center aligned">{{ THEME.PAGE_ID }}</th>
+				<th class="aligned">V!</th>			
 				<th>{{ TEXT.VISIBILITY }}/{{ TEXT.MENU_TITLE }}</th>
 				<th>{{ TEXT.PAGE_TITLE }}</th>
 				<th>{{ TEXT.URL }}</th>
@@ -27,12 +28,13 @@
 			</tr>
 		</thead>
 		<tbody>
-{# ### einzelne seite als "Zeile" ### #}
+{# ### Jede einzelne Seite als Zeile ### #}
 {% macro display_pagelink( page, deep ) %}
 			<tr>
-				<td>{{ page.page_id }}</td>
-				<td class="selectable"><a href="{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}">{{ page.menu_title }}</a></td>
-				<td>{{ page.page_title }}</td>
+				<td class="center aligned">{{ page.page_id }}</td>
+				<td class="aligned"><i class="ui icon unhide"></i>{% if(page.subpages|length > 0) %}<i class="ui icon caret right"></i>{% endif %}</td>
+				<td class="selectable"><span class="page_tree_deep_{{ deep }}"><a href="{{ ADMIN_URL }}/pages/modify.php?page_id={{ page.page_id }}">{{ page.menu_title }}</a></span></td>
+				<td><span class="page_tree_deep_{{ deep }}">{{ page.page_title }}</span></td>
 				<td>{{ page.link }}</td>
 				<td class="ui single line">
 
