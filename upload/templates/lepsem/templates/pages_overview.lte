@@ -29,7 +29,7 @@
 	</div> <!-- end header grid -->
 	<div class="ui basic segment"> <!-- start inner green segment -->	
 		<div class="ui styled fluid accordion"> <!-- start accordion-->
-			{% include "@theme/page_tree_expanded.lte" with [open_tree] %} <!-- include page tree-->
+			{% include "@theme/page_tree.lte" with [open_tree] %} <!-- include page tree-->
 			<div class="title">
 				<i class="dropdown icon"></i>
 				{{ HEADING.SEARCH_PAGE }}
