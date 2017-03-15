@@ -34,7 +34,6 @@ $template_description 	= 'Ein erweitertes Backend-Theme für LEPTON CMS.';
 
 $THEME = array(
 	'ADMIN_ONLY' 		=> 'Diese Optionen nur Administratoren zugänglich machen!',
-	'ALLOWED_FILES' 	=> 'Erlaubte Dateien',	
 	'NO_SHOW_THUMBS' 	=> 'Vorschaubilder verstecken',
 	'TEXT_HEADER' 		=> 'Maximale Bildergröße fürr Ordner festlegen</b><br><small><i>(Änderung nur beim Hochladen)</i></small>',
 	'ADDON_PERMISSIONS' => 'Zugriffsrechte für Addons',

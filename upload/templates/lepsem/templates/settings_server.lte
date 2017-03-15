@@ -91,7 +91,7 @@
 						<div class="column">			
 							<div class="ui form">
 								<div class="field">
-									<label>{{ TEXT.RENAME_FILES_ON_UPLOAD }}</label>
+									<label>{{ TEXT.ALLOWED_FILETYPES_ON_UPLOAD }}</label>
 									<input type="text" name="rename_files_on_upload" value="{{ RENAME_FILES_ON_UPLOAD }}" />
 								</div>
 							</div>										
