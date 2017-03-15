@@ -34,6 +34,7 @@ $template_description 	= 'Enhanced backend theme for LEPTON CMS.';
 
 $THEME = array(
 	'ADMIN_ONLY' 		=> 'Settings for administrator only',
+	'ALLOWED_FILES' 	=> 'Allowed files',		
 	'NO_SHOW_THUMBS' 	=> 'Hide thumbnails',
 	'TEXT_HEADER' 		=> 'Set maximum imagesize for a folder</b><br><small><i>(resizing on new uploads only)</i></small>',
 	'ADDON_PERMISSIONS' => 'Addon Permissions',	
