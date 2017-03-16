@@ -195,13 +195,13 @@ function test_pass_length() {
 					</div>				
 					<div class="column">
 						<div class="ui horizontal segment">
-						<p>PHP Version min 5.6.0</p>
+						<p>PHP Version min 7.0.0</p>
 						</div>
 					</div>
 					<div class="column">
 						<div class="ui horizontal segment">
 							<?php
-							if (version_compare(PHP_VERSION, '5.6.0', '>='))
+							if (version_compare(PHP_VERSION, '7.0.0', '>='))
 								{
 							?><font class="good">Yes</font><?php
 							} else {
@@ -273,7 +273,7 @@ function test_pass_length() {
 
 			
 				<div class="ui two column grid">	
-					<?php if (version_compare(PHP_VERSION, '5.6.0', '<')){ ?>				
+					<?php if (version_compare(PHP_VERSION, '7.0.0', '<')){ ?>				
 					<div class="column">
 						<div class="ui horizontal segment">
 							<p>Your current PHP Version is: <?php print PHP_VERSION;  ?></p>
@@ -281,7 +281,7 @@ function test_pass_length() {
 					</div>
 					<div class="column">
 						<div class="ui horizontal segment">
-							<h4 class="warning">Please upgrade your PHP Release to 5.6.0 or higher</h4>
+							<h4 class="warning">Please upgrade your PHP Release to 7.0.0 or higher</h4>
 						</div>
 					</div>
 					<?php } ?>					
