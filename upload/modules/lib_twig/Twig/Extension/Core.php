@@ -155,7 +155,7 @@ final class Twig_Extension_Core extends Twig_Extension
             new Twig_Filter('upper', 'twig_upper_filter', array('needs_environment' => true)),
             new Twig_Filter('lower', 'twig_lower_filter', array('needs_environment' => true)),
             new Twig_Filter('striptags', 'strip_tags'),
-            new Twig_Filter('trim', 'trim'),
+            new Twig_Filter('trim', 'twig_trim_filter'),
             new Twig_Filter('nl2br', 'nl2br', array('pre_escape' => 'html', 'is_safe' => array('html'))),
 
             // array helpers
@@ -594,7 +594,7 @@ function twig_slice(Twig_Environment $env, $item, $start, $length = null, $prese
 
     $item = (string) $item;
 
-    return (string) mb_substr($item, $start, null === $length ? mb_strlen($item, $env->getCharset()) - $start : $length, $env->getCharset());
+    return (string) mb_substr($item, $start, $length, $env->getCharset());
 }
 
 /**
@@ -850,6 +850,31 @@ function twig_in_filter($value, $compare)
     }
 
     return false;
+}
+
+/**
+ * Returns a trimmed string.
+ *
+ * @return string
+ *
+ * @throws Twig_Error_Runtime When an invalid trimming side is used (not a string or not 'left', 'right', or 'both')
+ */
+function twig_trim_filter($string, $characterMask = null, $side = 'both')
+{
+    if (null === $characterMask) {
+        $characterMask = " \t\n\r\0\x0B";
+    }
+
+    switch ($side) {
+        case 'both':
+            return trim($string, $characterMask);
+        case 'left':
+            return ltrim($string, $characterMask);
+        case 'right':
+            return rtrim($string, $characterMask);
+        default:
+            throw new Twig_Error_Runtime('Trimming side must be "left", "right" or "both".');
+    }
 }
 
 /**
@@ -1168,7 +1193,7 @@ function twig_capitalize_string_filter(Twig_Environment $env, $string)
 {
     $charset = $env->getCharset();
 
-    return mb_strtoupper(mb_substr($string, 0, 1, $charset), $charset).mb_strtolower(mb_substr($string, 1, 2147483647, $charset), $charset);
+    return mb_strtoupper(mb_substr($string, 0, 1, $charset), $charset).mb_strtolower(mb_substr($string, 1, null, $charset), $charset);
 }
 
 /**
@@ -1265,12 +1290,6 @@ function twig_include(Twig_Environment $env, $context, $template, $variables = a
             throw $e;
         }
     } catch (Throwable $e) {
-        if ($isSandboxed && !$alreadySandboxed) {
-            $sandbox->disableSandbox();
-        }
-
-        throw $e;
-    } catch (Exception $e) {
         if ($isSandboxed && !$alreadySandboxed) {
             $sandbox->disableSandbox();
         }
