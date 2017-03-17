@@ -40,7 +40,9 @@ else
 }
 // end include class.secure.php
 
-
+if (file_exists (LEPTON_URL.'/modules/lib_jquery/jquery-ui/external/index.php')) {
+		rm_full_dir( LEPTON_PATH.'/modules/lib_jquery/jquery-ui/external' ); 
+}
 
 
 ?>
